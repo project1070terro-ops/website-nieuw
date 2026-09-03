@@ -1,5 +1,5 @@
 export type Language = 'nl' | 'en' | 'es';
-export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'donate' | 'contact';
+export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'donate' | 'contact' | 'privacy';
 
 export interface Donation {
   id: string;
@@ -23,6 +23,8 @@ export interface TranslationContent {
   sponsorCards: Array<[string, string]>;
   storyTitle: string;
   storyLead: string;
+  storyQuote: string;
+  storyOutro: string;
   storySections: Array<[string, string]>;
   routeTitle: string;
   routeLead: string;

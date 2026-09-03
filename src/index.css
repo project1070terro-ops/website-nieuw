@@ -1179,3 +1179,192 @@ footer {
   .footer-grid { gap: 24px; }
   .footer-sponsor { align-self: flex-start; }
 }
+
+/* ===== PRIVACY & DISCLAIMER ===== */
+.privacy-page {
+  padding: 120px 40px 80px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.85);
+}
+.privacy-page h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.privacy-back {
+  margin-bottom: 24px;
+}
+.privacy-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 40px;
+}
+.privacy-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+  margin: 40px 0 16px;
+}
+.privacy-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.privacy-content ul {
+  list-style: disc;
+  padding-left: 22px;
+  margin-bottom: 24px;
+}
+.privacy-content li {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.privacy-content li strong {
+  color: var(--white);
+}
+.privacy-contact {
+  list-style: none;
+  padding-left: 0;
+}
+.privacy-contact li {
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .privacy-page { padding: 100px 24px 64px; }
+  .privacy-content h3 { font-size: 18px; }
+}
+
+/* ===== FOOTER PRIVACY LINK ===== */
+.footer-privacy {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 auto 12px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.footer-privacy:hover {
+  color: var(--orange);
+}
+
+/* ===== COOKIE BANNER ===== */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  max-width: 420px;
+  background: var(--anthracite-2);
+  border: 1px solid rgba(192, 90, 40, 0.4);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: slideInCookie 0.5s ease forwards;
+}
+@keyframes slideInCookie {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cookie-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 18px;
+}
+.cookie-privacy-link {
+  display: inline;
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.cookie-privacy-link:hover {
+  color: var(--orange-light);
+}
+.cookie-actions {
+  display: flex;
+  gap: 12px;
+}
+.cookie-actions button {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.cookie-accept {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.cookie-accept:hover {
+  background: var(--orange-light);
+  border-color: var(--orange-light);
+}
+.cookie-decline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.cookie-decline:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+@media (max-width: 520px) {
+  .cookie-banner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: 100%;
+  }
+  .cookie-actions { flex-direction: column; }
+}
+
+/* ===== STORY QUOTE ===== */
+.page-intro.story-intro {
+  padding-bottom: 0;
+}
+.story-quote {
+  width: 100%;
+  max-width: 800px;
+  margin: 1.7rem auto;
+  padding: 8px 0 8px 40px;
+  border-left: 4px solid var(--orange);
+  font-size: clamp(16px, 1.8vw, 18px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.4;
+  text-align: left;
+  color: var(--white);
+}
+.story-quote .story-quote-highlight {
+  color: var(--orange);
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .story-quote {
+    margin: 1.5rem auto;
+    padding-left: 24px;
+    border-left-width: 3px;
+  }
+}

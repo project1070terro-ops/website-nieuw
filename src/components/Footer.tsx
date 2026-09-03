@@ -59,6 +59,9 @@ export function Footer({ t, navigate }: FooterProps) {
         </div>
         
         <div className="footer-bottom">
+          <button className="footer-privacy" onClick={() => navigate('privacy')}>
+            Privacy & Disclaimer
+          </button>
           <div className="footer-copyright">
             © 2026 Forza Fortuna vzw. Alle rechten voorbehouden.
           </div>

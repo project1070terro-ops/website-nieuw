@@ -13,6 +13,9 @@ import { Terro } from './components/Terro';
 import { Blog } from './components/Blog';
 import { Donate } from './components/Donate';
 import { Contact } from './components/Contact';
+import { PrivacyDisclaimer } from './components/PrivacyDisclaimer';
+import { CookieBanner } from './components/CookieBanner';
+import { Analytics } from './components/Analytics';
 
 function App() {
   const [language, setLanguage] = useState<Language>('nl');
@@ -20,6 +23,14 @@ function App() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([]);
+  const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('cookie-consent') as 'accepted' | 'declined' | null;
+    if (stored === 'accepted' || stored === 'declined') {
+      setCookieConsent(stored);
+    }
+  }, []);
 
   const t = copy[language];
 
@@ -88,8 +99,19 @@ function App() {
           <Donate t={t} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
+        {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} />}
       </main>
       <Footer t={t} navigate={navigate} />
+      {cookieConsent === null && (
+        <CookieBanner
+          navigate={navigate}
+          onConsent={(consent) => {
+            localStorage.setItem('cookie-consent', consent);
+            setCookieConsent(consent);
+          }}
+        />
+      )}
+      <Analytics consent={cookieConsent} />
     </div>
   );
 }

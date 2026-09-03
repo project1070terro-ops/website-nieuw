@@ -24,14 +24,12 @@ export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
 
 Tien jaar later, in 2029, viert de vzw haar 10-jarig jubileum. Datzelfde jaar bereik ik Roel — beter bekend als "Terro" — de legendarische leeftijd van 70 jaar. Twee unieke mijlpalen die om een bijzonder verhaal vragen.
 
-Dat verhaal werd Project 10/70: een extreme wieleruitdaging waarbij Terro 10 dagen lang in het zadel kruipt om meer dan 17.000 hoogtemeters te bedwingen in de Spaanse bergen rondom L'Albir. Geen toevallige keuze — de bergen die al meer dan 15 jaar het toneel vormen van legendarische ritten en onvergetelijke vriendschappen.
-
-Het doel? Bewijzen dat leeftijd slechts een getal is. Dat passie geen grens kent. En dat je met de juiste voorbereiding, de onverwoestbare mentaliteit en de juiste mensen om je heen elk lange-termijndoel kunt bereiken.
-
-Maar dit project gaat niet alleen over fietsen. Het gaat over het goede doel. Elke meter die geklommen wordt, elke zweetdruppel die valt, draagt bij aan een missie die groter is dan de sport zelf. En daar kan jij deel van uitmaken.`,
+Dat verhaal werd Project 10/70: een extreme wieleruitdaging waarbij Terro 10 dagen lang in het zadel kruipt om meer dan 17.000 hoogtemeters te bedwingen in de Spaanse bergen rondom L'Albir. Geen toevallige keuze — de bergen die al meer dan 15 jaar het toneel vormen van legendarische ritten en onvergetelijke vriendschappen.`,
+    storyQuote: `Het doel? Bewijzen dat <span class="story-quote-highlight">leeftijd slechts een getal</span> is. Dat <span class="story-quote-highlight">passie geen grens</span> kent. En dat je met de juiste voorbereiding, de onverwoestbare mentaliteit en de juiste mensen om je heen elk lange-termijndoel kunt bereiken.`,
+    storyOutro: `Maar dit project gaat niet alleen over fietsen. Het gaat over het goede doel. Elke meter die geklommen wordt, elke zweetdruppel die valt, draagt bij aan een missie die groter is dan de sport zelf. En daar kan jij deel van uitmaken.`,
     storySections: [['Van idee naar avontuur', 'Wat begon als een idee aan de keukentafel groeide uit tot een uitdaging die vrienden, partners en een heel team samenbrengt.'], ['Twee mijlpalen, één extremum', 'Tien jaar Forza Fortuna vzw. Zeventig jaar jong van geest. Twee cijfers die samen de lat op 17.000 hoogtemeters leggen.'], ['Samen trappen', 'Elke kilometer krijgt meer betekenis als we hem delen. Met supporters langs de weg, donateurs op afstand en het goede doel als kompas.']],
     routeTitle: 'De route',
-    routeLead: 'Tien dagen door de ruige schoonheid van de Costa Blanca. Open een etappe voor het parcours en de live kaart.',
+    routeLead: `Elke kilometer een stap dichterbij. Elke rit start en komt aan op het zonovergoten strand van Albir, vanwaar we de uitdaging aangaan en ons dwars door adembenemende landschappen en over pittige toppen trappen. Geen gemakkelijke reis, maar elke pedaalslag langs de Spaanse kust en het binnenland is gedreven door pure motivatie: hoop en een betere toekomst bieden aan kinderen die dit het hardste nodig hebben. Fiets virtueel met ons mee en volg de route vanaf de branding tot de finish.`,
     stages: ['Coll de Rates Lus', 'La Vall d\'Ebo-pas & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'De laatste klim', 'De finishrit'],
     routePlaceholder: 'Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje.',
     terroTitle: 'PROJECT 70: DE MAN ACHTER TERRO',
@@ -76,14 +74,12 @@ Maar dit project gaat niet alleen over fietsen. Het gaat over het goede doel. El
 
 Ten years later, in 2029, the organization celebrates its 10th anniversary. That same year, I—Roel, better known as "Terro"—will reach the legendary age of 70. Two unique milestones that call for a special story.
 
-That story became Project 10/70: an extreme cycling challenge in which Terro spends ten days in the saddle, conquering over 17,000 vertical meters in the Spanish mountains around L'Albir. It was no random choice; these mountains have been the backdrop for legendary rides and unforgettable friendships for over 15 years.
-
-The goal? To prove that age is just a number. That passion knows no bounds. And that with the right preparation, an unbreakable mindset, and the right people around you, any long-term goal is within reach.
-
-But this project is about more than just cycling; it is about a good cause. Every meter climbed and every drop of sweat shed contributes to a mission greater than the sport itself. And you can be a part of it.`,
+That story became Project 10/70: an extreme cycling challenge in which Terro spends ten days in the saddle, conquering over 17,000 vertical meters in the Spanish mountains around L'Albir. It was no random choice; these mountains have been the backdrop for legendary rides and unforgettable friendships for over 15 years.`,
+    storyQuote: `The goal? To prove that <span class="story-quote-highlight">age is just a number</span>. That <span class="story-quote-highlight">passion knows no bounds</span>. And that with the right preparation, an unbreakable mindset, and the right people around you, any long-term goal is within reach.`,
+    storyOutro: `But this project is about more than just cycling; it is about a good cause. Every meter climbed and every drop of sweat shed contributes to a mission greater than the sport itself. And you can be a part of it.`,
     storySections: [['From idea to adventure', 'What started as a kitchen-table idea became a challenge that brings friends, partners and a whole team together.'], ['Two milestones, one extreme', 'Ten years of Forza Fortuna vzw. Seventy years young at heart. Two numbers that set the bar at 17,000 vertical meters.'], ['Pedal together', 'Every kilometer becomes more meaningful when we share it. With supporters along the way, with donors from a distance, and with the good cause as our compass.']],
     routeTitle: 'The route',
-    routeLead: 'Ten days through the rugged beauty of the Costa Blanca. Open a stage for the route and live map.',
+    routeLead: `Every kilometer a step closer. Every ride starts and finishes on the sun-drenched beach of Albir, from where we take on the challenge and pedal through breathtaking landscapes and tough peaks. No easy journey, but every pedal stroke along the Spanish coast and inland is driven by pure motivation: offering hope and a better future to children who need it most. Cycle virtually with us and follow the route from the surf to the finish.`,
     stages: ['Coll de Rates Loop', 'La Vall d\'Ebo-pass & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'The final climb', 'The finish stage'],
     routePlaceholder: 'Stage profile will be generated live during the challenge in Spain.',
     terroTitle: 'PROJECT 70: THE MAN BEHIND TERRO',
@@ -128,14 +124,12 @@ But this project is about more than just cycling; it is about a good cause. Ever
 
 Diez años más tarde, en 2029, la organización celebra su décimo aniversario. Ese mismo año, yo —Roel, más conocido como "Terro"— alcanzaré la legendaria edad de 70 años. Dos hitos únicos que merecen una historia especial.
 
-Esa historia se convirtió en el Proyecto 10/70: un desafío ciclista extremo en el que Terro pasa diez días sobre el sillín, superando más de 17.000 metros de desnivel acumulado en las montañas españolas de los alrededores de L'Albir. No fue una elección casual; estas montañas han sido el escenario de rutas legendarias y amistades inolvidables durante más de 15 años.
-
-¿El objetivo? Demostrar que la edad es solo un número. Que la pasión no conoce límites. Y que, con la preparación adecuada, una mentalidad inquebrantable y las personas correctas a tu lado, cualquier meta a largo plazo está al alcance de la mano.
-
-Pero este proyecto va más allá del ciclismo; se trata de una buena causa. Cada metro ascendido y cada gota de sudor derramada contribuyen a una misión mayor que el deporte en sí. Y tú puedes formar parte de ella.`,
+Esa historia se convirtió en el Proyecto 10/70: un desafío ciclista extremo en el que Terro pasa diez días sobre el sillín, superando más de 17.000 metros de desnivel acumulado en las montañas españolas de los alrededores de L'Albir. No fue una elección casual; estas montañas han sido el escenario de rutas legendarias y amistades inolvidables durante más de 15 años.`,
+    storyQuote: `¿El objetivo? Demostrar que <span class="story-quote-highlight">la edad es solo un número</span>. Que <span class="story-quote-highlight">la pasión no conoce límites</span>. Y que, con la preparación adecuada, una mentalidad inquebrantable y las personas correctas a tu lado, cualquier meta a largo plazo está al alcance de la mano.`,
+    storyOutro: `Pero este proyecto va más allá del ciclismo; se trata de una buena causa. Cada metro ascendido y cada gota de sudor derramada contribuyen a una misión mayor que el deporte en sí. Y tú puedes formar parte de ella.`,
     storySections: [['De la idea a la aventura', 'Lo que comenzó como una idea se convirtió en un reto que une a amigos, socios y todo un equipo.'], ['Dos hitos, un extremo', 'Diez años de Forza Fortuna vzw. Setenta años joven de espíritu. Dos números que marcan 17.000 metros de desnivel.'], ['Pedalear juntos', 'Cada kilómetro importa más cuando lo compartimos. Con seguidores en el camino, con donantes a distancia y con la buena causa como brújula.']],
     routeTitle: 'La ruta',
-    routeLead: 'Diez días a través de la belleza salvaje de la Costa Blanca. Abre un tramo para el recorrido y el mapa en vivo.',
+    routeLead: `Cada kilómetro un paso más cerca. Cada etapa comienza y termina en la playa bañada por el sol de Albir, desde donde afrontamos el reto y pedaleamos a través de paisajes de ensueño y cumbres exigentes. No es un viaje fácil, pero cada pedalada a lo largo de la costa y el interior español está movida por una motivación pura: ofrecer esperanza y un futuro mejor a los niños que más lo necesitan. Pedalea virtualmente con nosotros y sigue la ruta desde el oleaje hasta la meta.`,
     stages: ['Bucle Coll de Rates', 'La Vall d\'Ebo-paso & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'La última subida', 'La etapa final'],
     routePlaceholder: 'El perfil de la etapa se generará en vivo durante el reto en España.',
     terroTitle: 'PROYECTO 70: EL HOMBRE DETRÁS DE TERRO',

@@ -12,7 +12,8 @@ interface StoryProps {
 export function Story({ t, navigate }: StoryProps) {
   return (
     <>
-      <PageIntro title={t.storyTitle} lead={t.storyLead} />
+      <PageIntro title={t.storyTitle} lead={`${t.storyLead}\n\n${t.storyOutro}`} className="story-intro" />
+      <blockquote className="story-quote" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
       <Stats t={t} navigate={navigate} />
       <section className="story-grid">
         {t.storySections.map(([title, text], index) => (
