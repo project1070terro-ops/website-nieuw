@@ -47,7 +47,7 @@ De filosofie van Terro in het zadel is even simpel als onbarmhartig: niet zeuren
 
 Vanaf oktober verschuift de focus naar de basis: twee keer per week gerichte kracht- en core-stabiliteitstraining thuis, twee intensieve sessies op de virtuele wegen van Zwift, en in het weekend een stevige rit om de scherpte te behouden met het team. Zodra het voorjaar in maart aanbreekt, worden de trainingsuren en de kilometers gestaag opgebouwd, terwijl de core- en krachttraining de onmisbare fundering blijven vormen. Richting 2027 en 2028 zal de ultieme voorbereiding plaatsvinden in Spanje zelf, waarbij de specifieke etappes stilaan worden verkend vanuit L'Albir.
 
-Qua materiaal laat Terro niets aan het toeval over en wordt alles in eigen beheer perfect afgesteld. Voor de uitrusting kan hij rekenen op de onvoorwaardelijke steun van kledingpartner Frank Peeraer van Forza Fortuna (Fortuna Group), die ervoor zorgt dat Terro in de perfecte, aerodynamische en professionele uitrusting aan de start verschijnt.`]],
+Qua materiaal laat Terro niets aan het toeval over en wordt alles in eigen beheer perfect afgesteld. Voor de uitrusting kan hij rekenen op de onvoorwaardelijke steun van vriend/sponsor Frank Peeraer van Forza Fortuna (Fortuna Group), die ervoor zorgt dat Terro in de perfecte, aerodynamische en professionele uitrusting aan de start verschijnt.`]],
     blogTitle: 'Nieuws uit het peloton',
     blogLead: 'Updates, verhalen en momenten onderweg naar Project 10/70.',
     blogCards: [['Aankondiging', 'De eerste hoogtemeters zijn gemaakt'], ['Training', 'Waarom elke klim begint met een keuze'], ['Team', 'Forza Fortuna maakt zich klaar voor Spanje']],
