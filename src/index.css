@@ -856,25 +856,46 @@ main { flex: 1; }
 }
 
 /* ===== TERRO ===== */
-.terro-banner {
-  height: 340px;
-  background-size: cover;
-  background-position: center 30%;
-  display: flex;
-  align-items: flex-end;
-  padding: 40px;
+.terro-intro {
+  padding-bottom: 4px;
+}
+.terro-intro h1 {
+  margin-bottom: 8px;
+}
+.terro-image-wrapper {
   position: relative;
-  margin: 0 40px;
-  border-radius: 4px;
+  z-index: 1;
   overflow: hidden;
 }
-.terro-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
-.terro-banner h2 { position: relative; font-size: clamp(24px, 3.5vw, 40px); letter-spacing: 0.02em; }
-.terro-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; padding: 48px 40px; max-width: 1100px; }
-.terro-sections article { border-left: 2px solid var(--orange); padding-left: 22px; }
-.terro-sections h2 { font-size: 20px; margin-bottom: 10px; }
-.terro-sections p { color: rgba(255, 255, 255, 0.72); font-size: 14px; }
-@media (max-width: 768px) { .terro-sections { grid-template-columns: 1fr; padding: 32px 24px; } .terro-banner { margin: 0 24px; padding: 28px; height: 240px; } }
+.terro-image-vignette {
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.98) 0%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.98) 100%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.98) 0%, transparent 10%, transparent 92%, rgba(0, 0, 0, 0.98) 100%);
+  box-shadow: inset 0 0 120px 80px rgba(0, 0, 0, 0.95);
+}
+.terro-sections {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 32px;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.terro-sections article {
+  border-left: 3px solid var(--orange);
+  padding-left: 28px;
+}
+.terro-sections article:not(:last-child) {
+  margin-bottom: 64px;
+}
+.terro-sections h2 { font-size: 22px; margin-bottom: 16px; }
+.terro-sections p { color: rgba(255, 255, 255, 0.75); font-size: 16px; line-height: 1.7; }
+.terro-sections p + p { margin-top: 1.2em; }
+@media (max-width: 768px) {
+  .terro-sections { padding-left: 24px; padding-right: 24px; padding-bottom: 24px; }
+  .terro-sections article:not(:last-child) { margin-bottom: 48px; }
+}
 
 /* ===== BLOG ===== */
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 32px 40px 64px; }
