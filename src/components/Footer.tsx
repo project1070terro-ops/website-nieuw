@@ -4,11 +4,12 @@ import type { Page, TranslationContent } from '../types';
 interface FooterProps {
   t: TranslationContent;
   navigate: (page: Page) => void;
+  className?: string;
 }
 
-export function Footer({ t, navigate }: FooterProps) {
+export function Footer({ t, navigate, className }: FooterProps) {
   return (
-    <footer>
+    <footer className={className}>
       <div className="footer-container">
         <div className="footer-flex">
           <div className="footer-module footer-brand-module">
