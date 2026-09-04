@@ -1,4 +1,4 @@
-# Project 10/70 — Agent Notes
+# Project 15/70 — Agent Notes
 
 ## Development
 
@@ -42,5 +42,5 @@ git push origin master:main
 - Commit author for this project:
 
 ```bash
-git -c user.name="Project 10/70" -c user.email="project1070terro@gmail.com" commit -a -m "..."
+git -c user.name="Project 15/70" -c user.email="project1070terro@gmail.com" commit -a -m "..."
 ```
