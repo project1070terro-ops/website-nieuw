@@ -2,7 +2,6 @@ import { ArrowRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 import { Stats } from './Stats';
-import { PageLinks } from './PageLinks';
 
 interface StoryProps {
   t: TranslationContent;
@@ -29,7 +28,6 @@ export function Story({ t, navigate }: StoryProps) {
           </article>
         ))}
       </section>
-      <PageLinks navigate={navigate} pages={['route', 'terro']} labels={[t.nav.route, t.nav.terro]} />
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
           {t.support} <ArrowRight size={18} />

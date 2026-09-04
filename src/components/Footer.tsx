@@ -29,22 +29,18 @@ export function Footer({ t, navigate }: FooterProps) {
           <div className="footer-module footer-nav-module">
             <h3 className="footer-title">NAVIGATIE</h3>
             <div className="footer-nav-links">
-              <button onClick={() => navigate('home')}>Home</button>
-              <span>•</span>
-              <button onClick={() => navigate('story')}>Het Verhaal</button>
-              <span>•</span>
-              <button onClick={() => navigate('route')}>De Route</button>
-              <span>•</span>
-              <button onClick={() => navigate('terro')}>Project Terro</button>
-              <span>•</span>
-              <button onClick={() => navigate('blog')}>Blog</button>
+              {(['home', 'story', 'route', 'terro', 'blog'] as (keyof typeof t.nav)[]).map((key) => (
+                <button key={key} onClick={() => navigate(key as Page)}>
+                  {t.nav[key]}
+                </button>
+              ))}
             </div>
           </div>
 
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
-            <a className="footer-email" href="mailto:info@project1070.be">
-              info@project1070.be
+            <a className="footer-email" href="#" onClick={(e) => { e.preventDefault(); navigate('contact'); }}>
+              project1070terro@gmail.com
             </a>
           </div>
 

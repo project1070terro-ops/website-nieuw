@@ -18,7 +18,7 @@ export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
     stats: [['10', 'DAGEN IN HET ZADEL', 'story'], ['+17.000', 'HOOGTEMETERS', 'route'], ['70', 'JAAR JONG VAN GEEST', 'terro']],
     sponsorText: 'Fortuna Financial Group is één van de belangrijkste vermogensbegeleiders op de Belgische markt. CEO Frank Peeraer is een ex-profvoetballer met een echt sporthart en net als diverse van zijn medewerkers, zelf fervent fietser. Fortuna ondersteunt als bedrijf dan ook voluit het fietstoerisme én met trots Project 10/70.',
     sponsorLink: 'Ga naar Fortuna Financial Group',
-    sponsorCards: [['Persoonlijk', 'Een aanpak die vertrekt vanuit mensen, doelen en dromen.'], ['Onafhankelijk', 'Heldere keuzes, zonder ruis. Altijd met jouw toekomst voorop.'], ['Een familiebedrijf', 'Vertrouwen en betrokkenheid, generatie na generatie.']],
+    sponsorCards: [['Persoonlijk', `Bij Fortuna heeft u een vaste contactpersoon die uw situatie kent en samen met u de langetermijnvisie bewaakt. Zo hoeft u uw verhaal niet telkens opnieuw te vertellen en kunt u rekenen op een betrokken begeleiding.`], ['Onafhankelijk', `We vertrekken niet vanuit één financiële instelling of één standaardoplossing. We bekijken welke aanpak objectief het best past bij uw vermogen, uw verwachtingen en uw toekomstplannen.`], ['Een familiebedrijf', `Fortuna is zelf als familiebedrijf opgebouwd. Daardoor begrijpen we dat vermogen niet alleen over cijfers gaat, maar ook over verantwoordelijkheid, continuïteit en de volgende generatie.`]],
     storyTitle: 'Van wielerpassie tot extreme uitdaging',
     storyLead: `In 2019 ontstond de vernieuwde vzw van wielerteam Forza Fortuna vanuit de pure wielerpassie op kantoor van Fortuna Financial Group en binnen de community. Wat begon als vriendschappelijke ritten op zondagochtend, groeide uit tot een hecht team met een gezamenlijke missie: passie, discipline en vriendschap verbinden op en naast de fiets.
 
@@ -66,7 +66,7 @@ Qua materiaal laat Terro niets aan het toeval over en wordt alles in eigen behee
     noDonors: 'Jouw naam kan hier straks tussen staan.',
     tiers: [['Berggeit', '€10', '10 hm'], ['Klimmer', '€25', '25 hm'], ['Koning van de Berg', '€50', '50 hm'], ['Legende', '€100+', '100+ hm']],
     contactTitle: 'Neem contact op',
-    contactLead: 'Een vraag, een idee of zin om mee te trappen? We horen graag van je.',
+    contactLead: `Een vraag, een briljant idee of gewoon zin om mee te trappen?\n\nLaat maar iets horen — we staan voor je klaar.`,
     send: 'Verstuur bericht',
     sent: 'Bedankt. We nemen zo snel mogelijk contact met je op.',
     email: 'Officieel e-mailadres'
@@ -82,7 +82,7 @@ Qua materiaal laat Terro niets aan het toeval over en wordt alles in eigen behee
     stats: [['10', 'DAYS IN THE SADDLE', 'story'], ['+17,000', 'VERTICAL METERS', 'route'], ['70', 'YEARS YOUNG AT HEART', 'terro']],
     sponsorText: 'Fortuna Financial Group is one of the leading wealth managers in the Belgian market. CEO Frank Peeraer is a former professional footballer with a true sporting heart and, like several of his colleagues, an avid cyclist. Fortuna fully supports cycling tourism and proudly supports Project 10/70.',
     sponsorLink: 'Visit Fortuna Financial Group',
-    sponsorCards: [['Personal', 'An approach built around people, goals and dreams.'], ['Independent', 'Clear choices, without the noise. Your future comes first.'], ['A family business', 'Trust and commitment, generation after generation.']],
+    sponsorCards: [['Personal', `At Fortuna you have a fixed contact who knows your situation and helps you keep the long-term vision on track. That way, you don't have to retell your story every time and can rely on committed guidance.`], ['Independent', `We don't start from a single financial institution or one standard solution. We look at which approach objectively best fits your wealth, your expectations and your future plans.`], ['A family business', `Fortuna was built as a family business itself. That's why we understand that wealth is not just about numbers, but also about responsibility, continuity and the next generation.`]],
     storyTitle: 'The story behind the challenge',
     storyLead: `In 2019, the Forza Fortuna cycling team was relaunched as a non-profit organization, born from a shared passion for cycling within the Fortuna Financial Group office and the wider community. What began as casual Sunday morning rides evolved into a close-knit team united by a common mission: combining passion, discipline, and friendship—both on and off the bike.
 
@@ -116,7 +116,7 @@ That story became Project 10/70: an extreme cycling challenge in which Terro spe
     noDonors: 'Your name can be here soon.',
     tiers: [['Mountain Goat', '€10', '10 vm'], ['Climber', '€25', '25 vm'], ['King of the Mountain', '€50', '50 vm'], ['Legend', '€100+', '100+ vm']],
     contactTitle: 'Get in touch',
-    contactLead: 'A question, an idea or want to pedal along? We\'d love to hear from you.',
+    contactLead: `A question, a brilliant idea or just feel like pedalling along?\n\nLet us know — we're here for you.`,
     send: 'Send message',
     sent: 'Thank you. We\'ll get back to you as soon as possible.',
     email: 'Official email address'
@@ -132,7 +132,7 @@ That story became Project 10/70: an extreme cycling challenge in which Terro spe
     stats: [['10', 'DÍAS EN EL SILLÍN', 'story'], ['+17.000', 'METROS DE DESNIVEL', 'route'], ['70', 'AÑOS JOVEN DE ESPÍRITU', 'terro']],
     sponsorText: 'Fortuna Financial Group es uno de los principales gestores patrimoniales del mercado belga. El CEO Frank Peeraer es un exfutbolista profesional con un gran corazón deportivo y, como varios de sus empleados, un ciclista apasionado. Fortuna apoya plenamente el cicloturismo y el Proyecto 10/70.',
     sponsorLink: 'Visita Fortuna Financial Group',
-    sponsorCards: [['Personal', 'Un enfoque basado en personas, objetivos y sueños.'], ['Independiente', 'Decisiones claras, sin ruido. Tu futuro es lo primero.'], ['Una empresa familiar', 'Confianza y compromiso, generación tras generación.']],
+    sponsorCards: [['Personal', `En Fortuna tiene un contacto fijo que conoce su situación y que, junto con usted, mantiene la visión a largo plazo. Así no tiene que contar su historia una y otra vez y puede contar con una guía comprometida.`], ['Independiente', `No partimos de una única institución financiera ni de una solución estándar. Analizamos qué enfoque se ajusta objetivamente mejor a su patrimonio, sus expectativas y sus planes futuros.`], ['Una empresa familiar', `Fortuna se ha construido como empresa familiar. Por eso entendemos que el patrimonio no se trata solo de cifras, sino también de responsabilidad, continuidad y la próxima generación.`]],
     storyTitle: 'La historia detrás del reto',
     storyLead: `En 2019, el equipo ciclista Forza Fortuna se relanzó como una organización sin ánimo de lucro, nacida de una pasión compartida por el ciclismo tanto en la oficina de Fortuna Financial Group como en la comunidad en general. Lo que comenzó como salidas informales los domingos por la mañana evolucionó hasta convertirse en un equipo muy unido, impulsado por una misión común: combinar pasión, disciplina y amistad, tanto sobre la bicicleta como fuera de ella.
 
@@ -166,7 +166,7 @@ Esa historia se convirtió en el Proyecto 10/70: un desafío ciclista extremo en
     noDonors: 'Tu nombre puede estar aquí pronto.',
     tiers: [['Cabra de montaña', '€10', '10 md'], ['Escalador', '€25', '25 md'], ['Rey de la montaña', '€50', '50 md'], ['Leyenda', '€100+', '100+ md']],
     contactTitle: 'Ponte en contacto',
-    contactLead: '¿Una pregunta, una idea o ganas de pedalear? Nos encanta escucharte.',
+    contactLead: `¿Una pregunta, una idea brillante o simplemente ganas de pedalear?\n\nCuéntanos — estamos aquí para ti.`,
     send: 'Enviar mensaje',
     sent: 'Gracias. Te responderemos lo antes posible.',
     email: 'Dirección de correo electrónico oficial'

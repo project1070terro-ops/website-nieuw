@@ -13,7 +13,9 @@ export function PageIntro({ title, lead, className }: PageIntroProps) {
         PROJECT 10<span>/</span>70
       </p>
       <h1>{title}</h1>
-      <p>{lead}</p>
+      {lead.trim().split(/\n\s*\n/).map((part, i) => (
+        <p key={i}>{part}</p>
+      ))}
     </section>
   );
 }

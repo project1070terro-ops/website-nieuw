@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Mail } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import type { Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
@@ -72,11 +72,6 @@ export function Contact({ t, navigate }: ContactProps) {
             </p>
           )}
         </form>
-        <div className="contact-info">
-          <Mail size={25} />
-          <p>{t.email}</p>
-          <a href="mailto:info@project1070.be">info@project1070.be</a>
-        </div>
       </section>
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>
