@@ -20,14 +20,14 @@ body {
   margin: 0;
   background: var(--black);
   color: var(--white);
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4 { font-family: 'Inter', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin: 0; }
+h1, h2, h3, h4 { font-family: "Roboto", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin: 0; }
 p { margin: 0; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; padding: 0; }
 a { color: inherit; text-decoration: none; }
@@ -199,7 +199,7 @@ main { flex: 1; }
   .language-switcher { font-size: 11px; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .site-header { padding: 14px 20px; gap: 12px; }
   .menu-toggle { display: block; margin-left: auto; }
   .main-nav {
@@ -229,8 +229,9 @@ main { flex: 1; }
 /* ===== HERO ===== */
 .hero {
   position: relative;
-  height: 92vh;
-  min-height: 560px;
+  min-height: 100vh;
+  height: auto;
+  padding-top: 80px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -257,12 +258,8 @@ main { flex: 1; }
   position: relative;
   z-index: 2;
   max-width: 620px;
-  padding: 40px 40px;
-  margin-left: 4vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+  padding: 0 40px;
+  margin: 0 0 0 4vw;
 }
 .eyebrow {
   font-size: 12px;
@@ -270,12 +267,14 @@ main { flex: 1; }
   padding: 0 8px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #d9744a;
+  color: var(--white);
   margin-bottom: 8px;
 }
-.eyebrow span { color: var(--orange); margin: 0 4px; }
+.eyebrow .brand-slash { color: var(--orange); margin: 0 4px; }
+.eyebrow-highlight { color: var(--orange); }
+.hero .eyebrow { padding-left: 0; padding-right: 0; }
 .hero h1 {
-  font-size: clamp(48px, 8.5vw, 108px);
+  font-size: clamp(32px, min(7vw, 9vh), 92px);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 0.95;
@@ -283,6 +282,8 @@ main { flex: 1; }
 }
 .hero h1 i { font-style: normal; color: var(--white); }
 .hero h1 b { color: var(--orange); font-weight: 900; margin: 0 6px; }
+.hero-title-number { display: block; }
+.brand-slash { color: var(--orange); font-weight: bolder; margin: 0 0.06em; }
 .hero-text {
   font-size: clamp(16px, 1.6vw, 20px);
   color: rgba(255, 255, 255, 0.82);
@@ -1420,15 +1421,17 @@ footer.footer-orange-top {
 .story-quote {
   width: 100%;
   max-width: 800px;
-  margin: 1.7rem auto;
-  padding: 8px 0 8px 40px;
+  margin: 2.5rem auto;
+  padding: 32px 40px;
+  background: var(--anthracite);
   border-left: 4px solid var(--orange);
-  font-size: clamp(16px, 1.8vw, 18px);
+  border-radius: 12px;
+  font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 800;
   font-style: italic;
   line-height: 1.4;
   text-align: left;
-  color: var(--white);
+  color: rgba(255, 255, 255, 0.82);
 }
 .story-quote .story-quote-highlight {
   color: var(--orange);
@@ -1436,8 +1439,10 @@ footer.footer-orange-top {
 }
 @media (max-width: 768px) {
   .story-quote {
-    margin: 1.5rem auto;
-    padding-left: 24px;
+    margin: 2rem 24px;
+    padding: 24px;
     border-left-width: 3px;
+    max-width: none;
+    width: auto;
   }
 }

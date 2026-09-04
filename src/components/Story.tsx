@@ -10,10 +10,12 @@ interface StoryProps {
 
 export function Story({ t, navigate }: StoryProps) {
   return (
-    <>
+    <div className="overflow-x-hidden max-w-full w-full">
       <PageIntro title={t.storyTitle} lead={`${t.storyLead}\n\n${t.storyOutro}`} className="story-intro" />
       <blockquote className="story-quote" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
-      <Stats t={t} navigate={navigate} />
+      <section className="w-full bg-neutral-900 md:bg-neutral-950 py-12">
+        <Stats t={t} navigate={navigate} />
+      </section>
       <section className="story-grid">
         {t.storySections.map(([title, text], index) => (
           <article key={title}>
@@ -33,6 +35,6 @@ export function Story({ t, navigate }: StoryProps) {
           {t.support} <ArrowRight size={18} />
         </button>
       </section>
-    </>
+    </div>
   );
 }

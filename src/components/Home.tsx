@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowDownRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 import { heroImages } from '../constants';
+import { BrandText } from './BrandText';
 import { Stats } from './Stats';
 import { Sponsor } from './Sponsor';
 
@@ -13,7 +14,7 @@ interface HomeProps {
 export function Home({ t, activeSlide, navigate }: HomeProps) {
   return (
     <>
-      <section className="hero">
+      <section className="hero flex items-center">
         <div className="hero-images">
           {heroImages.map((image, index) => (
             <img
@@ -26,13 +27,18 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
         </div>
         <div className="hero-shade" />
         <div className="hero-content">
-          <p className="eyebrow">{t.heroEyebrow}</p>
+          <p className="eyebrow">
+            <span className="eyebrow-highlight">{t.heroEyebrow}</span>
+          </p>
           <h1>
-            PROJECT <i>10</i>
-            <b>/</b>
-            <i>70</i>
+            <BrandText text="PROJECT" />
+            <span className="hero-title-number">
+              <BrandText text="15/70" />
+            </span>
           </h1>
-          <p className="hero-text">{t.heroText}</p>
+          <p className="hero-text">
+            <BrandText text={t.heroText} />
+          </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => navigate('donate')}>
               {t.support} <ArrowRight size={17} />
@@ -56,7 +62,9 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
 
       <section className="intro">
         <div className="intro-inner">
-          <p>{t.introOfficial}</p>
+          <p>
+            <BrandText text={t.introOfficial} />
+          </p>
         </div>
       </section>
 

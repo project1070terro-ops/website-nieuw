@@ -1,4 +1,4 @@
-import type { TranslationContent } from '../types';
+import { BrandText } from './BrandText';
 
 interface PageIntroProps {
   title: string;
@@ -10,12 +10,20 @@ export function PageIntro({ title, lead, className }: PageIntroProps) {
   return (
     <section className={`page-intro ${className || ''}`}>
       <p className="eyebrow">
-        PROJECT 15<span>/</span>70
+        <BrandText text="PROJECT 15/70" />
       </p>
-      <h1>{title}</h1>
-      {lead.trim().split(/\n\s*\n/).map((part, i) => (
-        <p key={i}>{part}</p>
-      ))}
+      <h1>
+        <BrandText text={title} />
+      </h1>
+      <div className="space-y-4">
+        {lead.trim().split(/\n\s*\n/).map((part, i) =>
+          part ? (
+            <p key={i}>
+              <BrandText text={part} />
+            </p>
+          ) : null
+        )}
+      </div>
     </section>
   );
 }

@@ -59,7 +59,7 @@ const etappeDetails: Record<number, { title: string; html: string; description: 
   9: {
     title: 'De finishrit',
     html: '',
-    description: 'Het moment van waarheid. Na 10 dagen, +17.000 hoogtemeters en ontelbare herinneringen bereik je de finish. Feest en reflecting op een episch avontuur.',
+    description: 'Het moment van waarheid. Na 10 dagen, +17.500 hoogtemeters en ontelbare herinneringen bereik je de finish. Feest en reflecting op een episch avontuur.',
   },
 };
 

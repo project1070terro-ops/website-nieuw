@@ -1,5 +1,6 @@
 import { CircleArrowOutUpRight } from 'lucide-react';
 import type { TranslationContent } from '../types';
+import { BrandText } from './BrandText';
 
 interface SponsorProps {
   t: TranslationContent;
@@ -13,7 +14,9 @@ export function Sponsor({ t }: SponsorProps) {
           <span>FORTUNA</span>
           <small>FINANCIAL GROUP</small>
         </div>
-        <p>{t.sponsorText}</p>
+        <p>
+          <BrandText text={t.sponsorText} />
+        </p>
         <a href="https://fortunafg.com" target="_blank" rel="noreferrer">
           {t.sponsorLink} <CircleArrowOutUpRight size={15} />
         </a>
