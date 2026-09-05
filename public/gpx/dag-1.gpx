@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Project 15/70" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Dag 1: De start</name>
+  </metadata>
+  <trk>
+    <name>Dag 1: De start</name>
+    <trkseg>
+      <trkpt lat="38.594700" lon="-0.046400"><ele>12.0</ele></trkpt>
+      <trkpt lat="38.600000" lon="-0.050000"><ele>45.0</ele></trkpt>
+      <trkpt lat="38.615000" lon="-0.060000"><ele>180.0</ele></trkpt>
+      <trkpt lat="38.630000" lon="-0.075000"><ele>450.0</ele></trkpt>
+      <trkpt lat="38.635000" lon="-0.090000"><ele>920.0</ele></trkpt>
+      <trkpt lat="38.640000" lon="-0.105000"><ele>1150.0</ele></trkpt>
+      <trkpt lat="38.638000" lon="-0.120000"><ele>800.0</ele></trkpt>
+      <trkpt lat="38.625000" lon="-0.130000"><ele>320.0</ele></trkpt>
+      <trkpt lat="38.610000" lon="-0.125000"><ele>80.0</ele></trkpt>
+      <trkpt lat="38.600000" lon="-0.110000"><ele>22.0</ele></trkpt>
+      <trkpt lat="38.594700" lon="-0.046400"><ele>12.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

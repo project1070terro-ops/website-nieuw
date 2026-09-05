@@ -27,8 +27,9 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
         </div>
         <div className="hero-shade" />
         <div className="hero-content">
-          <p className="eyebrow">
-            <span className="eyebrow-highlight">{t.heroEyebrow}</span>
+          <p className="eyebrow hero-eyebrow-split">
+            <span className="eyebrow-date">{t.heroEyebrow[0]}</span>
+            <span className="eyebrow-line2">{t.heroEyebrow[1]}</span>
           </p>
           <h1>
             <BrandText text="PROJECT" />
@@ -43,7 +44,7 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
             <button className="button button-primary" onClick={() => navigate('donate')}>
               {t.support} <ArrowRight size={17} />
             </button>
-            <button className="text-button" onClick={() => navigate('story')}>
+            <button className="text-button" onClick={() => navigate('blog')}>
               {t.discover} <ArrowDownRight size={17} />
             </button>
           </div>

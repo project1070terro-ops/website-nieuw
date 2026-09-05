@@ -1,0 +1,38 @@
+{
+  "nl": [
+    { "day": 1, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Coll de Rates Lus", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 2, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "La Vall d'Ebo-pas & Coll de Rates", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 3, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Altea — Guadalest", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 4, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Cumbre del Sol", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 5, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Vall de Gallinera", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 6, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Bernia — Xaló", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 7, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Sierra de Aitana", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 8, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Parcent — Tarbena", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 9, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "De laatste klim", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." },
+    { "day": 10, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "De finishrit", "text": "Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje." }
+  ],
+  "en": [
+    { "day": 1, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Coll de Rates Loop", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 2, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "La Vall d'Ebo-pass & Coll de Rates", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 3, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Altea — Guadalest", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 4, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Cumbre del Sol", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 5, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Vall de Gallinera", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 6, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Bernia — Xaló", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 7, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Sierra de Aitana", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 8, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Parcent — Tarbena", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 9, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "The final climb", "text": "Stage profile will be generated live during the challenge in Spain." },
+    { "day": 10, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "The finish stage", "text": "Stage profile will be generated live during the challenge in Spain." }
+  ],
+  "es": [
+    { "day": 1, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Bucle Coll de Rates", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 2, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "La Vall d'Ebo-paso & Coll de Rates", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 3, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Altea — Guadalest", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 4, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Cumbre del Sol", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 5, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Vall de Gallinera", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 6, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "Bernia — Xaló", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 7, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "Sierra de Aitana", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 8, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp"], "title": "Parcent — Tarbena", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 9, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp"], "title": "La última subida", "text": "El perfil de la etapa se generará en vivo durante el reto en España." },
+    { "day": 10, "gpx": "/gpx/dag-1.gpx", "images": ["/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp"], "title": "La etapa final", "text": "El perfil de la etapa se generará en vivo durante el reto en España." }
+  ]
+}

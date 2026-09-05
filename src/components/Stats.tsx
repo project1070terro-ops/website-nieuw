@@ -1,7 +1,7 @@
-import { CalendarDays, Mountain, Sparkles } from 'lucide-react';
+import { Medal, Mountain, Sparkles } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 
-const statIcons = [CalendarDays, Mountain, Sparkles];
+const statIcons = [Medal, Mountain, Sparkles];
 
 interface StatsProps {
   t: TranslationContent;

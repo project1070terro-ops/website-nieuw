@@ -11,6 +11,7 @@ import { Story } from './components/Story';
 import { RoutePage } from './components/RoutePage';
 import { Terro } from './components/Terro';
 import { Blog } from './components/Blog';
+import { BlogDetail } from './components/BlogDetail';
 import { Donate } from './components/Donate';
 import { Contact } from './components/Contact';
 import { PrivacyDisclaimer } from './components/PrivacyDisclaimer';
@@ -18,8 +19,20 @@ import { CookieBanner } from './components/CookieBanner';
 import { Analytics } from './components/Analytics';
 
 function App() {
+  const getInitialPage = (): Page => {
+    if (typeof window === 'undefined') return 'home';
+    const path = window.location.pathname;
+    return path.startsWith('/blog') ? 'blog' : 'home';
+  };
+  const getInitialBlogSlug = () => {
+    if (typeof window === 'undefined') return null;
+    const path = window.location.pathname;
+    return path.startsWith('/blog/') ? path : null;
+  };
+
   const [language, setLanguage] = useState<Language>('nl');
-  const [page, setPage] = useState<Page>('home');
+  const [page, setPage] = useState<Page>(getInitialPage);
+  const [blogSlug, setBlogSlug] = useState<string | null>(getInitialBlogSlug);
   const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([]);
@@ -30,6 +43,22 @@ function App() {
     if (stored === 'accepted' || stored === 'declined') {
       setCookieConsent(stored);
     }
+  }, []);
+
+  useEffect(() => {
+    const onPopState = (event: PopStateEvent) => {
+      const state = event.state as { page?: Page; slug?: string | null } | null;
+      if (state?.page) {
+        setPage(state.page);
+        setBlogSlug(state.slug ?? null);
+      } else {
+        const path = window.location.pathname;
+        setPage(path.startsWith('/blog') ? 'blog' : 'home');
+        setBlogSlug(path.startsWith('/blog/') ? path : null);
+      }
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
   }, []);
 
   const t = copy[language];
@@ -72,10 +101,25 @@ function App() {
     }
   }
 
-  function navigate(nextPage: Page) {
+  function navigate(nextPage: Page, slug?: string) {
     setPage(nextPage);
+    setBlogSlug(slug ?? null);
     setMenuOpen(false);
+
+    let path = '/';
+    if (slug) {
+      path = slug;
+    } else if (nextPage === 'blog') {
+      path = '/blog';
+    } else if (nextPage !== 'home') {
+      path = `/${nextPage}`;
+    }
+    window.history.pushState({ page: nextPage, slug: slug ?? null }, '', path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goToBlog(slug: string) {
+    navigate('blog', slug);
   }
 
   return (
@@ -92,9 +136,13 @@ function App() {
       <main>
         {page === 'home' && <Home t={t} activeSlide={activeSlide} navigate={navigate} />}
         {page === 'story' && <Story t={t} navigate={navigate} />}
-        {page === 'route' && <RoutePage t={t} navigate={navigate} />}
+        {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
         {page === 'terro' && <Terro t={t} navigate={navigate} />}
-        {page === 'blog' && <Blog t={t} navigate={navigate} />}
+        {page === 'blog' && blogSlug ? (
+          <BlogDetail t={t} slug={blogSlug} language={language} navigate={navigate} goToBlog={goToBlog} />
+        ) : page === 'blog' ? (
+          <Blog t={t} navigate={navigate} goToBlog={goToBlog} />
+        ) : null}
         {page === 'donate' && (
           <Donate t={t} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}

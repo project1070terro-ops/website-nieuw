@@ -12,7 +12,7 @@ export interface Donation {
 export interface TranslationContent {
   nav: Record<'home' | 'story' | 'route' | 'terro' | 'blog' | 'donate' | 'contact', string>;
   support: string;
-  heroEyebrow: string;
+  heroEyebrow: [string, string];
   heroTitle: string;
   heroText: string;
   discover: string;
@@ -34,7 +34,7 @@ export interface TranslationContent {
   terroSections: Array<[string, string]>;
   blogTitle: string;
   blogLead: string;
-  blogCards: Array<[string, string]>;
+  blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; image: string; }>;
   donateTitle: string;
   donateLead: string;
   donated: string;

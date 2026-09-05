@@ -1,4 +1,5 @@
 import type { TranslationContent } from './types';
+import { blogPosts } from './blogContent';
 
 export const heroImages = [
   '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
@@ -9,13 +10,13 @@ export const heroImages = [
 export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
   nl: {
     nav: { home: 'Home', story: 'Het Verhaal', route: 'De Route', terro: 'Project Terro', blog: 'Blog', donate: 'Doneren', contact: 'Contact' },
-    support: 'STEUN HET GOEDE DOEL & DONEER NU',
-    heroEyebrow: 'FIETSUITDAGING VOOR HET GOED DOEL',
+    support: 'Steun Save the Children & doneer nu',
+    heroEyebrow: ['NAJAAR 2029', '10 DAGEN NON-STOP VANAF HET STRAND VAN ALBIR'],
     heroTitle: 'PROJECT 15/70',
     heroText: 'Vijftien jaar passie. Zeventig jaar jong. Eén legendarische uitdaging op karakter.',
-    discover: 'Ontdek het project',
+    discover: 'Volg onze reis naar 2029',
     introOfficial: "In 2029 viert wielerteam Forza Fortuna (GROUP) haar kristallen jubileum én ben ik exact 15 jaar verbonden aan dit geweldige team. Tegelijkertijd bereik ik de legendarische leeftijd van 70 jaar. Deze unieke mijlpalen smelten samen in één extreme uitdaging: Project 15/70. Zonder rustdagen kruip ik 10 dagen lang in het zadel voor het goede doel, met als ultiem doel +17.500 hoogtemeters in de Spaanse bergen rondom Albir. Om te bewijzen dat met karakter en passie alles haalbaar is.",
-    stats: [['10', 'DAGEN IN HET ZADEL', 'story'], ['+17.500', 'HOOGTEMETERS', 'route'], ['70', 'JAAR JONG VAN GEEST', 'terro']],
+    stats: [['15', 'JAAR FORZA FORTUNA (Group)', 'story'], ['+17.500', 'HGM | 10 DAGEN NON-STOP', 'route'], ['70', 'JAAR JONG VAN GEEST', 'terro']],
     sponsorText: 'Fortuna Financial Group is één van de belangrijkste vermogensbegeleiders op de Belgische markt. CEO Frank Peeraer is een ex-profvoetballer met een echt sporthart en net als diverse van zijn medewerkers, zelf fervent fietser. Fortuna ondersteunt als bedrijf dan ook voluit het fietstoerisme én met trots Project 15/70.',
     sponsorLink: 'Ga naar Fortuna Financial Group',
     sponsorCards: [['Persoonlijk', `Bij Fortuna heeft u een vaste contactpersoon die uw situatie kent en samen met u de langetermijnvisie bewaakt. Zo hoeft u uw verhaal niet telkens opnieuw te vertellen en kunt u rekenen op een betrokken begeleiding.`], ['Onafhankelijk', `We vertrekken niet vanuit één financiële instelling of één standaardoplossing. We bekijken welke aanpak objectief het best past bij uw vermogen, uw verwachtingen en uw toekomstplannen.`], ['Een familiebedrijf', `Fortuna is zelf als familiebedrijf opgebouwd. Daardoor begrijpen we dat vermogen niet alleen over cijfers gaat, maar ook over verantwoordelijkheid, continuïteit en de volgende generatie.`]],
@@ -32,31 +33,31 @@ Dat verhaal is Project 15/70: een extreme wieleruitdaging waarbij Terro 10 dagen
     routeLead: `Elke kilometer een stap dichterbij. Elke rit start en komt aan op het zonovergoten strand van Albir, vanwaar we de uitdaging aangaan en ons 10 dagen lang non-stop dwars door adembenemende landschappen en over pittige bergen trappen.\n\nGeen gemakkelijke reis, maar elke pedaalslag langs de Spaanse kust en het ruige binnenland is gedreven door pure motivatie: het bedwingen van meer dan 17.500 hoogtemeters om zo hoop en een betere toekomst te bieden aan kinderen die dit het hardste nodig hebben. Fiets virtueel met ons mee en volg de route vanaf de branding tot de finish.`,
     stages: ['Coll de Rates Lus', 'La Vall d\'Ebo-pas & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'De laatste klim', 'De finishrit'],
     routePlaceholder: 'Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje.',
-    terroTitle: 'PROJECT 70: DE MAN ACHTER TERRO',
-    terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en een diep gewortelde discipline. Terro is iemand voor wie waarheid en correctheid de hoogste wetten zijn. Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen waar ze horen — de focus ligt nu volledig op de weg die voor ons ligt.
+    terroTitle: 'PROJECT TERRO: DE MAN ACHTER 15/70',
+    terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten. Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen waar ze horen — de focus ligt volledig op de weg die voor hem ligt.
 
-Als sporter kent Terro geen halve maatregelen. Gedrevenheid is een understatement; wielrennen is een levenswijze waarin altijd het uiterste werd gevraagd en gegeven. Zelfs op 60- tot 65-jarige leeftijd vertaalde die onuitputtelijke motor zich nog constant in mooie prijzen en ereplaatsen in het competitiepeloton. En de naam TERRO? Die is niet verdiend met een sympathieke lach, maar verdiend op karakter, doorzetten en keihard rijden wanneer anderen kraken.
+Als wielrenner kent Terro geen half werk. Gedrevenheid is een understatement; fietsen is een levenswijze waarin altijd het uiterste werd gevraagd en gegeven. Zelfs op 60- tot 65-jarige leeftijd vertaalde die onuitputtelijke energie zich nog regelmatig in mooie prijzen en ereplaatsen in het competitiepeloton. En de naam TERRO? Die is niet verdiend met een sympathieke lach, maar op karakter, doorzettingsvermogen en keihard rijden op het moment dat anderen kraken.
 
-De afgelopen twee jaar stonden volledig in het teken van de loodzware Gran Fondo\'s. De vorm was er, de focus was scherp, maar het lot besliste twee keer anders. Het ene jaar brutaal onderuit gekegeld net voor de start, het jaar daarna knock-out geslagen door ziekte op het moment van de waarheid. Waar een ander de handdoek in de ring zou gooien, zette Terro de knop om: \'Ik wacht tot mijn 70ste, en dan laat ik zien wat het écht wordt.\' Dat moment is nu gekomen.`], ['Twee mijlpalen, één extremum', `Het getal 70 is geen eindpunt, het is de startlijn van het meest uitdagende hoofdstuk tot nu toe. Voor sommigen is 70 de leeftijd van het rustiger aan doen, maar voor Terro is het de ultieme kans om te bewijzen wie hij werkelijk is: een pure sportman die leeft voor de grens en het uiterste opzoekt in extreme uitdagingen.
+De afgelopen twee jaar stonden volledig in het teken van de loodzware Gran Fondo's. De vorm was er, de focus was scherp, maar het lot besliste twee keer anders. Het ene jaar brutaal onderuit gekegeld net voor de start; het jaar daarna uitgeschakeld door ziekte op het moment van de waarheid. Waar een ander de handdoek in de ring gooit, zette Terro de knop om: 'Ik wacht tot mijn 70ste, en dan laat ik zien wat het écht wordt.' Dat moment is nu gekomen.`], ['Twee mijlpalen, één extremum', `Na vijftien jaar verbonden aan Forza Fortuna staat Terro voor het meest uitdagende hoofdstuk tot nu toe. Voor sommigen is 70 de leeftijd van het rustiger aan doen, maar voor Terro is het de ultieme kans om te bewijzen wie hij is: een pure sportman die leeft voor de grens.
 
-Deze prestatie is gebouwd op twee onwrikbare pijlers die elkaar versterken. Aan de ene kant de magische kaap van de 70-jarige leeftijd. Aan de andere kant het getal 10: de tien opeenvolgende, loodzware ritten die vanuit het Spaanse Albir worden gereden. Dag na dag in het zadel, dag na dag strijden tegen de elementen en de vermoeidheid.
+Dit project rust op twee onwrikbare pijlers. Aan de ene kant de magische kaap van de 70-jarige leeftijd. Aan de andere kant het getal 10: tien opeenvolgende, loodzware ritten die vanuit het Spaanse Albir worden gereden. Dag na dag in het zadel, dag na dag strijden tegen de elementen en de vermoeidheid.
 
-Dat is waarom dit project het absolute \'extremum\' wordt genoemd. Het is de ultieme piek, het sportieve hoogtepunt waarin leeftijd en pure fysieke uitputting elkaar ontmoeten. Dit op je 70ste presteren is geen gewone fietstocht; it is een grensverleggend statement voor het goede doel dat laat zien dat passie en karakter onverwoestbaar zijn.`], ['Karakter tegen de elementen', `Op de fiets ben je uiteindelijk altijd alleen met je gedachten. Als de Spaanse zon brandt, de wind tegenzit en de stijgingspercentages in het binnenland rondom Albir in de dubbele cijfers schieten, komt het niet meer aan op de benen, maar op pure mentale veerkracht.
+Daarom heet dit project het absolute 'extremum': de ultieme piek waarin leeftijd en pure fysieke uitputting elkaar ontmoeten. Op je 70ste een dergelijke prestatie leveren is geen gewone fietstocht; het is een grensverleggend statement voor het goede doel dat bewijst dat passie en karakter onverwoestbaar zijn.`], ['Karakter tegen de elementen', `Op de fiets ben je uiteindelijk altijd alleen met je gedachten. Als de Spaanse zon brandt, de wind tegenzit en de stijgingspercentages in het binnenland rondom Albir in de dubbele cijfers schieten, komt het niet meer aan op de benen, maar op pure mentale veerkracht.
 
-De filosofie van Terro in het zadel is even simpel als onbarmhartig: niet zeuren, maar trappen. Pijn is tijdelijk, maar het doel is blijvend. Elk zwaar moment en elke druppel zweet langs de route krijgt betekenis omdat het gekoppeld is aan het welzijn van kinderen die elke steun hard nodig hebben. Die wetenschap verhardt het karakter en zorgt ervoor dat de knop omgaat als het zwaar wordt. Opgeven is simpelweg geen optie; het hoofd regeert over het lichaam.`], ['De voorbereiding', `Een extreme prestatie vraagt om een doordachte, professionele aanpak. De voorbereiding van Terro is geen kwestie van blind kilometers vreten, maar van luisteren naar het lichaam en periodisering. De nazomer in september staat in het teken van uitbollen, rusten en puur genieten van het fietsen zonder de druk van urenlange ritten. Pas als de winter zijn intrede doet, gaat de knop om.
+De filosofie van Terro in het zadel is even simpel als onbarmhartig: niet zeuren, maar trappen. Pijn is tijdelijk, maar het doel is blijvend. Elk zwaar moment en elke druppel zweet langs de route krijgt betekenis omdat het gekoppeld is aan het welzijn van kinderen die elke steun hard nodig hebben. Die wetenschap verhardt het karakter en zorgt ervoor dat de knop omgaat als het zwaar wordt. Opgeven is geen optie; het hoofd regeert over het lichaam.`], ['De voorbereiding', `Een extreme prestatie vraagt om een doordachte, professionele aanpak. Terro's voorbereiding is geen kwestie van blind kilometers vreten, maar van luisteren naar het lichaam en periodisering. De nazomer in september staat in het teken van rust, herstel en puur genieten van het fietsen zonder de druk van urenlange ritten. Pas als de winter zijn intrede doet, gaat de knop om.
 
-Vanaf oktober verschuift de focus naar de basis: twee keer per week gerichte kracht- en core-stabiliteitstraining thuis, twee intensieve sessies op de virtuele wegen van Zwift, en in het weekend een stevige rit om de scherpte te behouden met het team. Zodra het voorjaar in maart aanbreekt, worden de trainingsuren en de kilometers gestaag opgebouwd, terwijl de core- en krachttraining de onmisbare fundering blijven vormen. Richting 2027 en 2028 zal de ultieme voorbereiding plaatsvinden in Spanje zelf, waarbij de specifieke etappes stilaan worden verkend vanuit L\'Albir.
+Vanaf oktober verschuift de focus naar de basis: twee keer per week gerichte kracht- en core-stabiliteitstraining thuis, twee intensieve sessies op de virtuele wegen van Zwift, en in het weekend een stevige rit om de scherpte te behouden met het team. Zodra het voorjaar in maart aanbreekt, worden de trainingsuren en de kilometers gestaag opgebouwd, terwijl core- en krachttraining de onmisbare fundering blijven vormen. Richting 2027 en 2028 vindt de ultieme voorbereiding plaats in Spanje zelf, waarbij de specifieke etappes stilaan worden verkend vanuit Albir.
 
-Qua materiaal laat Terro niets aan het toeval over en wordt alles in eigen beheer perfect afgesteld. Voor de uitrusting kan hij rekenen op de onvoorwaardelijke steun van vriend/sponsor Frank Peeraer van Forza Fortuna (Fortuna Group), die ervoor zorgt dat Terro in de perfecte, aerodynamische en professionele uitrusting aan de start verschijnt.`]],
+Qua materiaal laat Terro niets aan het toeval over en stelt hij alles in eigen beheer perfect af. Voor de uitrusting kan hij rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer van Forza Fortuna (Fortuna Group), die ervoor zorgt dat Terro aan de start verschijnt in een perfecte, aerodynamische en professionele uitrusting.`]],
     blogTitle: 'Nieuws uit het peloton',
     blogLead: 'Updates, verhalen en momenten onderweg naar Project 15/70.',
-    blogCards: [['Aankondiging', 'De eerste hoogtemeters zijn gemaakt'], ['Training', 'Waarom elke klim begint met een keuze'], ['Team', 'Forza Fortuna maakt zich klaar voor Spanje']],
+    blogCards: blogPosts.nl,
     donateTitle: 'Klim mee naar 17.500',
     donateLead: 'Elke euro is één hoogtemeter. Elke hoogtemeter brengt ons dichter bij een toekomst voor het goede doel.',
     donated: 'Al',
     sponsored: 'van de 17.500 hoogtemeters gesponsord!',
     goal: 'Doel: 17.500 hm',
-    donateIntro: 'Elke donatie maakt het verschil. Help ons bewijzen dat leeftijd slechts een getal is! Ter ere van het 10-jarig jubileum van Forza Fortuna vzw en mijn 70e verjaardag overwinnen wij +17.500 Spaanse hoogtemeters voor de toekomst van het goede doel.',
+    donateIntro: 'Elke donatie maakt het verschil. Help ons bewijzen dat leeftijd slechts een getal is! Ter ere van het 15-jarig jubileum van Forza Fortuna vzw en mijn 70e verjaardag overwinnen wij +17.500 Spaanse hoogtemeters voor de toekomst van het goede doel.',
     donationForm: 'Donatieformulier',
     choose: 'Kies je donatie',
     name: 'Naam',
@@ -75,13 +76,13 @@ Laat maar iets horen — we staan voor je klaar.`,
   },
   en: {
     nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', donate: 'Donate', contact: 'Contact' },
-    support: 'SUPPORT THE GOOD CAUSE & DONATE NOW',
-    heroEyebrow: 'THE ULTIMATE CYCLING CHALLENGE',
+    support: 'Support Save the Children & donate now',
+    heroEyebrow: ['AUTUMN 2029', '10 DAYS NON-STOP FROM THE BEACH OF ALBIR'],
     heroTitle: 'PROJECT 15/70',
-    heroText: 'Tenth anniversary. Seventy years young. One ride that changes everything.',
-    discover: 'Discover the project',
-    introOfficial: "In 2029, cycling team Forza Fortuna (vzw) celebrates its 10th anniversary and I reach the legendary age of 70. Two unique milestones, one extreme challenge. With Project 15/70 I will spend 10 days in the saddle for a good cause: +17,500 vertical meters in the Spanish mountains around L'Albir. Proving that age is just a number.",
-    stats: [['10', 'DAYS IN THE SADDLE', 'story'], ['+17,500', 'VERTICAL METERS', 'route'], ['70', 'YEARS YOUNG AT HEART', 'terro']],
+    heroText: 'Fifteenth anniversary. Seventy years young. One ride that changes everything.',
+    discover: 'Follow our journey to 2029',
+    introOfficial: "In 2029, cycling team Forza Fortuna (vzw) celebrates its 15th anniversary and I reach the legendary age of 70. Two unique milestones, one extreme challenge. With Project 15/70 I will spend 10 days in the saddle for a good cause: +17,500 vertical meters in the Spanish mountains around L'Albir. Proving that age is just a number.",
+    stats: [['15', 'YEARS FORZA FORTUNA (Group)', 'story'], ['+17,500', 'HGM | 10 DAYS NON-STOP', 'route'], ['70', 'YEARS YOUNG AT HEART', 'terro']],
     sponsorText: 'Fortuna Financial Group is one of the leading wealth managers in the Belgian market. CEO Frank Peeraer is a former professional footballer with a true sporting heart and, like several of his colleagues, an avid cyclist. Fortuna fully supports cycling tourism and proudly supports Project 15/70.',
     sponsorLink: 'Visit Fortuna Financial Group',
     sponsorCards: [['Personal', `At Fortuna you have a fixed contact who knows your situation and helps you keep the long-term vision on track. That way, you don't have to retell your story every time and can rely on committed guidance.`], ['Independent', `We don't start from a single financial institution or one standard solution. We look at which approach objectively best fits your wealth, your expectations and your future plans.`], ['A family business', `Fortuna was built as a family business itself. That's why we understand that wealth is not just about numbers, but also about responsibility, continuity and the next generation.`]],
@@ -98,17 +99,31 @@ That story is Project 15/70: an extreme cycling challenge where Terro will spend
     routeLead: `Every kilometer is a step closer. Each ride starts and finishes on the sun-drenched beach of Albir, from where we take on the challenge and pedal non-stop for 10 consecutive days through breathtaking landscapes and over tough mountain peaks.\n\nNot an easy journey, but every pedal stroke along the Spanish coast and the rugged interior is driven by pure motivation: conquering more than 17,500 meters of elevation gain to offer hope and a better future to children who need it most. Cycle with us virtually and follow the route from the shoreline to the finish.`,
     stages: ['Coll de Rates Loop', 'La Vall d\'Ebo-pass & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'The final climb', 'The finish stage'],
     routePlaceholder: 'Stage profile will be generated live during the challenge in Spain.',
-    terroTitle: 'PROJECT 70: THE MAN BEHIND TERRO',
-    terroSections: [['Who is Terro?', 'Behind every powerful challenge is a person with a story. Terro combines experience, humor and an irrepressible drive to keep moving.'], ['Two milestones, one extreme', 'The number 70 is not an endpoint. It is a starting line for a new chapter full of altitude, headwind and connection.'], ['The philosophy', 'Don\'t wait for the perfect moment. Just take the first pedal, find the peloton and keep going together.'], ['The preparation', 'With discipline, curiosity and a healthy respect for the mountains, every training becomes a piece of the route.']],
+    terroTitle: 'PROJECT TERRO: THE MAN BEHIND 15/70',
+    terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws. The past has its secrets, but they are safely stored where they belong — the focus is entirely on the road ahead.
+
+As a cyclist, Terro knows no half measures. Driven is an understatement; cycling is a way of life in which the utmost was always demanded and given. Even at 60 to 65 years of age, that inexhaustible energy still translated regularly into fine prizes and top placings in the competitive peloton. And the name TERRO? It was not earned with a friendly smile, but on character, perseverance and riding hard when others crack.
+
+The past two years were all about the heavy Gran Fondos. The form was there, the focus was sharp, but fate decided otherwise twice. One year brutally knocked down just before the start; the next year taken out by illness at the moment of truth. Where another would throw in the towel, Terro switched gears: 'I\'ll wait until I\'m 70, and then I\'ll show what it really becomes.' That moment has now come.`], ['Two milestones, one extremum', `After fifteen years with Forza Fortuna, Terro faces the most challenging chapter yet. For some, 70 is the age to slow down, but for Terro it is the ultimate chance to prove who he is: a pure sportsman who lives for the limit.
+
+This achievement rests on two unshakable pillars. On one side the magical milestone of 70 years. On the other the number 10: ten consecutive, tough rides starting from the Spanish town of Albir. Day after day in the saddle, day after day battling the elements and fatigue.
+
+That is why this project is called the absolute 'extremum': the ultimate peak where age and pure physical exhaustion meet. Achieving this at 70 is no ordinary bike ride; it is a boundary-pushing statement for charity that proves passion and character are indestructible.`], ['Character against the elements', `On the bike you are ultimately always alone with your thoughts. When the Spanish sun burns, the wind is against you and the gradients in the hinterland around Albir climb into double digits, it no longer comes down to the legs, but to pure mental resilience.
+
+Terro's philosophy in the saddle is as simple as it is ruthless: don't complain, just pedal. Pain is temporary, but the goal is lasting. Every heavy moment and every drop of sweat along the route gains meaning because it is linked to the well-being of children who desperately need support. That knowledge hardens character and ensures the switch flips when it gets tough. Giving up is simply not an option; the head rules the body.`], ['The preparation', `An extreme performance requires a thoughtful, professional approach. Terro's preparation is not a matter of blindly devouring kilometers, but of listening to his body and periodization. The late summer in September is about recovery and simply enjoying cycling without the pressure of long rides. Only when winter sets in does the switch flip.
+
+From October the focus shifts to the basics: twice a week targeted strength and core stability training at home, two intensive sessions on the virtual roads of Zwift, and a solid ride at the weekend to keep sharp with the team. As soon as spring arrives in March, training hours and kilometers are steadily built up, while core and strength training remain the indispensable foundation. Around 2027 and 2028 the ultimate preparation will take place in Spain itself, with the specific stages gradually being explored from Albir.
+
+When it comes to equipment, Terro leaves nothing to chance and fine-tunes everything himself. For his kit he can rely on the unconditional support of friend and sponsor Frank Peeraer of Forza Fortuna (Fortuna Group), who ensures Terro appears at the start in perfect, aerodynamic and professional equipment.`]],
     blogTitle: 'News from the peloton',
     blogLead: 'Updates, stories and moments on the way to Project 15/70.',
-    blogCards: [['Announcement', 'The first vertical meters are made'], ['Training', 'Why every climb starts with a choice'], ['Team', 'Forza Fortuna is preparing for Spain']],
+    blogCards: blogPosts.en,
     donateTitle: 'Climb with us to 17,500',
     donateLead: 'Every euro is one vertical meter. Every vertical meter brings us closer to a future for the good cause.',
     donated: 'Already',
     sponsored: 'of the 17,500 vertical meters sponsored!',
     goal: 'Goal: 17,500 vm',
-    donateIntro: 'Every donation makes a difference. Help us prove that age is just a number! In honor of the 10th anniversary of Forza Fortuna vzw and my 70th birthday, we will overcome +17,500 Spanish vertical meters for the future of the good cause.',
+    donateIntro: 'Every donation makes a difference. Help us prove that age is just a number! In honor of the 15th anniversary of Forza Fortuna vzw and my 70th birthday, we will overcome +17,500 Spanish vertical meters for the future of the good cause.',
     donationForm: 'Donation form',
     choose: 'Choose your donation',
     name: 'Name',
@@ -127,13 +142,13 @@ Let us know — we're here for you.`,
   },
   es: {
     nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', donate: 'Donar', contact: 'Contacto' },
-    support: 'APOYA LA BUENA CAUSA & DONA AHORA',
-    heroEyebrow: 'EL RETO CICLISTA DEFINITIVO',
+    support: 'Apoya a Save the Children y dona ahora',
+    heroEyebrow: ['OTOÑO 2029', '10 DÍAS SIN PARAR DESDE LA PLAYA DE ALBIR'],
     heroTitle: 'PROJECT 15/70',
-    heroText: 'Décimo aniversario. Setenta años joven. Una ruta que lo cambia todo.',
-    discover: 'Descubre el proyecto',
-    introOfficial: "En 2029, el equipo ciclista Forza Fortuna (vzw) celebra su 10º aniversario y yo alcanzo la legendaria edad de 70 años. Dos hitos únicos, un reto extremo. Con el Proyecto 15/70 pasaré 10 días en el sillín por una buena causa: +17.500 metros de desnivel en las montañas españolas alrededor de L'Albir. Demostrando que la edad es solo un número.",
-    stats: [['10', 'DÍAS EN EL SILLÍN', 'story'], ['+17.500', 'METROS DE DESNIVEL', 'route'], ['70', 'AÑOS JOVEN DE ESPÍRITU', 'terro']],
+    heroText: 'Decimoquinto aniversario. Setenta años joven. Una ruta que lo cambia todo.',
+    discover: 'Sigue nuestro viaje hacia 2029',
+    introOfficial: "En 2029, el equipo ciclista Forza Fortuna (vzw) celebra su 15º aniversario y yo alcanzo la legendaria edad de 70 años. Dos hitos únicos, un reto extremo. Con el Proyecto 15/70 pasaré 10 días en el sillín por una buena causa: +17.500 metros de desnivel en las montañas españolas alrededor de L'Albir. Demostrando que la edad es solo un número.",
+    stats: [['15', 'AÑOS FORZA FORTUNA (Group)', 'story'], ['+17.500', 'HGM | 10 DÍAS SIN PARAR', 'route'], ['70', 'AÑOS JOVEN DE ESPÍRITU', 'terro']],
     sponsorText: 'Fortuna Financial Group es uno de los principales gestores patrimoniales del mercado belga. El CEO Frank Peeraer es un exfutbolista profesional con un gran corazón deportivo y, como varios de sus empleados, un ciclista apasionado. Fortuna apoya plenamente el cicloturismo y el Proyecto 15/70.',
     sponsorLink: 'Visita Fortuna Financial Group',
     sponsorCards: [['Personal', `En Fortuna tiene un contacto fijo que conoce su situación y que, junto con usted, mantiene la visión a largo plazo. Así no tiene que contar su historia una y otra vez y puede contar con una guía comprometida.`], ['Independiente', `No partimos de una única institución financiera ni de una solución estándar. Analizamos qué enfoque se ajusta objetivamente mejor a su patrimonio, sus expectativas y sus planes futuros.`], ['Una empresa familiar', `Fortuna se ha construido como empresa familiar. Por eso entendemos que el patrimonio no se trata solo de cifras, sino también de responsabilidad, continuidad y la próxima generación.`]],
@@ -150,17 +165,31 @@ Esa historia es el Proyecto 15/70: un desafío ciclista extremo en el que Terro 
     routeLead: `Cada kilómetro es un paso más cerca. Cada ruta comienza y termina en la soleada playa de Albir, desde donde asumimos el desafío y pedaleamos sin parar durante 10 días seguidos a través de paisajes impresionantes y cumbres exigentes.\n\nNo es un viaje fácil, pero cada pedalada a lo largo de la costa española y el escarpado interior está impulsada por una motivación pura: conquistar más de 17.500 metros de desnivel positivo para ofrecer esperanza y un futuro mejor a los niños que más lo necesitan. Pedalea con nosotros de forma virtual y sigue la ruta desde la orilla del mar hasta la meta.`,
     stages: ['Bucle Coll de Rates', 'La Vall d\'Ebo-paso & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'La última subida', 'La etapa final'],
     routePlaceholder: 'El perfil de la etapa se generará en vivo durante el reto en España.',
-    terroTitle: 'PROYECTO 70: EL HOMBRE DETRÁS DE TERRO',
-    terroSections: [['¿Quién es Terro?', 'Detrás de cada reto poderoso hay una persona con una historia. Terro combina experiencia, humor e un impulso irreprimible de seguir adelante.'], ['Dos hitos, un extremo', 'El número 70 no es un punto final. Es una línea de salida para un nuevo capítulo lleno de altitud, viento de frente y conexión.'], ['La filosofía', 'No esperes el momento perfecto. Solo toma el primer pedaleo, encuentra el pelotón y sigue adelante.'], ['La preparación', 'Con disciplina, curiosidad y un respeto saludable por las montañas, cada entrenamiento se convierte en una pieza de la ruta.']],
+    terroTitle: 'PROYECTO TERRO: EL HOMBRE DETRÁS DE 15/70',
+    terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas. El pasado tiene sus secretos, pero están guardados con seguridad donde corresponde: la atención se centra completamente en el camino que tiene por delante.
+
+Como ciclista, Terro no conoce medias tintas. Decir que está motivado es quedarse corto; el ciclismo es una forma de vida en la que siempre se exigió y dio lo máximo. Incluso entre los 60 y 65 años, ese motor inagotable se tradujo a menudo en buenos premios y puestos de honor en el pelotón competitivo. Y el nombre TERRO? No se ganó con una sonrisa amable, sino a base de carácter, perseverancia y pedalear fuerte cuando otros se quiebran.
+
+Los últimos dos años giraron en torno a las duras Gran Fondos. La forma estaba, la concentración era máxima, pero el destino decidió dos veces lo contrario. Un año, brutalmente derribado justo antes de la salida; al año siguiente, eliminado por enfermedad en el momento de la verdad. Donde otro tiraría la toalla, Terro cambió de chip: 'Esperaré hasta los 70, y entonces demostraré de lo que soy capaz.' Ese momento ha llegado.`], ['Dos hitos, un extremo', `Después de quince años vinculado a Forza Fortuna, Terro afronta el capítulo más exigente hasta la fecha. Para algunos, los 70 son la edad de tomárselo con calma, pero para Terro es la oportunidad definitiva de demostrar quién es: un deportista puro que vive para el límite.
+
+Este logro descansa sobre dos pilares inquebrantables. Por un lado, el mágico hito de los 70 años. Por otro, el número 10: diez jornadas consecutivas y durísimas que se pedalean desde el pueblo español de Albir. Día tras día en el sillín, día tras día luchando contra los elementos y la fatiga.
+
+Por eso este proyecto se llama el 'extremum' absoluto: la cima definitiva donde la edad y la pura agotación física se encuentran. Conseguir esto a los 70 no es una salida en bici cualquiera; es una declaración que traspasa límites por una buena causa y demuestra que la pasión y el carácter son indestructibles.`], ['Carácter contra los elementos', `En la bici, al final, siempre estás solo con tus pensamientos. Cuando el sol español arde, el viento sopla de frente y los porcentajes de pendiente del interior alrededor de Albir alcanzan cifras de dos dígitos, ya no se trata de las piernas, sino de la pura resistencia mental.
+
+La filosofía de Terro en el sillín es tan sencilla como despiadada: no quejarse, pedalear. El dolor es temporal, pero el objetivo es permanente. Cada momento duro y cada gota de sudor a lo largo de la ruta cobran sentido porque están vinculados al bienestar de niños que necesitan apoyo desesperadamente. Esa conciencia fortalece el carácter y hace que el interruptor salte cuando todo se pone difícil. Rendirse no es una opción; la cabeza manda sobre el cuerpo.`], ['La preparación', `Una proeza extrema exige un enfoque reflexivo y profesional. La preparación de Terro no consiste en devorar kilómetros a ciegas, sino en escuchar a su cuerpo y en periodización. El final del verano, en septiembre, se dedica a descansar, recuperar y disfrutar del ciclismo sin la presión de salidas largas. Solo cuando llega el invierno se cambia el chip.
+
+A partir de octubre, el enfoque se traslada a lo básico: dos sesiones semanales de fuerza y estabilidad de core en casa, dos sesiones intensas en las carreteras virtuales de Zwift y una salida sólida el fin de semana para mantenerse en forma con el equipo. Cuando llega la primavera en marzo, las horas de entrenamiento y los kilómetros aumentan progresivamente, mientras que el trabajo de core y fuerza sigue siendo el cimiento indispensable. Hacia 2027 y 2028, la preparación definitiva tendrá lugar en la propia España, explorando gradualmente las etapas específicas desde Albir.
+
+En cuanto al material, Terro no deja nada al azar y ajusta todo personalmente con precisión. Para el equipamiento puede contar con el apoyo incondicional de su amigo y patrocinador Frank Peeraer de Forza Fortuna (Fortuna Group), quien se asegura de que Terro aparezca en la línea de salida con un equipamiento perfecto, aerodinámico y profesional.`]],
     blogTitle: 'Noticias del pelotón',
     blogLead: 'Actualizaciones, historias y momentos en el camino hacia el Proyecto 15/70.',
-    blogCards: [['Anuncio', 'Los primeros metros de desnivel están hechos'], ['Entrenamiento', 'Por qué cada subida comienza con una elección'], ['Equipo', 'Forza Fortuna se prepara para España']],
+    blogCards: blogPosts.es,
     donateTitle: 'Sube con nosotros a 17.500',
     donateLead: 'Cada euro es un metro de desnivel. Cada metro de desnivel nos acerca a un futuro para la buena causa.',
     donated: 'Ya',
     sponsored: 'de los 17.500 metros de desnivel patrocinados!',
     goal: 'Meta: 17.500 md',
-    donateIntro: 'Cada donación hace la diferencia. ¡Ayúdanos a demostrar que la edad es solo un número! En honor al 10º aniversario de Forza Fortuna vzw y mi 70º cumpleaños, superaremos +17.500 metros de desnivel españoles para el futuro de la buena causa.',
+    donateIntro: 'Cada donación hace la diferencia. ¡Ayúdanos a demostrar que la edad es solo un número! En honor al 15º aniversario de Forza Fortuna vzw y mi 70º cumpleaños, superaremos +17.500 metros de desnivel españoles para el futuro de la buena causa.',
     donationForm: 'Formulario de donación',
     choose: 'Elige tu donación',
     name: 'Nombre',
