@@ -30,9 +30,19 @@ Dat verhaal is Project 15/70: een extreme wieleruitdaging waarbij Terro 10 dagen
     storyOutro: `Maar dit project gaat niet alleen over fietsen. Het gaat over het goede doel. Elke meter die geklommen wordt, elke zweetdruppel die valt, draagt bij aan een missie die groter is dan de sport zelf. En daar kan jij deel van uitmaken.`,
     storySections: [['Van idee naar avontuur', 'Wat begon met de eerste plannen in 2014 groeide uit tot een grensverleggende uitdaging die vrienden, partners en een heel team samenbrengt.'], ['Twee mijlpalen, één extremum', 'Vijftien jaar passie en betrokkenheid bij Forza Fortuna. Zeventig jaar jong van geest. Twee mijlpalen die de lat op +17.500 hoogtemeters leggen.'], ['Samen trappen', 'Elke kilometer krijgt meer betekenis als we hem delen. Met supporters langs de weg, donateurs op afstand en het goede doel als ons kompas.']],
     routeTitle: 'De route',
-    routeLead: `Elke kilometer een stap dichterbij. Elke rit start en komt aan op het zonovergoten strand van Albir, vanwaar we de uitdaging aangaan en ons 10 dagen lang non-stop dwars door adembenemende landschappen en over pittige bergen trappen.\n\nGeen gemakkelijke reis, maar elke pedaalslag langs de Spaanse kust en het ruige binnenland is gedreven door pure motivatie: het bedwingen van meer dan 17.500 hoogtemeters om zo hoop en een betere toekomst te bieden aan kinderen die dit het hardste nodig hebben. Fiets virtueel met ons mee en volg de route vanaf de branding tot de finish.`,
+    routeLead: `Elke kilometer een stap dichterbij. Vanaf het strand van Albir trappen we 10 dagen lang door adembenemende landschappen en over pittige bergen. Meer dan 17.500 hoogtemeters, gedreven door pure motivatie: hoop en een betere toekomst voor kinderen die dit het hardste nodig hebben. Fiets virtueel mee en volg onze route van de branding tot de finish.`,
     stages: ['Coll de Rates Lus', 'La Vall d\'Ebo-pas & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'De laatste klim', 'De finishrit'],
     routePlaceholder: 'Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje.',
+    routeViewer: {
+      day: 'Dag', daysAria: 'Dagen', loadingRoute: 'Route data laden...', noRouteData: 'Geen routedata gevonden.',
+      downloadGpx: 'Download GPX', distance: 'Afstand', elevationGain: 'Hoogtewinst', elevationLoss: 'Hoogteverlies',
+      maxGradient: 'Max. helling', lowestPoint: 'Laagste punt', highestPoint: 'Hoogste punt', avgSpeed: 'Gem. snelheid',
+      estTime: 'Geschatte tijd', ascent: 'Helling omhoog', descent: 'Helling omlaag', difficulty: 'Moeilijkheidsgraad',
+      speed: 'Snelheid', avgLabel: 'Gemiddeld:', hard: 'Zwaar', moderate: 'Gemiddeld', easy: 'Licht',
+      axisDistance: 'Afstand in km', axisElevation: 'Hoogte (m)', hoverHint: 'Beweeg over de grafiek voor live info',
+      loadingGpx: 'GPX-profiel laden...', noGpx: 'Geen GPX-data gevonden.', elevation: 'Hoogte', gradient: 'Helling',
+      location: 'Locatie', wayType: 'Wegtype', surface: 'Ondergrond', surfaceValue: 'Asfalt', wayTypeValue: 'Weg', hourAbbr: 'u',
+    },
     terroTitle: 'PROJECT TERRO: DE MAN ACHTER 15/70',
     terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten. Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen waar ze horen — de focus ligt volledig op de weg die voor hem ligt.
 
@@ -96,9 +106,19 @@ That story is Project 15/70: an extreme cycling challenge where Terro will spend
     storyOutro: `But this project is not just about cycling. It is about a good cause. Every meter climbed, every drop of sweat, contributes to a mission bigger than the sport itself. And you can be a part of it.`,
     storySections: [['From idea to adventure', 'What started with the first plans back in 2014 grew into a groundbreaking challenge that brings friends, partners, and an entire team together.'], ['Two milestones, one extremum', 'Fifteen years of passion and dedication to Forza Fortuna. Seventy years young at heart. Two milestones raising the bar to +17,500 meters of elevation.'], ['Pedaling together', 'Every kilometer gains more meaning when shared. With supporters along the way, remote donors, and our chosen charity as a compass.']],
     routeTitle: 'The route',
-    routeLead: `Every kilometer is a step closer. Each ride starts and finishes on the sun-drenched beach of Albir, from where we take on the challenge and pedal non-stop for 10 consecutive days through breathtaking landscapes and over tough mountain peaks.\n\nNot an easy journey, but every pedal stroke along the Spanish coast and the rugged interior is driven by pure motivation: conquering more than 17,500 meters of elevation gain to offer hope and a better future to children who need it most. Cycle with us virtually and follow the route from the shoreline to the finish.`,
+    routeLead: `Every kilometer is a step closer. From the beach of Albir we pedal for 10 days through breathtaking landscapes and over tough mountain peaks. More than 17,500 vertical meters, driven by pure motivation: hope and a better future for children who need it most. Ride along virtually and follow our route from the shoreline to the finish.`,
     stages: ['Coll de Rates Loop', 'La Vall d\'Ebo-pass & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'The final climb', 'The finish stage'],
     routePlaceholder: 'Stage profile will be generated live during the challenge in Spain.',
+    routeViewer: {
+      day: 'Day', daysAria: 'Days', loadingRoute: 'Loading route data...', noRouteData: 'No route data found.',
+      downloadGpx: 'Download GPX', distance: 'Distance', elevationGain: 'Elevation gain', elevationLoss: 'Elevation loss',
+      maxGradient: 'Max. gradient', lowestPoint: 'Lowest point', highestPoint: 'Highest point', avgSpeed: 'Avg. speed',
+      estTime: 'Estimated time', ascent: 'Ascent', descent: 'Descent', difficulty: 'Difficulty',
+      speed: 'Speed', avgLabel: 'Average:', hard: 'Hard', moderate: 'Moderate', easy: 'Easy',
+      axisDistance: 'Distance in km', axisElevation: 'Elevation (m)', hoverHint: 'Hover over the chart for live info',
+      loadingGpx: 'Loading GPX profile...', noGpx: 'No GPX data found.', elevation: 'Elevation', gradient: 'Gradient',
+      location: 'Location', wayType: 'Road type', surface: 'Surface', surfaceValue: 'Asphalt', wayTypeValue: 'Road', hourAbbr: 'h',
+    },
     terroTitle: 'PROJECT TERRO: THE MAN BEHIND 15/70',
     terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws. The past has its secrets, but they are safely stored where they belong — the focus is entirely on the road ahead.
 
@@ -162,9 +182,19 @@ Esa historia es el Proyecto 15/70: un desafío ciclista extremo en el que Terro 
     storyOutro: `Pero este proyecto no es solo ciclismo. Se trata de una buena causa. Cada metro subido, cada gota de sudor, contribuye a una misión más grande que el propio deporte. Y tú puedes formar parte de ella.`,
     storySections: [['De la idea al aventura', 'Lo que comenzó con los primeros planes en 2014 se convirtió en un desafío innovador que une a amigos, socios y a todo un equipo.'], ['Dos hitos, un extremo', 'Quince años de pasión y dedicación a Forza Fortuna. Setenta años joven de espíritu. Dos hitos que sitúan el listón en +17.500 metros de desnivel.'], ['Pedaleando juntos', 'Cada kilómetro cobra más sentido cuando se comparte. Con seguidores en el camino, donantes a distancia y la buena causa como brújula.']],
     routeTitle: 'La ruta',
-    routeLead: `Cada kilómetro es un paso más cerca. Cada ruta comienza y termina en la soleada playa de Albir, desde donde asumimos el desafío y pedaleamos sin parar durante 10 días seguidos a través de paisajes impresionantes y cumbres exigentes.\n\nNo es un viaje fácil, pero cada pedalada a lo largo de la costa española y el escarpado interior está impulsada por una motivación pura: conquistar más de 17.500 metros de desnivel positivo para ofrecer esperanza y un futuro mejor a los niños que más lo necesitan. Pedalea con nosotros de forma virtual y sigue la ruta desde la orilla del mar hasta la meta.`,
+    routeLead: `Cada kilómetro es un paso más cerca. Desde la playa de Albir pedaleamos durante 10 días a través de paisajes impresionantes y cumbres exigentes. Más de 17.500 metros de desnivel, impulsados por una motivación pura: esperanza y un futuro mejor para los niños que más lo necesitan. Pedalea con nosotros de forma virtual y sigue nuestra ruta desde la orilla hasta la meta.`,
     stages: ['Bucle Coll de Rates', 'La Vall d\'Ebo-paso & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'La última subida', 'La etapa final'],
     routePlaceholder: 'El perfil de la etapa se generará en vivo durante el reto en España.',
+    routeViewer: {
+      day: 'Día', daysAria: 'Días', loadingRoute: 'Cargando datos de ruta...', noRouteData: 'No se encontraron datos de ruta.',
+      downloadGpx: 'Descargar GPX', distance: 'Distancia', elevationGain: 'Desnivel positivo', elevationLoss: 'Desnivel negativo',
+      maxGradient: 'Pendiente máx.', lowestPoint: 'Punto más bajo', highestPoint: 'Punto más alto', avgSpeed: 'Vel. media',
+      estTime: 'Tiempo estimado', ascent: 'Ascenso', descent: 'Descenso', difficulty: 'Dificultad',
+      speed: 'Velocidad', avgLabel: 'Media:', hard: 'Dura', moderate: 'Moderada', easy: 'Fácil',
+      axisDistance: 'Distancia en km', axisElevation: 'Altitud (m)', hoverHint: 'Pasa el cursor sobre el gráfico para info en vivo',
+      loadingGpx: 'Cargando perfil GPX...', noGpx: 'Sin datos GPX.', elevation: 'Altitud', gradient: 'Pendiente',
+      location: 'Ubicación', wayType: 'Tipo de vía', surface: 'Superficie', surfaceValue: 'Asfalto', wayTypeValue: 'Carretera', hourAbbr: 'h',
+    },
     terroTitle: 'PROYECTO TERRO: EL HOMBRE DETRÁS DE 15/70',
     terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas. El pasado tiene sus secretos, pero están guardados con seguridad donde corresponde: la atención se centra completamente en el camino que tiene por delante.
 

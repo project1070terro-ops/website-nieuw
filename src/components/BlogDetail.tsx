@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 import { Format1570 } from './Format1570';
+import { stravaEmbeds } from '../blogContent';
 
 interface BlogDetailProps {
   t: TranslationContent;
@@ -31,9 +32,23 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
   const postIndex = sortedCards.findIndex((card) => card.slug === slug);
   const post = sortedCards[postIndex];
 
+  const embedRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (!post) navigate('blog');
   }, [post, navigate]);
+
+  // <script>-tags die via innerHTML binnenkomen worden niet uitgevoerd;
+  // ze opnieuw aanmaken zorgt dat externe embeds (bv. Strava) wel laden.
+  useEffect(() => {
+    const el = embedRef.current;
+    if (!el) return;
+    el.querySelectorAll('script').forEach((old) => {
+      const script = document.createElement('script');
+      Array.from(old.attributes).forEach((attr) => script.setAttribute(attr.name, attr.value));
+      old.replaceWith(script);
+    });
+  }, [post?.slug]);
 
   if (!post) return null;
 
@@ -44,9 +59,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
 
   return (
     <article className="blog-detail">
-      <div className="blog-detail-hero">
-        <img src={post.image} alt={post.fullTitle} loading="eager" />
-      </div>
+
       <div className="blog-detail-content">
         <button className="blog-detail-back" onClick={() => navigate('blog')}>
           <ArrowLeft size={18} /> {t.nav.blog}
@@ -75,6 +88,9 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
             </p>
           ))}
         </div>
+        {stravaEmbeds[post.slug] && (
+          <div ref={embedRef} className="strava-embed" dangerouslySetInnerHTML={{ __html: stravaEmbeds[post.slug] }} />
+        )}
         <nav className="blog-detail-nav" aria-label="Blog navigation">
           <div>
             {prevPost ? (

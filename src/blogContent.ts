@@ -1,5 +1,13 @@
 import type { TranslationContent } from './types';
 
+// Strava-embeds per blogpost — geldt automatisch voor alle talen.
+// Sleutel = de slug van de post, waarde = de embed-code van Strava.
+// Voorbeeld:
+//   '/blog/de-officiele-aftrap': '<iframe src="https://www.strava.com/activities/123456789/embed/abc" width="590" height="405" frameborder="0" scrolling="no"></iframe>',
+export const stravaEmbeds: Record<string, string> = {
+  '/blog/dag-1-coll-de-rates': '<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="19862931923" data-style="standard" data-from-embed="false" data-token="U2fMxpYigy_U15Mjc8e9tHh8xpYILOVEQF3COwo8di4"></div><script src="https://strava-embeds.com/embed.js"></script>',
+};
+
 export const blogPosts: Record<'nl' | 'en' | 'es', TranslationContent['blogCards']> = {
   nl: [
     {
@@ -40,6 +48,17 @@ Toch is het niet alleen getallen kijken. De voorbereiding van Terro is doordacht
 Elke donatie is een hoogtemeter. Elke hoogtemeter brengt ons dichter bij een wereld waarin elk kind kansen krijgt, ongeacht de omstandigheden waarin het geboren wordt. Terro fietst niet alleen voor zichzelf, maar voor alle kinderen die een duwtje in de rug verdienen.
 
 Doneer mee en laat zien dat de fietscommunity een verschil maakt. Samen zetten we ons in voor de generatie van morgen.`,
+    },
+    {
+      date: '09 / 2026',
+      slug: '/blog/dag-1-coll-de-rates',
+      label: 'DAG 1',
+      title: 'Dag 1: Coll de Rates Lus',
+      fullTitle: 'Dag 1: De Coll de Rates Lus — De Eerste Beklimming',
+      image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
+      body: `De eerste rit van Project 15/70 voert over de legendarische Coll de Rates, de beklimming die al vijftien jaar het decor vormt van onze mooiste ritten rondom Albir. Een lus die meteen de toon zet: lange klimmen, verraderlijke percentages en adembenemende uitzichten.
+
+Hieronder vind je de Strava-rit van deze etappe, met routekaart, hoogteprofiel en alle cijfers van de dag.`,
     },
   ],
   en: [
@@ -82,6 +101,17 @@ Every donation is a vertical meter. Every vertical meter brings us closer to a w
 
 Donate and show that the cycling community makes a difference. Together we stand up for the next generation.`,
     },
+    {
+      date: '09 / 2026',
+      slug: '/blog/dag-1-coll-de-rates',
+      label: 'DAY 1',
+      title: 'Day 1: Coll de Rates Loop',
+      fullTitle: 'Day 1: The Coll de Rates Loop — The First Climb',
+      image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
+      body: `The first ride of Project 15/70 takes on the legendary Coll de Rates, the climb that has been the backdrop of our most beautiful rides around Albir for fifteen years. A loop that immediately sets the tone: long climbs, treacherous gradients and breathtaking views.
+
+Below you will find the Strava activity of this stage, with route map, elevation profile and all the day's numbers.`,
+    },
   ],
   es: [
     {
@@ -122,6 +152,17 @@ Aun así, no se trata solo de números. La preparación de Terro es reflexiva y 
 Cada donación es un metro de desnivel. Cada metro de desnivel nos acerca a un mundo donde cada niño tenga oportunidades, independientemente de las circunstancias en las que nazca. Terro no pedalea solo por sí mismo, sino por todos los niños que merecen un empujón.
 
 Dona y demuestra que la comunidad ciclista marca la diferencia. Juntos nos comprometemos con la próxima generación.`,
+    },
+    {
+      date: '09 / 2026',
+      slug: '/blog/dag-1-coll-de-rates',
+      label: 'DÍA 1',
+      title: 'Día 1: Bucle Coll de Rates',
+      fullTitle: 'Día 1: El Bucle Coll de Rates — La Primera Ascensión',
+      image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
+      body: `La primera ruta del Proyecto 15/70 afronta el legendario Coll de Rates, la ascensión que lleva quince años siendo el escenario de nuestras salidas más bonitas alrededor de Albir. Un bucle que marca el tono desde el primer momento: ascensos largos, pendientes traicioneras y vistas impresionantes.
+
+A continuación encontrarás la actividad de Strava de esta etapa, con mapa de ruta, perfil de altitud y todas las cifras del día.`,
     },
   ],
 };

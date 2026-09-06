@@ -60,9 +60,16 @@ export function Donate({ t, donations, totalDonated, onDonation }: DonateProps) 
       <PageIntro title={t.donateTitle} lead={t.donateLead} />
       <section className="meter-section">
         <div className="meter-head">
-          <h2>
-            {t.donated} <strong>{verticalMeters.toLocaleString('nl-BE')}</strong> {t.sponsored}
-          </h2>
+          <div className="meter-head-left">
+            <img
+              className="stc-badge"
+              src="/images/sponsor/stc-embleem.png"
+              alt="Save the Children"
+            />
+            <h2>
+              {t.donated} <strong>{verticalMeters.toLocaleString('nl-BE')}</strong> {t.sponsored}
+            </h2>
+          </div>
           <span>{t.goal}</span>
         </div>
         <div className="meter">

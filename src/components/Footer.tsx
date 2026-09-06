@@ -52,6 +52,7 @@ export function Footer({ t, navigate, className }: FooterProps) {
                 <small>FINANCIAL GROUP</small>
               </div>
             </a>
+
           </div>
         </div>
         

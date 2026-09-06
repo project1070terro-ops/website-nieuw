@@ -54,7 +54,7 @@ export function Terro({ t, navigate }: TerroProps) {
       <Stats t={t} navigate={navigate} />
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
-          {t.support} <ArrowRight size={18} />
+          <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
         </button>
       </section>
     </>

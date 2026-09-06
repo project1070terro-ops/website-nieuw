@@ -42,7 +42,7 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
           </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => navigate('donate')}>
-              {t.support} <ArrowRight size={17} />
+              <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={17} />
             </button>
             <button className="text-button" onClick={() => navigate('blog')}>
               {t.discover} <ArrowDownRight size={17} />
@@ -74,7 +74,7 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
 
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
-          {t.support} <ArrowRight size={18} />
+          <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
         </button>
       </section>
     </>
