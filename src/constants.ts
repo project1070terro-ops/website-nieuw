@@ -42,6 +42,8 @@ Dat verhaal is Project 15/70: een extreme wieleruitdaging waarbij Terro 10 dagen
       axisDistance: 'Afstand in km', axisElevation: 'Hoogte (m)', hoverHint: 'Beweeg over de grafiek voor live info',
       loadingGpx: 'GPX-profiel laden...', noGpx: 'Geen GPX-data gevonden.', elevation: 'Hoogte', gradient: 'Helling',
       location: 'Locatie', wayType: 'Wegtype', surface: 'Ondergrond', surfaceValue: 'Asfalt', wayTypeValue: 'Weg', hourAbbr: 'u',
+      weatherTitle: 'Het weer', weatherToday: 'Vandaag', weatherTemp: 'Temp', weatherWind: 'Wind', weatherPrecip: 'Neerslag', weatherError: 'Weerdata niet beschikbaar',
+      axisHint: 'beweeg voor info',
     },
     terroTitle: 'PROJECT TERRO: DE MAN ACHTER 15/70',
     terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten. Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen waar ze horen — de focus ligt volledig op de weg die voor hem ligt.
@@ -118,6 +120,8 @@ That story is Project 15/70: an extreme cycling challenge where Terro will spend
       axisDistance: 'Distance in km', axisElevation: 'Elevation (m)', hoverHint: 'Hover over the chart for live info',
       loadingGpx: 'Loading GPX profile...', noGpx: 'No GPX data found.', elevation: 'Elevation', gradient: 'Gradient',
       location: 'Location', wayType: 'Road type', surface: 'Surface', surfaceValue: 'Asphalt', wayTypeValue: 'Road', hourAbbr: 'h',
+      weatherTitle: 'Weather', weatherToday: 'Today', weatherTemp: 'Temp', weatherWind: 'Wind', weatherPrecip: 'Precip', weatherError: 'Weather data not available',
+      axisHint: 'hover for info',
     },
     terroTitle: 'PROJECT TERRO: THE MAN BEHIND 15/70',
     terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws. The past has its secrets, but they are safely stored where they belong — the focus is entirely on the road ahead.
@@ -194,6 +198,8 @@ Esa historia es el Proyecto 15/70: un desafío ciclista extremo en el que Terro 
       axisDistance: 'Distancia en km', axisElevation: 'Altitud (m)', hoverHint: 'Pasa el cursor sobre el gráfico para info en vivo',
       loadingGpx: 'Cargando perfil GPX...', noGpx: 'Sin datos GPX.', elevation: 'Altitud', gradient: 'Pendiente',
       location: 'Ubicación', wayType: 'Tipo de vía', surface: 'Superficie', surfaceValue: 'Asfalto', wayTypeValue: 'Carretera', hourAbbr: 'h',
+      weatherTitle: 'El tiempo', weatherToday: 'Hoy', weatherTemp: 'Temp', weatherWind: 'Viento', weatherPrecip: 'Precip', weatherError: 'Datos meteorológicos no disponibles',
+      axisHint: 'toca para info',
     },
     terroTitle: 'PROYECTO TERRO: EL HOMBRE DETRÁS DE 15/70',
     terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas. El pasado tiene sus secretos, pero están guardados con seguridad donde corresponde: la atención se centra completamente en el camino que tiene por delante.

@@ -48,7 +48,7 @@ export function RouteViewer({ t, language }: { t: TranslationContent; language: 
         ))}
       </div>
 
-      <RouteDayInteractive key={day.day} day={day} r={r} />
+      <RouteDayInteractive key={day.day} day={day} r={r} language={language} />
     </section>
   );
 }

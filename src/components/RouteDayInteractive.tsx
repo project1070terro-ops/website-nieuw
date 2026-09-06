@@ -5,7 +5,8 @@ import { Chart } from 'chart.js/auto';
 import type { Plugin, TooltipItem } from 'chart.js';
 import { Download } from 'lucide-react';
 import type { RouteDay } from './RouteViewer';
-import type { TranslationContent } from '../types';
+import type { Language, TranslationContent } from '../types';
+import { WeatherWidget } from './WeatherWidget';
 
 type RouteLabels = TranslationContent['routeViewer'];
 
@@ -103,7 +104,15 @@ function computeGradients(points: GpxPoint[], distances: number[]) {
   return gradients;
 }
 
-export function RouteDayInteractive({ day, r }: { day: RouteDay; r: RouteLabels }) {
+export function RouteDayInteractive({
+  day,
+  r,
+  language,
+}: {
+  day: RouteDay;
+  r: RouteLabels;
+  language: Language;
+}) {
   const [points, setPoints] = useState<GpxPoint[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -208,6 +217,13 @@ export function RouteDayInteractive({ day, r }: { day: RouteDay; r: RouteLabels 
 
   const distances = useMemo(() => computeDistances(points), [points]);
   const gradients = useMemo(() => computeGradients(points, distances), [points, distances]);
+
+  const routeCenter = useMemo(() => {
+    if (!points.length) return null;
+    const lat = points.reduce((s, p) => s + p.lat, 0) / points.length;
+    const lon = points.reduce((s, p) => s + p.lon, 0) / points.length;
+    return { lat, lon };
+  }, [points]);
 
   const stats = useMemo(() => {
     if (!points.length) return null;
@@ -373,7 +389,7 @@ export function RouteDayInteractive({ day, r }: { day: RouteDay; r: RouteLabels 
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: r.axisDistance, color: 'rgba(255,255,255,0.4)', font: { size: 10 } },
+            title: { display: true, text: [r.axisDistance, r.axisHint], color: 'rgba(255,255,255,0.35)', font: { size: 9 } },
           },
           y: {
             display: true,
@@ -402,54 +418,61 @@ export function RouteDayInteractive({ day, r }: { day: RouteDay; r: RouteLabels 
       <div className="route-map" ref={mapContainerRef} />
 
       <aside className="route-sidebar">
-        <h2 className="route-sidebar-title">{day.title}</h2>
-        <a className="route-download-btn" href={day.gpx} download={`dag-${day.day}.gpx`}>
-          <Download size={18} /> {r.downloadGpx}
-        </a>
-        <div className="route-legend">
-          {GRADIENT_BANDS.map((b) => (
-            <span key={b.label} className="route-legend-item">
-              <span className="route-legend-swatch" style={{ background: b.color }} />
-              {b.label}
-            </span>
-          ))}
-        </div>
-        {stats && (
-          <div className="route-stats-grid">
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.distance}</span>
-              <span className="route-sidebar-stat-value">{stats.distance.toFixed(1)} km</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.elevationGain}</span>
-              <span className="route-sidebar-stat-value">+{Math.round(stats.gain)} m</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.elevationLoss}</span>
-              <span className="route-sidebar-stat-value">-{Math.round(stats.loss)} m</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.maxGradient}</span>
-              <span className="route-sidebar-stat-value">{stats.maxGrade.toFixed(1)}%</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.lowestPoint}</span>
-              <span className="route-sidebar-stat-value">{Math.round(stats.minEle)} m</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.highestPoint}</span>
-              <span className="route-sidebar-stat-value">{Math.round(stats.maxEle)} m</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.avgSpeed}</span>
-              <span className="route-sidebar-stat-value">{stats.avgSpeed.toFixed(1)} km/h</span>
-            </div>
-            <div className="route-sidebar-stat">
-              <span className="route-sidebar-stat-label">{r.estTime}</span>
-              <span className="route-sidebar-stat-value">{stats.estTime}</span>
-            </div>
+        <div className="route-sidebar-top">
+          <h2 className="route-sidebar-title">{day.title}</h2>
+          {routeCenter && (
+            <WeatherWidget lat={routeCenter.lat} lon={routeCenter.lon} r={r} language={language} />
+          )}
+          <a className="route-download-btn" href={day.gpx} download={`dag-${day.day}.gpx`}>
+            <Download size={18} /> {r.downloadGpx}
+          </a>
+          <div className="route-legend">
+            {GRADIENT_BANDS.map((b) => (
+              <span key={b.label} className="route-legend-item">
+                <span className="route-legend-swatch" style={{ background: b.color }} />
+                {b.label}
+              </span>
+            ))}
           </div>
-        )}
+        </div>
+        <div className="route-sidebar-bottom">
+          {stats && (
+            <div className="route-stats-grid">
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.distance}</span>
+                <span className="route-sidebar-stat-value">{stats.distance.toFixed(1)} km</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.elevationGain}</span>
+                <span className="route-sidebar-stat-value">+{Math.round(stats.gain)} m</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.elevationLoss}</span>
+                <span className="route-sidebar-stat-value">-{Math.round(stats.loss)} m</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.maxGradient}</span>
+                <span className="route-sidebar-stat-value">{stats.maxGrade.toFixed(1)}%</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.lowestPoint}</span>
+                <span className="route-sidebar-stat-value">{Math.round(stats.minEle)} m</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.highestPoint}</span>
+                <span className="route-sidebar-stat-value">{Math.round(stats.maxEle)} m</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.avgSpeed}</span>
+                <span className="route-sidebar-stat-value">{stats.avgSpeed.toFixed(1)} km/h</span>
+              </div>
+              <div className="route-sidebar-stat">
+                <span className="route-sidebar-stat-label">{r.estTime}</span>
+                <span className="route-sidebar-stat-value">{stats.estTime}</span>
+              </div>
+            </div>
+          )}
+        </div>
       </aside>
 
       <div className="route-chart-panel route-chart-panel-tall">

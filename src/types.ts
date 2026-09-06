@@ -65,6 +65,13 @@ export interface TranslationContent {
     surfaceValue: string;
     wayTypeValue: string;
     hourAbbr: string;
+    weatherTitle: string;
+    weatherToday: string;
+    weatherTemp: string;
+    weatherWind: string;
+    weatherPrecip: string;
+    weatherError: string;
+    axisHint: string;
   };
   terroTitle: string;
   terroSections: Array<[string, string]>;
