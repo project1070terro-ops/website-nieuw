@@ -21,7 +21,17 @@ export function BrandText({ text, className }: BrandTextProps) {
             </Fragment>
           );
         }
-        return <Fragment key={i}>{part}</Fragment>;
+        return (
+          <Fragment key={i}>
+            {part.split(/(Forza Fortuna Financial Group|Forza Fortuna|Fortuna Financial Group)/g).map((chunk, j) =>
+              chunk.startsWith('Forza Fortuna') || chunk === 'Fortuna Financial Group' ? (
+                <em key={j} className="team-brand">&ldquo;{chunk}&rdquo;</em>
+              ) : (
+                <Fragment key={j}>{chunk}</Fragment>
+              )
+            )}
+          </Fragment>
+        );
       })}
     </span>
   );

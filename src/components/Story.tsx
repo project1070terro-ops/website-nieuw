@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
+import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
 import { Stats } from './Stats';
 
@@ -31,7 +32,7 @@ export function Story({ t, navigate }: StoryProps) {
               <div className="story-line"></div>
               <div className="story-text">
                 <h2>{title}</h2>
-                <p>{text}</p>
+                <p><BrandText text={text} /></p>
               </div>
             </div>
           </article>

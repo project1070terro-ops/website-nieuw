@@ -44,3 +44,17 @@ git push origin master:main
 ```bash
 git -c user.name="Project 15/70" -c user.email="project1070terro@gmail.com" commit -a -m "..."
 ```
+
+## Supabase (donatiedatabase)
+
+De donaties staan in het eigen Supabase-project van de gebruiker (organisatie `project1570`, project `project1070terro-ops's Project`, regio eu-west-2).
+
+**Zo kom je er (voor de gebruiker):**
+
+1. Ga naar https://supabase.com → **Sign in** → **Continue with GitHub** (account `project1070terro-ops`)
+2. Klik op de organisatie **project1570** → project **"project1070terro-ops's Project"**
+3. **Table Editor** (linkermenu) → tabel **donations**: hier kun je donaties bekijken, aanpassen of testdonaties verwijderen
+4. **SQL Editor** (linkermenu): voor database-wijzigingen
+5. **Project Settings → API Keys**: hier staan de Project URL en publishable key (staan ook in `.env`)
+
+De tabel is opgezet via `supabase/migrations/20260830143653_create_project1070_donations.sql`. RLS-policies: publiek mag SELECT + INSERT, geen UPDATE/DELETE (wissen kan dus enkel via het dashboard).

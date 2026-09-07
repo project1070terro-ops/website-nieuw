@@ -17,7 +17,7 @@ export const blogPosts: Record<'nl' | 'en' | 'es', TranslationContent['blogCards
       title: 'De Aftrap: Op weg naar 2029',
       fullTitle: 'De Officiële Aftrap van PROJECT 15/70: Op Weg Naar een Loodzware Uitdaging',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `De lancering van Project 15/70 is een feit. Wat ooit begon als een wilde droom op de fiets, groeit uit tot een van de meest uitdagende wieleravonturen die ik ooit ben aangegaan. In 2029 bestaat Forza Fortuna (Group) vijftien jaar en is Terro al even lang onlosmakelijk verbonden aan dit team. Bovendien wordt hij dat jaar zeventig jaar jong. Drie redenen om het voor een goed doel op te nemen tegen de Spaanse bergen.
+      body: `De lancering van Project 15/70 is een feit. Wat ooit begon als een wilde droom op de fiets, groeit uit tot een van de meest uitdagende wieleravonturen die ik ooit ben aangegaan. In 2029 bestaat Forza Fortuna Financial Group vijftien jaar en is Terro al even lang onlosmakelijk verbonden aan dit team. Bovendien wordt hij dat jaar zeventig jaar jong. Drie redenen om het voor een goed doel op te nemen tegen de Spaanse bergen.
 
 Tien dagen lang zal Terro non-stop in het zadel kruipen om meer dan 17.500 hoogtemeters te bedwingen in de heuvels rondom Albir. Dat is niet zomaar een rondje fietsen; het is een grensverleggend statement dat laat zien dat leeftijd slechts een getal is. Met de juiste voorbereiding, een onbreekbare mindset en een team dat als één man achter je staat, is het onmogelijke bespreekbaar.
 
@@ -69,7 +69,7 @@ Hieronder vind je de Strava-rit van deze etappe, met routekaart, hoogteprofiel e
       title: 'The Kick-off: On the road to 2029',
       fullTitle: 'The Official Kick-off of PROJECT 15/70: On the Road to a Grueling Challenge',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `The launch of Project 15/70 is official. What started as a wild dream on a bike is growing into one of the most challenging cycling adventures that I have ever undertaken. In 2029, Forza Fortuna (Group) will have existed for fifteen years, and Terro will have been part of the team for just as long. On top of that, he turns seventy years young. Three reasons to take on the Spanish mountains for charity.
+      body: `The launch of Project 15/70 is official. What started as a wild dream on a bike is growing into one of the most challenging cycling adventures that I have ever undertaken. In 2029, Forza Fortuna Financial Group will have existed for fifteen years, and Terro will have been part of the team for just as long. On top of that, he turns seventy years young. Three reasons to take on the Spanish mountains for charity.
 
 For ten consecutive days, Terro will be in the saddle non-stop to conquer more than 17,500 vertical meters in the hills around Albir. This is not just a casual ride; it is a boundary-pushing statement that age is just a number. With the right preparation, an unbreakable mindset and a team that stands behind you as one, the impossible becomes negotiable.
 
@@ -121,7 +121,7 @@ Below you will find the Strava activity of this stage, with route map, elevation
       title: 'El Lanzamiento: Camino a 2029',
       fullTitle: 'El Lanzamiento Oficial de PROJECT 15/70: Camino a un Desafío Monumental',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `El lanzamiento del Proyecto 15/70 es una realidad. Lo que comenzó como un sueño loco sobre una bicicleta se convierte en una de las aventuras ciclistas más exigentes que yo haya emprendido. En 2029, Forza Fortuna (Group) cumplirá quince años y Terro estará vinculado al equipo desde hace el mismo tiempo. Además, cumplirá setenta años joven. Tres razones para enfrentarse a las montañas españolas por una buena causa.
+      body: `El lanzamiento del Proyecto 15/70 es una realidad. Lo que comenzó como un sueño loco sobre una bicicleta se convierte en una de las aventuras ciclistas más exigentes que yo haya emprendido. En 2029, Forza Fortuna Financial Group cumplirá quince años y Terro estará vinculado al equipo desde hace el mismo tiempo. Además, cumplirá setenta años joven. Tres razones para enfrentarse a las montañas españolas por una buena causa.
 
 Durante diez días seguidos, Terro estará en el sillín sin parar para conquistar más de 17.500 metros de desnivel en las colinas alrededor de Albir. No se trata solo de una salida cualquiera; es una declaración que traspasa límites y demuestra que la edad es solo un número. Con la preparación adecuada, una mentalidad inquebrantable y un equipo que te apoya como uno solo, lo imposible se vuelve alcanzable.
 

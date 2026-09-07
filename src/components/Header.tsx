@@ -42,7 +42,7 @@ export function Header({ page, language, setLanguage, navigate, menuOpen, setMen
     <header className={`site-header ${isHeaderScrolled ? 'scrolled' : ''}`}>
       <button className="brand" onClick={() => navigate('home')}>
         <span>FORZA FORTUNA</span>
-        <em>Group</em>
+        <em>Financial Group</em>
       </button>
       
       <button className="menu-toggle" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>

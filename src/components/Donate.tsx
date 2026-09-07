@@ -2,6 +2,8 @@ import { ArrowRight, Check, Mountain } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import type { Donation, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
+import { checkMessage, checkName } from '../utils/messageFilter';
+import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
 
 interface DonateProps {
@@ -18,10 +20,13 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [messageBlocked, setMessageBlocked] = useState(false);
+  const [nameInvalid, setNameInvalid] = useState(false);
 
   // Hoogtemeters-logica: 1 euro = 1 hoogtemeter
   const verticalMeters = Math.round(totalDonated);
-  const progress = Math.min((verticalMeters / 17000) * 100, 100);
+  const progress = Math.min((verticalMeters / 17500) * 100, 100);
+  const goalReached = verticalMeters >= 17500;
 
   async function submit(event: FormEvent) {
     event.preventDefault();
@@ -29,6 +34,18 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
 
     if (!name.trim() || amount < 1) {
       setError('Please fill in required fields');
+      return;
+    }
+
+    const nameCheck = checkName(name);
+    if (!nameCheck.ok) {
+      setNameInvalid(true);
+      return;
+    }
+
+    const check = checkMessage(message);
+    if (!check.ok) {
+      setMessageBlocked(true);
       return;
     }
 
@@ -58,7 +75,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
 
   return (
     <>
-      <PageIntro title={t.donateTitle} lead={t.donateLead} />
+      <PageIntro title={t.donateTitle} lead="" className="donate-intro" />
       <section className="meter-section">
         <div className="meter-head">
           <div className="meter-head-left">
@@ -71,23 +88,19 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
               {t.donated} <strong>{verticalMeters.toLocaleString('nl-BE')}</strong> {t.sponsored}
             </h2>
           </div>
-          <span>{t.goal}</span>
+          <span className={goalReached ? 'goal-reached' : ''}>
+            {goalReached ? `${t.goalReached} +${(verticalMeters - 17500).toLocaleString('nl-BE')} HM` : t.goal}
+          </span>
         </div>
-        <div className="meter">
+        <div className={`meter${goalReached ? ' meter-complete' : ''}`}>
           <div style={{ width: `${progress}%` }} />
         </div>
-        <p>{t.donateIntro}</p>
-      </section>
-
-      <section className="cause-teaser">
-        <img className="cause-teaser-logo" src="/images/sponsor/stc-embleem.png" alt="Save the Children" />
-        <div className="cause-teaser-body">
-          <h3>{t.donateCauseTitle}</h3>
-          <p>{t.donateCauseText}</p>
+        <p>
+          <BrandText text={t.donateIntro} />{' '}
           <button className="cause-teaser-link" onClick={() => navigate('cause')}>
             {t.donateCauseLink} <ArrowRight size={15} />
           </button>
-        </div>
+        </p>
       </section>
 
       <section className="tier-grid">
@@ -118,12 +131,28 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           </div>
           <label>
             {t.name}
-            <input required value={name} onChange={(event) => setName(event.target.value)} />
+            <input
+              required
+              value={name}
+              onChange={(event) => {
+                setName(event.target.value);
+                if (nameInvalid) setNameInvalid(false);
+              }}
+            />
           </label>
+          {nameInvalid && <p className="field-error">{t.nameInvalid}</p>}
           <label>
             {t.message}
-            <textarea value={message} onChange={(event) => setMessage(event.target.value)} rows={4} />
+            <textarea
+              value={message}
+              onChange={(event) => {
+                setMessage(event.target.value);
+                if (messageBlocked) setMessageBlocked(false);
+              }}
+              rows={4}
+            />
           </label>
+          {messageBlocked && <p className="field-error">{t.messageBlocked}</p>}
           {error && <p className="error-message">{error}</p>}
           <button className="button button-primary" disabled={saving}>
             {saving ? 'Saving...' : t.donateNow} <Check size={17} />

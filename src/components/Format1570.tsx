@@ -1,3 +1,5 @@
+import { BrandText } from './BrandText';
+
 export function Format1570({ text }: { text: string }) {
   const parts = text.split(/(15\/70)/);
 
@@ -9,7 +11,7 @@ export function Format1570({ text }: { text: string }) {
             15<span className="orange-slash">/</span>70
           </span>
         ) : (
-          <span key={index}>{part}</span>
+          <span key={index}><BrandText text={part} /></span>
         )
       )}
     </>

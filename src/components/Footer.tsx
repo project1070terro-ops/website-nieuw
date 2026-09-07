@@ -17,7 +17,7 @@ export function Footer({ t, navigate, className }: FooterProps) {
           <div className="footer-module footer-brand-module">
             <button className="brand" onClick={() => navigate('home')}>
               <span>FORZA FORTUNA</span>
-              <em>vzw</em>
+              <em>Financial Group</em>
             </button>
             <div className="footer-socials">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">
@@ -47,7 +47,7 @@ export function Footer({ t, navigate, className }: FooterProps) {
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
             <a className="footer-email" href="#" onClick={(e) => { e.preventDefault(); navigate('contact'); }}>
-              project1070terro@gmail.com
+              info@project1570terro.com
             </a>
           </div>
 
@@ -70,7 +70,7 @@ export function Footer({ t, navigate, className }: FooterProps) {
             Cookies
           </button>
           <div className="footer-copyright">
-            © 2026 Forza Fortuna vzw. Alle rechten voorbehouden.
+            © 2026 Forza Fortuna Financial Group. Alle rechten voorbehouden.
           </div>
         </div>
       </div>

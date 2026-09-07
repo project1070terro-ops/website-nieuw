@@ -82,6 +82,9 @@ export interface TranslationContent {
   donateCauseTitle: string;
   donateCauseText: string;
   donateCauseLink: string;
+  messageBlocked: string;
+  nameInvalid: string;
+  goalReached: string;
   blogTitle: string;
   blogLead: string;
   blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; image: string; }>;

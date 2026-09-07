@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { ArrowRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
+import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
 import { Stats } from './Stats';
 
@@ -36,7 +37,7 @@ export function Terro({ t, navigate }: TerroProps) {
               <div className="terro-block">
                 <h2>{title}</h2>
                 {paragraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <p key={i}><BrandText text={para} /></p>
                 ))}
               </div>
               {image && (

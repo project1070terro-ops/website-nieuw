@@ -7,6 +7,7 @@ import { Download } from 'lucide-react';
 import type { RouteDay } from './RouteViewer';
 import type { Language, TranslationContent } from '../types';
 import { WeatherWidget } from './WeatherWidget';
+import { downloadGpxTrack } from '../utils/gpxExport';
 
 type RouteLabels = TranslationContent['routeViewer'];
 
@@ -17,10 +18,12 @@ interface GpxPoint {
 }
 
 const GRADIENT_BANDS = [
-  { max: 2, color: '#2ecc71', label: '< 2%' },
+  { max: 2, color: '#4286b3', label: '< 2%' },
   { max: 5, color: '#f1c40f', label: '2 – 5%' },
   { max: 8, color: '#e67e22', label: '5 – 8%' },
-  { max: Infinity, color: '#e74c3c', label: '> 8%' },
+  { max: 10, color: '#e74c3c', label: '8 – 10%' },
+  { max: 20, color: '#c0392b', label: '10 – 20%' },
+  { max: Infinity, color: '#7b241c', label: '> 20%' },
 ];
 
 // Vaste waarde — pas deze later gerust aan
@@ -122,8 +125,8 @@ export function RouteDayInteractive({
   const mapRef = useRef<L.Map | null>(null);
   const routeLayerRef = useRef<L.LayerGroup | null>(null);
   const markerRef = useRef<L.CircleMarker | null>(null);
-  const startRef = useRef<L.CircleMarker | null>(null);
-  const endRef = useRef<L.CircleMarker | null>(null);
+  const startRef = useRef<L.Marker | null>(null);
+  const endRef = useRef<L.Marker | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const chartRef = useRef<Chart | null>(null);
 
@@ -146,20 +149,27 @@ export function RouteDayInteractive({
         weight: 3,
       }).addTo(mapRef.current);
       markerRef.current.setStyle({ opacity: 0, fillOpacity: 0 });
-      startRef.current = L.circleMarker([0, 0], {
-        radius: 6,
-        color: '#ffffff',
-        fillColor: '#2ecc71',
-        fillOpacity: 1,
-        weight: 2,
+      startRef.current = L.marker([0, 0], {
+        icon: L.divIcon({
+          className: 'route-pin-icon',
+          html: '<div class="route-pin route-pin-start"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5v14l11-7z" fill="#ffffff"/></svg></div>',
+          iconSize: [26, 34],
+          iconAnchor: [13, 32],
+        }),
+        interactive: false,
+        zIndexOffset: 1000,
       }).addTo(mapRef.current);
-      endRef.current = L.circleMarker([0, 0], {
-        radius: 6,
-        color: '#ffffff',
-        fillColor: '#e74c3c',
-        fillOpacity: 1,
-        weight: 2,
+      startRef.current.setOpacity(0);
+      endRef.current = L.marker([0, 0], {
+        icon: L.divIcon({
+          className: 'route-pin-icon',
+          html: '<div class="route-pin route-pin-end"><svg viewBox="0 0 24 24" width="12" height="12"><rect x="6" y="6" width="12" height="12" rx="2" fill="#ffffff"/></svg></div>',
+          iconSize: [26, 34],
+          iconAnchor: [13, 32],
+        }),
+        interactive: false,
       }).addTo(mapRef.current);
+      endRef.current.setOpacity(0);
       window.setTimeout(() => mapRef.current?.invalidateSize(), 200);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Map could not be loaded');
@@ -264,11 +274,11 @@ export function RouteDayInteractive({
           [points[i - 1].lat, points[i - 1].lon],
           [points[i].lat, points[i].lon],
         ],
-        { color: colorForGradient(gradients[i]), weight: 5, lineJoin: 'round' }
+        { color: colorForGradient(gradients[i]), weight: 4, opacity: 0.9, lineJoin: 'round' }
       ).addTo(routeLayerRef.current);
     }
-    startRef.current?.setLatLng([points[0].lat, points[0].lon]);
-    endRef.current?.setLatLng([points[points.length - 1].lat, points[points.length - 1].lon]);
+    startRef.current?.setLatLng([points[0].lat, points[0].lon]).setOpacity(1);
+    endRef.current?.setLatLng([points[points.length - 1].lat, points[points.length - 1].lon]).setOpacity(1);
     const bounds = L.latLngBounds(points.map((p) => [p.lat, p.lon] as [number, number]));
     mapRef.current.invalidateSize();
     if (window.innerWidth < 640) {
@@ -423,9 +433,16 @@ export function RouteDayInteractive({
           {routeCenter && (
             <WeatherWidget lat={routeCenter.lat} lon={routeCenter.lon} r={r} language={language} />
           )}
-          <a className="route-download-btn" href={day.gpx} download={`dag-${day.day}.gpx`}>
+          <button
+            type="button"
+            className="route-download-btn"
+            disabled={!points.length}
+            onClick={() =>
+              downloadGpxTrack(points, `Project 15/70 — ${day.title}`, `project-1570-dag-${day.day}.gpx`)
+            }
+          >
             <Download size={18} /> {r.downloadGpx}
-          </a>
+          </button>
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (
               <span key={b.label} className="route-legend-item">

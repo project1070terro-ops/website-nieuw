@@ -1,5 +1,6 @@
 import { ArrowRight, CircleArrowOutUpRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
+import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
 import { Stats } from './Stats';
 
@@ -25,7 +26,7 @@ export function Cause({ t, navigate }: CauseProps) {
           <div className="terro-block" key={title}>
             <h2>{title}</h2>
             {text.trim().split(/\n\n+/).map((para, i) => (
-              <p key={i}>{para}</p>
+              <p key={i}><BrandText text={para} /></p>
             ))}
           </div>
         ))}

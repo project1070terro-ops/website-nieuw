@@ -7,7 +7,7 @@ interface PrivacyDisclaimerProps {
 // Vul deze placeholders eenvoudig hier in:
 const PROJECT_NAME = '[PROJECT_NAME_PLACEHOLDER]';
 const ORGANIZER_NAME = '[YOUR_NAME_PLACEHOLDER]';
-const CONTACT_EMAIL = '[YOUR_EMAIL_PLACEHOLDER]';
+const CONTACT_EMAIL = 'info@project1570terro.com';
 
 export function PrivacyDisclaimer({ navigate }: PrivacyDisclaimerProps) {
   return (
