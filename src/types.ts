@@ -1,5 +1,5 @@
 export type Language = 'nl' | 'en' | 'es';
-export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'donate' | 'contact' | 'privacy';
+export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'donate' | 'contact' | 'privacy';
 
 export interface Donation {
   id: string;
@@ -10,7 +10,7 @@ export interface Donation {
 }
 
 export interface TranslationContent {
-  nav: Record<'home' | 'story' | 'route' | 'terro' | 'blog' | 'donate' | 'contact', string>;
+  nav: Record<'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'donate' | 'contact', string>;
   support: string;
   heroEyebrow: [string, string];
   heroTitle: string;
@@ -75,6 +75,13 @@ export interface TranslationContent {
   };
   terroTitle: string;
   terroSections: Array<[string, string]>;
+  causeTitle: string;
+  causeLead: string;
+  causeSections: Array<[string, string]>;
+  causeLinkLabel: string;
+  donateCauseTitle: string;
+  donateCauseText: string;
+  donateCauseLink: string;
   blogTitle: string;
   blogLead: string;
   blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; image: string; }>;

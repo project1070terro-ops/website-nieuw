@@ -42,7 +42,7 @@ Toch is het niet alleen getallen kijken. De voorbereiding van Terro is doordacht
       label: 'GOEDE DOEL',
       title: 'Goede Doel: Save the Children',
       fullTitle: 'Fietsen voor de Toekomst: Waarom Wij Kiezen voor Save the Children',
-      image: '/images/hero/save-the-children-banner.jpg.png',
+      image: '/images/hero/stc-banner.webp',
       body: `Wielrennen is meer dan snelheid en afstand. Bij Project 15/70 staat het collectieve doel centraal: kinderen een betere toekomst bieden. Daarom kiezen wij bewust voor Save the Children. Hun werk komt terecht waar de hulp het hardst nodig is: bij kwetsbare kinderen die niet zelf voor zichzelf kunnen opkomen.
 
 Elke donatie is een hoogtemeter. Elke hoogtemeter brengt ons dichter bij een wereld waarin elk kind kansen krijgt, ongeacht de omstandigheden waarin het geboren wordt. Terro fietst niet alleen voor zichzelf, maar voor alle kinderen die een duwtje in de rug verdienen.
@@ -94,7 +94,7 @@ Yet it is not just about numbers. Terro's preparation is thoughtful and structur
       label: 'CHARITY',
       title: 'Charity: Save the Children',
       fullTitle: 'Riding for the Future: Why We Support Save the Children',
-      image: '/images/hero/save-the-children-banner.jpg.png',
+      image: '/images/hero/stc-banner.webp',
       body: `Cycling is more than speed and distance. With Project 15/70 the collective goal comes first: giving children a better future. That is why we consciously choose Save the Children. Their work reaches those who need help the most: vulnerable children who cannot speak up for themselves.
 
 Every donation is a vertical meter. Every vertical meter brings us closer to a world where every child gets chances, regardless of the circumstances they are born into. Terro is not just cycling for himself, but for all children who deserve a helping hand.
@@ -146,7 +146,7 @@ Aun así, no se trata solo de números. La preparación de Terro es reflexiva y 
       label: 'CAUSA BENÉFICA',
       title: 'Causa Benéfica: Save the Children',
       fullTitle: 'Pedaleando por el Futuro: Por Qué Elegimos Save the Children',
-      image: '/images/hero/save-the-children-banner.jpg.png',
+      image: '/images/hero/stc-banner.webp',
       body: `El ciclismo es más que velocidad y distancia. Con el Proyecto 15/70, el objetivo colectivo es lo primero: ofrecer un futuro mejor a los niños. Por eso elegimos conscientemente Save the Children. Su trabajo llega a quienes más necesitan ayuda: niños vulnerables que no pueden defenderse por sí mismos.
 
 Cada donación es un metro de desnivel. Cada metro de desnivel nos acerca a un mundo donde cada niño tenga oportunidades, independientemente de las circunstancias en las que nazca. Terro no pedalea solo por sí mismo, sino por todos los niños que merecen un empujón.

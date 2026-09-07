@@ -1,17 +1,18 @@
-import { Check, Mountain } from 'lucide-react';
+import { ArrowRight, Check, Mountain } from 'lucide-react';
 import { FormEvent, useState } from 'react';
-import type { Donation, TranslationContent } from '../types';
+import type { Donation, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
 
 interface DonateProps {
   t: TranslationContent;
+  navigate: (page: Page) => void;
   donations: Donation[];
   totalDonated: number;
   onDonation: () => Promise<void>;
 }
 
-export function Donate({ t, donations, totalDonated, onDonation }: DonateProps) {
+export function Donate({ t, navigate, donations, totalDonated, onDonation }: DonateProps) {
   const [amount, setAmount] = useState(25);
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
@@ -76,6 +77,17 @@ export function Donate({ t, donations, totalDonated, onDonation }: DonateProps) 
           <div style={{ width: `${progress}%` }} />
         </div>
         <p>{t.donateIntro}</p>
+      </section>
+
+      <section className="cause-teaser">
+        <img className="cause-teaser-logo" src="/images/sponsor/stc-embleem.png" alt="Save the Children" />
+        <div className="cause-teaser-body">
+          <h3>{t.donateCauseTitle}</h3>
+          <p>{t.donateCauseText}</p>
+          <button className="cause-teaser-link" onClick={() => navigate('cause')}>
+            {t.donateCauseLink} <ArrowRight size={15} />
+          </button>
+        </div>
       </section>
 
       <section className="tier-grid">

@@ -7,6 +7,8 @@ interface FooterProps {
   className?: string;
 }
 
+const STC_URL = 'https://www.savethechildren.net/what-we-do/advocacy/save-children-europe';
+
 export function Footer({ t, navigate, className }: FooterProps) {
   return (
     <footer className={className}>
@@ -25,12 +27,16 @@ export function Footer({ t, navigate, className }: FooterProps) {
                 <Instagram size={20} />
               </a>
             </div>
+            <a className="footer-stc" href={STC_URL} target="_blank" rel="noreferrer">
+              <img src="/images/sponsor/stc-embleem.png" alt="Save the Children" />
+              <span>SAVE THE CHILDREN</span>
+            </a>
           </div>
 
           <div className="footer-module footer-nav-module">
             <h3 className="footer-title">NAVIGATIE</h3>
             <div className="footer-nav-links">
-              {(['home', 'story', 'route', 'terro', 'blog'] as (keyof typeof t.nav)[]).map((key) => (
+              {(['home', 'story', 'route', 'terro', 'blog', 'cause'] as (keyof typeof t.nav)[]).map((key) => (
                 <button key={key} onClick={() => navigate(key as Page)}>
                   {t.nav[key]}
                 </button>

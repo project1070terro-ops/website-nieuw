@@ -24,7 +24,7 @@ export function Terro({ t, navigate }: TerroProps) {
           alt="Terro"
           className="w-full h-[250px] md:h-[420px] object-cover object-[center_46%]"
         />
-        <div className="absolute inset-0 bg-black/60 md:bg-black/75 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/60 lg:bg-black/75 pointer-events-none" />
         <div className="terro-image-vignette absolute inset-0 pointer-events-none" />
       </div>
       <article className="terro-sections relative z-10 -mt-12 pt-8">

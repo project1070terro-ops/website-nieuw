@@ -9,7 +9,7 @@ export const heroImages = [
 
 export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
   nl: {
-    nav: { home: 'Home', story: 'Het Verhaal', route: 'De Route', terro: 'Project Terro', blog: 'Blog', donate: 'Doneren', contact: 'Contact' },
+    nav: { home: 'Home', story: 'Het Verhaal', route: 'De Route', terro: 'Project Terro', blog: 'Blog', cause: 'Het Goede Doel', donate: 'Doneren', contact: 'Contact' },
     support: 'Steun Save the Children & doneer nu',
     heroEyebrow: ['NAJAAR 2029', '10 DAGEN NON-STOP VANAF HET STRAND VAN ALBIR'],
     heroTitle: 'PROJECT 15/70',
@@ -61,6 +61,17 @@ De filosofie van Terro in het zadel is even simpel als onbarmhartig: niet zeuren
 Vanaf oktober verschuift de focus naar de basis: twee keer per week gerichte kracht- en core-stabiliteitstraining thuis, twee intensieve sessies op de virtuele wegen van Zwift, en in het weekend een stevige rit om de scherpte te behouden met het team. Zodra het voorjaar in maart aanbreekt, worden de trainingsuren en de kilometers gestaag opgebouwd, terwijl core- en krachttraining de onmisbare fundering blijven vormen. Richting 2027 en 2028 vindt de ultieme voorbereiding plaats in Spanje zelf, waarbij de specifieke etappes stilaan worden verkend vanuit Albir.
 
 Qua materiaal laat Terro niets aan het toeval over en stelt hij alles in eigen beheer perfect af. Voor de uitrusting kan hij rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer van Forza Fortuna (Fortuna Group), die ervoor zorgt dat Terro aan de start verschijnt in een perfecte, aerodynamische en professionele uitrusting.`]],
+    causeTitle: 'Het goede doel: Save the Children',
+    causeLead: `Elke hoogtemeter van Project 15/70 staat in dienst van iets groters dan de sport. Daarom kiezen we bewust voor Save the Children, een wereldwijde organisatie die zich al meer dan honderd jaar inzet voor kinderen die het het hardst nodig hebben.`,
+    causeSections: [
+      ['Wie is Save the Children', `Save the Children werd in 1919 opgericht door de Britse Eglantyne Jebb en groeide uit tot één van de meest invloedrijke kinderrechtenorganisaties ter wereld. Met teams in meer dan honderd landen strijdt de organisatie elke dag voor een fundamentele overtuiging: elk kind heeft recht op overleving, bescherming, ontwikkeling en participatie — wie het ook is en waar het ook geboren wordt.`],
+      ['Wat doen ze', `Het werk van Save the Children is breed en concreet. De organisatie levert noodhulp bij rampen en conflicten, zet zich in voor de bescherming van kinderen tegen geweld en uitbuiting, en investeert in gezondheid, voeding en onderwijs. Ook in Europa voert Save the Children campagne om de belangen van kinderen hoog op de agenda van beleidsmakers te zetten — want kinderrechten kennen geen grenzen.`],
+      ['Waarom wij voor hen kiezen', `Kinderen kunnen niet zelf opkomen voor hun toekomst — dat doen wij voor hen. Voor Terro en het team van Forza Fortuna voelde de keuze voor Save the Children vanzelfsprekend: dit project draait om verantwoordelijkheid voor de volgende generatie. Elke hoogtemeter die we afworstelen en elke euro die binnenkomt, vertaalt zich in steun voor kwetsbare kinderen. Dat is de kracht van samen trappen: onze inspanning wordt hun kans.`],
+    ],
+    causeLinkLabel: 'Ontdek meer op de officiële website',
+    donateCauseTitle: 'Wij fietsen voor Save the Children',
+    donateCauseText: 'Achter elke hoogtemeter schuilt een kind dat een eerlijke kans verdient. Save the Children zet zich wereldwijd in voor gezondheid, onderwijs en bescherming van kinderen — precies waar jouw donatie heen gaat.',
+    donateCauseLink: 'Lees waarom we voor hen kiezen',
     blogTitle: 'Nieuws uit het peloton',
     blogLead: 'Updates, verhalen en momenten onderweg naar Project 15/70.',
     blogCards: blogPosts.nl,
@@ -87,7 +98,7 @@ Laat maar iets horen — we staan voor je klaar.`,
     email: 'Officieel e-mailadres'
   },
   en: {
-    nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', donate: 'Donate', contact: 'Contact' },
+    nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', cause: 'Our Cause', donate: 'Donate', contact: 'Contact' },
     support: 'Support Save the Children & donate now',
     heroEyebrow: ['AUTUMN 2029', '10 DAYS NON-STOP FROM THE BEACH OF ALBIR'],
     heroTitle: 'PROJECT 15/70',
@@ -139,6 +150,17 @@ Terro's philosophy in the saddle is as simple as it is ruthless: don't complain,
 From October the focus shifts to the basics: twice a week targeted strength and core stability training at home, two intensive sessions on the virtual roads of Zwift, and a solid ride at the weekend to keep sharp with the team. As soon as spring arrives in March, training hours and kilometers are steadily built up, while core and strength training remain the indispensable foundation. Around 2027 and 2028 the ultimate preparation will take place in Spain itself, with the specific stages gradually being explored from Albir.
 
 When it comes to equipment, Terro leaves nothing to chance and fine-tunes everything himself. For his kit he can rely on the unconditional support of friend and sponsor Frank Peeraer of Forza Fortuna (Fortuna Group), who ensures Terro appears at the start in perfect, aerodynamic and professional equipment.`]],
+    causeTitle: 'Our cause: Save the Children',
+    causeLead: `Every vertical meter of Project 15/70 serves something bigger than the sport itself. That is why we deliberately chose Save the Children, a global organisation that has been fighting for children who need it most for over a hundred years.`,
+    causeSections: [
+      ['Who is Save the Children', `Save the Children was founded in 1919 by the British activist Eglantyne Jebb and grew into one of the most influential children's rights organisations in the world. With teams in more than one hundred countries, the organisation fights every day for a fundamental conviction: every child has the right to survival, protection, development and participation — no matter who they are or where they are born.`],
+      ['What they do', `Save the Children's work is broad and concrete. The organisation delivers emergency aid in disasters and conflicts, works to protect children from violence and exploitation, and invests in health, nutrition and education. In Europe too, Save the Children campaigns to put children's interests high on the agenda of policymakers — because children's rights know no borders.`],
+      ['Why we chose them', `Children cannot stand up for their own future — we do it for them. For Terro and the Forza Fortuna team, choosing Save the Children felt self-evident: this project is about responsibility for the next generation. Every vertical meter we conquer and every euro that comes in translates into support for vulnerable children. That is the power of riding together: our effort becomes their chance.`],
+    ],
+    causeLinkLabel: 'Discover more on the official website',
+    donateCauseTitle: 'We ride for Save the Children',
+    donateCauseText: 'Behind every vertical meter is a child who deserves a fair chance. Save the Children works worldwide for the health, education and protection of children — exactly where your donation goes.',
+    donateCauseLink: 'Read why we chose them',
     blogTitle: 'News from the peloton',
     blogLead: 'Updates, stories and moments on the way to Project 15/70.',
     blogCards: blogPosts.en,
@@ -165,7 +187,7 @@ Let us know — we're here for you.`,
     email: 'Official email address'
   },
   es: {
-    nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', donate: 'Donar', contact: 'Contacto' },
+    nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', cause: 'Nuestra Causa', donate: 'Donar', contact: 'Contacto' },
     support: 'Apoya a Save the Children y dona ahora',
     heroEyebrow: ['OTOÑO 2029', '10 DÍAS SIN PARAR DESDE LA PLAYA DE ALBIR'],
     heroTitle: 'PROJECT 15/70',
@@ -217,6 +239,17 @@ La filosofía de Terro en el sillín es tan sencilla como despiadada: no quejars
 A partir de octubre, el enfoque se traslada a lo básico: dos sesiones semanales de fuerza y estabilidad de core en casa, dos sesiones intensas en las carreteras virtuales de Zwift y una salida sólida el fin de semana para mantenerse en forma con el equipo. Cuando llega la primavera en marzo, las horas de entrenamiento y los kilómetros aumentan progresivamente, mientras que el trabajo de core y fuerza sigue siendo el cimiento indispensable. Hacia 2027 y 2028, la preparación definitiva tendrá lugar en la propia España, explorando gradualmente las etapas específicas desde Albir.
 
 En cuanto al material, Terro no deja nada al azar y ajusta todo personalmente con precisión. Para el equipamiento puede contar con el apoyo incondicional de su amigo y patrocinador Frank Peeraer de Forza Fortuna (Fortuna Group), quien se asegura de que Terro aparezca en la línea de salida con un equipamiento perfecto, aerodinámico y profesional.`]],
+    causeTitle: 'Nuestra causa: Save the Children',
+    causeLead: `Cada metro de desnivel del Proyecto 15/70 está al servicio de algo más grande que el deporte. Por eso elegimos conscientemente a Save the Children, una organización mundial que lleva más de cien años luchando por los niños que más lo necesitan.`,
+    causeSections: [
+      ['Quién es Save the Children', `Save the Children fue fundada en 1919 por la activista británica Eglantyne Jebb y se convirtió en una de las organizaciones de derechos de la infancia más influyentes del mundo. Con equipos en más de cien países, la organización lucha cada día por una convicción fundamental: todos los niños tienen derecho a sobrevivir, a la protección, al desarrollo y a la participación, sean quienes sean y dondequiera que nazcan.`],
+      ['Qué hacen', `El trabajo de Save the Children es amplio y concreto. La organización ofrece ayuda de emergencia en catástrofes y conflictos, trabaja para proteger a los niños de la violencia y la explotación, e invierte en salud, nutrición y educación. También en Europa, Save the Children realiza campañas para situar los intereses de la infancia en lo alto de la agenda de los responsables políticos, porque los derechos de los niños no conocen fronteras.`],
+      ['Por qué los elegimos', `Los niños no pueden defender su futuro por sí mismos; nosotros lo hacemos por ellos. Para Terro y el equipo de Forza Fortuna, elegir a Save the Children fue una decisión natural: este proyecto gira en torno a la responsabilidad hacia la próxima generación. Cada metro de desnivel que superamos y cada euro que recaudamos se traduce en apoyo a niños vulnerables. Esa es la fuerza de pedalear juntos: nuestro esfuerzo se convierte en su oportunidad.`],
+    ],
+    causeLinkLabel: 'Descubre más en el sitio web oficial',
+    donateCauseTitle: 'Pedaleamos por Save the Children',
+    donateCauseText: 'Detrás de cada metro de desnivel hay un niño que merece una oportunidad justa. Save the Children trabaja en todo el mundo por la salud, la educación y la protección de los niños: exactamente adonde va tu donación.',
+    donateCauseLink: 'Descubre por qué los elegimos',
     blogTitle: 'Noticias del pelotón',
     blogLead: 'Actualizaciones, historias y momentos en el camino hacia el Proyecto 15/70.',
     blogCards: blogPosts.es,

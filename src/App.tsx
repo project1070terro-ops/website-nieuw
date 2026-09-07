@@ -12,6 +12,7 @@ import { RoutePage } from './components/RoutePage';
 import { Terro } from './components/Terro';
 import { Blog } from './components/Blog';
 import { BlogDetail } from './components/BlogDetail';
+import { Cause } from './components/Cause';
 import { Donate } from './components/Donate';
 import { Contact } from './components/Contact';
 import { PrivacyDisclaimer } from './components/PrivacyDisclaimer';
@@ -143,8 +144,9 @@ function App() {
         ) : page === 'blog' ? (
           <Blog t={t} navigate={navigate} goToBlog={goToBlog} />
         ) : null}
+        {page === 'cause' && <Cause t={t} navigate={navigate} />}
         {page === 'donate' && (
-          <Donate t={t} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
+          <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
         {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} />}
