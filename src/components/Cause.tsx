@@ -15,7 +15,7 @@ export function Cause({ t, navigate }: CauseProps) {
   return (
     <>
       <PageIntro title={t.causeTitle} lead={t.causeLead} />
-      <div className="cause-banner w-full max-w-4xl mx-auto">
+      <div className="cause-banner">
         <img
           src="/images/hero/stc-banner.webp"
           alt="Fietsende silhouetten en juichende kinderen bij zonsondergang in de Spaanse bergen"

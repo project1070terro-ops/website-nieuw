@@ -63,12 +63,14 @@ export function Footer({ t, navigate, className }: FooterProps) {
         </div>
         
         <div className="footer-bottom">
-          <button className="footer-privacy" onClick={() => navigate('privacy')}>
-            Privacy & Disclaimer
-          </button>
-          <button className="footer-privacy" onClick={() => navigate('privacy')}>
-            Cookies
-          </button>
+          <div className="footer-legal">
+            <button className="footer-privacy" onClick={() => navigate('privacy')}>
+              Privacy & Disclaimer
+            </button>
+            <button className="footer-privacy" onClick={() => navigate('privacy')}>
+              Cookies
+            </button>
+          </div>
           <div className="footer-copyright">
             © 2026 Forza Fortuna Financial Group. Alle rechten voorbehouden.
           </div>

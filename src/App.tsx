@@ -149,7 +149,7 @@ function App() {
           <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
-        {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} />}
+        {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
       </main>
       <Footer t={t} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       {cookieConsent === null && (

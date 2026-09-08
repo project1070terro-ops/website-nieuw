@@ -21,7 +21,7 @@ export function Story({ t, navigate }: StoryProps) {
         </div>
       </PageIntro>
       <blockquote className="story-quote" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
-      <section className="w-full bg-neutral-900 md:bg-neutral-950 py-12">
+      <section className="w-full bg-neutral-900 md:bg-neutral-950 py-6">
         <Stats t={t} navigate={navigate} />
       </section>
       <section className="story-grid">
