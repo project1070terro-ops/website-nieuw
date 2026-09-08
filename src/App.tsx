@@ -151,7 +151,7 @@ function App() {
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
         {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
       </main>
-      <Footer t={t} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
+      <Footer t={t} language={language} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       {cookieConsent === null && (
         <CookieBanner
           navigate={navigate}

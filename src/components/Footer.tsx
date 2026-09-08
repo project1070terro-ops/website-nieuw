@@ -1,15 +1,22 @@
 import { Facebook, Instagram } from 'lucide-react';
-import type { Page, TranslationContent } from '../types';
+import type { Language, Page, TranslationContent } from '../types';
 
 interface FooterProps {
   t: TranslationContent;
+  language: Language;
   navigate: (page: Page) => void;
   className?: string;
 }
 
+const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
+  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. Alle rechten voorbehouden.' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. All rights reserved.' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
+};
+
 const STC_URL = 'https://www.savethechildren.net/what-we-do/advocacy/save-children-europe';
 
-export function Footer({ t, navigate, className }: FooterProps) {
+export function Footer({ t, language, navigate, className }: FooterProps) {
   return (
     <footer className={className}>
       <div className="footer-container">
@@ -65,11 +72,11 @@ export function Footer({ t, navigate, className }: FooterProps) {
         <div className="footer-bottom">
           <div className="footer-legal">
             <button className="footer-privacy" onClick={() => navigate('privacy')}>
-              Privacy & Disclaimer
+              {footerLabels[language].privacy}
             </button>
           </div>
           <div className="footer-copyright">
-            © 2026 – 2027 Project 15/70. Alle rechten voorbehouden.
+            {footerLabels[language].copyright}
           </div>
         </div>
       </div>
