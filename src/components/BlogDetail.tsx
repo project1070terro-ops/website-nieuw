@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, Download, Expand, X } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 import { Format1570 } from './Format1570';
-import { blogMedia, stravaEmbeds } from '../blogContent';
+import { blogMedia } from '../blogContent';
 
 interface BlogDetailProps {
   t: TranslationContent;
@@ -136,17 +136,17 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
             </p>
           ))}
         </div>
-        {stravaEmbeds[post.slug] && (
+        {post.stravaId && post.stravaToken && (
           <div className="strava-card">
             <p className="strava-card-eyebrow">{stravaLabels[language].eyebrow}</p>
             <div style={{ width: '465px', maxWidth: '100%', overflow: 'hidden', margin: '0 auto', borderRadius: '1rem', minHeight: '480px' }}>
               <div
                 className="strava-embed-placeholder"
                 data-embed-type="activity"
-                data-embed-id="882717467"
+                data-embed-id={post.stravaId}
                 data-style="standard"
                 data-from-embed="false"
-                data-token="K3jvVIAPVyucT7iWzDKS3yeZvmdjpfBX7S0Lwd79kQo"
+                data-token={post.stravaToken}
               ></div>
             </div>
           </div>

@@ -142,7 +142,7 @@ function App() {
         {page === 'blog' && blogSlug ? (
           <BlogDetail t={t} slug={blogSlug} language={language} navigate={navigate} goToBlog={goToBlog} />
         ) : page === 'blog' ? (
-          <Blog t={t} navigate={navigate} goToBlog={goToBlog} />
+          <Blog t={t} language={language} navigate={navigate} goToBlog={goToBlog} />
         ) : null}
         {page === 'cause' && <Cause t={t} navigate={navigate} />}
         {page === 'donate' && (
