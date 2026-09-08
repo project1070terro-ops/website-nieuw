@@ -64,15 +64,6 @@ export function Footer({ t, navigate, className }: FooterProps) {
         
         <div className="footer-bottom">
           <div className="footer-legal">
-            <button className="footer-privacy" onClick={() => navigate('home')}>
-              Home
-            </button>
-            <a className="footer-privacy" href={STC_URL} target="_blank" rel="noreferrer">
-              Save the Children
-            </a>
-            <a className="footer-privacy" href="https://www.strava.com/activities/882717467" target="_blank" rel="noreferrer">
-              Strava
-            </a>
             <button className="footer-privacy" onClick={() => navigate('privacy')}>
               Privacy & Disclaimer
             </button>
