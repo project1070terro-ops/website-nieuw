@@ -1,11 +1,54 @@
 import type { TranslationContent } from './types';
 
 // Strava-embeds per blogpost — geldt automatisch voor alle talen.
-// Sleutel = de slug van de post, waarde = de embed-code van Strava.
-// Voorbeeld:
-//   '/blog/de-officiele-aftrap': '<iframe src="https://www.strava.com/activities/123456789/embed/abc" width="590" height="405" frameborder="0" scrolling="no"></iframe>',
+// Sleutel = de slug van de post, waarde = de officiële embed-code van Strava.
 export const stravaEmbeds: Record<string, string> = {
-  '/blog/dag-1-coll-de-rates': '<div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="19862931923" data-style="standard" data-from-embed="false" data-token="U2fMxpYigy_U15Mjc8e9tHh8xpYILOVEQF3COwo8di4"></div><script src="https://strava-embeds.com/embed.js"></script>',
+  '/blog/dag-1-coll-de-rates': 'https://strava.com',
+};
+
+// Link naar de Strava-activiteit zelf per blogpost — de hele kaart is hiermee klikbaar.
+export const stravaLinks: Record<string, string> = {
+  '/blog/dag-1-coll-de-rates': 'https://www.strava.com/activities/882717467',
+};
+
+// Tijdelijke (Unsplash) sfeerfoto's per blogpost — later vervangen door eigen beelden.
+// De foto's verschijnen als compact grid onder de Strava-kaart en openen in een lightbox.
+export interface BlogPhoto {
+  src: string;
+  alt: string;
+  caption: Record<'nl' | 'en' | 'es', string>;
+}
+
+export const blogMedia: Record<string, { photos?: BlogPhoto[] }> = {
+  '/blog/dag-1-coll-de-rates': {
+    photos: [
+      {
+        src: 'https://images.unsplash.com/photo-1699389360830-30c43a34270c?auto=format&fit=crop&w=1600&q=80',
+        alt: 'Twee fietsers dalen af op een bergweg',
+        caption: { nl: 'Afdalen op de Coll de Rates', en: 'Descending the Coll de Rates', es: 'Descenso del Coll de Rates' },
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1613935306629-5afdc132d84b?auto=format&fit=crop&w=1600&q=80',
+        alt: 'Fietsers op een onverharde weg bij besneeuwde bergen',
+        caption: { nl: 'Klimmen richting de top', en: 'Climbing towards the summit', es: 'Subiendo hacia la cima' },
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1750014725142-03e55e39b89f?auto=format&fit=crop&w=1600&q=80',
+        alt: 'Brug over een vallei in het Spaanse bergland',
+        caption: { nl: 'Het Spaanse binnenland in al zijn glorie', en: 'The Spanish interior in all its glory', es: 'El interior español en todo su esplendor' },
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1758604688154-b1f83bcac0b3?auto=format&fit=crop&w=1600&q=80',
+        alt: 'Fietser in bloemenveld met berg op de achtergrond',
+        caption: { nl: 'De top is in zicht', en: 'The summit is in sight', es: 'La cima está a la vista' },
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1768935452457-bee8051f8267?auto=format&fit=crop&w=1600&q=80',
+        alt: 'Slingerende bergweg in gouden avondlicht',
+        caption: { nl: 'Slingerend door de bergen in het avondlicht', en: 'Winding through the mountains at golden hour', es: 'Serpenteando por la montaña al atardecer' },
+      },
+    ],
+  },
 };
 
 export const blogPosts: Record<'nl' | 'en' | 'es', TranslationContent['blogCards']> = {
@@ -56,9 +99,22 @@ Doneer mee en laat zien dat de fietscommunity een verschil maakt. Samen zetten w
       title: 'Dag 1: Coll de Rates Lus',
       fullTitle: 'Dag 1: De Coll de Rates Lus — De Eerste Beklimming',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `De eerste rit van Project 15/70 voert over de legendarische Coll de Rates, de beklimming die al vijftien jaar het decor vormt van onze mooiste ritten rondom Albir. Een lus die meteen de toon zet: lange klimmen, verraderlijke percentages en adembenemende uitzichten.
+      body: `De eerste rit van Project 15/70 voert over de legendarische Coll de Rates, de beklimming die al vijftien jaar het decor vormt van onze mooiste ritten rondom Albir. Een lus die meteen de toon zet: lange klimmen, verraderlijke percentages en adembenemende uitzichten.`,
+      postBody: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Na de rit delen we hier het volledige verslag van de dag: hoe de benen voelden op de lange klim, welke momenten eruit sprongen en wat deze eerste etappe betekende voor het team.
 
-Hieronder vind je de Strava-rit van deze etappe, met routekaart, hoogteprofiel en alle cijfers van de dag.`,
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Curabitur pretium tincidunt lacus, nec sagittis lectus posuere vel. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.
+
+Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla, tot slot van deze eerste etappe.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.
+
+Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.`,
     },
   ],
   en: [
@@ -108,9 +164,22 @@ Donate and show that the cycling community makes a difference. Together we stand
       title: 'Day 1: Coll de Rates Loop',
       fullTitle: 'Day 1: The Coll de Rates Loop — The First Climb',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `The first ride of Project 15/70 takes on the legendary Coll de Rates, the climb that has been the backdrop of our most beautiful rides around Albir for fifteen years. A loop that immediately sets the tone: long climbs, treacherous gradients and breathtaking views.
+      body: `The first ride of Project 15/70 takes on the legendary Coll de Rates, the climb that has been the backdrop of our most beautiful rides around Albir for fifteen years. A loop that immediately sets the tone: long climbs, treacherous gradients and breathtaking views.`,
+      postBody: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. After the ride we will share the full report of the day here: how the legs felt on the long climb, which moments stood out and what this first stage meant for the team.
 
-Below you will find the Strava activity of this stage, with route map, elevation profile and all the day's numbers.`,
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Curabitur pretium tincidunt lacus, nec sagittis lectus posuere vel. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.
+
+Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla, closing this first stage.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.
+
+Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.`,
     },
   ],
   es: [
@@ -160,9 +229,22 @@ Dona y demuestra que la comunidad ciclista marca la diferencia. Juntos nos compr
       title: 'Día 1: Bucle Coll de Rates',
       fullTitle: 'Día 1: El Bucle Coll de Rates — La Primera Ascensión',
       image: '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      body: `La primera ruta del Proyecto 15/70 afronta el legendario Coll de Rates, la ascensión que lleva quince años siendo el escenario de nuestras salidas más bonitas alrededor de Albir. Un bucle que marca el tono desde el primer momento: ascensos largos, pendientes traicioneras y vistas impresionantes.
+      body: `La primera ruta del Proyecto 15/70 afronta el legendario Coll de Rates, la ascensión que lleva quince años siendo el escenario de nuestras salidas más bonitas alrededor de Albir. Un bucle que marca el tono desde el primer momento: ascensos largos, pendientes traicioneras y vistas impresionantes.`,
+      postBody: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Después de la ruta compartiremos aquí la crónica completa del día: cómo respondieron las piernas en la larga ascensión, qué momentos destacaron y qué significó esta primera etapa para el equipo.
 
-A continuación encontrarás la actividad de Strava de esta etapa, con mapa de ruta, perfil de altitud y todas las cifras del día.`,
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Curabitur pretium tincidunt lacus, nec sagittis lectus posuere vel. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum.
+
+Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla, cerrando esta primera etapa.
+
+Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.
+
+Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+
+Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.`,
     },
   ],
 };

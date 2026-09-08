@@ -58,13 +58,23 @@ export function Header({ page, language, setLanguage, navigate, menuOpen, setMen
         <button className={`nav-donate-btn ${page === 'donate' ? 'active' : ''}`} onClick={() => { navigate('donate'); setMenuOpen(false); }}>
           {t.nav.donate}
         </button>
+        <div className="language-switcher nav-language-switcher">
+          {(['nl', 'en', 'es'] as Language[]).map((item, index) => (
+            <span key={item}>
+              <button className={language === item ? 'selected' : ''} onClick={() => setLanguage(item)}>
+                {item.toUpperCase()}
+              </button>
+              {index < 2 && <b>|</b>}
+            </span>
+          ))}
+        </div>
       </nav>
 
       <button className={`donate-btn ${page === 'donate' ? 'active' : ''}`} onClick={() => navigate('donate')}>
         {t.nav.donate}
       </button>
-      
-      <div className="language-switcher">
+
+      <div className="language-switcher header-language-switcher">
         {(['nl', 'en', 'es'] as Language[]).map((item, index) => (
           <span key={item}>
             <button className={language === item ? 'selected' : ''} onClick={() => setLanguage(item)}>

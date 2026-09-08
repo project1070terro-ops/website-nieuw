@@ -87,7 +87,7 @@ export interface TranslationContent {
   goalReached: string;
   blogTitle: string;
   blogLead: string;
-  blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; image: string; }>;
+  blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; postBody?: string; image: string; }>;
   donateTitle: string;
   donateLead: string;
   donated: string;

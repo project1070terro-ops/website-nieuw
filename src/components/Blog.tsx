@@ -22,36 +22,37 @@ export function Blog({ t, navigate, goToBlog }: BlogProps) {
   return (
     <>
       <PageIntro title={t.blogTitle} lead={t.blogLead} />
-      <section className="blog-grid">
-        {sortedCards.map(({ date, slug, label, title }) => {
+      <section className="blog-list">
+        {sortedCards.map(({ date, slug, label, title, image }) => {
           const [prefix, suffix] = title.split(':', 2);
           return (
             <a
               key={title}
               href={slug}
-              className="blog-card-link"
+              className="blog-list-item"
               onClick={(event) => {
                 event.preventDefault();
                 goToBlog?.(slug);
               }}
             >
-              <article>
-                <span className="tag">{label}</span>
-                <div>
-                  <p>{date}</p>
-                  <h2>
-                    {suffix === undefined ? (
-                      <span className="title-prefix">{title}</span>
-                    ) : (
-                      <>
-                        <span className="title-prefix">{prefix}:</span>
-                        <span className="title-suffix">{suffix}</span>
-                      </>
-                    )}
-                  </h2>
-                  <ArrowRight size={20} />
+              <img className="blog-list-thumb" src={image} alt="" loading="lazy" />
+              <div className="blog-list-body">
+                <div className="blog-list-meta">
+                  <span className="tag">{label}</span>
+                  <span className="blog-list-date">{date}</span>
                 </div>
-              </article>
+                <h2>
+                  {suffix === undefined ? (
+                    <span className="title-prefix">{title}</span>
+                  ) : (
+                    <>
+                      <span className="title-prefix">{prefix}:</span>
+                      <span className="title-suffix">{suffix}</span>
+                    </>
+                  )}
+                </h2>
+              </div>
+              <ArrowRight className="blog-list-arrow" size={20} />
             </a>
           );
         })}
