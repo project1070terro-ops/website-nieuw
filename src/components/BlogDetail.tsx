@@ -93,6 +93,40 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
 
   if (!post) return null;
 
+  const renderBlock = (text: string, prefix: string, index: number) => {
+    const imageMatch = text.match(/^\s*image:\s*(.+?)\s*$/i);
+    if (imageMatch) {
+      const src = imageMatch[1].trim();
+      const fullSrc = src.startsWith('/') ? src : `/images/blog/${src}`;
+      return (
+        <img
+          key={`${prefix}-${index}`}
+          src={fullSrc}
+          alt=""
+          loading="lazy"
+          style={{ display: 'block', width: '100%', maxWidth: '100%', height: 'auto', margin: '1.5rem 0', borderRadius: '0.5rem' }}
+        />
+      );
+    }
+    const mdImageMatch = text.match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
+    if (mdImageMatch) {
+      return (
+        <img
+          key={`${prefix}-${index}`}
+          src={mdImageMatch[2].trim()}
+          alt={mdImageMatch[1]}
+          loading="lazy"
+          style={{ display: 'block', width: '100%', maxWidth: '100%', height: 'auto', margin: '1.5rem 0', borderRadius: '0.5rem' }}
+        />
+      );
+    }
+    return (
+      <p key={`${prefix}-${index}`}>
+        <Format1570 text={text} />
+      </p>
+    );
+  };
+
   const prevPost = sortedCards[postIndex - 1];
   const nextPost = sortedCards[postIndex + 1];
   const labels = navLabels[language];
@@ -130,11 +164,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
           )}
         </h1>
         <div className="blog-detail-body">
-          {post.body.split('\n\n').slice(0, 3).map((paragraph, index) => (
-            <p key={index}>
-              <Format1570 text={paragraph} />
-            </p>
-          ))}
+          {post.body.split(/\r?\n\s*\r?\n/).slice(0, post.postBody ? 3 : undefined).map((paragraph, index) => renderBlock(paragraph, 'body', index))}
         </div>
         {post.stravaId && post.stravaToken && (
           <div className="strava-card">
@@ -154,11 +184,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
         {post.postBody && (
           <div className="blog-detail-body post-body">
             <div className={`read-more-text${expanded ? ' open' : ''}`}>
-              {post.postBody.split('\n\n').map((paragraph, index) => (
-                <p key={index}>
-                  <Format1570 text={paragraph} />
-                </p>
-              ))}
+              {post.postBody.split(/\r?\n\s*\r?\n/).map((paragraph, index) => renderBlock(paragraph, 'post', index))}
             </div>
             <button className="read-more-btn" onClick={() => setExpanded((v) => !v)}>
               {expanded ? readMoreLabels[language].less : readMoreLabels[language].more}

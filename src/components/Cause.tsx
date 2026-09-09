@@ -25,7 +25,7 @@ export function Cause({ t, navigate }: CauseProps) {
         {t.causeSections.map(([title, text]) => (
           <div className="terro-block" key={title}>
             <h2>{title}</h2>
-            {text.trim().split(/\n\n+/).map((para, i) => (
+            {text.trim().split(/\r?\n\s*\r?\n/).map((para, i) => (
               <p key={i}><BrandText text={para} /></p>
             ))}
           </div>

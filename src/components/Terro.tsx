@@ -30,7 +30,7 @@ export function Terro({ t, navigate }: TerroProps) {
       </div>
       <article className="terro-sections relative z-10 -mt-12 pt-8">
         {t.terroSections.map(([title, text], index) => {
-          const paragraphs = text.trim().split(/\n\n+/);
+          const paragraphs = text.trim().split(/\r?\n\s*\r?\n/);
           const image = sectionImages[index];
           return (
             <Fragment key={title}>

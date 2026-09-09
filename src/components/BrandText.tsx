@@ -27,7 +27,15 @@ export function BrandText({ text, className }: BrandTextProps) {
               chunk.startsWith('Forza Fortuna') || chunk === 'Fortuna Financial Group' ? (
                 <em key={j} className="team-brand">&ldquo;{chunk}&rdquo;</em>
               ) : (
-                <Fragment key={j}>{chunk}</Fragment>
+                <Fragment key={j}>
+                  {chunk.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((sub, k) => {
+                    const bold = sub.match(/^\*\*(.*)\*\*$/);
+                    if (bold) return <strong key={k}>{bold[1]}</strong>;
+                    const italic = sub.match(/^\*(.*)\*$/);
+                    if (italic) return <em key={k}>{italic[1]}</em>;
+                    return <Fragment key={k}>{sub}</Fragment>;
+                  })}
+                </Fragment>
               )
             )}
           </Fragment>
