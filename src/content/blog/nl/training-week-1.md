@@ -7,6 +7,8 @@ fullTitle: 'Project 15/70: De kop is eraf'
 status: published
 ---
 
+BENIEUWD OF DIT SNEL ZAL AANGEPAST ZIJN!
+
 Het echt slechte weer zal pas na de middag arriveren, dus snel op pad.
 Mooi binnendoor, met wat zand-, bos- en gravelpaden. Leuk, nu het nog droog is. Bij Schaarsbergen Park de Hoge Veluwe in. Voordeel als er veel wind en regen worden verwacht: ik heb de Veluwe bijna voor mezelf. 
 <!--verslag-->
