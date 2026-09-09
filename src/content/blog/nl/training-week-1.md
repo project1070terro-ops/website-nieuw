@@ -1,6 +1,6 @@
 ---
 date: 01 / 2027
-slug: /blog/training-week-1
+slug: /nl/blog/training-week-1
 category: TRAINING
 title: 'Eerste zware trainingsweek zit erop!'
 fullTitle: 'Project 15/70: De kop is eraf'
