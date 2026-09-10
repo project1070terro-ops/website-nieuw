@@ -30,12 +30,6 @@ const stravaLabels: Record<Language, { eyebrow: string; cta: string }> = {
   es: { eyebrow: 'Actividad en Strava', cta: 'Ver en Strava' },
 };
 
-const readMoreLabels: Record<Language, { more: string; less: string }> = {
-  nl: { more: 'Lees het volledige verslag ↓', less: 'Verslag inklappen ↑' },
-  en: { more: 'Read the full report ↓', less: 'Collapse report ↑' },
-  es: { more: 'Leer la crónica completa ↓', less: 'Contraer crónica ↑' },
-};
-
 export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
   const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
@@ -49,7 +43,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
   const touchStartX = useRef<number | null>(null);
   const [slide, setSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 768px)').matches);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     if (!post) navigate('blog');
@@ -72,7 +65,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
 
   useEffect(() => {
     setSlide(0);
-    setExpanded(false);
     setLightbox(null);
   }, [post?.slug]);
 
@@ -130,11 +122,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
           )}
         </h1>
         <div className="blog-detail-body">
-          {post.excerpt?.[language]?.length ? (
-            <PortableText value={post.excerpt[language]} />
-          ) : (
-            <PortableText value={post.body[language]} />
-          )}
+          <PortableText value={post.body[language]} />
         </div>
         {post.stravaId && post.stravaToken && (
           <div className="strava-card">
@@ -151,16 +139,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
             </div>
           </div>
         )}
-        {post.excerpt?.[language]?.length && post.body[language]?.length ? (
-          <div className="blog-detail-body post-body">
-            <div className={`read-more-text${expanded ? ' open' : ''}`}>
-              <PortableText value={post.body[language]} />
-            </div>
-            <button className="read-more-btn" onClick={() => setExpanded((v) => !v)}>
-              {expanded ? readMoreLabels[language].less : readMoreLabels[language].more}
-            </button>
-          </div>
-        ) : null}
         {photoCount > 0 && (
           <div className="blog-slider">
             <div

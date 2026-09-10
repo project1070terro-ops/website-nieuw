@@ -1,21 +1,5 @@
-import type { Language } from '../types';
+import type { BlogPost, Language } from '../types';
 
-export interface BlogPost {
-  date: string;
-  slug: string;
-  label: string;
-  title: string;
-  fullTitle: string;
-  body: string;
-  postBody?: string;
-  image?: string;
-  status?: 'published' | 'upcoming';
-  expected?: string;
-  stravaId?: string;
-  stravaToken?: string;
-}
-
-// Laadt alle .md-bestanden in src/content/blog/{nl,en,es}/ als ruwe tekst.
 const files = import.meta.glob('./blog/**/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 
 // Minimalistische frontmatter-parser: ondersteunt `key: value` regels
@@ -31,33 +15,78 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: match[2].trim() };
 }
 
-function loadPosts(language: Language): BlogPost[] {
-  const posts: BlogPost[] = [];
-  for (const [path, raw] of Object.entries(files)) {
-    if (!path.includes(`/blog/${language}/`)) continue;
-    const { data, content } = parseFrontmatter(raw);
-    // `<!--verslag-->` scheidt het verslag (postBody) van de hoofdtekst.
-    const [body, postBody] = content.split('<!--verslag-->').map((s) => s.trim());
-    posts.push({
+function toPortableText(content: string): any[] {
+  if (!content) return [];
+  const normalized = content.replace(/\r\n/g, '\n');
+  return normalized
+    .split(/\n\s*\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p, i) => ({
+      _type: 'block',
+      _key: `b-${i}`,
+      style: 'normal',
+      children: [{ _type: 'span', _key: `s-${i}`, text: p.replace(/\s+/g, ' '), marks: [] }],
+      markDefs: [],
+    }));
+}
+
+function emptyLocaleString(): Record<Language, string> {
+  return { nl: '', en: '', es: '' };
+}
+
+function emptyLocaleBody(): Record<Language, any[]> {
+  return { nl: [], en: [], es: [] };
+}
+
+// De drie vaste informatie-kaarten bovenaan het blogoverzicht.
+const INFO_SLUGS = new Set([
+  '/blog/de-officiele-aftrap',
+  '/blog/de-rekensom-hoogtemeters',
+  '/blog/waarom-save-the-children',
+]);
+
+const postsBySlug = new Map<string, BlogPost>();
+
+for (const [path, raw] of Object.entries(files)) {
+  const langMatch = path.match(/\/blog\/(nl|en|es)\//);
+  if (!langMatch) continue;
+  const language = langMatch[1] as Language;
+  const { data, content } = parseFrontmatter(raw);
+  const slug = data.slug ?? '';
+  if (!slug) continue;
+
+  let post = postsBySlug.get(slug);
+  if (!post) {
+    post = {
       date: data.date ?? '',
-      slug: data.slug ?? '',
-      label: data.category ?? data.label ?? '',
-      title: data.title ?? '',
-      fullTitle: data.fullTitle ?? data.title ?? '',
+      slug,
+      label: emptyLocaleString(),
+      title: emptyLocaleString(),
+      fullTitle: emptyLocaleString(),
       image: data.image || undefined,
       status: (data.status as BlogPost['status']) || 'published',
       expected: data.expected || undefined,
       stravaId: data.stravaId || undefined,
       stravaToken: data.stravaToken || undefined,
-      body,
-      postBody: postBody || undefined,
-    });
+      excerpt: emptyLocaleBody(),
+      body: emptyLocaleBody(),
+    };
+    postsBySlug.set(slug, post);
   }
-  return posts;
+
+  post.label[language] = data.category ?? data.label ?? '';
+  post.title[language] = data.title ?? '';
+  post.fullTitle[language] = data.fullTitle ?? data.title ?? '';
+
+  const [intro, report] = content.split('<!--verslag-->').map((s) => s.trim());
+  if (report) {
+    post.excerpt[language] = toPortableText(intro);
+    post.body[language] = toPortableText(report);
+  } else {
+    post.body[language] = toPortableText(intro);
+  }
 }
 
-export const blogPostsFromMarkdown: Record<Language, BlogPost[]> = {
-  nl: loadPosts('nl'),
-  en: loadPosts('en'),
-  es: loadPosts('es'),
-};
+export const markdownBlogPosts: BlogPost[] = [...postsBySlug.values()];
+export const featuredMarkdownPosts: BlogPost[] = markdownBlogPosts.filter((p) => INFO_SLUGS.has(p.slug));

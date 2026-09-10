@@ -3,6 +3,7 @@ import type { BlogPost, Donation, Language, Page } from './types';
 import { copy } from './constants';
 import { supabase } from './supabaseClient';
 import { loadBlogPosts } from './lib/sanityClient';
+import { featuredMarkdownPosts } from './content/blog';
 
 // Components
 import { Header } from './components/Header';
@@ -79,11 +80,19 @@ function App() {
     return () => window.clearInterval(timer);
   }, []);
 
-  // Load blog posts from Sanity on mount
+  // Load blog posts from Sanity on mount and merge the static featured blocks.
   useEffect(() => {
     loadBlogPosts()
-      .then(setBlogPosts)
-      .catch((error) => console.error('Failed to load blog posts:', error));
+      .then((sanityPosts) => {
+        const bySlug = new Map<string, BlogPost>();
+        for (const post of featuredMarkdownPosts) bySlug.set(post.slug, post);
+        for (const post of sanityPosts) bySlug.set(post.slug, post);
+        setBlogPosts([...bySlug.values()]);
+      })
+      .catch((error) => {
+        console.error('Failed to load blog posts:', error);
+        setBlogPosts(featuredMarkdownPosts);
+      });
   }, []);
 
   // Load donations on mount

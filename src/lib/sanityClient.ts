@@ -87,7 +87,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
   return posts.map((post) => ({
     date: post.date ?? '',
     slug: post.slug ? `/blog/${post.slug}` : '',
-    label: post.category ?? '',
+    label: toLocaleString(post.category ?? ''),
     title: toLocaleString(post.title),
     fullTitle: toLocaleString(post.fullTitle),
     image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,

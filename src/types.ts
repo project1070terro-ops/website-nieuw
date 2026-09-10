@@ -117,7 +117,7 @@ export interface BlogPhoto {
 export interface BlogPost {
   date: string;
   slug: string;
-  label: string;
+  label: Record<Language, string>;
   title: Record<Language, string>;
   fullTitle: Record<Language, string>;
   image?: string;

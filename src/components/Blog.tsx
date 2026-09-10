@@ -53,8 +53,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
   const infoCards = sortedCards.filter((c) => INFO_SLUGS.has(c.slug));
   const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year);
   // In 2029 splitsen we: reguliere updates boven, de 10 etappes onder een sub-kop.
-  const updates = yearCards.filter((c) => !isStage(c.label));
-  const stages = yearCards.filter((c) => isStage(c.label));
+  const updates = yearCards.filter((c) => !isStage(c.label[language]));
+  const stages = yearCards.filter((c) => isStage(c.label[language]));
   const timelineCards = (year === 2029 ? updates : yearCards).slice(0, showAll ? undefined : PAGE_SIZE);
   const hasMore = (year === 2029 ? updates : yearCards).length > PAGE_SIZE;
   const labels = overviewLabels[language];
@@ -76,7 +76,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
           {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
           <div className="blog-card-body">
             <div className="blog-list-meta">
-              <span className="tag upcoming-tag">{label}</span>
+              <span className="tag upcoming-tag">{label[language]}</span>
               <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
               <Lock className="upcoming-lock" size={13} />
             </div>
@@ -98,7 +98,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
         {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
         <div className="blog-card-body">
           <div className="blog-list-meta">
-            <span className="tag">{label}</span>
+            <span className="tag">{label[language]}</span>
             <span className="blog-list-date">{date}</span>
           </div>
           <h3>{titleNode}</h3>
@@ -128,7 +128,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
             >
               {image && <img src={image} alt="" loading="lazy" />}
               <div className="blog-info-card-body">
-                <span className="tag">{label}</span>
+                <span className="tag">{label[language]}</span>
                 <h2>
                   {suffix === undefined ? (
                     <span className="title-prefix">{displayTitle}</span>
