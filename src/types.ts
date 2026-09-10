@@ -87,7 +87,6 @@ export interface TranslationContent {
   goalReached: string;
   blogTitle: string;
   blogLead: string;
-  blogCards: Array<{ date: string; slug: string; label: string; title: string; fullTitle: string; body: string; postBody?: string; image?: string; status?: 'published' | 'upcoming'; expected?: string; stravaId?: string; stravaToken?: string; }>;
   donateTitle: string;
   donateLead: string;
   donated: string;
@@ -107,4 +106,26 @@ export interface TranslationContent {
   send: string;
   sent: string;
   email: string;
+}
+
+export interface BlogPhoto {
+  src: string;
+  alt: string;
+  caption: Record<Language, string>;
+}
+
+export interface BlogPost {
+  date: string;
+  slug: string;
+  label: string;
+  title: Record<Language, string>;
+  fullTitle: Record<Language, string>;
+  image?: string;
+  status: 'published' | 'upcoming';
+  expected?: string;
+  stravaId?: string;
+  stravaToken?: string;
+  excerpt?: Record<Language, any[]>;
+  body: Record<Language, any[]>;
+  photos?: BlogPhoto[];
 }

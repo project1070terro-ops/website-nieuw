@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ChevronLeft, ChevronRight, Download, Expand, X } from 'lucide-react';
-import type { Language, Page, TranslationContent } from '../types';
+import { PortableText } from '@portabletext/react';
+import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { Format1570 } from './Format1570';
-import { blogMedia } from '../blogContent';
 
 interface BlogDetailProps {
   t: TranslationContent;
   slug: string;
   language: Language;
+  blogCards: BlogPost[];
   navigate: (page: Page) => void;
   goToBlog: (slug: string) => void;
 }
@@ -35,8 +36,8 @@ const readMoreLabels: Record<Language, { more: string; less: string }> = {
   es: { more: 'Leer la crónica completa ↓', less: 'Contraer crónica ↑' },
 };
 
-export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetailProps) {
-  const sortedCards = [...t.blogCards]
+export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
+  const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
     .sort((a, b) => parseBlogDate(b.card.date).getTime() - parseBlogDate(a.card.date).getTime() || a.index - b.index)
     .map((item) => item.card);
@@ -93,50 +94,15 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
 
   if (!post) return null;
 
-  const renderBlock = (text: string, prefix: string, index: number) => {
-    const imageMatch = text.match(/^\s*image:\s*(.+?)\s*$/i);
-    if (imageMatch) {
-      const src = imageMatch[1].trim();
-      const fullSrc = src.startsWith('/') ? src : `/images/blog/${src}`;
-      return (
-        <img
-          key={`${prefix}-${index}`}
-          src={fullSrc}
-          alt=""
-          loading="lazy"
-          style={{ display: 'block', width: '100%', maxWidth: '100%', height: 'auto', margin: '1.5rem 0', borderRadius: '0.5rem' }}
-        />
-      );
-    }
-    const mdImageMatch = text.match(/^!\[([^\]]*)\]\(([^)]+)\)\s*$/);
-    if (mdImageMatch) {
-      return (
-        <img
-          key={`${prefix}-${index}`}
-          src={mdImageMatch[2].trim()}
-          alt={mdImageMatch[1]}
-          loading="lazy"
-          style={{ display: 'block', width: '100%', maxWidth: '100%', height: 'auto', margin: '1.5rem 0', borderRadius: '0.5rem' }}
-        />
-      );
-    }
-    return (
-      <p key={`${prefix}-${index}`}>
-        <Format1570 text={text} />
-      </p>
-    );
-  };
-
   const prevPost = sortedCards[postIndex - 1];
   const nextPost = sortedCards[postIndex + 1];
   const labels = navLabels[language];
-  const media = blogMedia[post.slug];
-  const photos = media?.photos ?? [];
+  const photos = post.photos ?? [];
   const photoCount = photos.length;
   const visible = isMobile ? 1 : 2;
   const maxSlide = Math.max(0, photoCount - visible);
   const safeSlide = Math.min(slide, maxSlide);
-  const shortTitle = post.fullTitle.split('—')[0].trim();
+  const shortTitle = post.fullTitle[language].split('—')[0].trim();
   const [prefix, suffix] = shortTitle.split(':', 2);
 
   return (
@@ -150,7 +116,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
         <h1 className="blog-detail-title">
           {suffix === undefined ? (
             <span className="title-prefix">
-              <Format1570 text={post.fullTitle} />
+              <Format1570 text={post.fullTitle[language]} />
             </span>
           ) : (
             <>
@@ -164,7 +130,11 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
           )}
         </h1>
         <div className="blog-detail-body">
-          {post.body.split(/\r?\n\s*\r?\n/).slice(0, post.postBody ? 3 : undefined).map((paragraph, index) => renderBlock(paragraph, 'body', index))}
+          {post.excerpt?.[language]?.length ? (
+            <PortableText value={post.excerpt[language]} />
+          ) : (
+            <PortableText value={post.body[language]} />
+          )}
         </div>
         {post.stravaId && post.stravaToken && (
           <div className="strava-card">
@@ -181,16 +151,16 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
             </div>
           </div>
         )}
-        {post.postBody && (
+        {post.excerpt?.[language]?.length && post.body[language]?.length ? (
           <div className="blog-detail-body post-body">
             <div className={`read-more-text${expanded ? ' open' : ''}`}>
-              {post.postBody.split(/\r?\n\s*\r?\n/).map((paragraph, index) => renderBlock(paragraph, 'post', index))}
+              <PortableText value={post.body[language]} />
             </div>
             <button className="read-more-btn" onClick={() => setExpanded((v) => !v)}>
               {expanded ? readMoreLabels[language].less : readMoreLabels[language].more}
             </button>
           </div>
-        )}
+        ) : null}
         {photoCount > 0 && (
           <div className="blog-slider">
             <div
@@ -245,7 +215,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
               <ChevronLeft size={18} />
               <span className="blog-detail-nav-text">
                 <span className="blog-detail-nav-label">{labels.prev}</span>
-                <span className="blog-detail-nav-title">{prevPost.title}</span>
+                <span className="blog-detail-nav-title">{prevPost.title[language]}</span>
               </span>
             </button>
           )}
@@ -253,7 +223,7 @@ export function BlogDetail({ t, slug, language, navigate, goToBlog }: BlogDetail
             <button className="blog-detail-nav-card next" onClick={() => goToBlog(nextPost.slug)}>
               <span className="blog-detail-nav-text">
                 <span className="blog-detail-nav-label">{labels.next}</span>
-                <span className="blog-detail-nav-title">{nextPost.title}</span>
+                <span className="blog-detail-nav-title">{nextPost.title[language]}</span>
               </span>
               <ChevronRight size={18} />
             </button>

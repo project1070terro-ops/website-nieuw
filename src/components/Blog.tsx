@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { ArrowRight, Lock } from 'lucide-react';
-import type { Language, Page, TranslationContent } from '../types';
+import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
 interface BlogProps {
   t: TranslationContent;
   language: Language;
+  blogCards: BlogPost[];
   navigate?: (page: Page) => void;
   goToBlog?: (slug: string) => void;
 }
@@ -40,10 +41,10 @@ function parseBlogDate(date: string) {
 
 const PAGE_SIZE = 8;
 
-export function Blog({ t, language, navigate, goToBlog }: BlogProps) {
+export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) {
   const [year, setYear] = useState(2027);
   const [showAll, setShowAll] = useState(false);
-  const sortedCards = [...t.blogCards]
+  const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
     .sort((a, b) => parseBlogDate(b.card.date).getTime() - parseBlogDate(a.card.date).getTime() || a.index - b.index)
     .map((item) => item.card);
@@ -59,9 +60,10 @@ export function Blog({ t, language, navigate, goToBlog }: BlogProps) {
   const labels = overviewLabels[language];
 
   const renderItem = ({ date, slug, label, title, image, status, expected }: (typeof yearCards)[number]) => {
-    const [prefix, suffix] = title.split(':', 2);
+    const displayTitle = title[language];
+    const [prefix, suffix] = displayTitle.split(':', 2);
     const titleNode = suffix === undefined ? (
-      <span className="title-prefix">{title}</span>
+      <span className="title-prefix">{displayTitle}</span>
     ) : (
       <>
         <span className="title-prefix">{prefix}:</span>
@@ -112,7 +114,8 @@ export function Blog({ t, language, navigate, goToBlog }: BlogProps) {
       {/* Project-info: 3 statische kaarten */}
       <section className="blog-info-grid">
         {infoCards.map(({ slug, label, title, image }) => {
-          const [prefix, suffix] = title.split(':', 2);
+          const displayTitle = title[language];
+          const [prefix, suffix] = displayTitle.split(':', 2);
           return (
             <a
               key={slug}
@@ -128,7 +131,7 @@ export function Blog({ t, language, navigate, goToBlog }: BlogProps) {
                 <span className="tag">{label}</span>
                 <h2>
                   {suffix === undefined ? (
-                    <span className="title-prefix">{title}</span>
+                    <span className="title-prefix">{displayTitle}</span>
                   ) : (
                     <>
                       <span className="title-prefix">{prefix}:</span>
