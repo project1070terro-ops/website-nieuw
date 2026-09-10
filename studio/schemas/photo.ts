@@ -8,13 +8,4 @@ export const photo = defineType({
     defineField({ name: 'alt', type: 'string', title: 'Alt-tekst' }),
     defineField({ name: 'caption', type: 'localeString', title: 'Bijschrift' }),
   ],
-  preview: {
-    select: {
-      imageUrl: 'asset.url',
-      title: 'alt',
-    },
-    prepare({ imageUrl, title }) {
-      return { title: title || 'Foto', media: imageUrl };
-    },
-  },
 });
