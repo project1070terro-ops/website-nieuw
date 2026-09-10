@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Lock } from 'lucide-react';
+import { PortableText } from '@portabletext/react';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
@@ -59,7 +60,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
   const hasMore = (year === 2029 ? updates : yearCards).length > PAGE_SIZE;
   const labels = overviewLabels[language];
 
-  const renderItem = ({ date, slug, label, title, image, status, expected }: (typeof yearCards)[number]) => {
+  const renderItem = ({ date, slug, label, title, excerpt, image, status, expected }: (typeof yearCards)[number]) => {
     const displayTitle = title[language];
     const [prefix, suffix] = displayTitle.split(':', 2);
     const titleNode = suffix === undefined ? (
@@ -81,6 +82,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
               <Lock className="upcoming-lock" size={13} />
             </div>
             <h3>{titleNode}</h3>
+            {excerpt?.[language]?.length ? (
+              <div className="blog-card-excerpt">
+                <PortableText value={excerpt[language]} />
+              </div>
+            ) : null}
           </div>
         </div>
       );
@@ -102,6 +108,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
             <span className="blog-list-date">{date}</span>
           </div>
           <h3>{titleNode}</h3>
+          {excerpt?.[language]?.length ? (
+            <div className="blog-card-excerpt">
+              <PortableText value={excerpt[language]} />
+            </div>
+          ) : null}
         </div>
       </a>
     );
