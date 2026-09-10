@@ -1,5 +1,4 @@
 import type { TranslationContent } from './types';
-import { blogPostsFromMarkdown } from './content/blog';
 
 export const heroImages = [
   '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
@@ -77,7 +76,6 @@ Qua materiaal laat Terro niets aan het toeval over, alles moet steeds tot in de 
     goalReached: 'Doel bereikt — fantastisch!',
     blogTitle: 'Nieuws uit het peloton',
     blogLead: 'Updates, verhalen en momenten onderweg naar Project 15/70.',
-    blogCards: blogPostsFromMarkdown.nl,
     donateTitle: 'Klim mee naar 17.500',
     donateLead: 'Elke euro is één hoogtemeter. Elke hoogtemeter brengt ons dichter bij een toekomst voor het goede doel.',
     donated: 'Al',
@@ -169,7 +167,6 @@ When it comes to equipment, Terro leaves nothing to chance — everything must a
     goalReached: 'Goal reached — amazing!',
     blogTitle: 'News from the peloton',
     blogLead: 'Updates, stories and moments on the way to Project 15/70.',
-    blogCards: blogPostsFromMarkdown.en,
     donateTitle: 'Climb with us to 17,500',
     donateLead: 'Every euro is one vertical meter. Every vertical meter brings us closer to a future for the good cause.',
     donated: 'Already',
@@ -261,7 +258,6 @@ En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfe
     goalReached: '¡Meta alcanzada — increíble!',
     blogTitle: 'Noticias del pelotón',
     blogLead: 'Actualizaciones, historias y momentos en el camino hacia el Proyecto 15/70.',
-    blogCards: blogPostsFromMarkdown.es,
     donateTitle: 'Sube con nosotros a 17.500',
     donateLead: 'Cada euro es un metro de desnivel. Cada metro de desnivel nos acerca a un futuro para la buena causa.',
     donated: 'Ya',

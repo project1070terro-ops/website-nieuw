@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import type { Language, Page, Donation } from './types';
+import type { BlogPost, Donation, Language, Page } from './types';
 import { copy } from './constants';
 import { supabase } from './supabaseClient';
+import { loadBlogPosts } from './lib/sanityClient';
 
 // Components
 import { Header } from './components/Header';
@@ -38,6 +39,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([]);
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | null>(null);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     const stored = localStorage.getItem('cookie-consent') as 'accepted' | 'declined' | null;
@@ -75,6 +77,13 @@ function App() {
       setActiveSlide((slide) => (slide + 1) % heroImages.length);
     }, 7000);
     return () => window.clearInterval(timer);
+  }, []);
+
+  // Load blog posts from Sanity on mount
+  useEffect(() => {
+    loadBlogPosts()
+      .then(setBlogPosts)
+      .catch((error) => console.error('Failed to load blog posts:', error));
   }, []);
 
   // Load donations on mount
@@ -140,9 +149,9 @@ function App() {
         {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
         {page === 'terro' && <Terro t={t} navigate={navigate} />}
         {page === 'blog' && blogSlug ? (
-          <BlogDetail t={t} slug={blogSlug} language={language} navigate={navigate} goToBlog={goToBlog} />
+          <BlogDetail t={t} slug={blogSlug} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
         ) : page === 'blog' ? (
-          <Blog t={t} language={language} navigate={navigate} goToBlog={goToBlog} />
+          <Blog t={t} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
         ) : null}
         {page === 'cause' && <Cause t={t} navigate={navigate} />}
         {page === 'donate' && (
