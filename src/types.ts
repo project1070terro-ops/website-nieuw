@@ -123,9 +123,12 @@ export interface BlogPost {
   image?: string;
   status: 'published' | 'upcoming';
   expected?: string;
-  stravaId?: string;
-  stravaToken?: string;
-  excerpt?: Record<Language, any[]>;
+  inleiding?: Record<Language, any[]>;
+  strava?: {
+    image?: string;
+    url?: string;
+    alt?: string;
+  };
   body: Record<Language, any[]>;
   photos?: BlogPhoto[];
 }

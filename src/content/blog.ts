@@ -67,9 +67,7 @@ for (const [path, raw] of Object.entries(files)) {
       image: data.image || undefined,
       status: (data.status as BlogPost['status']) || 'published',
       expected: data.expected || undefined,
-      stravaId: data.stravaId || undefined,
-      stravaToken: data.stravaToken || undefined,
-      excerpt: emptyLocaleBody(),
+      inleiding: emptyLocaleBody(),
       body: emptyLocaleBody(),
     };
     postsBySlug.set(slug, post);
@@ -81,10 +79,10 @@ for (const [path, raw] of Object.entries(files)) {
 
   const [intro, report] = content.split('<!--verslag-->').map((s) => s.trim());
   if (report) {
-    post.excerpt[language] = toPortableText(intro);
-    post.body[language] = toPortableText(report);
+    post.inleiding![language] = toPortableText(intro);
+    post.body![language] = toPortableText(report);
   } else {
-    post.body[language] = toPortableText(intro);
+    post.body![language] = toPortableText(intro);
   }
 }
 

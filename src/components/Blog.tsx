@@ -60,7 +60,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
   const hasMore = (year === 2029 ? updates : yearCards).length > PAGE_SIZE;
   const labels = overviewLabels[language];
 
-  const renderItem = ({ date, slug, label, title, excerpt, image, status, expected }: (typeof yearCards)[number]) => {
+  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected }: (typeof yearCards)[number]) => {
     const displayTitle = title[language];
     const [prefix, suffix] = displayTitle.split(':', 2);
     const titleNode = suffix === undefined ? (
@@ -82,9 +82,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
               <Lock className="upcoming-lock" size={13} />
             </div>
             <h3>{titleNode}</h3>
-            {excerpt?.[language]?.length ? (
+            {inleiding?.[language]?.length ? (
               <div className="blog-card-excerpt">
-                <PortableText value={excerpt[language]} />
+                <PortableText value={inleiding[language]} />
               </div>
             ) : null}
           </div>
@@ -108,9 +108,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
             <span className="blog-list-date">{date}</span>
           </div>
           <h3>{titleNode}</h3>
-          {excerpt?.[language]?.length ? (
+          {inleiding?.[language]?.length ? (
             <div className="blog-card-excerpt">
-              <PortableText value={excerpt[language]} />
+              <PortableText value={inleiding[language]} />
             </div>
           ) : null}
         </div>

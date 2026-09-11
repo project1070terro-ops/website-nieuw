@@ -1,22 +1,5 @@
 import { defineField, defineType } from 'sanity';
 
-const RICH_TEXT_BLOCK = {
-  type: 'block',
-  styles: [
-    { title: 'Normaal', value: 'normal' },
-    { title: 'Kop 1', value: 'h1' },
-    { title: 'Kop 2', value: 'h2' },
-    { title: 'Kop 3', value: 'h3' },
-  ],
-  marks: {
-    decorators: [
-      { title: 'Vet', value: 'strong' },
-      { title: 'Cursief', value: 'em' },
-      { title: 'Onderstreept', value: 'underline' },
-    ],
-  },
-};
-
 export const post = defineType({
   name: 'post',
   title: 'Blogpost',
@@ -55,22 +38,35 @@ export const post = defineType({
       description: 'Lange titel bovenaan de detailpagina',
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Samenvatting',
+      name: 'inleiding',
+      title: 'Inleiding',
       type: 'localeText',
-      description: 'Korte introductie (als deze bestaat verschijnt er een "Lees meer"-knop)',
+      description: 'Korte introductie tekst (max. 3-4 zinnen) boven de Strava-foto',
+    }),
+    defineField({
+      name: 'strava',
+      title: 'Strava Foto + Link',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'image',
+          title: 'Strava foto',
+          type: 'image',
+          description: 'Afbeelding die klikbaar wordt naar de Strava-activiteit',
+        }),
+        defineField({
+          name: 'url',
+          title: 'Strava URL',
+          type: 'url',
+          description: 'Link naar de Strava-activiteit (opent in nieuw tabblad)',
+        }),
+      ],
     }),
     defineField({
       name: 'body',
-      title: 'Artikeltekst',
+      title: 'Hoofdtekst',
       type: 'localeText',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'heroImage',
-      title: 'Hero-afbeelding',
-      type: 'image',
-      description: 'Afbeelding op de blog-kaart en bovenaan het artikel',
     }),
     defineField({
       name: 'photos',
@@ -78,6 +74,12 @@ export const post = defineType({
       type: 'array',
       of: [{ type: 'photo' }],
       options: { layout: 'grid' },
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero-afbeelding',
+      type: 'image',
+      description: 'Afbeelding op de blog-kaart en bovenaan het artikel',
     }),
     defineField({
       name: 'status',
@@ -91,16 +93,6 @@ export const post = defineType({
       title: 'Verwachte publicatiedatum',
       type: 'string',
       description: 'Alleen zichtbaar bij status "upcoming"',
-    }),
-    defineField({
-      name: 'stravaId',
-      title: 'Strava activiteits-ID',
-      type: 'string',
-    }),
-    defineField({
-      name: 'stravaToken',
-      title: 'Strava embed-token',
-      type: 'string',
     }),
   ],
   preview: {

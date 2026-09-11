@@ -25,11 +25,13 @@ const POSTS_QUERY = `*[_type == "post" && status != "upcoming" && status != "dra
   category,
   status,
   expected,
-  stravaId,
-  stravaToken,
   title,
   fullTitle,
-  excerpt,
+  inleiding,
+  strava {
+    image { ..., alt },
+    url
+  },
   body,
   heroImage,
   "photos": photos[] {
@@ -93,9 +95,14 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
     image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,
     status: post.status === 'upcoming' ? 'upcoming' : 'published',
     expected: post.expected ?? undefined,
-    stravaId: post.stravaId ?? undefined,
-    stravaToken: post.stravaToken ?? undefined,
-    excerpt: toLocaleBody(post.excerpt),
+    inleiding: toLocaleBody(post.inleiding),
+    strava: post.strava?.image?.asset
+      ? {
+          image: urlFor(post.strava.image).width(1600).url(),
+          url: post.strava.url ?? undefined,
+          alt: post.strava.image.alt ?? '',
+        }
+      : undefined,
     body: toLocaleBody(post.body) ?? { nl: [], en: [], es: [] },
     photos: toBlogPhotos(post.photos),
   }));

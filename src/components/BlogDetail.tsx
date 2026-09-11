@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, Download, Expand, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Download, Expand, X } from 'lucide-react';
 import { PortableText } from '@portabletext/react';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { Format1570 } from './Format1570';
@@ -24,12 +24,6 @@ const navLabels: Record<Language, { prev: string; next: string }> = {
   es: { prev: 'Artículo anterior', next: 'Artículo siguiente' },
 };
 
-const stravaLabels: Record<Language, { eyebrow: string; cta: string }> = {
-  nl: { eyebrow: 'Strava-activiteit', cta: 'Bekijk op Strava' },
-  en: { eyebrow: 'Strava activity', cta: 'View on Strava' },
-  es: { eyebrow: 'Actividad en Strava', cta: 'Ver en Strava' },
-};
-
 export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
   const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
@@ -47,21 +41,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
   useEffect(() => {
     if (!post) navigate('blog');
   }, [post, navigate]);
-
-  // Laad het Strava-embedscript in; verwijder een eventueel oud script om duplicaten te voorkomen.
-  useEffect(() => {
-    const oldScript = document.querySelector('script[src="https://strava-embeds.com/embed.js"]');
-    if (oldScript) oldScript.remove();
-
-    const script = document.createElement('script');
-    script.src = 'https://strava-embeds.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, []);
 
   useEffect(() => {
     setSlide(0);
@@ -121,24 +100,50 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
             </>
           )}
         </h1>
+        {post.inleiding?.[language]?.length ? (
+          <div className="blog-detail-body">
+            <PortableText value={post.inleiding[language]} />
+          </div>
+        ) : null}
+        {post.strava?.image && (
+          <div className="blog-detail-strava">
+            {post.strava.url ? (
+              <a
+                href={post.strava.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Bekijk de Strava-activiteit"
+              >
+                <img
+                  src={post.strava.image}
+                  alt={post.strava.alt ?? ''}
+                  loading="lazy"
+                  style={{ maxWidth: '100%', borderRadius: '1rem', display: 'block' }}
+                />
+              </a>
+            ) : (
+              <img
+                src={post.strava.image}
+                alt={post.strava.alt ?? ''}
+                loading="lazy"
+                style={{ maxWidth: '100%', borderRadius: '1rem', display: 'block' }}
+              />
+            )}
+          </div>
+        )}
+        <section className="blog-detail-donate" style={{ margin: '2.5rem 0', textAlign: 'center' }}>
+          <button
+            className="button button-primary cta-large"
+            onClick={() => navigate('donate')}
+          >
+            <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" />
+            {t.support}
+            <ArrowRight size={18} />
+          </button>
+        </section>
         <div className="blog-detail-body">
           <PortableText value={post.body[language]} />
         </div>
-        {post.stravaId && post.stravaToken && (
-          <div className="strava-card">
-            <p className="strava-card-eyebrow">{stravaLabels[language].eyebrow}</p>
-            <div style={{ width: '465px', maxWidth: '100%', overflow: 'hidden', margin: '0 auto', borderRadius: '1rem', minHeight: '480px' }}>
-              <div
-                className="strava-embed-placeholder"
-                data-embed-type="activity"
-                data-embed-id={post.stravaId}
-                data-style="standard"
-                data-from-embed="false"
-                data-token={post.stravaToken}
-              ></div>
-            </div>
-          </div>
-        )}
         {photoCount > 0 && (
           <div className="blog-slider">
             <div
