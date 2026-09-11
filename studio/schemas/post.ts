@@ -94,6 +94,25 @@ export const post = defineType({
       type: 'string',
       description: 'Alleen zichtbaar bij status "upcoming"',
     }),
+    defineField({
+      name: 'excerpt',
+      title: 'Oude samenvatting (legacy)',
+      type: 'localeText',
+      hidden: true,
+      description: 'Verdwenen veld — data blijft behouden, gebruik Inleiding voor nieuwe posts',
+    }),
+    defineField({
+      name: 'stravaId',
+      title: 'Oude Strava ID (legacy)',
+      type: 'string',
+      hidden: true,
+    }),
+    defineField({
+      name: 'stravaToken',
+      title: 'Oude Strava token (legacy)',
+      type: 'string',
+      hidden: true,
+    }),
   ],
   preview: {
     select: {

@@ -28,6 +28,7 @@ const POSTS_QUERY = `*[_type == "post" && status != "upcoming" && status != "dra
   title,
   fullTitle,
   inleiding,
+  excerpt,
   strava {
     image { ..., alt },
     url
@@ -95,7 +96,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
     image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,
     status: post.status === 'upcoming' ? 'upcoming' : 'published',
     expected: post.expected ?? undefined,
-    inleiding: toLocaleBody(post.inleiding),
+    inleiding: toLocaleBody(post.inleiding) ?? toLocaleBody(post.excerpt),
     strava: post.strava?.image?.asset
       ? {
           image: urlFor(post.strava.image).width(1600).url(),
