@@ -1090,7 +1090,20 @@ main { flex: 1; }
 .blog-card-media.placeholder { display: none; }
 .upcoming-lock { color: rgba(255,255,255,0.45); margin-left: auto; }
 .blog-card-body { padding: 16px; }
-.blog-card h3 { font-size: 15px; font-weight: 700; line-height: 1.25; margin: 0; }
+.blog-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+.blog-card-excerpt {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+.blog-card-excerpt p { margin: 0; }
 .blog-show-more { margin-top: 24px; }
 .blog-card h3 .title-prefix { color: var(--white); font-weight: 600; }
 .blog-card h3 .title-suffix { color: var(--white); font-weight: 400; }
