@@ -32,6 +32,12 @@ function App() {
     const path = window.location.pathname;
     return path.startsWith('/blog/') ? path : null;
   };
+  const getInitialBlogYear = () => {
+    if (typeof window === 'undefined') return 2027;
+    const value = new URLSearchParams(window.location.search).get('year');
+    const parsed = value ? Number(value) : 2027;
+    return [2027, 2028, 2029].includes(parsed) ? parsed : 2027;
+  };
 
   const [language, setLanguage] = useState<Language>('nl');
   const [page, setPage] = useState<Page>(getInitialPage);
@@ -41,6 +47,7 @@ function App() {
   const [donations, setDonations] = useState<Donation[]>([]);
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | null>(null);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [blogYear, setBlogYear] = useState(getInitialBlogYear);
 
   useEffect(() => {
     const stored = localStorage.getItem('cookie-consent') as 'accepted' | 'declined' | null;
@@ -51,10 +58,12 @@ function App() {
 
   useEffect(() => {
     const onPopState = (event: PopStateEvent) => {
-      const state = event.state as { page?: Page; slug?: string | null } | null;
+      const state = event.state as { page?: Page; slug?: string | null; year?: number } | null;
       if (state?.page) {
         setPage(state.page);
         setBlogSlug(state.slug ?? null);
+        const year = state.year ?? getInitialBlogYear();
+        setBlogYear(year);
       } else {
         const path = window.location.pathname;
         setPage(path.startsWith('/blog') ? 'blog' : 'home');
@@ -120,25 +129,28 @@ function App() {
     }
   }
 
-  function navigate(nextPage: Page, slug?: string) {
+  function navigate(nextPage: Page, state?: { slug?: string; year?: number; hash?: string }) {
     setPage(nextPage);
-    setBlogSlug(slug ?? null);
+    setBlogSlug(state?.slug ?? null);
     setMenuOpen(false);
+    if (state?.year !== undefined) setBlogYear(state.year);
 
     let path = '/';
-    if (slug) {
-      path = slug;
+    if (state?.slug) {
+      path = state.slug;
     } else if (nextPage === 'blog') {
-      path = '/blog';
+      const query = state?.year !== undefined ? `?year=${state.year}` : '';
+      const hash = state?.hash ? `#${state.hash}` : '';
+      path = `/blog${query}${hash}`;
     } else if (nextPage !== 'home') {
       path = `/${nextPage}`;
     }
-    window.history.pushState({ page: nextPage, slug: slug ?? null }, '', path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.history.pushState({ page: nextPage, slug: state?.slug ?? null, year: state?.year ?? null, hash: state?.hash ?? null }, '', path);
+    if (!state?.hash) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goToBlog(slug: string) {
-    navigate('blog', slug);
+    navigate('blog', { slug });
   }
 
   return (
@@ -160,7 +172,7 @@ function App() {
         {page === 'blog' && blogSlug ? (
           <BlogDetail t={t} slug={blogSlug} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
         ) : page === 'blog' ? (
-          <Blog t={t} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
+          <Blog t={t} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} initialYear={blogYear} />
         ) : null}
         {page === 'cause' && <Cause t={t} navigate={navigate} />}
         {page === 'donate' && (

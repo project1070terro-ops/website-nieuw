@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, Lock } from 'lucide-react';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
@@ -9,6 +9,7 @@ interface BlogProps {
   blogCards: BlogPost[];
   navigate?: (page: Page) => void;
   goToBlog?: (slug: string) => void;
+  initialYear?: number;
 }
 
 const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; more: string; less: string }> = {
@@ -63,9 +64,26 @@ function truncateText(text: string, maxChars = 100): string {
 
 const PAGE_SIZE = 8;
 
-export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) {
-  const [year, setYear] = useState(2027);
+export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
+  const [year, setYear] = useState(initialYear ?? 2027);
   const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    if (initialYear !== undefined && initialYear !== year) {
+      setYear(initialYear);
+    }
+  }, [initialYear]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (window.location.hash === '#blog-timeline-section') {
+      const el = document.getElementById('blog-timeline-section');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, []);
+
   const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
     .sort((a, b) => parseBlogDate(b.card.date).getTime() - parseBlogDate(a.card.date).getTime() || a.index - b.index)
@@ -192,7 +210,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
       </div>
 
       {/* Tijdlijn van updates & etappes */}
-      <section className="blog-timeline">
+      <section id="blog-timeline-section" className="blog-timeline">
         <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
         {hasMore && (
           <button className="read-more-btn blog-show-more" onClick={() => setShowAll((v) => !v)}>

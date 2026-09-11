@@ -9,7 +9,7 @@ interface BlogDetailProps {
   slug: string;
   language: Language;
   blogCards: BlogPost[];
-  navigate: (page: Page) => void;
+  navigate: (page: Page, state?: { year?: number; hash?: string }) => void;
   goToBlog: (slug: string) => void;
 }
 
@@ -23,6 +23,8 @@ const navLabels: Record<Language, { prev: string; next: string }> = {
   en: { prev: 'Previous article', next: 'Next article' },
   es: { prev: 'Artículo anterior', next: 'Artículo siguiente' },
 };
+
+const YEARS = [2027, 2028, 2029];
 
 export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
   const sortedCards = [...blogCards]
@@ -75,6 +77,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
   const safeSlide = Math.min(slide, maxSlide);
   const shortTitle = post.fullTitle[language].split('—')[0].trim();
   const [prefix, suffix] = shortTitle.split(':', 2);
+  const postYear = Number(post.date.split('/')[1]?.trim());
 
   return (
     <article className="blog-detail">
@@ -83,6 +86,17 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
         <button className="blog-detail-back" onClick={() => navigate('blog')}>
           <ArrowLeft size={18} /> {t.nav.blog}
         </button>
+        <div className="blog-detail-years">
+          {YEARS.map((year) => (
+            <button
+              key={year}
+              className={year === postYear ? 'active' : ''}
+              onClick={() => navigate('blog', { year, hash: 'blog-timeline-section' })}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
         <p className="blog-detail-date">{post.date}</p>
         <h1 className="blog-detail-title">
           {suffix === undefined ? (
@@ -118,7 +132,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
                   src={post.strava.image}
                   alt={post.strava.alt ?? ''}
                   loading="lazy"
-                  style={{ maxWidth: '100%', borderRadius: '1rem', display: 'block' }}
                 />
               </a>
             ) : (
@@ -126,7 +139,6 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
                 src={post.strava.image}
                 alt={post.strava.alt ?? ''}
                 loading="lazy"
-                style={{ maxWidth: '100%', borderRadius: '1rem', display: 'block' }}
               />
             )}
           </div>
