@@ -201,7 +201,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <h2 className="blog-stages-heading">{labels.stages}</h2>
 
       {/* Jaartabs */}
-      <div className="blog-year-tabs">
+      <div id="blog-timeline-section" className="blog-year-tabs">
         {YEARS.map((y) => (
           <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setShowAll(false); }}>
             {y}
@@ -210,7 +210,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       </div>
 
       {/* Tijdlijn van updates & etappes */}
-      <section id="blog-timeline-section" className="blog-timeline">
+      <section className="blog-timeline">
         <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
         {hasMore && (
           <button className="read-more-btn blog-show-more" onClick={() => setShowAll((v) => !v)}>
