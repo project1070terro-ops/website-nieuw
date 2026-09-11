@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ArrowRight, Lock } from 'lucide-react';
-import { PortableText } from '@portabletext/react';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
@@ -40,6 +39,28 @@ function parseBlogDate(date: string) {
   return new Date(Number(year), Number(month) - 1);
 }
 
+function toPlainText(blocks: any[] = []): string {
+  return blocks
+    .map((block) => {
+      if (block?._type !== 'block' || !Array.isArray(block.children)) return '';
+      return block.children
+        .filter((child: any) => child?._type === 'span' && typeof child.text === 'string')
+        .map((child: any) => child.text)
+        .join('');
+    })
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function truncateText(text: string, maxChars = 100): string {
+  if (text.length <= maxChars) return text;
+  const cut = text.lastIndexOf(' ', maxChars);
+  const slice = cut > 0 ? text.slice(0, cut) : text.slice(0, maxChars);
+  return slice.trim() + '...';
+}
+
 const PAGE_SIZE = 8;
 
 export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) {
@@ -61,6 +82,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
   const labels = overviewLabels[language];
 
   const renderItem = ({ date, slug, label, title, inleiding, image, status, expected }: (typeof yearCards)[number]) => {
+    const excerptText = toPlainText(inleiding?.[language] || []);
+    const truncated = excerptText ? truncateText(excerptText, 100) : '';
     const displayTitle = title[language];
     const [prefix, suffix] = displayTitle.split(':', 2);
     const titleNode = suffix === undefined ? (
@@ -82,9 +105,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
               <Lock className="upcoming-lock" size={13} />
             </div>
             <h3>{titleNode}</h3>
-            {inleiding?.[language]?.length ? (
+            {truncated ? (
               <div className="blog-card-excerpt">
-                <PortableText value={inleiding[language]} />
+                <p>{truncated}</p>
               </div>
             ) : null}
           </div>
@@ -108,9 +131,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog }: BlogProps) 
             <span className="blog-list-date">{date}</span>
           </div>
           <h3>{titleNode}</h3>
-          {inleiding?.[language]?.length ? (
+          {truncated ? (
             <div className="blog-card-excerpt">
-              <PortableText value={inleiding[language]} />
+              <p>{truncated}</p>
             </div>
           ) : null}
         </div>

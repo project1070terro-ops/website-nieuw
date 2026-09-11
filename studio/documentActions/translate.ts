@@ -14,6 +14,7 @@ export function translateDocumentAction(props: any) {
   const handleTranslate = async () => {
     setIsTranslating(true);
     const patchValues: Record<string, any> = {};
+    const warnings: string[] = [];
 
     try {
       // 1. Titel en volledige titel
@@ -27,15 +28,22 @@ export function translateDocumentAction(props: any) {
         patchValues['fullTitle.es'] = await translateText(doc.fullTitle.nl, 'es');
       }
 
-      // 2. Samenvatting (excerpt) en body
-      if (doc.excerpt?.nl && Array.isArray(doc.excerpt.nl)) {
-        patchValues['excerpt.en'] = await translatePortableText(doc.excerpt.nl, 'en');
-        patchValues['excerpt.es'] = await translatePortableText(doc.excerpt.nl, 'es');
+      // 2. Inleiding (voorrang op oude excerpt) en body
+      const introSource = doc.inleiding?.nl ?? doc.excerpt?.nl;
+      if (introSource && Array.isArray(introSource)) {
+        const enIntro = await translatePortableText(introSource, 'en');
+        const esIntro = await translatePortableText(introSource, 'es');
+        patchValues['inleiding.en'] = enIntro.blocks;
+        patchValues['inleiding.es'] = esIntro.blocks;
+        warnings.push(...enIntro.warnings, ...esIntro.warnings);
       }
 
       if (doc.body?.nl && Array.isArray(doc.body.nl)) {
-        patchValues['body.en'] = await translatePortableText(doc.body.nl, 'en');
-        patchValues['body.es'] = await translatePortableText(doc.body.nl, 'es');
+        const enBody = await translatePortableText(doc.body.nl, 'en');
+        const esBody = await translatePortableText(doc.body.nl, 'es');
+        patchValues['body.en'] = enBody.blocks;
+        patchValues['body.es'] = esBody.blocks;
+        warnings.push(...enBody.warnings, ...esBody.warnings);
       }
 
       // 3. Fotobijschriften (per foto in de slider)
@@ -51,11 +59,21 @@ export function translateDocumentAction(props: any) {
 
       patch.execute([{ set: patchValues }]);
 
-      toast.push({
-        status: 'success',
-        title: 'Vertaling voltooid',
-        description: 'De Engelse en Spaanse velden zijn ingevuld.',
-      });
+      if (warnings.length > 0) {
+        const detail = warnings.slice(0, 3).join('; ');
+        const more = warnings.length > 3 ? ` (+ ${warnings.length - 3} andere)` : '';
+        toast.push({
+          status: 'warning',
+          title: 'Vertaling deels gelukt',
+          description: `Sommige stukken zijn niet vertaald (Nederlands behouden). ${detail}${more}`,
+        });
+      } else {
+        toast.push({
+          status: 'success',
+          title: 'Vertaling voltooid',
+          description: 'De Engelse en Spaanse velden zijn ingevuld.',
+        });
+      }
       props.onComplete();
     } catch (error) {
       console.error('Translation failed:', error);
