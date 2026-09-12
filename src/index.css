@@ -1146,14 +1146,13 @@ main { flex: 1; }
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
+.blog-show-more-wrap {
+  text-align: center;
+  margin: 64px 0 32px;
+}
 .blog-show-more {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
   min-width: 200px;
   min-height: 48px;
-  margin: 64px auto 32px;
   padding: 14px 32px;
 }
 @media (max-width: 640px) {

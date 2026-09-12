@@ -215,9 +215,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <section className="blog-timeline">
         <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
         {hasMore && (
-          <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
-            {labels.loadMore}
-          </button>
+          <div className="blog-show-more-wrap">
+            <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
+              {labels.loadMore}
+            </button>
+          </div>
         )}
         {year === 2029 && stages.length > 0 && (
           <>
