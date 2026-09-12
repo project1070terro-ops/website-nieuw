@@ -1017,9 +1017,10 @@ main { flex: 1; }
   border-radius: 2px;
 }
 .blog-info-card h2 { font-size: 16px; line-height: 1.25; margin: 0; }
-.blog-info-card h2 .title-prefix { color: var(--white); font-weight: 600; }
-.blog-info-card h2 .title-suffix { color: var(--white); font-weight: 400; }
-.blog-info-card:hover h2 .title-suffix,
+.blog-info-card h2 .title-prefix { color: var(--white); font-weight: 600; transition: color 0.15s ease; }
+.blog-info-card h2 .title-suffix { color: var(--white); font-weight: 400; transition: color 0.15s ease; }
+.blog-info-card:hover h2 .title-suffix { color: var(--orange); }
+.blog-info-card:active h2 .title-prefix,
 .blog-info-card:active h2 .title-suffix { color: var(--orange); }
 
 .blog-stages-heading {
@@ -1127,9 +1128,10 @@ main { flex: 1; }
 }
 .blog-card-excerpt p { margin: 0; }
 .blog-show-more { margin-top: 24px; }
-.blog-card h3 .title-prefix { color: var(--white); font-weight: 600; }
-.blog-card h3 .title-suffix { color: var(--white); font-weight: 400; }
-.blog-card:hover h3 .title-suffix,
+.blog-card h3 .title-prefix { color: var(--white); font-weight: 600; transition: color 0.15s ease; }
+.blog-card h3 .title-suffix { color: var(--white); font-weight: 400; transition: color 0.15s ease; }
+.blog-card:hover h3 .title-suffix { color: var(--orange); }
+.blog-card:active h3 .title-prefix,
 .blog-card:active h3 .title-suffix { color: var(--orange); }
 .blog-card .tag {
   display: inline-block;
