@@ -2,10 +2,10 @@ import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 import type { BlogPhoto, BlogPost, Language } from '../types';
 
-const projectId = import.meta.env.VITE_SANITY_PROJECT_ID;
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID ?? 'of8587ti';
 const dataset = import.meta.env.VITE_SANITY_DATASET ?? 'production';
 const apiVersion = import.meta.env.VITE_SANITY_API_VERSION ?? '2024-02-23';
-const useCdn = import.meta.env.VITE_SANITY_USE_CDN === 'true';
+const useCdn = import.meta.env.VITE_SANITY_USE_CDN !== 'false';
 
 export const sanityClient: SanityClient = createClient({
   projectId,
