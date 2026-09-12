@@ -12,10 +12,10 @@ interface BlogProps {
   initialYear?: number;
 }
 
-const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; more: string; less: string }> = {
-  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', more: 'Toon meer', less: 'Toon minder' },
-  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', more: 'Show more', less: 'Show less' },
-  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', more: 'Mostrar más', less: 'Mostrar menos' },
+const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string }> = {
+  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten' },
+  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts' },
+  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas' },
 };
 
 // Etappes herkennen we aan de categorie (DAG 1, DAY 2, DÍA 3, ...).
@@ -62,11 +62,12 @@ function truncateText(text: string, maxChars = 100): string {
   return slice.trim() + '...';
 }
 
-const PAGE_SIZE = 8;
+const INITIAL_COUNT = 4;
+const LOAD_MORE = 4;
 
 export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
   const [year, setYear] = useState(initialYear ?? 2027);
-  const [showAll, setShowAll] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
   useEffect(() => {
     if (initialYear !== undefined && initialYear !== year) {
@@ -95,8 +96,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   // In 2029 splitsen we: reguliere updates boven, de 10 etappes onder een sub-kop.
   const updates = yearCards.filter((c) => !isStage(c.label[language]));
   const stages = yearCards.filter((c) => isStage(c.label[language]));
-  const timelineCards = (year === 2029 ? updates : yearCards).slice(0, showAll ? undefined : PAGE_SIZE);
-  const hasMore = (year === 2029 ? updates : yearCards).length > PAGE_SIZE;
+  const timelineSource = year === 2029 ? updates : yearCards;
+  const timelineCards = timelineSource.slice(0, visibleCount);
+  const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
 
   const renderItem = ({ date, slug, label, title, inleiding, image, status, expected }: (typeof yearCards)[number]) => {
@@ -203,7 +205,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       {/* Jaartabs */}
       <div id="blog-timeline-section" className="blog-year-tabs">
         {YEARS.map((y) => (
-          <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setShowAll(false); }}>
+          <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}>
             {y}
           </button>
         ))}
@@ -213,8 +215,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <section className="blog-timeline">
         <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
         {hasMore && (
-          <button className="read-more-btn blog-show-more" onClick={() => setShowAll((v) => !v)}>
-            {showAll ? labels.less : labels.more}
+          <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
+            {labels.loadMore}
           </button>
         )}
         {year === 2029 && stages.length > 0 && (
