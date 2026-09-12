@@ -1096,11 +1096,13 @@ main { flex: 1; }
 .blog-card-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 24px;
+  align-items: stretch;
 }
 .blog-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   background: var(--anthracite);
   border-radius: 10px;
   overflow: hidden;
@@ -1118,16 +1120,28 @@ main { flex: 1; }
 }
 .blog-card-media.placeholder { display: none; }
 .upcoming-lock { color: rgba(255,255,255,0.45); margin-left: auto; }
-.blog-card-body { padding: 16px; }
+.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
 .blog-card h3 { font-size: 16px; line-height: 1.25; margin: 0; }
 .blog-card-excerpt {
+  flex: 1;
   font-size: 14px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.45;
   margin-top: 12px;
 }
-.blog-card-excerpt p { margin: 0; }
+.blog-card-excerpt p {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .blog-show-more { margin-top: 24px; }
 .blog-card h3 .title-prefix { color: var(--white); font-weight: 600; transition: color 0.15s ease; }
 .blog-card h3 .title-suffix { color: var(--white); font-weight: 400; transition: color 0.15s ease; }
