@@ -999,14 +999,10 @@ main { flex: 1; }
   text-decoration: none;
   color: inherit;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
   cursor: pointer;
 }
 @media (hover: hover) {
-  .blog-info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  }
   .blog-info-card:hover h2 .title-suffix { color: var(--orange); }
 }
 
@@ -1111,13 +1107,9 @@ main { flex: 1; }
   text-decoration: none;
   color: inherit;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 @media (hover: hover) {
-  .blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  }
   .blog-card:hover h3 .title-suffix { color: var(--orange); }
 }
 
