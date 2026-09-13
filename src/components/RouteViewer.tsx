@@ -5,7 +5,7 @@ import { RouteDayInteractive } from './RouteDayInteractive';
 
 export function RouteViewer({ t, language }: { t: TranslationContent; language: Language }) {
   const [days, setDays] = useState<RouteDay[] | null>(null);
-  const [selected, setSelected] = useState(3); // start op Dag 4
+  const [selected, setSelected] = useState(0); // start op Dag 1
   const r = t.routeViewer;
 
   useEffect(() => {
