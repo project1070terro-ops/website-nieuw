@@ -6,6 +6,7 @@ import type { Plugin, TooltipItem } from 'chart.js';
 import { Download, ExternalLink } from 'lucide-react';
 import type { RouteDay, Language, TranslationContent } from '../types';
 import { downloadGpxTrack } from '../utils/gpxExport';
+import { WeatherWidget } from './WeatherWidget';
 
 type RouteLabels = TranslationContent['routeViewer'];
 
@@ -480,6 +481,12 @@ export function RouteDayInteractive({
               </div>
             </div>
           )}
+          <WeatherWidget
+            lat={points[0]?.lat ?? 38.5947}
+            lon={points[0]?.lon ?? -0.0464}
+            r={r}
+            language={language}
+          />
         </div>
       </aside>
 
