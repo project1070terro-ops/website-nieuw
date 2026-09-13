@@ -22,3 +22,6 @@ dist-ssr
 *.sw?
 .env
 studio/.sanity/
+live.*
+page.html
+livepage.html
