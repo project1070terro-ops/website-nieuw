@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: STATISTICS
 title: 'The Math: 17,500 vertical meters'
 fullTitle: 'The Math: The Grueling Numbers Behind 17,500 Vertical Meters'
-image: /images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp
+image: /images/hero/blog-de-rekensom.webp
 status: published
 ---
 

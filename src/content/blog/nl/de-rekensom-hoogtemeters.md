@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: STATISTIEKEN
 title: 'De Rekensom: 17.500 hoogtemeters'
 fullTitle: 'De Rekensom: De Slopende Cijfers Achter 17.500 Hoogtemeters'
-image: /images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp
+image: /images/hero/blog-de-rekensom.webp
 status: published
 ---
 

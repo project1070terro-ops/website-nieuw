@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: ESTADÍSTICAS
 title: 'Los Números: 17.500 metros de desnivel'
 fullTitle: 'Los Números: Las Cifras Detrás de los 17.500 Metros de Desnivel'
-image: /images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp
+image: /images/hero/blog-de-rekensom.webp
 status: published
 ---
 
