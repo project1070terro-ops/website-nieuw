@@ -1852,6 +1852,8 @@ footer.footer-orange-top {
 .route-sidebar-title { font-size: 22px; font-weight: 800; line-height: 1.2; color: var(--white); margin: 0; }
 .route-download-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--orange); color: var(--white); border: 1px solid var(--orange); border-radius: 8px; padding: 14px 18px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
 .route-download-btn:hover { background: var(--orange-light); border-color: var(--orange-light); }
+.route-strava-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); border-radius: 8px; padding: 14px 18px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease; }
+.route-strava-btn:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
 .route-sidebar-stats { display: flex; flex-direction: column; gap: 14px; margin-top: auto; }
 .route-sidebar-stat { display: flex; flex-direction: column; gap: 4px; }
 .route-sidebar-stat-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }

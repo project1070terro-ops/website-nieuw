@@ -434,16 +434,14 @@ export function RouteDayInteractive({
           >
             <Download size={18} /> {r.downloadGpx}
           </button>
-          {day.stravaUrl && (
-            <a
-              href={day.stravaUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="route-download-btn"
-            >
-              <ExternalLink size={18} /> {r.viewOnStrava}
-            </a>
-          )}
+          <a
+            href="https://strava.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="route-strava-btn"
+          >
+            <ExternalLink size={18} /> {r.viewOnStrava}
+          </a>
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (
               <span key={b.label} className="route-legend-item">
