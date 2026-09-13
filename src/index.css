@@ -1836,10 +1836,12 @@ footer.footer-orange-top {
 
 /* ===== ROUTE VIEWER ===== */
 .route-viewer { padding: 24px 40px 80px; max-width: 1200px; margin: 0 auto; color: var(--white); }
-.route-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; scrollbar-width: thin; }
-.route-tabs::-webkit-scrollbar { height: 6px; }
-.route-tabs::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
-.route-tab { flex: 0 0 auto; padding: 10px 18px; background: var(--anthracite); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; transition: all 0.2s ease; }
+.route-tabs { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; width: 100%; margin-bottom: 16px; }
+.route-tab { padding: 16px 8px; background: var(--anthracite); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: all 0.2s ease; }
+@media (max-width: 768px) {
+  .route-tabs { grid-template-columns: repeat(5, 1fr); }
+  .route-tab { padding: 14px 4px; font-size: 13px; }
+}
 .route-tab:hover { background: rgba(192,90,40,0.2); color: var(--white); }
 .route-tab.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
 .route-map-wrap { position: relative; width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: #1a1a1a; }
