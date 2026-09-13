@@ -2,8 +2,8 @@
 date: 01 / 2027
 slug: /blog/de-rekensom-hoogtemeters
 category: STATISTIEKEN
-title: 'De Rekensom: 17.500 hoogtemeters'
-fullTitle: 'De Rekensom: De Slopende Cijfers Achter 17.500 Hoogtemeters'
+title: 'De Rekensom: +17.500 hoogtemeters'
+fullTitle: 'De Rekensom: De Slopende Cijfers Achter +17.500 Hoogtemeters'
 image: /images/hero/blog-de-rekensom.webp
 status: published
 ---
