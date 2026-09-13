@@ -385,7 +385,7 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: [r.axisDistance, r.axisHint], color: 'rgba(255,255,255,0.35)', font: { size: 9 } },
+            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 } },
           },
           y: {
             display: true,
@@ -541,12 +541,6 @@ export function RouteDayInteractive({
               </span>
               <span>
                 📈 <strong>{gradients[hoverIndex].toFixed(1)}%</strong>
-              </span>
-              <span>
-                🛣️ <strong>{r.wayTypeValue}</strong>
-              </span>
-              <span>
-                🛤️ <strong>{r.surfaceValue}</strong>
               </span>
             </>
           ) : (

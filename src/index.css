@@ -2114,7 +2114,7 @@ footer.footer-orange-top {
   .route-hover-info { display: flex; }
 }
 @media (max-width: 900px) {
-  .route-map { height: 500px; }
+  .route-map { height: 400px; }
   .route-sidebar { width: 220px; padding: 16px; }
   .route-chart-panel { height: 160px; left: 244px; }
   .route-sidebar-title { font-size: 18px; }
@@ -2123,7 +2123,7 @@ footer.footer-orange-top {
 @media (max-width: 640px) {
   .route-viewer { padding: 16px 16px 64px; }
   .route-map-wrap { display: flex; flex-direction: column; }
-  .route-map { height: 70vh; min-height: 500px; order: 2; border: none; border-top: 1px solid rgba(255,255,255,0.08); }
+  .route-map { height: 300px; min-height: auto; order: 2; border: none; border-top: 1px solid rgba(255,255,255,0.08); }
   .route-sidebar { position: relative; top: auto; left: auto; bottom: auto; width: 100%; display: contents; }
   .route-sidebar-top { order: 1; width: 100%; padding: 16px; background: rgba(20,20,20,0.92); border-radius: 12px 12px 0 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
   .route-sidebar-bottom { order: 4; width: 100%; padding: 16px; background: rgba(20,20,20,0.92); border-radius: 0 0 12px 12px; border: none; border-top: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
