@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { Language, TranslationContent } from '../types';
+import type { Language, RouteDay, TranslationContent } from '../types';
+import { loadRouteDays } from '../lib/sanityClient';
 import { RouteDayInteractive } from './RouteDayInteractive';
-
-export interface RouteDay {
-  day: number;
-  gpx: string;
-  images: string[];
-  title: string;
-  text: string;
-}
 
 export function RouteViewer({ t, language }: { t: TranslationContent; language: Language }) {
   const [days, setDays] = useState<RouteDay[] | null>(null);
@@ -16,15 +9,30 @@ export function RouteViewer({ t, language }: { t: TranslationContent; language: 
   const r = t.routeViewer;
 
   useEffect(() => {
-    fetch('/route-days.json')
-      .then((res) => res.json())
-      .then((data: Record<Language, RouteDay[]>) => {
-        setDays(data[language]);
-      })
-      .catch((err) => {
+    let cancelled = false;
+    setSelected(0);
+    (async () => {
+      try {
+        const sanityDays = await loadRouteDays(language);
+        if (sanityDays.length > 0) {
+          if (!cancelled) setDays(sanityDays);
+          return;
+        }
+      } catch (err) {
+        console.error('Failed to load route days from Sanity:', err);
+      }
+      try {
+        const res = await fetch('/route-days.json');
+        const data: Record<Language, RouteDay[]> = await res.json();
+        if (!cancelled) setDays(data[language]);
+      } catch (err) {
         console.error('Failed to load route days:', err);
-        setDays([]);
-      });
+        if (!cancelled) setDays([]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, [language]);
 
   if (!days) return <p className="route-loading">{r.loadingRoute}</p>;

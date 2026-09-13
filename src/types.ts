@@ -132,3 +132,9 @@ export interface BlogPost {
   body: Record<Language, any[]>;
   photos?: BlogPhoto[];
 }
+
+export interface RouteDay {
+  day: number;
+  title: string;
+  gpx: string;
+}

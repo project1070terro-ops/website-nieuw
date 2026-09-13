@@ -1,6 +1,6 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { BlogPhoto, BlogPost, Language } from '../types';
+import type { BlogPhoto, BlogPost, Language, RouteDay } from '../types';
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID ?? 'of8587ti';
 const dataset = import.meta.env.VITE_SANITY_DATASET ?? 'production';
@@ -108,5 +108,25 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       : undefined,
     body: toLocaleBody(post.body) ?? { nl: [], en: [], es: [] },
     photos: toBlogPhotos(post.photos),
+  }));
+}
+
+const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
+  day,
+  title,
+  gpx {
+    asset -> { url }
+  }
+}`;
+
+export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
+  const result = await sanityClient.fetch(ROUTE_DAYS_QUERY);
+  const days = (result as any[]) ?? [];
+  if (days.length === 0) return [];
+
+  return days.map((day) => ({
+    day: day.day,
+    title: toLocaleString(day.title ?? '')[language],
+    gpx: day.gpx?.asset?.url ?? '',
   }));
 }

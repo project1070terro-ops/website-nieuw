@@ -4,8 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { Chart } from 'chart.js/auto';
 import type { Plugin, TooltipItem } from 'chart.js';
 import { Download } from 'lucide-react';
-import type { RouteDay } from './RouteViewer';
-import type { Language, TranslationContent } from '../types';
+import type { RouteDay, Language, TranslationContent } from '../types';
 import { WeatherWidget } from './WeatherWidget';
 import { downloadGpxTrack } from '../utils/gpxExport';
 
