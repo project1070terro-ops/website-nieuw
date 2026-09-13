@@ -26,6 +26,12 @@ export const routeDay = defineType({
       options: { accept: '.gpx' },
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'stravaUrl',
+      title: 'Strava-link',
+      type: 'url',
+      description: 'Optionele link naar de Strava-activiteit',
+    }),
   ],
   preview: {
     select: {

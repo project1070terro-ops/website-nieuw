@@ -36,6 +36,7 @@ export interface TranslationContent {
     loadingRoute: string;
     noRouteData: string;
     downloadGpx: string;
+    viewOnStrava: string;
     distance: string;
     elevationGain: string;
     elevationLoss: string;
@@ -137,4 +138,5 @@ export interface RouteDay {
   day: number;
   title: string;
   gpx: string;
+  stravaUrl?: string;
 }

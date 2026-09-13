@@ -114,6 +114,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
 const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
   day,
   title,
+  stravaUrl,
   gpx {
     asset -> { url }
   }
@@ -128,5 +129,6 @@ export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
     day: day.day,
     title: toLocaleString(day.title ?? '')[language],
     gpx: day.gpx?.asset?.url ?? '',
+    stravaUrl: day.stravaUrl ?? undefined,
   }));
 }

@@ -3,9 +3,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Chart } from 'chart.js/auto';
 import type { Plugin, TooltipItem } from 'chart.js';
-import { Download } from 'lucide-react';
+import { Download, ExternalLink } from 'lucide-react';
 import type { RouteDay, Language, TranslationContent } from '../types';
-import { WeatherWidget } from './WeatherWidget';
 import { downloadGpxTrack } from '../utils/gpxExport';
 
 type RouteLabels = TranslationContent['routeViewer'];
@@ -220,12 +219,7 @@ export function RouteDayInteractive({
   const distances = useMemo(() => computeDistances(points), [points]);
   const gradients = useMemo(() => computeGradients(points, distances), [points, distances]);
 
-  const routeCenter = useMemo(() => {
-    if (!points.length) return null;
-    const lat = points.reduce((s, p) => s + p.lat, 0) / points.length;
-    const lon = points.reduce((s, p) => s + p.lon, 0) / points.length;
-    return { lat, lon };
-  }, [points]);
+
 
   const stats = useMemo(() => {
     if (!points.length) return null;
@@ -430,9 +424,6 @@ export function RouteDayInteractive({
       <aside className="route-sidebar">
         <div className="route-sidebar-top">
           <h2 className="route-sidebar-title">{day.title}</h2>
-          {routeCenter && (
-            <WeatherWidget lat={routeCenter.lat} lon={routeCenter.lon} r={r} language={language} />
-          )}
           <button
             type="button"
             className="route-download-btn"
@@ -443,6 +434,16 @@ export function RouteDayInteractive({
           >
             <Download size={18} /> {r.downloadGpx}
           </button>
+          {day.stravaUrl && (
+            <a
+              href={day.stravaUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="route-download-btn"
+            >
+              <ExternalLink size={18} /> {r.viewOnStrava}
+            </a>
+          )}
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (
               <span key={b.label} className="route-legend-item">
@@ -478,14 +479,6 @@ export function RouteDayInteractive({
               <div className="route-sidebar-stat">
                 <span className="route-sidebar-stat-label">{r.highestPoint}</span>
                 <span className="route-sidebar-stat-value">{Math.round(stats.maxEle)} m</span>
-              </div>
-              <div className="route-sidebar-stat">
-                <span className="route-sidebar-stat-label">{r.avgSpeed}</span>
-                <span className="route-sidebar-stat-value">{stats.avgSpeed.toFixed(1)} km/h</span>
-              </div>
-              <div className="route-sidebar-stat">
-                <span className="route-sidebar-stat-label">{r.estTime}</span>
-                <span className="route-sidebar-stat-value">{stats.estTime}</span>
               </div>
             </div>
           )}

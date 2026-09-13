@@ -34,7 +34,7 @@ Dat verhaal is Project 15/70: een extreme wieleruitdaging waarbij Terro 10 dagen
     routePlaceholder: 'Route voor deze dag wordt binnenkort toegevoegd.',
     routeViewer: {
       day: 'Dag', daysAria: 'Dagen', loadingRoute: 'Route data laden...', noRouteData: 'Geen routedata gevonden.',
-      downloadGpx: 'Download GPX', distance: 'Afstand', elevationGain: 'Hoogtewinst', elevationLoss: 'Hoogteverlies',
+      downloadGpx: 'Download GPX', viewOnStrava: 'Bekijk op Strava', distance: 'Afstand', elevationGain: 'Hoogtewinst', elevationLoss: 'Hoogteverlies',
       maxGradient: 'Max. helling', lowestPoint: 'Laagste punt', highestPoint: 'Hoogste punt', avgSpeed: 'Gem. snelheid',
       estTime: 'Geschatte tijd', ascent: 'Helling omhoog', descent: 'Helling omlaag', difficulty: 'Moeilijkheidsgraad',
       speed: 'Snelheid', avgLabel: 'Gemiddeld:', hard: 'Zwaar', moderate: 'Gemiddeld', easy: 'Licht',
@@ -125,7 +125,7 @@ That story is Project 15/70: an extreme cycling challenge where Terro will spend
     routePlaceholder: 'Route for this day will be added soon.',
     routeViewer: {
       day: 'Day', daysAria: 'Days', loadingRoute: 'Loading route data...', noRouteData: 'No route data found.',
-      downloadGpx: 'Download GPX', distance: 'Distance', elevationGain: 'Elevation gain', elevationLoss: 'Elevation loss',
+      downloadGpx: 'Download GPX', viewOnStrava: 'View on Strava', distance: 'Distance', elevationGain: 'Elevation gain', elevationLoss: 'Elevation loss',
       maxGradient: 'Max. gradient', lowestPoint: 'Lowest point', highestPoint: 'Highest point', avgSpeed: 'Avg. speed',
       estTime: 'Estimated time', ascent: 'Ascent', descent: 'Descent', difficulty: 'Difficulty',
       speed: 'Speed', avgLabel: 'Average:', hard: 'Hard', moderate: 'Moderate', easy: 'Easy',
@@ -216,7 +216,7 @@ Esa historia es el Proyecto 15/70: un desafío ciclista extremo en el que Terro 
     routePlaceholder: 'La ruta para este día se añadirá pronto.',
     routeViewer: {
       day: 'Día', daysAria: 'Días', loadingRoute: 'Cargando datos de ruta...', noRouteData: 'No se encontraron datos de ruta.',
-      downloadGpx: 'Descargar GPX', distance: 'Distancia', elevationGain: 'Desnivel positivo', elevationLoss: 'Desnivel negativo',
+      downloadGpx: 'Descargar GPX', viewOnStrava: 'Ver en Strava', distance: 'Distancia', elevationGain: 'Desnivel positivo', elevationLoss: 'Desnivel negativo',
       maxGradient: 'Pendiente máx.', lowestPoint: 'Punto más bajo', highestPoint: 'Punto más alto', avgSpeed: 'Vel. media',
       estTime: 'Tiempo estimado', ascent: 'Ascenso', descent: 'Descenso', difficulty: 'Dificultad',
       speed: 'Velocidad', avgLabel: 'Media:', hard: 'Dura', moderate: 'Moderada', easy: 'Fácil',
