@@ -435,7 +435,7 @@ export function RouteDayInteractive({
             <Download size={18} /> {r.downloadGpx}
           </button>
           <a
-            href="https://strava.com"
+            href={day.stravaUrl || 'https://strava.com'}
             target="_blank"
             rel="noopener noreferrer"
             className="route-strava-btn"
