@@ -110,10 +110,12 @@ export function RouteDayInteractive({
   day,
   r,
   language,
+  placeholder,
 }: {
   day: RouteDay;
   r: RouteLabels;
   language: Language;
+  placeholder: string;
 }) {
   const [points, setPoints] = useState<GpxPoint[]>([]);
   const [loading, setLoading] = useState(true);
@@ -186,19 +188,10 @@ export function RouteDayInteractive({
     setError(null);
     (async () => {
       try {
-        let xml = '';
-        for (const url of [`/gpx/dag${day.day}.gpx`, day.gpx]) {
-          try {
-            const res = await fetch(url);
-            if (res.ok) {
-              xml = await res.text();
-              break;
-            }
-          } catch {
-            // volgende URL proberen
-          }
-        }
-        if (!xml) throw new Error('GPX not found');
+        if (!day.gpx) throw new Error('GPX not found');
+        const res = await fetch(day.gpx, { credentials: 'omit' });
+        if (!res.ok) throw new Error('GPX not found');
+        const xml = await res.text();
         const doc = new DOMParser().parseFromString(xml, 'application/xml');
         let els = Array.from(doc.getElementsByTagName('trkpt'));
         if (!els.length) els = Array.from(doc.getElementsByTagName('rtept'));
@@ -420,6 +413,14 @@ export function RouteDayInteractive({
       chartRef.current = null;
     };
   }, [points, distances, gradients, r]);
+
+  if (!day.gpx) {
+    return (
+      <div className="route-map-wrap">
+        <p className="route-loading">{placeholder}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="route-map-wrap">

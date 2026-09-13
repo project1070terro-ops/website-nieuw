@@ -5,35 +5,36 @@ import { RouteDayInteractive } from './RouteDayInteractive';
 
 export function RouteViewer({ t, language }: { t: TranslationContent; language: Language }) {
   const [days, setDays] = useState<RouteDay[] | null>(null);
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState(3); // start op Dag 4
   const r = t.routeViewer;
 
   useEffect(() => {
     let cancelled = false;
-    setSelected(0);
+    setDays(null);
     (async () => {
       try {
         const sanityDays = await loadRouteDays(language);
-        if (sanityDays.length > 0) {
-          if (!cancelled) setDays(sanityDays);
-          return;
+        const allDays: RouteDay[] = [];
+        for (let dayNumber = 1; dayNumber <= 10; dayNumber++) {
+          const doc = sanityDays.find((d) => d.day === dayNumber);
+          allDays.push(
+            doc ?? {
+              day: dayNumber,
+              title: t.stages[dayNumber - 1] ?? `Dag ${dayNumber}`,
+              gpx: '',
+            }
+          );
         }
+        if (!cancelled) setDays(allDays);
       } catch (err) {
         console.error('Failed to load route days from Sanity:', err);
-      }
-      try {
-        const res = await fetch('/route-days.json');
-        const data: Record<Language, RouteDay[]> = await res.json();
-        if (!cancelled) setDays(data[language]);
-      } catch (err) {
-        console.error('Failed to load route days:', err);
         if (!cancelled) setDays([]);
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, [language]);
+  }, [language, t.stages]);
 
   if (!days) return <p className="route-loading">{r.loadingRoute}</p>;
   if (days.length === 0) return <p className="route-loading">{r.noRouteData}</p>;
@@ -56,7 +57,13 @@ export function RouteViewer({ t, language }: { t: TranslationContent; language: 
         ))}
       </div>
 
-      <RouteDayInteractive key={day.day} day={day} r={r} language={language} />
+      <RouteDayInteractive
+        key={day.day}
+        day={day}
+        r={r}
+        language={language}
+        placeholder={t.routePlaceholder}
+      />
     </section>
   );
 }

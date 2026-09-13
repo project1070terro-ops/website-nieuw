@@ -31,7 +31,7 @@ Dat verhaal is Project 15/70: een extreme wieleruitdaging waarbij Terro 10 dagen
     routeTitle: 'De route',
     routeLead: `Elke kilometer een stap dichterbij. Vanaf het strand van Albir trappen we 10 dagen lang door adembenemende landschappen en over pittige bergen. Meer dan 17.500 hoogtemeters, gedreven door pure motivatie: hoop en een betere toekomst voor kinderen die dit het hardste nodig hebben. Fiets virtueel mee en volg onze route van de branding tot de finish.`,
     stages: ['Coll de Rates Lus', 'La Vall d\'Ebo-pas & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'De laatste klim', 'De finishrit'],
-    routePlaceholder: 'Etappeprofiel wordt live gegenereerd tijdens de uitdaging in Spanje.',
+    routePlaceholder: 'Route voor deze dag wordt binnenkort toegevoegd.',
     routeViewer: {
       day: 'Dag', daysAria: 'Dagen', loadingRoute: 'Route data laden...', noRouteData: 'Geen routedata gevonden.',
       downloadGpx: 'Download GPX', distance: 'Afstand', elevationGain: 'Hoogtewinst', elevationLoss: 'Hoogteverlies',
@@ -122,7 +122,7 @@ That story is Project 15/70: an extreme cycling challenge where Terro will spend
     routeTitle: 'The route',
     routeLead: `Every kilometer is a step closer. From the beach of Albir we pedal for 10 days through breathtaking landscapes and over tough mountain peaks. More than 17,500 vertical meters, driven by pure motivation: hope and a better future for children who need it most. Ride along virtually and follow our route from the shoreline to the finish.`,
     stages: ['Coll de Rates Loop', 'La Vall d\'Ebo-pass & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'The final climb', 'The finish stage'],
-    routePlaceholder: 'Stage profile will be generated live during the challenge in Spain.',
+    routePlaceholder: 'Route for this day will be added soon.',
     routeViewer: {
       day: 'Day', daysAria: 'Days', loadingRoute: 'Loading route data...', noRouteData: 'No route data found.',
       downloadGpx: 'Download GPX', distance: 'Distance', elevationGain: 'Elevation gain', elevationLoss: 'Elevation loss',
@@ -213,7 +213,7 @@ Esa historia es el Proyecto 15/70: un desafío ciclista extremo en el que Terro 
     routeTitle: 'La ruta',
     routeLead: `Cada kilómetro es un paso más cerca. Desde la playa de Albir pedaleamos durante 10 días a través de paisajes impresionantes y cumbres exigentes. Más de 17.500 metros de desnivel, impulsados por una motivación pura: esperanza y un futuro mejor para los niños que más lo necesitan. Pedalea con nosotros de forma virtual y sigue nuestra ruta desde la orilla hasta la meta.`,
     stages: ['Bucle Coll de Rates', 'La Vall d\'Ebo-paso & Coll de Rates', 'Altea — Guadalest', 'Cumbre del Sol', 'Vall de Gallinera', 'Bernia — Xaló', 'Sierra de Aitana', 'Parcent — Tarbena', 'La última subida', 'La etapa final'],
-    routePlaceholder: 'El perfil de la etapa se generará en vivo durante el reto en España.',
+    routePlaceholder: 'La ruta para este día se añadirá pronto.',
     routeViewer: {
       day: 'Día', daysAria: 'Días', loadingRoute: 'Cargando datos de ruta...', noRouteData: 'No se encontraron datos de ruta.',
       downloadGpx: 'Descargar GPX', distance: 'Distancia', elevationGain: 'Desnivel positivo', elevationLoss: 'Desnivel negativo',
