@@ -411,14 +411,14 @@ export function RouteDayInteractive({
 
   if (!day.gpx) {
     return (
-      <div className="route-map-wrap max-h-[75vh]">
+      <div className="route-map-wrap max-h-[70vh]">
         <p className="route-loading">{placeholder}</p>
       </div>
     );
   }
 
   return (
-    <div className="route-map-wrap max-h-[75vh]">
+    <div className="route-map-wrap max-h-[70vh]">
       {error && <p className="route-map-error">{error}</p>}
       <div className="route-map" ref={mapContainerRef} />
 
