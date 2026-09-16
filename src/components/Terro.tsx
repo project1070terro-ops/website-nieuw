@@ -55,8 +55,8 @@ export function Terro({ t, navigate }: TerroProps) {
                     <p key={i}>
                       {mobileBlocks.map((block, bi) => (
                         <Fragment key={bi}>
-                          {bi > 0 && <span className="hidden md:inline">&nbsp;</span>}
-                          <span className="block mb-4 last:mb-0 md:inline md:mb-0">
+                          {bi > 0 && <span className="hidden lg:inline">&nbsp;</span>}
+                          <span className="block mb-4 last:mb-0 lg:inline lg:mb-0">
                             <BrandText text={block.trim()} />
                           </span>
                         </Fragment>
