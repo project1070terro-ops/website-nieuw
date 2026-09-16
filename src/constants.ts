@@ -54,21 +54,27 @@ export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
       axisHint: 'beweeg voor info',
     },
     terroTitle: 'PROJECT TERRO: DE MAN ACHTER 15/70',
-    terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten. Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen waar ze horen — de focus ligt volledig op de weg die voor hem ligt.
+    terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten. [MOBIELE WITREGEL]
+Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen. De focus ligt volledig op de weg die voor hem ligt. [MOBIELE WITREGEL]
+Als wielrenner kent Terro geen half werk. Fietsen is een levenswijze waarin altijd het uiterste werd gevraagd en gegeven. [MOBIELE WITREGEL]
+Zelfs op 65-jarige leeftijd vertaalde die energie zich nog regelmatig in mooie prijzen in het competitiepeloton. [MOBIELE WITREGEL]
+En de naam TERRO? Die is niet verdiend met een sympathieke lach, maar op karakter en keihard rijden op het moment dat anderen kraken. [MOBIELE WITREGEL]
+De afgelopen twee jaar stonden in het teken van de loodzware Gran Fondo's. De vorm was er, maar het lot besliste twee keer anders door brute pech en ziekte. [MOBIELE WITREGEL]
+Waar een ander de handdoek in de ring gooit, zette Terro de knop om: "Ik wacht tot mijn 70ste, en dan laat ik zien wat het écht wordt." Dat moment is nu gekomen.`], ['Twee mijlpalen, één extremum', `Na vijftien jaar bij Forza Fortuna Financial Group staat Terro voor zijn meest uitdagende hoofdstuk tot nu toe. [MOBIELE WITREGEL]
+Voor sommigen is 70 de leeftijd van het rustiger aan doen. Voor Terro is het de ultieme kans om te bewijzen wie hij is: een pure sportman die leeft voor de grens. [MOBIELE WITREGEL]
+Dit project rust op twee onwrikbare pijlers. Aan de ene kant de magische kaap van de 70-jarige leeftijd. [MOBIELE WITREGEL]
+Aan de andere kant het getal 10: tien opeenvolgende, loodzware ritten vanuit het Spaanse Albir. Dag na dag strijden tegen de elementen en de vermoeidheid. [MOBIELE WITREGEL]
+Daarom heet dit project het absolute 'extremum'. Het is de ultieme piek waarin leeftijd en pure fysieke uitputting elkaar ontmoeten. [MOBIELE WITREGEL]
+Op je 70ste zo'n prestatie leveren is geen gewone fietstocht. Het is een grensverleggend statement voor het goede doel.`], ['Karakter tegen de elementen', `Op de fiets ben je uiteindelijk altijd alleen met je gedachten. [MOBIELE WITREGEL]
+Als de Spaanse zon brandt en de stijgingspercentages rondom Albir in de dubbele cijfers schieten, komt het aan op pure mentale veerkracht. [MOBIELE WITREGEL]
+De filosofie van Terro in het zadel is simpel: niet zeuren, maar trappen. Pijn is tijdelijk, het doel is blijvend. [MOBIELE WITREGEL]
+Elk zwaar moment en elke druppel zweet krijgt betekenis. Het is gekoppeld aan het welzijn van kinderen die elke steun hard nodig hebben. [MOBIELE WITREGEL]
+Die wetenschap verhardt het karakter. Opgeven is geen optie; het hoofd regeert over het lichaam.`], ['De voorbereiding', `- September: In de nazomer staat de focus op rust, herstel en puur genieten van het fietsen zonder druk.
+- Vanaf oktober: Gerichte kracht- en core-stabiliteitstraining thuis, intensieve sessies op Zwift, en in het weekend scherpte behouden met het team.
+- Vanaf maart: Trainingsuren en kilometers worden gestaag opgebouwd, terwijl de krachttraining de onmisbare fundering blijft.
+- Richting 2027/2028: De ultieme voorbereiding in Spanje, waarbij de specifieke etappes stilaan worden verkend vanuit Albir.
 
-Als wielrenner kent Terro geen half werk. Gedrevenheid is een understatement; fietsen is een levenswijze waarin altijd het uiterste werd gevraagd en gegeven. Zelfs op 60- tot 65-jarige leeftijd vertaalde die onuitputtelijke energie zich nog regelmatig in mooie prijzen en ereplaatsen in het competitiepeloton. En de naam TERRO? Die is niet verdiend met een sympathieke lach, maar op karakter, doorzettingsvermogen en keihard rijden op het moment dat anderen kraken.
-
-De afgelopen twee jaar stonden volledig in het teken van de loodzware Gran Fondo's. De vorm was er, de focus was scherp, maar het lot besliste twee keer anders. Het ene jaar brutaal onderuit gekegeld net voor de start; het jaar daarna uitgeschakeld door ziekte op het moment van de waarheid. Waar een ander de handdoek in de ring gooit, zette Terro de knop om: 'Ik wacht tot mijn 70ste, en dan laat ik zien wat het écht wordt.' Dat moment is nu gekomen.`], ['Twee mijlpalen, één extremum', `Na vijftien jaar verbonden aan Forza Fortuna Financial Group staat Terro voor het meest uitdagende hoofdstuk tot nu toe. Voor sommigen is 70 de leeftijd van het rustiger aan doen, maar voor Terro is het de ultieme kans om te bewijzen wie hij is: een pure sportman die leeft voor de grens.
-
-Dit project rust op twee onwrikbare pijlers. Aan de ene kant de magische kaap van de 70-jarige leeftijd. Aan de andere kant het getal 10: tien opeenvolgende, loodzware ritten die vanuit het Spaanse Albir worden gereden. Dag na dag in het zadel, dag na dag strijden tegen de elementen en de vermoeidheid.
-
-Daarom heet dit project het absolute 'extremum': de ultieme piek waarin leeftijd en pure fysieke uitputting elkaar ontmoeten. Op je 70ste een dergelijke prestatie leveren is geen gewone fietstocht; het is een grensverleggend statement voor het goede doel dat bewijst dat passie en karakter onverwoestbaar zijn.`], ['Karakter tegen de elementen', `Op de fiets ben je uiteindelijk altijd alleen met je gedachten. Als de Spaanse zon brandt, de wind tegenzit en de stijgingspercentages in het binnenland rondom Albir in de dubbele cijfers schieten, komt het niet meer aan op de benen, maar op pure mentale veerkracht.
-
-De filosofie van Terro in het zadel is even simpel als onbarmhartig: niet zeuren, maar trappen. Pijn is tijdelijk, maar het doel is blijvend. Elk zwaar moment en elke druppel zweet langs de route krijgt betekenis omdat het gekoppeld is aan het welzijn van kinderen die elke steun hard nodig hebben. Die wetenschap verhardt het karakter en zorgt ervoor dat de knop omgaat als het zwaar wordt. Opgeven is geen optie; het hoofd regeert over het lichaam.`], ['De voorbereiding', `Een extreme prestatie vraagt om een doordachte, professionele aanpak. Terro's voorbereiding is geen kwestie van blind kilometers vreten, maar van luisteren naar het lichaam en periodisering. De nazomer in september staat in het teken van rust, herstel en puur genieten van het fietsen zonder de druk van urenlange ritten. Pas als de winter zijn intrede doet, gaat de knop om.
-
-Vanaf oktober verschuift de focus naar de basis: twee keer per week gerichte kracht- en core-stabiliteitstraining thuis, twee intensieve sessies op de virtuele wegen van Zwift, en in het weekend een stevige rit om de scherpte te behouden met het team. Zodra het voorjaar in maart aanbreekt, worden de trainingsuren en de kilometers gestaag opgebouwd, terwijl core- en krachttraining de onmisbare fundering blijven vormen. Richting 2027 en 2028 vindt de ultieme voorbereiding plaats in Spanje zelf, waarbij de specifieke etappes stilaan worden verkend vanuit Albir.
-
-Qua materiaal laat Terro niets aan het toeval over, alles moet steeds tot in de puntjes in orde zijn. Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer van Fortuna Financial Group, die ervoor zorgt dat Terro zo professioneel mogelijk aan de start verschijnt.`]],
+Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer van Fortuna Financial Group. Hij zorgt ervoor dat Terro zo professioneel mogelijk aan de start verschijnt.`]],
     causeTitle: 'Het goede doel: Save the Children',
     causeLead: `Elke hoogtemeter van Project 15/70 staat in dienst van iets groters dan de sport. Daarom kiezen we bewust voor Save the Children, een wereldwijde organisatie die zich al meer dan honderd jaar inzet voor kinderen die het het hardst nodig hebben.`,
     causeSections: [

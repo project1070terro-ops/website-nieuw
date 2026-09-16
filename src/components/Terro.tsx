@@ -36,9 +36,34 @@ export function Terro({ t, navigate }: TerroProps) {
             <Fragment key={title}>
               <div className="terro-block">
                 <h2>{title}</h2>
-                {paragraphs.map((para, i) => (
-                  <p key={i}><BrandText text={para} /></p>
-                ))}
+                {paragraphs.map((para, i) => {
+                  const lines = para.split('\n').filter(line => line.trim() !== '');
+                  const isList = lines.length > 0 && lines.every(line => line.trim().startsWith('- '));
+                  if (isList) {
+                    return (
+                      <ul key={i} className="list-disc pl-5 space-y-2 mb-6">
+                        {lines.map((line, li) => (
+                          <li key={li} className="text-white/75 text-base leading-relaxed">
+                            <BrandText text={line.trim().replace(/^- /, '')} />
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  const mobileBlocks = para.split('[MOBIELE WITREGEL]');
+                  return (
+                    <p key={i}>
+                      {mobileBlocks.map((block, bi) => (
+                        <Fragment key={bi}>
+                          {bi > 0 && <span className="hidden md:inline">&nbsp;</span>}
+                          <span className="block mb-4 last:mb-0 md:inline md:mb-0">
+                            <BrandText text={block.trim()} />
+                          </span>
+                        </Fragment>
+                      ))}
+                    </p>
+                  );
+                })}
               </div>
               {image && (
                 <img
