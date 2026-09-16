@@ -160,21 +160,28 @@ Laat maar iets horen — we staan voor je klaar.`,
       axisHint: 'hover for info',
     },
     terroTitle: 'PROJECT TERRO: THE MAN BEHIND 15/70',
-    terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws. The past has its secrets, but they are safely stored where they belong — the focus is entirely on the road ahead.
+    terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws. [MOBIELE WITREGEL]
+The past has its secrets, but they are safely stored where they belong — the focus is entirely on the road ahead. [MOBIELE WITREGEL]
+As a cyclist, Terro knows no half measures. Driven is an understatement; cycling is a way of life in which the utmost was always demanded and given. [MOBIELE WITREGEL]
+Even at 60 to 65 years of age, that inexhaustible energy still translated regularly into fine prizes and top placings in the competitive peloton. [MOBIELE WITREGEL]
+And the name TERRO? It was not earned with a friendly smile, but on character, perseverance and riding hard when others crack. [MOBIELE WITREGEL]
+The past two years were all about the heavy Gran Fondos. The form was there, the focus was sharp, but fate decided otherwise twice. [MOBIELE WITREGEL]
+One year brutally knocked down just before the start; the next year taken out by illness at the moment of truth. [MOBIELE WITREGEL]
+Where another would throw in the towel, Terro switched gears: 'I\'ll wait until I\'m 70, and then I\'ll show what it really becomes.' That moment has now come.`], ['Two milestones, one extremum', `After fifteen years with Forza Fortuna Financial Group, Terro faces the most challenging chapter yet. [MOBIELE WITREGEL]
+For some, 70 is the age to slow down, but for Terro it is the ultimate chance to prove who he is: a pure sportsman who lives for the limit. [MOBIELE WITREGEL]
+This achievement rests on two unshakable pillars. On one side the magical milestone of 70 years. [MOBIELE WITREGEL]
+On the other the number 10: ten consecutive, tough rides starting from the Spanish town of Albir. Day after day in the saddle, day after day battling the elements and fatigue. [MOBIELE WITREGEL]
+That is why this project is called the absolute 'extremum': the ultimate peak where age and pure physical exhaustion meet. [MOBIELE WITREGEL]
+Achieving this at 70 is no ordinary bike ride; it is a boundary-pushing statement for charity that proves passion and character are indestructible.`], ['Character against the elements', `On the bike you are ultimately always alone with your thoughts. [MOBIELE WITREGEL]
+When the Spanish sun burns, the wind is against you and the gradients in the hinterland around Albir climb into double digits, it no longer comes down to the legs, but to pure mental resilience. [MOBIELE WITREGEL]
+Terro's philosophy in the saddle is as simple as it is ruthless: don't complain, just pedal. Pain is temporary, but the goal is lasting. [MOBIELE WITREGEL]
+Every heavy moment and every drop of sweat along the route gains meaning because it is linked to the well-being of children who desperately need support. [MOBIELE WITREGEL]
+That knowledge hardens character and ensures the switch flips when it gets tough. Giving up is simply not an option; the head rules the body.`], ['The preparation', `- September: In the late summer, the focus is on rest, recovery and simply enjoying cycling without pressure.
+- From October: Targeted strength and core-stability training at home, intensive Zwift sessions, and a solid weekend ride to keep sharp with the team.
+- From March: Training hours and kilometers are built up steadily, while strength training remains the indispensable foundation.
+- Towards 2027/2028: The ultimate preparation in Spain, with the specific stages gradually being explored from Albir.
 
-As a cyclist, Terro knows no half measures. Driven is an understatement; cycling is a way of life in which the utmost was always demanded and given. Even at 60 to 65 years of age, that inexhaustible energy still translated regularly into fine prizes and top placings in the competitive peloton. And the name TERRO? It was not earned with a friendly smile, but on character, perseverance and riding hard when others crack.
-
-The past two years were all about the heavy Gran Fondos. The form was there, the focus was sharp, but fate decided otherwise twice. One year brutally knocked down just before the start; the next year taken out by illness at the moment of truth. Where another would throw in the towel, Terro switched gears: 'I\'ll wait until I\'m 70, and then I\'ll show what it really becomes.' That moment has now come.`], ['Two milestones, one extremum', `After fifteen years with Forza Fortuna Financial Group, Terro faces the most challenging chapter yet. For some, 70 is the age to slow down, but for Terro it is the ultimate chance to prove who he is: a pure sportsman who lives for the limit.
-
-This achievement rests on two unshakable pillars. On one side the magical milestone of 70 years. On the other the number 10: ten consecutive, tough rides starting from the Spanish town of Albir. Day after day in the saddle, day after day battling the elements and fatigue.
-
-That is why this project is called the absolute 'extremum': the ultimate peak where age and pure physical exhaustion meet. Achieving this at 70 is no ordinary bike ride; it is a boundary-pushing statement for charity that proves passion and character are indestructible.`], ['Character against the elements', `On the bike you are ultimately always alone with your thoughts. When the Spanish sun burns, the wind is against you and the gradients in the hinterland around Albir climb into double digits, it no longer comes down to the legs, but to pure mental resilience.
-
-Terro's philosophy in the saddle is as simple as it is ruthless: don't complain, just pedal. Pain is temporary, but the goal is lasting. Every heavy moment and every drop of sweat along the route gains meaning because it is linked to the well-being of children who desperately need support. That knowledge hardens character and ensures the switch flips when it gets tough. Giving up is simply not an option; the head rules the body.`], ['The preparation', `An extreme performance requires a thoughtful, professional approach. Terro's preparation is not a matter of blindly devouring kilometers, but of listening to his body and periodization. The late summer in September is about recovery and simply enjoying cycling without the pressure of long rides. Only when winter sets in does the switch flip.
-
-From October the focus shifts to the basics: twice a week targeted strength and core stability training at home, two intensive sessions on the virtual roads of Zwift, and a solid ride at the weekend to keep sharp with the team. As soon as spring arrives in March, training hours and kilometers are steadily built up, while core and strength training remain the indispensable foundation. Around 2027 and 2028 the ultimate preparation will take place in Spain itself, with the specific stages gradually being explored from Albir.
-
-When it comes to equipment, Terro leaves nothing to chance — everything must always be perfect down to the smallest detail. For his kit and support crew, Terro can rely on the unconditional support of friend and sponsor Frank Peeraer of Fortuna Financial Group, who ensures Terro appears at the start looking as professional as possible.`]],
+When it comes to equipment, Terro can rely on the unconditional support of friend and sponsor Frank Peeraer of Fortuna Financial Group, who ensures Terro appears at the start looking as professional as possible.`]],
     causeTitle: 'Our cause: Save the Children',
     causeLead: `Every vertical meter of Project 15/70 serves something bigger than the sport itself. That is why we deliberately chose Save the Children, a global organisation that has been fighting for children who need it most for over a hundred years.`,
     causeSections: [
@@ -260,19 +267,26 @@ Let us know — we're here for you.`,
       axisHint: 'toca para info',
     },
     terroTitle: 'PROYECTO TERRO: EL HOMBRE DETRÁS DE 15/70',
-    terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas. El pasado tiene sus secretos, pero están guardados con seguridad donde corresponde: la atención se centra completamente en el camino que tiene por delante.
-
-Como ciclista, Terro no conoce medias tintas. Decir que está motivado es quedarse corto; el ciclismo es una forma de vida en la que siempre se exigió y dio lo máximo. Incluso entre los 60 y 65 años, ese motor inagotable se tradujo a menudo en buenos premios y puestos de honor en el pelotón competitivo. Y el nombre TERRO? No se ganó con una sonrisa amable, sino a base de carácter, perseverancia y pedalear fuerte cuando otros se quiebran.
-
-Los últimos dos años giraron en torno a las duras Gran Fondos. La forma estaba, la concentración era máxima, pero el destino decidió dos veces lo contrario. Un año, brutalmente derribado justo antes de la salida; al año siguiente, eliminado por enfermedad en el momento de la verdad. Donde otro tiraría la toalla, Terro cambió de chip: 'Esperaré hasta los 70, y entonces demostraré de lo que soy capaz.' Ese momento ha llegado.`], ['Dos hitos, un extremo', `Después de quince años vinculado a Forza Fortuna Financial Group, Terro afronta el capítulo más exigente hasta la fecha. Para algunos, los 70 son la edad de tomárselo con calma, pero para Terro es la oportunidad definitiva de demostrar quién es: un deportista puro que vive para el límite.
-
-Este logro descansa sobre dos pilares inquebrantables. Por un lado, el mágico hito de los 70 años. Por otro, el número 10: diez jornadas consecutivas y durísimas que se pedalean desde el pueblo español de Albir. Día tras día en el sillín, día tras día luchando contra los elementos y la fatiga.
-
-Por eso este proyecto se llama el 'extremum' absoluto: la cima definitiva donde la edad y la pura agotación física se encuentran. Conseguir esto a los 70 no es una salida en bici cualquiera; es una declaración que traspasa límites por una buena causa y demuestra que la pasión y el carácter son indestructibles.`], ['Carácter contra los elementos', `En la bici, al final, siempre estás solo con tus pensamientos. Cuando el sol español arde, el viento sopla de frente y los porcentajes de pendiente del interior alrededor de Albir alcanzan cifras de dos dígitos, ya no se trata de las piernas, sino de la pura resistencia mental.
-
-La filosofía de Terro en el sillín es tan sencilla como despiadada: no quejarse, pedalear. El dolor es temporal, pero el objetivo es permanente. Cada momento duro y cada gota de sudor a lo largo de la ruta cobran sentido porque están vinculados al bienestar de niños que necesitan apoyo desesperadamente. Esa conciencia fortalece el carácter y hace que el interruptor salte cuando todo se pone difícil. Rendirse no es una opción; la cabeza manda sobre el cuerpo.`], ['La preparación', `Una proeza extrema exige un enfoque reflexivo y profesional. La preparación de Terro no consiste en devorar kilómetros a ciegas, sino en escuchar a su cuerpo y en periodización. El final del verano, en septiembre, se dedica a descansar, recuperar y disfrutar del ciclismo sin la presión de salidas largas. Solo cuando llega el invierno se cambia el chip.
-
-A partir de octubre, el enfoque se traslada a lo básico: dos sesiones semanales de fuerza y estabilidad de core en casa, dos sesiones intensas en las carreteras virtuales de Zwift y una salida sólida el fin de semana para mantenerse en forma con el equipo. Cuando llega la primavera en marzo, las horas de entrenamiento y los kilómetros aumentan progresivamente, mientras que el trabajo de core y fuerza sigue siendo el cimiento indispensable. Hacia 2027 y 2028, la preparación definitiva tendrá lugar en la propia España, explorando gradualmente las etapas específicas desde Albir.
+    terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas. [MOBIELE WITREGEL]
+El pasado tiene sus secretos, pero están guardados con seguridad donde corresponde: la atención se centra completamente en el camino que tiene por delante. [MOBIELE WITREGEL]
+Como ciclista, Terro no conoce medias tintas. Decir que está motivado es quedarse corto; el ciclismo es una forma de vida en la que siempre se exigió y dio lo máximo. [MOBIELE WITREGEL]
+Incluso entre los 60 y 65 años, ese motor inagotable se tradujo a menudo en buenos premios y puestos de honor en el pelotón competitivo. [MOBIELE WITREGEL]
+Y el nombre TERRO? No se ganó con una sonrisa amable, sino a base de carácter, perseverancia y pedalear fuerte cuando otros se quiebran. [MOBIELE WITREGEL]
+Los últimos dos años giraron en torno a las duras Gran Fondos. La forma estaba, la concentración era máxima, pero el destino decidió dos veces lo contrario. [MOBIELE WITREGEL]
+Un año, brutalmente derribado justo antes de la salida; al año siguiente, eliminado por enfermedad en el momento de la verdad. [MOBIELE WITREGEL]
+Donde otro tiraría la toalla, Terro cambió de chip: 'Esperaré hasta los 70, y entonces demostraré de lo que soy capaz.' Ese momento ha llegado.`], ['Dos hitos, un extremo', `Después de quince años vinculado a Forza Fortuna Financial Group, Terro afronta el capítulo más exigente hasta la fecha. [MOBIELE WITREGEL]
+Para algunos, los 70 son la edad de tomárselo con calma, pero para Terro es la oportunidad definitiva de demostrar quién es: un deportista puro que vive para el límite. [MOBIELE WITREGEL]
+Este logro descansa sobre dos pilares inquebrantables. Por un lado, el mágico hito de los 70 años. [MOBIELE WITREGEL]
+Por otro, el número 10: diez jornadas consecutivas y durísimas que se pedalean desde el pueblo español de Albir. Día tras día en el sillín, día tras día luchando contra los elementos y la fatiga. [MOBIELE WITREGEL]
+Por eso este proyecto se llama el 'extremum' absoluto: la cima definitiva donde la edad y la pura agotación física se encuentran. [MOBIELE WITREGEL]
+Conseguir esto a los 70 no es una salida en bici cualquiera; es una declaración que traspasa límites por una buena causa y demuestra que la pasión y el carácter son indestructibles.`], ['Carácter contra los elementos', `En la bici, al final, siempre estás solo con tus pensamientos. [MOBIELE WITREGEL]
+Cuando el sol español arde, el viento sopla de frente y los porcentajes de pendiente del interior alrededor de Albir alcanzan cifras de dos dígitos, ya no se trata de las piernas, sino de la pura resistencia mental. [MOBIELE WITREGEL]
+La filosofía de Terro en el sillín es tan sencilla como despiadada: no quejarse, pedalear. El dolor es temporal, pero el objetivo es permanente. [MOBIELE WITREGEL]
+Cada momento duro y cada gota de sudor a lo largo de la ruta cobran sentido porque están vinculados al bienestar de niños que necesitan apoyo desesperadamente. [MOBIELE WITREGEL]
+Esa conciencia fortalece el carácter y hace que el interruptor salte cuando todo se pone difícil. Rendirse no es una opción; la cabeza manda sobre el cuerpo.`], ['La preparación', `- Septiembre: En el final del verano, el foco está en el descanso, la recuperación y disfrutar del ciclismo sin presión.
+- A partir de octubre: Entrenamiento de fuerza y estabilidad de core dirigido en casa, sesiones intensivas en Zwift, y una salida sólida el fin de semana para mantener la agudeza con el equipo.
+- A partir de marzo: Las horas de entrenamiento y los kilómetros se construyen poco a poco, mientras que el entrenamiento de fuerza sigue siendo la base indispensable.
+- Hacia 2027/2028: La preparación definitiva en España, explorando gradualmente las etapas específicas desde Albir.
 
 En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfecto hasta el último detalle. Para el equipamiento y la asistencia, Terro cuenta con el apoyo incondicional de su amigo y patrocinador Frank Peeraer de Fortuna Financial Group, quien se asegura de que Terro aparezca en la línea de salida lo más profesional posible.`]],
     causeTitle: 'Nuestra causa: Save the Children',
