@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Lock } from 'lucide-react';
-import type { BlogPost, Language, Page, TranslationContent } from '../types';
+import type { BlogPost, Language, Page, TrainingStats, TranslationContent } from '../types';
+import { loadTrainingStats } from '../lib/sanityClient';
 import { PageIntro } from './PageIntro';
+import { BlogStats } from './BlogStats';
 
 interface BlogProps {
   t: TranslationContent;
@@ -31,13 +33,19 @@ const INFO_SLUGS = new Set([
 const YEARS = [2027, 2028, 2029];
 
 function postYear(date: string) {
-  const parts = date.split('/');
-  return Number((parts[1] ?? parts[0]).trim());
+  if (date.includes('/')) {
+    const parts = date.split('/');
+    return Number(parts[parts.length - 1].trim());
+  }
+  return new Date(date).getFullYear();
 }
 
 function parseBlogDate(date: string) {
-  const [month, year] = date.split('/').map((part) => part.trim());
-  return new Date(Number(year), Number(month) - 1);
+  if (date.includes('/')) {
+    const [month, year] = date.split('/').map((part) => part.trim());
+    return new Date(Number(year), Number(month) - 1);
+  }
+  return new Date(date);
 }
 
 function toPlainText(blocks: any[] = []): string {
@@ -68,6 +76,7 @@ const LOAD_MORE = 8;
 export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
   const [year, setYear] = useState(initialYear ?? 2027);
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [trainingStats, setTrainingStats] = useState<TrainingStats | null>(null);
 
   useEffect(() => {
     if (initialYear !== undefined && initialYear !== year) {
@@ -83,6 +92,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
+  }, []);
+
+  useEffect(() => {
+    loadTrainingStats().then(setTrainingStats).catch(() => setTrainingStats(null));
   }, []);
 
   const sortedCards = [...blogCards]
@@ -198,6 +211,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           );
         })}
       </section>
+
+      <BlogStats language={language} stats={trainingStats} />
 
       {/* Tussenkop */}
       <h2 className="blog-stages-heading">{labels.stages}</h2>

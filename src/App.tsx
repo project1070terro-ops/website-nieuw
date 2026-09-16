@@ -166,7 +166,7 @@ function App() {
       />
       <main>
         {page === 'home' && <Home t={t} activeSlide={activeSlide} navigate={navigate} />}
-        {page === 'story' && <Story t={t} navigate={navigate} />}
+        {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
         {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
         {page === 'terro' && <Terro t={t} navigate={navigate} />}
         {page === 'blog' && blogSlug ? (

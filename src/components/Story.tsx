@@ -1,25 +1,61 @@
 import { ArrowRight } from 'lucide-react';
-import type { Page, TranslationContent } from '../types';
+import type { Language, Page, TranslationContent } from '../types';
 import { BrandText } from './BrandText';
-import { PageIntro } from './PageIntro';
+import { Countdown } from './Countdown';
 import { Stats } from './Stats';
 
 interface StoryProps {
   t: TranslationContent;
+  language: Language;
   navigate: (page: Page) => void;
 }
 
-export function Story({ t, navigate }: StoryProps) {
+export function Story({ t, language, navigate }: StoryProps) {
+  const splitIndex = t.storyBlocks.findIndex(
+    (b) =>
+      b.type === 'paragraph' &&
+      (b.text.includes('De teller loopt') ||
+        b.text.includes('The timer is running') ||
+        b.text.includes('El cronómetro corre'))
+  );
+
+  const preBlocks = splitIndex >= 0 ? t.storyBlocks.slice(0, splitIndex + 1) : t.storyBlocks;
+  const postBlocks = splitIndex >= 0 ? t.storyBlocks.slice(splitIndex + 1) : [];
+
+  const renderBlock = (block: (typeof t.storyBlocks)[number], index: number) =>
+    block.type === 'subtitle' ? (
+      <h3
+        key={index}
+        className="!mt-3 md:!mt-6 !mb-2 !w-full !max-w-[720px] !mx-auto !text-left !text-xl !font-bold !text-white"
+      >
+        {block.text}
+      </h3>
+    ) : (
+      <p
+        key={index}
+        className="!mb-6 !leading-relaxed !whitespace-normal"
+        dangerouslySetInnerHTML={{ __html: block.text }}
+      />
+    );
+
   return (
     <div className="overflow-x-hidden max-w-full w-full">
-      <PageIntro title={t.storyTitle} lead={`${t.storyLead}\n\n${t.storyOutro}`} className="story-intro">
+      <section className="page-intro story-intro">
+        <p className="eyebrow">
+          <BrandText text="PROJECT 15/70" />
+        </p>
+        <h1>{t.storyTitle}</h1>
         <div className="story-banner">
           <img
             src="/images/hero/verhaal-banner.webp"
             alt="Groep fietsers klimt samen op een Spaanse bergweg bij zonsondergang"
           />
         </div>
-      </PageIntro>
+        {preBlocks.map((block, i) => renderBlock(block, i))}
+        <Countdown language={language} targetDate="2029-09-21T09:00:00" />
+        {postBlocks.map((block, i) => renderBlock(block, splitIndex + 1 + i))}
+      </section>
+
       <blockquote className="story-quote" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
       <section className="w-full bg-neutral-900 md:bg-neutral-950 py-6">
         <Stats t={t} navigate={navigate} />

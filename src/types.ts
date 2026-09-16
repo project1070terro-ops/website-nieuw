@@ -22,6 +22,7 @@ export interface TranslationContent {
   sponsorLink: string;
   sponsorCards: Array<[string, string]>;
   storyTitle: string;
+  storyBlocks: Array<{ type: 'paragraph' | 'subtitle'; text: string }>;
   storyLead: string;
   storyQuote: string;
   storyOutro: string;
@@ -139,4 +140,11 @@ export interface RouteDay {
   title: string;
   gpx: string;
   stravaUrl?: string;
+}
+
+export interface TrainingStats {
+  stravaKilometersYTD: number;
+  stravaElevationYTD: number;
+  intervalsFitnessCTL: number;
+  targetAlbirElevation: number;
 }

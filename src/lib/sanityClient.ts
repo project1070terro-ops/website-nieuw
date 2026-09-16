@@ -1,6 +1,6 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { BlogPhoto, BlogPost, Language, RouteDay } from '../types';
+import type { BlogPhoto, BlogPost, Language, RouteDay, TrainingStats } from '../types';
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID ?? 'of8587ti';
 const dataset = import.meta.env.VITE_SANITY_DATASET ?? 'production';
@@ -20,7 +20,7 @@ const builder = imageUrlBuilder(sanityClient);
 
 export const urlFor = (source: any) => builder.image(source);
 
-const POSTS_QUERY = `*[_type == "post" && status != "upcoming" && status != "draft"] | order(date desc) {
+const POSTS_QUERY = `*[_type == "post"] | order(date desc) {
   _id,
   "slug": slug.current,
   date,
@@ -131,4 +131,23 @@ export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
     gpx: day.gpx?.asset?.url ?? '',
     stravaUrl: day.stravaUrl ?? undefined,
   }));
+}
+
+const TRAINING_STATS_QUERY = `*[_type == "trainingStats"][0] {
+  stravaKilometersYTD,
+  stravaElevationYTD,
+  intervalsFitnessCTL,
+  targetAlbirElevation
+}`;
+
+export async function loadTrainingStats(): Promise<TrainingStats | null> {
+  const result = await sanityClient.fetch(TRAINING_STATS_QUERY);
+  if (!result) return null;
+
+  return {
+    stravaKilometersYTD: result.stravaKilometersYTD ?? 0,
+    stravaElevationYTD: result.stravaElevationYTD ?? 0,
+    intervalsFitnessCTL: result.intervalsFitnessCTL ?? 0,
+    targetAlbirElevation: result.targetAlbirElevation ?? 17500,
+  };
 }
