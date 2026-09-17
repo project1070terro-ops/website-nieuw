@@ -567,6 +567,10 @@ export function RouteDayInteractive({
           )}
         </div>
       </div>
+      <div className="route-map-attribution">
+        <a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a> | ©{' '}
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>
+      </div>
     </div>
   );
 }
