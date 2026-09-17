@@ -2165,3 +2165,10 @@ footer.footer-orange-top {
   .route-map { height: 560px; }
   .route-chart-panel { height: 150px; }
 }
+.leaflet-control-attribution {
+  top: 4px !important;
+  right: 4px !important;
+  bottom: auto !important;
+  left: auto !important;
+  z-index: 1002 !important;
+}
