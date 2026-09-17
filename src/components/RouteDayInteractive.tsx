@@ -388,7 +388,7 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 } },
+            title: { display: false },
           },
           y: {
             display: true,
@@ -557,7 +557,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap pb-8">
+        <div className="route-chart-canvas-wrap h-full">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
@@ -566,6 +566,7 @@ export function RouteDayInteractive({
             <canvas ref={canvasRef} />
           )}
         </div>
+        <p className="text-center text-xs text-gray-400 mt-2">{`${r.axisDistance} — ${r.hoverHint}`}</p>
       </div>
       <div className="route-map-attribution">
         <a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a> | ©{' '}
