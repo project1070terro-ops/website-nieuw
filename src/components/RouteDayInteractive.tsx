@@ -592,7 +592,7 @@ export function RouteDayInteractive({
           ) : (
             <canvas ref={canvasRef} />
           )}
-          <div ref={chartTooltipRef} className="route-chart-tooltip hidden lg:block" />
+          <div ref={chartTooltipRef} className="route-chart-tooltip hidden md:block" />
         </div>
         <p className="text-center text-xs text-gray-400 mt-2">{`${r.axisDistance} — ${r.hoverHint}`}</p>
       </div>
