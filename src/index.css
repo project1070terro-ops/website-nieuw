@@ -2133,6 +2133,7 @@ footer.footer-orange-top {
 }
 @media (min-width: 768px) {
   .route-sidebar { overflow-y: hidden; padding: 14px; gap: 10px; width: 260px; }
+  .route-chart-panel { left: 284px; }
   .route-sidebar-top { gap: 10px; }
   .route-sidebar-title { font-size: 18px; }
   .route-sidebar-stat-value { font-size: 20px; }
