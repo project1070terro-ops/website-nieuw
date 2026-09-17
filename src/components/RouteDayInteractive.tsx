@@ -335,7 +335,7 @@ export function RouteDayInteractive({
         interaction: { mode: 'index', intersect: false },
         hover: { mode: 'index', intersect: false },
         elements: { point: { radius: 0, hoverRadius: 0, hitRadius: 28 }, line: { tension: 0.35 } },
-        layout: { padding: { top: 10, right: 20, left: 20, bottom: 30 } },
+        layout: { padding: { top: 5, right: 20, left: 20, bottom: 20 } },
         plugins: {
           legend: { display: false },
           verticalLineInteractive: true,
@@ -380,7 +380,7 @@ export function RouteDayInteractive({
             ticks: {
               color: 'rgba(255,255,255,0.5)',
               font: { size: 10 },
-              padding: 4,
+              padding: 15,
               maxRotation: 0,
               autoSkip: false,
               callback: (_value, index) => {
@@ -388,14 +388,15 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 8 } },
+            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 10, bottom: 10 } },
           },
           y: {
             display: true,
+            grace: '10%',
             min: Math.min(0, Math.floor(minEle / 50) * 50),
             max: Math.ceil(maxEle / 50) * 50,
             grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 } },
+            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 }, padding: 10 },
             title: { display: true, text: r.axisElevation, color: 'rgba(255,255,255,0.4)', font: { size: 10 } },
           },
         },
@@ -556,7 +557,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap">
+        <div className="route-chart-canvas-wrap pb-10">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (

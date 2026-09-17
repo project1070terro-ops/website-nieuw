@@ -1866,7 +1866,7 @@ footer.footer-orange-top {
 .route-chart-info { display: flex; gap: 24px; align-items: center; font-size: 13px; color: rgba(255,255,255,0.7); min-height: 22px; }
 .route-chart-info span strong { color: var(--white); font-weight: 700; }
 .route-chart-hint { color: rgba(255,255,255,0.45); }
-.route-chart-canvas-wrap { flex: 1; position: relative; min-height: 0; }
+.route-chart-canvas-wrap { flex: 1; position: relative; min-height: 0; overflow: visible; }
 .route-chart-canvas-wrap canvas { width: 100% !important; height: 100% !important; }
 .route-chart-placeholder { color: rgba(255,255,255,0.5); text-align: center; padding-top: 50px; font-size: 14px; }
 .route-loading { text-align: center; padding: 80px 0; color: rgba(255,255,255,0.6); }
