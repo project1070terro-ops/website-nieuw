@@ -381,7 +381,7 @@ export function RouteDayInteractive({
             ticks: {
               color: 'rgba(255,255,255,0.5)',
               font: { size: 10 },
-              padding: 8,
+              padding: 5,
               maxRotation: 0,
               autoSkip: false,
               callback: (_value, index) => {
@@ -389,7 +389,7 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 8 } },
+            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 15, bottom: 5 } },
           },
           y: {
             display: true,
@@ -558,7 +558,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap">
+        <div className="route-chart-canvas-wrap pb-4">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
