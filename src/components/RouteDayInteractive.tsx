@@ -335,6 +335,7 @@ export function RouteDayInteractive({
         interaction: { mode: 'index', intersect: false },
         hover: { mode: 'index', intersect: false },
         elements: { point: { radius: 0, hoverRadius: 0, hitRadius: 28 }, line: { tension: 0.35 } },
+        layout: { padding: { bottom: 16 } },
         plugins: {
           legend: { display: false },
           verticalLineInteractive: true,
@@ -350,6 +351,7 @@ export function RouteDayInteractive({
             cornerRadius: 8,
             padding: 8,
             caretSize: 5,
+            yAlign: 'bottom',
             titleFont: { size: 12, weight: 'bold' },
             bodyFont: { size: 11 },
             callbacks: {
