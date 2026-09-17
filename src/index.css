@@ -2149,10 +2149,10 @@ footer.footer-orange-top {
   .route-weather-desc { font-size: 9px; }
 }
 @media (min-width: 1024px) and (max-height: 800px) {
-  .route-map { height: 400px; }
-  .route-chart-panel { height: 130px; }
+  .route-map { height: 440px; }
+  .route-chart-panel { height: 150px; }
 }
 @media (min-width: 1024px) and (min-height: 801px) and (max-height: 950px) {
-  .route-map { height: 480px; }
-  .route-chart-panel { height: 140px; }
+  .route-map { height: 520px; }
+  .route-chart-panel { height: 160px; }
 }
