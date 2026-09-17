@@ -272,7 +272,7 @@ export function RouteDayInteractive({
     if (window.innerWidth < 640) {
       mapRef.current.fitBounds(bounds, { padding: [24, 24] });
     } else if (window.innerWidth < 1024) {
-      mapRef.current.fitBounds(bounds, { paddingTopLeft: [240, 60], paddingBottomRight: [40, 300] });
+      mapRef.current.fitBounds(bounds, { paddingTopLeft: [260, 60], paddingBottomRight: [40, 260] });
     } else {
       mapRef.current.fitBounds(bounds, { paddingTopLeft: [300, 60], paddingBottomRight: [40, 200] });
     }
@@ -520,7 +520,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel !h-[280px] lg:!h-[180px] !overflow-visible">
+      <div className="route-chart-panel !h-[240px] lg:!h-[180px] !overflow-visible">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">

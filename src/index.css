@@ -2117,7 +2117,7 @@ footer.footer-orange-top {
   .route-hover-info { display: flex; }
 }
 @media (max-width: 900px) {
-  .route-map { height: 400px; }
+  .route-map { height: 500px; }
   .route-sidebar { width: 220px; padding: 16px; }
   .route-chart-panel { height: 160px; left: 244px; }
   .route-sidebar-title { font-size: 18px; }
