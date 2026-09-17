@@ -341,17 +341,20 @@ export function RouteDayInteractive({
           verticalLineInteractive: true,
           tooltip: {
             enabled: true,
+            mode: 'index',
+            intersect: false,
             yAlign: 'bottom',
             displayColors: false,
             position: 'nearest',
-            backgroundColor: 'rgba(255, 255, 255, 0.96)',
-            titleColor: '#1a1a1a',
-            bodyColor: '#333333',
+            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+            titleColor: '#000000',
+            bodyColor: '#000000',
             borderColor: 'rgba(0, 0, 0, 0.12)',
             borderWidth: 1,
             cornerRadius: 8,
-            padding: 8,
+            padding: 12,
             caretSize: 5,
+            caretPadding: 15,
             titleFont: { size: 12, weight: 'bold' },
             bodyFont: { size: 11 },
             callbacks: {
@@ -396,7 +399,7 @@ export function RouteDayInteractive({
             min: Math.min(0, Math.floor(minEle / 50) * 50),
             max: Math.ceil(maxEle / 50) * 50,
             grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 }, padding: 8 },
+            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 }, padding: 12 },
             title: { display: true, text: r.axisElevation, color: 'rgba(255,255,255,0.4)', font: { size: 10 } },
           },
         },
@@ -493,7 +496,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel">
+      <div className="route-chart-panel !h-[280px] md:!h-auto">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">
@@ -557,7 +560,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap h-full">
+        <div className="route-chart-canvas-wrap h-40 md:h-[260px] !flex-none">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
