@@ -379,6 +379,7 @@ export function RouteDayInteractive({
             ticks: {
               color: 'rgba(255,255,255,0.5)',
               font: { size: 10 },
+              padding: 4,
               maxRotation: 0,
               autoSkip: false,
               callback: (_value, index) => {
@@ -386,7 +387,7 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 } },
+            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 8 } },
           },
           y: {
             display: true,
@@ -411,14 +412,14 @@ export function RouteDayInteractive({
 
   if (!day.gpx) {
     return (
-      <div className="route-map-wrap max-h-[70vh]">
+      <div className="route-map-wrap">
         <p className="route-loading">{placeholder}</p>
       </div>
     );
   }
 
   return (
-    <div className="route-map-wrap max-h-[70vh]">
+    <div className="route-map-wrap">
       {error && <p className="route-map-error">{error}</p>}
       <div className="route-map" ref={mapContainerRef} />
 
@@ -490,7 +491,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel route-chart-panel-tall">
+      <div className="route-chart-panel">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">

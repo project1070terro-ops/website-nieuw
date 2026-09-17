@@ -2129,5 +2129,22 @@ footer.footer-orange-top {
   .route-sidebar-top { order: 1; width: 100%; padding: 16px; background: rgba(20,20,20,0.92); border-radius: 12px 12px 0 0; border: none; border-bottom: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
   .route-sidebar-bottom { order: 4; width: 100%; padding: 16px; background: rgba(20,20,20,0.92); border-radius: 0 0 12px 12px; border: none; border-top: 1px solid rgba(255,255,255,0.08); box-sizing: border-box; }
   .route-chart-panel { position: relative; bottom: auto; left: auto; right: auto; order: 3; border-radius: 0; border: none; border-top: 1px solid rgba(255,255,255,0.08); }
-  .route-chart-panel-tall { height: 200px; }
+  .route-chart-panel { height: 200px; }
+}
+@media (min-width: 768px) {
+  .route-sidebar { overflow-y: hidden; padding: 14px; gap: 10px; width: 260px; }
+  .route-sidebar-top { gap: 10px; }
+  .route-sidebar-title { font-size: 18px; }
+  .route-sidebar-stat-value { font-size: 20px; }
+  .route-sidebar-stat-label { font-size: 10px; }
+  .route-download-btn,
+  .route-strava-btn { padding: 10px 14px; font-size: 12px; }
+  .route-legend { gap: 6px 10px; }
+  .route-legend-item { font-size: 10px; }
+  .route-legend-swatch { width: 14px; height: 3px; }
+  .route-stats-grid { gap: 10px 8px; }
+  .route-stats-grid .route-sidebar-stat-value { font-size: 18px; }
+  .route-weather { margin-top: 8px; padding: 8px; min-height: 40px; }
+  .route-weather-temp { font-size: 16px; }
+  .route-weather-desc { font-size: 9px; }
 }
