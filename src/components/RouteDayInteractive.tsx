@@ -129,6 +129,7 @@ export function RouteDayInteractive({
   const startRef = useRef<L.Marker | null>(null);
   const endRef = useRef<L.Marker | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const chartTooltipRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<Chart | null>(null);
 
   // Map aanmaken (eenmalig)
@@ -271,7 +272,7 @@ export function RouteDayInteractive({
     if (window.innerWidth < 640) {
       mapRef.current.fitBounds(bounds, { padding: [24, 24] });
     } else {
-      mapRef.current.fitBounds(bounds, { paddingTopLeft: [300, 60], paddingBottomRight: [40, 230] });
+      mapRef.current.fitBounds(bounds, { paddingTopLeft: [300, 60], paddingBottomRight: [40, 200] });
     }
   }, [points, gradients]);
 
@@ -340,7 +341,7 @@ export function RouteDayInteractive({
           legend: { display: false },
           verticalLineInteractive: true,
           tooltip: {
-            enabled: true,
+            enabled: false,
             mode: 'index',
             intersect: false,
             yAlign: 'bottom',
@@ -374,6 +375,27 @@ export function RouteDayInteractive({
                 }
                 return lines;
               },
+            },
+            external: ({ tooltip }: { tooltip: any }) => {
+              const el = chartTooltipRef.current;
+              if (!el) return;
+              if (tooltip.opacity === 0 || !tooltip.body?.length) {
+                el.style.opacity = '0';
+                return;
+              }
+              const title = (tooltip.title || []).join('<br/>');
+              const body = tooltip.body
+                .map((b: any) => b.lines)
+                .flat()
+                .map((line: string) => `<div style="white-space:nowrap;">${line}</div>`)
+                .join('');
+              el.innerHTML = title
+                ? `<div style="font-weight:700;font-size:12px;margin-bottom:4px;">${title}</div>${body}`
+                : body;
+              el.style.opacity = '1';
+              el.style.left = `${tooltip.caretX}px`;
+              el.style.top = `${tooltip.caretY}px`;
+              el.style.transform = 'translate(-50%, -100%) translateY(-8px)';
             },
           },
         } as any,
@@ -496,7 +518,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel !h-[280px] md:!h-auto">
+      <div className="route-chart-panel !h-[180px] !overflow-visible">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">
@@ -560,7 +582,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap h-40 md:h-[260px] !flex-none">
+        <div className="route-chart-canvas-wrap overflow-visible">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
@@ -568,6 +590,7 @@ export function RouteDayInteractive({
           ) : (
             <canvas ref={canvasRef} />
           )}
+          <div ref={chartTooltipRef} className="route-chart-tooltip" />
         </div>
         <p className="text-center text-xs text-gray-400 mt-2">{`${r.axisDistance} — ${r.hoverHint}`}</p>
       </div>

@@ -1861,13 +1861,15 @@ footer.footer-orange-top {
 .route-sidebar-stat { display: flex; flex-direction: column; gap: 4px; }
 .route-sidebar-stat-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
 .route-sidebar-stat-value { font-size: 26px; font-weight: 800; color: var(--white); }
-.route-chart-panel { position: absolute; bottom: 12px; left: 304px; right: 12px; height: 180px; z-index: 1000; background: rgba(20,20,20,0.92); backdrop-filter: blur(6px); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+.route-chart-panel { position: absolute; bottom: 12px; left: 304px; right: 12px; height: 180px; z-index: 1000; background: rgba(20,20,20,0.92); backdrop-filter: blur(6px); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; overflow: visible; }
 .route-chart-panel-tall { height: 220px; }
 .route-chart-info { display: flex; gap: 24px; align-items: center; font-size: 13px; color: rgba(255,255,255,0.7); min-height: 22px; }
 .route-chart-info span strong { color: var(--white); font-weight: 700; }
 .route-chart-hint { color: rgba(255,255,255,0.45); }
-.route-chart-canvas-wrap { flex: 1; position: relative; min-height: 0; overflow: visible; }
+.route-chart-canvas-wrap { flex: 1; position: relative; min-height: 0; overflow: visible; z-index: 2; }
 .route-chart-canvas-wrap canvas { width: 100% !important; height: 100% !important; }
+.route-chart-tooltip { position: absolute; pointer-events: none; opacity: 0; transition: opacity 0.1s ease; background: rgba(255,255,255,0.95); color: #000000; border: 1px solid rgba(0,0,0,0.12); border-radius: 8px; padding: 12px; font-size: 11px; line-height: 1.35; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+.route-chart-tooltip div { color: #000000; }
 .route-chart-placeholder { color: rgba(255,255,255,0.5); text-align: center; padding-top: 50px; font-size: 14px; }
 .route-loading { text-align: center; padding: 80px 0; color: rgba(255,255,255,0.6); }
 .route-pin { position: relative; width: 26px; height: 26px; border: 2px solid #ffffff; border-radius: 7px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.45); }
@@ -2150,20 +2152,20 @@ footer.footer-orange-top {
   .route-weather-desc { font-size: 9px; }
 }
 @media (min-width: 1024px) and (max-height: 800px) {
-  .route-map { height: 440px; }
-  .route-chart-panel { height: 150px; }
+  .route-map { height: 500px; }
+  .route-chart-panel { height: 180px; }
 }
 @media (min-width: 1024px) and (min-height: 801px) and (max-height: 850px) {
-  .route-map { height: 480px; }
-  .route-chart-panel { height: 130px; }
+  .route-map { height: 500px; }
+  .route-chart-panel { height: 180px; }
 }
 @media (min-width: 1024px) and (min-height: 851px) and (max-height: 950px) {
   .route-map { height: 520px; }
-  .route-chart-panel { height: 150px; }
+  .route-chart-panel { height: 180px; }
 }
 @media (min-width: 1024px) and (min-height: 951px) and (max-height: 1200px) {
   .route-map { height: 560px; }
-  .route-chart-panel { height: 150px; }
+  .route-chart-panel { height: 180px; }
 }
 .leaflet-control-attribution { display: none !important; }
 .route-map-attribution {
