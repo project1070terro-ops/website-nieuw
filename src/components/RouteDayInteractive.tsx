@@ -518,7 +518,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel !h-[180px] !overflow-visible">
+      <div className="route-chart-panel !h-[240px] md:!h-[180px] !overflow-visible">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">
@@ -582,7 +582,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap overflow-visible">
+        <div className="route-chart-canvas-wrap overflow-visible !h-[140px] md:!h-auto">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
@@ -590,7 +590,7 @@ export function RouteDayInteractive({
           ) : (
             <canvas ref={canvasRef} />
           )}
-          <div ref={chartTooltipRef} className="route-chart-tooltip" />
+          <div ref={chartTooltipRef} className="route-chart-tooltip hidden md:block" />
         </div>
         <p className="text-center text-xs text-gray-400 mt-2">{`${r.axisDistance} — ${r.hoverHint}`}</p>
       </div>
