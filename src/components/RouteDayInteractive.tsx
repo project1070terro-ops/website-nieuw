@@ -335,12 +335,13 @@ export function RouteDayInteractive({
         interaction: { mode: 'index', intersect: false },
         hover: { mode: 'index', intersect: false },
         elements: { point: { radius: 0, hoverRadius: 0, hitRadius: 28 }, line: { tension: 0.35 } },
-        layout: { padding: { top: 5, right: 20, left: 20, bottom: 20 } },
+        layout: { padding: 0 },
         plugins: {
           legend: { display: false },
           verticalLineInteractive: true,
           tooltip: {
-            enabled: window.innerWidth > 1024,
+            enabled: true,
+            yAlign: 'bottom',
             displayColors: false,
             position: 'nearest',
             backgroundColor: 'rgba(255, 255, 255, 0.96)',
@@ -380,7 +381,7 @@ export function RouteDayInteractive({
             ticks: {
               color: 'rgba(255,255,255,0.5)',
               font: { size: 10 },
-              padding: 15,
+              padding: 8,
               maxRotation: 0,
               autoSkip: false,
               callback: (_value, index) => {
@@ -388,7 +389,7 @@ export function RouteDayInteractive({
                 return `${Math.round(distances[index] / 1000)}`;
               },
             },
-            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 10, bottom: 10 } },
+            title: { display: true, text: `${r.axisDistance} — ${r.axisHint}`, color: 'rgba(255,255,255,0.35)', font: { size: 9 }, padding: { top: 8 } },
           },
           y: {
             display: true,
@@ -396,7 +397,7 @@ export function RouteDayInteractive({
             min: Math.min(0, Math.floor(minEle / 50) * 50),
             max: Math.ceil(maxEle / 50) * 50,
             grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 }, padding: 10 },
+            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 10 }, padding: 8 },
             title: { display: true, text: r.axisElevation, color: 'rgba(255,255,255,0.4)', font: { size: 10 } },
           },
         },
@@ -557,7 +558,7 @@ export function RouteDayInteractive({
             <span className="route-chart-hint">{r.hoverHint}</span>
           )}
         </div>
-        <div className="route-chart-canvas-wrap pb-10">
+        <div className="route-chart-canvas-wrap">
           {loading ? (
             <p className="route-chart-placeholder">{r.loadingGpx}</p>
           ) : points.length === 0 ? (
