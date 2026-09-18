@@ -520,8 +520,10 @@ main { flex: 1; }
 
 /* ===== HOME CTA ===== */
 .home-cta {
-  text-align: center;
-  padding: 96px 40px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
   background: var(--anthracite);
   border-bottom: 1px solid rgba(192, 90, 40, 0.6);
   position: relative;
