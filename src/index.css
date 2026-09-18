@@ -423,7 +423,7 @@ main { flex: 1; }
   transition: transform 0.3s ease, border-color 0.3s ease;
   display: block;
 }
-.stat-card:hover { transform: translateY(-6px); border-color: rgba(192, 90, 40, 0.4); }
+.stat-card:hover { transform: none; border-color: rgba(255, 255, 255, 0.08); }
 .stat-card .stat-icon {
   color: var(--orange);
   margin-bottom: 18px;
