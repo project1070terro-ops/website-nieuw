@@ -130,6 +130,8 @@ export function RouteDayInteractive({
   const endRef = useRef<L.Marker | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const chartTooltipRef = useRef<HTMLDivElement | null>(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const chartPanelRef = useRef<HTMLDivElement | null>(null);
   const chartRef = useRef<Chart | null>(null);
 
   // Map aanmaken (eenmalig)
@@ -269,12 +271,15 @@ export function RouteDayInteractive({
     endRef.current?.setLatLng([points[points.length - 1].lat, points[points.length - 1].lon]).setOpacity(1);
     const bounds = L.latLngBounds(points.map((p) => [p.lat, p.lon] as [number, number]));
     mapRef.current.invalidateSize();
+    const sidebarWidth = sidebarRef.current?.offsetWidth ?? 300;
+    const panelHeight = chartPanelRef.current?.offsetHeight ?? 180;
     if (window.innerWidth < 640) {
       mapRef.current.fitBounds(bounds, { padding: [24, 24] });
-    } else if (window.innerWidth < 1024) {
-      mapRef.current.fitBounds(bounds, { paddingTopLeft: [260, 60], paddingBottomRight: [40, 260] });
     } else {
-      mapRef.current.fitBounds(bounds, { paddingTopLeft: [300, 60], paddingBottomRight: [40, 200] });
+      mapRef.current.fitBounds(bounds, {
+        paddingTopLeft: [sidebarWidth + 40, 60],
+        paddingBottomRight: [40, panelHeight + 20],
+      });
     }
   }, [points, gradients]);
 
@@ -452,7 +457,7 @@ export function RouteDayInteractive({
       {error && <p className="route-map-error">{error}</p>}
       <div className="route-map" ref={mapContainerRef} />
 
-      <aside className="route-sidebar">
+      <aside ref={sidebarRef} className="route-sidebar">
         <div className="route-sidebar-top">
           <h2 className="route-sidebar-title">{day.title}</h2>
           <button
@@ -520,7 +525,7 @@ export function RouteDayInteractive({
         </div>
       </aside>
 
-      <div className="route-chart-panel !h-[240px] lg:!h-[180px] !overflow-visible">
+      <div ref={chartPanelRef} className="route-chart-panel !h-[240px] md:!h-[22vh] md:!min-h-[180px] md:!max-h-[240px] lg:!h-[180px] !overflow-visible">
         {stats && (
           <div className="route-chart-stats">
             <div className="route-chart-stat">
@@ -592,7 +597,7 @@ export function RouteDayInteractive({
           ) : (
             <canvas ref={canvasRef} />
           )}
-          <div ref={chartTooltipRef} className="route-chart-tooltip hidden md:block" />
+          <div ref={chartTooltipRef} className="route-chart-tooltip hidden sm:block" />
         </div>
         <p className="text-center text-xs text-gray-400 mt-2">{`${r.axisDistance} — ${r.hoverHint}`}</p>
       </div>
