@@ -455,7 +455,7 @@ export function RouteDayInteractive({
   return (
     <div className="route-map-wrap">
       {error && <p className="route-map-error">{error}</p>}
-      <div className="route-map !lg:h-[500px]" ref={mapContainerRef} />
+      <div className="route-map lg:!h-[500px]" ref={mapContainerRef} />
 
       <aside ref={sidebarRef} className="route-sidebar">
         <div className="route-sidebar-top">
