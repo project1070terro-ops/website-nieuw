@@ -69,7 +69,7 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
         </div>
       </section>
 
-      <Stats t={t} navigate={navigate} />
+      <Stats t={t} />
       <Sponsor t={t} />
 
       <section className="home-cta">

@@ -40,10 +40,10 @@ export function Header({ page, language, setLanguage, navigate, menuOpen, setMen
 
   return (
     <header className={`site-header ${isHeaderScrolled ? 'scrolled' : ''}`}>
-      <button className="brand" onClick={() => navigate('home')}>
+      <div className="brand">
         <span>FORZA FORTUNA</span>
         <em>Financial Group</em>
-      </button>
+      </div>
       
       <button className="menu-toggle" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <X size={20} /> : <Menu size={20} />}

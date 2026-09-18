@@ -22,10 +22,10 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
       <div className="footer-container">
         <div className="footer-flex">
           <div className="footer-module footer-brand-module">
-            <button className="brand" onClick={() => navigate('home')}>
+            <div className="brand">
               <span>FORZA FORTUNA</span>
               <em>Financial Group</em>
-            </button>
+            </div>
             <div className="footer-socials">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" title="Facebook">
                 <Facebook size={20} />

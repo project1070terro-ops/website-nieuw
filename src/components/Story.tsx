@@ -58,7 +58,7 @@ export function Story({ t, language, navigate }: StoryProps) {
 
       <blockquote className="story-quote" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
       <section className="w-full bg-neutral-900 md:bg-neutral-950 py-6">
-        <Stats t={t} navigate={navigate} />
+        <Stats t={t} />
       </section>
       <section className="story-grid">
         {t.storySections.map(([title, text], index) => (
