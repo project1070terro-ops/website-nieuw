@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: ANUNCIO
 title: 'El Lanzamiento: Camino a 2029'
 fullTitle: 'El Lanzamiento Oficial de PROJECT 15/70: Camino a un Desafío Monumental'
-image: /images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp
+image: /images/hero/blog-aankondiging.webp
 status: published
 ---
 

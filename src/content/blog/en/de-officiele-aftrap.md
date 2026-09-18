@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: ANNOUNCEMENT
 title: 'The Kick-off: On the road to 2029'
 fullTitle: 'The Official Kick-off of PROJECT 15/70: On the Road to a Grueling Challenge'
-image: /images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp
+image: /images/hero/blog-aankondiging.webp
 status: published
 ---
 

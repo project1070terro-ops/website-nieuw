@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: AANKONDIGING
 title: 'De Aftrap: Op weg naar 2029'
 fullTitle: 'De Officiële Aftrap van PROJECT 15/70: Op Weg Naar een Loodzware Uitdaging'
-image: /images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp
+image: /images/hero/blog-aankondiging.webp
 status: published
 ---
 
