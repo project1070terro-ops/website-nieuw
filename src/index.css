@@ -546,7 +546,7 @@ main { flex: 1; }
 }
 
 @media (max-width: 640px) {
-  .home-cta { padding: 60px 24px; }
+  .home-cta { padding: 60px 24px 100px; }
   .home-cta .button,
   .home-cta .cta-large {
     font-size: 10px;
