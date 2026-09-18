@@ -545,6 +545,16 @@ main { flex: 1; }
   box-shadow: 0 8px 24px rgba(192, 90, 40, 0.22);
 }
 
+@media (max-width: 640px) {
+  .home-cta { padding: 60px 24px; }
+  .home-cta .button,
+  .home-cta .cta-large {
+    font-size: 10px;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+}
+
 /* ===== PAGE INTRO ===== */
 .page-intro { 
   padding: 120px 40px 40px; 
