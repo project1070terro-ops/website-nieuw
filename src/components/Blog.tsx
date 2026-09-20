@@ -72,8 +72,8 @@ function truncateText(text: string, maxChars = 100): string {
   return slice.trim() + '...';
 }
 
-const INITIAL_COUNT = 8;
-const LOAD_MORE = 8;
+const INITIAL_COUNT = 12;
+const LOAD_MORE = 9;
 
 export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
   const [year, setYear] = useState(initialYear ?? 2027);
@@ -113,7 +113,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const updates = yearCards.filter((c) => !isStage(c.slug));
   const stages = yearCards.filter((c) => isStage(c.slug));
   const timelineSource = year === 2029 ? updates : yearCards;
-  const timelineCards = timelineSource.slice(0, visibleCount);
+  const topCards = timelineSource.slice(0, 3);
+  const listCards = timelineSource.slice(3, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
 
@@ -173,6 +174,38 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             </div>
           ) : null}
         </div>
+      </a>
+    );
+  };
+
+  const renderListItem = ({ date, slug, title, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+    const displayTitle = title[language];
+    const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
+    if (status === 'upcoming') {
+      return (
+        <div key={slug} className="blog-list-row upcoming">
+          {image ? <img className="blog-list-thumb" src={image} alt="" loading="lazy" /> : <div className="blog-list-thumb blog-list-thumb-placeholder" />}
+          <span className="blog-list-date">{date}</span>
+          <span className="blog-list-cat">{categoryLabel}</span>
+          <span className="blog-list-title">{displayTitle}</span>
+          <Lock className="upcoming-lock" size={13} />
+        </div>
+      );
+    }
+    return (
+      <a
+        key={slug}
+        href={slug}
+        className="blog-list-row"
+        onClick={(event) => {
+          event.preventDefault();
+          goToBlog?.(slug);
+        }}
+      >
+        {image ? <img className="blog-list-thumb" src={image} alt="" loading="lazy" /> : <div className="blog-list-thumb blog-list-thumb-placeholder" />}
+        <span className="blog-list-date">{date}</span>
+        <span className="blog-list-cat">{categoryLabel}</span>
+        <span className="blog-list-title">{displayTitle}</span>
       </a>
     );
   };
@@ -250,7 +283,12 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       {/* Tijdlijn van updates & etappes */}
       <section className="blog-timeline blog-fade-in" key={`${year}-${category}`}>
-        <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
+        {topCards.length > 0 && (
+          <div className="blog-top-cards">{topCards.map(renderItem)}</div>
+        )}
+        {listCards.length > 0 && (
+          <div className="blog-list">{listCards.map(renderListItem)}</div>
+        )}
         {hasMore && (
           <div className="blog-show-more-wrap">
             <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
@@ -261,7 +299,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         {year === 2029 && stages.length > 0 && (
           <>
             <h3 className="blog-challenge-subheading">{labels.challenge}</h3>
-            <div className="blog-card-grid">{stages.map(renderItem)}</div>
+            <div className="blog-list">{stages.map(renderListItem)}</div>
           </>
         )}
       </section>
