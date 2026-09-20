@@ -2192,23 +2192,16 @@ footer.footer-orange-top {
 .blog-category-bar {
   display: flex;
   gap: 10px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
   padding: 8px 40px 12px;
   max-width: 1200px;
   margin: 0 auto 24px;
-  scrollbar-width: none;
 }
-.blog-category-bar::-webkit-scrollbar { display: none; }
 .blog-category-pill {
   flex: 0 0 auto;
-  scroll-snap-align: start;
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
-  white-space: nowrap;
   border: 1px solid transparent;
   background: rgba(255, 255, 255, 0.06);
   color: rgba(255, 255, 255, 0.75);
