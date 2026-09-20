@@ -2,8 +2,8 @@
 date: 01 / 2027
 slug: /blog/waarom-save-the-children
 category: GOEDE DOEL
-title: 'Goede Doel: Save the Children'
-fullTitle: 'Fietsen voor de Toekomst: Waarom Wij Kiezen voor Save the Children'
+title: 'Het Goede Doel: Save the Children'
+fullTitle: 'Het Goede Doel: Save the Children'
 image: /images/hero/stc-banner.webp
 status: published
 ---
