@@ -178,17 +178,16 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     );
   };
 
-  const renderListItem = ({ date, slug, title, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+  const renderMiniCard = ({ date, slug, title, image, status, expected }: (typeof yearCards)[number]) => {
     const displayTitle = title[language];
-    const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     if (status === 'upcoming') {
       return (
-        <div key={slug} className="blog-list-row upcoming">
-          {image ? <img className="blog-list-thumb" src={image} alt="" loading="lazy" /> : <div className="blog-list-thumb blog-list-thumb-placeholder" />}
-          <span className="blog-list-date">{date}</span>
-          <span className="blog-list-cat">{categoryLabel}</span>
-          <span className="blog-list-title">{displayTitle}</span>
-          <Lock className="upcoming-lock" size={13} />
+        <div key={slug} className="blog-card-mini upcoming">
+          {image && <img src={image} alt="" loading="lazy" />}
+          <div className="blog-mini-body">
+            <span className="blog-mini-date">{expected ? `${labels.expected}: ${expected}` : date}</span>
+            <span className="blog-mini-title">{displayTitle}</span>
+          </div>
         </div>
       );
     }
@@ -196,16 +195,17 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <a
         key={slug}
         href={slug}
-        className="blog-list-row"
+        className="blog-card-mini"
         onClick={(event) => {
           event.preventDefault();
           goToBlog?.(slug);
         }}
       >
-        {image ? <img className="blog-list-thumb" src={image} alt="" loading="lazy" /> : <div className="blog-list-thumb blog-list-thumb-placeholder" />}
-        <span className="blog-list-date">{date}</span>
-        <span className="blog-list-cat">{categoryLabel}</span>
-        <span className="blog-list-title">{displayTitle}</span>
+        {image && <img src={image} alt="" loading="lazy" />}
+        <div className="blog-mini-body">
+          <span className="blog-mini-date">{date}</span>
+          <span className="blog-mini-title">{displayTitle}</span>
+        </div>
       </a>
     );
   };
@@ -287,7 +287,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           <div className="blog-top-cards">{topCards.map(renderItem)}</div>
         )}
         {listCards.length > 0 && (
-          <div className="blog-list">{listCards.map(renderListItem)}</div>
+          <div className="blog-mini-grid">{listCards.map(renderMiniCard)}</div>
         )}
         {hasMore && (
           <div className="blog-show-more-wrap">
@@ -299,7 +299,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         {year === 2029 && stages.length > 0 && (
           <>
             <h3 className="blog-challenge-subheading">{labels.challenge}</h3>
-            <div className="blog-list">{stages.map(renderListItem)}</div>
+            <div className="blog-mini-grid">{stages.map(renderMiniCard)}</div>
           </>
         )}
       </section>
