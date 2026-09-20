@@ -21,9 +21,20 @@ export const post = defineType({
     }),
     defineField({
       name: 'category',
-      title: 'Categorie / label',
+      title: 'Filtercategorie',
       type: 'string',
-      description: 'Bijv. "DAG 1", "Training" of "Update"',
+      options: {
+        list: [
+          { title: 'Alles', value: 'all' },
+          { title: 'Training', value: 'training' },
+          { title: 'Materiaal', value: 'material' },
+          { title: 'Progressie', value: 'progress' },
+          { title: 'Partner', value: 'partner' },
+        ],
+        layout: 'dropdown',
+      },
+      initialValue: 'all',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'title',

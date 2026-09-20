@@ -24,7 +24,7 @@ const POSTS_QUERY = `*[_type == "post"] | order(date desc) {
   _id,
   "slug": slug.current,
   date,
-  category,
+  "category": category,
   status,
   expected,
   title,
@@ -92,6 +92,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
   return posts.map((post) => ({
     date: post.date ?? '',
     slug: post.slug ? `/blog/${post.slug}` : '',
+    category: post.category || 'all',
     label: toLocaleString(post.category ?? ''),
     title: toLocaleString(post.title),
     fullTitle: toLocaleString(post.fullTitle),

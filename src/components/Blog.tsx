@@ -14,14 +14,16 @@ interface BlogProps {
   initialYear?: number;
 }
 
-const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string }> = {
-  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten' },
-  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts' },
-  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas' },
+const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string; categories: Record<string, string> }> = {
+  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner' } },
+  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner' } },
+  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio' } },
 };
 
-// Etappes herkennen we aan de categorie (DAG 1, DAY 2, DÍA 3, ...).
-const isStage = (label: string) => /^(dag|day|d[ií]a)\s*\d+/i.test(label);
+// Etappes herkennen we aan de slug (/blog/dag-1, /blog/day-2, /blog/dia-3, ...).
+const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
+
+const CATEGORIES = ['all', 'training', 'material', 'progress', 'partner'];
 
 // De 3 vaste info-kaarten; alle overige posts vallen in de tijdlijn.
 const INFO_SLUGS = new Set([
@@ -75,6 +77,7 @@ const LOAD_MORE = 8;
 
 export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
   const [year, setYear] = useState(initialYear ?? 2027);
+  const [category, setCategory] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [trainingStats, setTrainingStats] = useState<TrainingStats | null>(null);
 
@@ -105,10 +108,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
   // Statische introductieblokken vs. tijdlijn-items (etappes, trainingen, updates)
   const infoCards = sortedCards.filter((c) => INFO_SLUGS.has(c.slug));
-  const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year);
+  const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year && (category === 'all' || c.category === 'all' || c.category === category));
   // In 2029 splitsen we: reguliere updates boven, de 10 etappes onder een sub-kop.
-  const updates = yearCards.filter((c) => !isStage(c.label[language]));
-  const stages = yearCards.filter((c) => isStage(c.label[language]));
+  const updates = yearCards.filter((c) => !isStage(c.slug));
+  const stages = yearCards.filter((c) => isStage(c.slug));
   const timelineSource = year === 2029 ? updates : yearCards;
   const timelineCards = timelineSource.slice(0, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
@@ -226,8 +229,27 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         ))}
       </div>
 
+      {/* Categorie-filters */}
+      <div className="blog-category-bar" role="tablist" aria-label="Categorieën">
+        {CATEGORIES.map((cat) => {
+          const active = category === cat;
+          return (
+            <button
+              key={cat}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              className={`blog-category-pill ${active ? 'active' : 'inactive'}`}
+              onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
+            >
+              {labels.categories[cat]}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Tijdlijn van updates & etappes */}
-      <section className="blog-timeline">
+      <section className="blog-timeline blog-fade-in" key={`${year}-${category}`}>
         <div className="blog-card-grid">{timelineCards.map(renderItem)}</div>
         {hasMore && (
           <div className="blog-show-more-wrap">
