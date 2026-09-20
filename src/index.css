@@ -1196,7 +1196,8 @@ main { flex: 1; }
 .blog-card .tag.upcoming-tag { background: var(--orange); color: var(--white); }
 .blog-expected { font-size: 12px; color: rgba(255,255,255,0.4); }
 .blog-list-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.blog-list-date { font-size: 12px; color: rgba(255,255,255,0.4); }
+.blog-list-date,
+.blog-list-cat { font-size: 12px; color: rgba(255,255,255,0.4); }
 .upcoming-lock { color: rgba(255,255,255,0.4); margin-left: auto; }
 .blog-card:hover .blog-expected,
 .blog-card:hover .blog-list-date,
@@ -2257,7 +2258,10 @@ footer.footer-orange-top {
 .blog-card-mini .blog-mini-date {
   font-size: 12px;
   color: rgba(255,255,255,0.45);
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 6px;
 }
 .blog-mini-title {

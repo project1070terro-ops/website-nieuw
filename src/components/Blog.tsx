@@ -137,11 +137,12 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div key={slug} className="blog-card upcoming">
           {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
           <div className="blog-card-body">
-            <div className="blog-list-meta">
+            <div className="blog-list-meta justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
-              <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
-              <span className="text-zinc-500" aria-hidden="true">•</span>
-              <span className="blog-list-cat text-zinc-400">{categoryLabel}</span>
+              <div className="flex-1 flex justify-between items-center gap-2">
+                <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
+                <span className="blog-list-cat">{categoryLabel}</span>
+              </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
             <h3>{titleNode}</h3>
@@ -166,11 +167,12 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
         <div className="blog-card-body">
-          <div className="blog-list-meta">
+          <div className="blog-list-meta justify-between">
             <span className="tag">{label[language]}</span>
-            <span className="blog-list-date">{date}</span>
-            <span className="text-zinc-500" aria-hidden="true">•</span>
-            <span className="blog-list-cat text-zinc-400">{categoryLabel}</span>
+            <div className="flex-1 flex justify-between items-center gap-2">
+              <span className="blog-list-date">{date}</span>
+              <span className="blog-list-cat">{categoryLabel}</span>
+            </div>
           </div>
           <h3>{titleNode}</h3>
           {truncated ? (
@@ -191,10 +193,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div key={slug} className="blog-card-mini upcoming">
           {image && <img src={image} alt="" loading="lazy" />}
           <div className="blog-mini-body">
-            <span className="blog-mini-date">
-              {expected ? `${labels.expected}: ${expected}` : date}
-              <span className="mx-1 text-zinc-500" aria-hidden="true">•</span>
-              <span className="text-zinc-400">{categoryLabel}</span>
+            <span className="blog-mini-date flex justify-between items-center">
+              <span>{expected ? `${labels.expected}: ${expected}` : date}</span>
+              <span>{categoryLabel}</span>
             </span>
             <span className="blog-mini-title">{displayTitle}</span>
           </div>
@@ -213,10 +214,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img src={image} alt="" loading="lazy" />}
         <div className="blog-mini-body">
-          <span className="blog-mini-date">
-            {date}
-            <span className="mx-1 text-zinc-500" aria-hidden="true">•</span>
-            <span className="text-zinc-400">{categoryLabel}</span>
+          <span className="blog-mini-date flex justify-between items-center">
+            <span>{date}</span>
+            <span>{categoryLabel}</span>
           </span>
           <span className="blog-mini-title">{displayTitle}</span>
         </div>
