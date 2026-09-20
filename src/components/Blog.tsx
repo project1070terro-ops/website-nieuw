@@ -34,6 +34,19 @@ const INFO_SLUGS = new Set([
 
 const YEARS = [2027, 2028, 2029];
 
+function CategoryLabel({ label, className }: { label: string; className?: string }) {
+  const parts = label.split(' ');
+  const emoji = parts[0];
+  const text = parts.slice(1).join(' ');
+  if (!text) return <span className={className}>{label}</span>;
+  return (
+    <span className={className}>
+      <span className="blog-cat-emoji" aria-hidden="true">{emoji}</span>
+      <span className="blog-cat-text">{text}</span>
+    </span>
+  );
+}
+
 function postYear(date: string) {
   if (date.includes('/')) {
     const parts = date.split('/');
@@ -141,7 +154,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               <span className="tag upcoming-tag">{label[language]}</span>
               <div className="flex-1 flex justify-between items-center gap-2">
                 <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
-                <span className="blog-list-cat">{categoryLabel}</span>
+                <CategoryLabel label={categoryLabel} className="blog-list-cat" />
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
@@ -171,7 +184,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <span className="tag">{label[language]}</span>
             <div className="flex-1 flex justify-between items-center gap-2">
               <span className="blog-list-date">{date}</span>
-              <span className="blog-list-cat">{categoryLabel}</span>
+              <CategoryLabel label={categoryLabel} className="blog-list-cat" />
             </div>
           </div>
           <h3>{titleNode}</h3>
@@ -194,8 +207,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           {image && <img src={image} alt="" loading="lazy" />}
           <div className="blog-mini-body">
             <span className="blog-mini-date flex justify-between items-center">
-              <span>{expected ? `${labels.expected}: ${expected}` : date}</span>
-              <span>{categoryLabel}</span>
+              <span className="blog-mini-date-text">{expected ? `${labels.expected}: ${expected}` : date}</span>
+              <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
             </span>
             <span className="blog-mini-title">{displayTitle}</span>
           </div>
@@ -215,8 +228,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         {image && <img src={image} alt="" loading="lazy" />}
         <div className="blog-mini-body">
           <span className="blog-mini-date flex justify-between items-center">
-            <span>{date}</span>
-            <span>{categoryLabel}</span>
+            <span className="blog-mini-date-text">{date}</span>
+            <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
           </span>
           <span className="blog-mini-title">{displayTitle}</span>
         </div>
