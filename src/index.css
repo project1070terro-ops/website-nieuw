@@ -2224,7 +2224,7 @@ footer.footer-orange-top {
 .blog-category-pill.active {
   border-color: #FF5722;
   background: rgba(255, 255, 255, 0.06);
-  color: #FF5722;
+  color: #ffffff;
 }
 @media (max-width: 640px) {
   .blog-category-bar { padding: 8px 24px 12px; margin-bottom: 20px; }
