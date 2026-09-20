@@ -290,7 +290,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           <div className="blog-mini-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{listCards.map(renderMiniCard)}</div>
         )}
         {hasMore && (
-          <div className="blog-show-more-wrap">
+          <div className="blog-show-more-wrap mt-8 mb-8">
             <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
               {labels.loadMore}
             </button>
