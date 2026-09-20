@@ -25,15 +25,14 @@ export const post = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Alles', value: 'all' },
-          { title: 'Training', value: 'training' },
-          { title: 'Materiaal', value: 'material' },
-          { title: 'Progressie', value: 'progress' },
-          { title: 'Partner', value: 'partner' },
+          { title: '🚴‍♂️ Training', value: 'training' },
+          { title: '🔧 Materiaal', value: 'material' },
+          { title: '📈 Progressie', value: 'progress' },
+          { title: '🤝 Partner / Sponsor', value: 'partner' },
         ],
         layout: 'dropdown',
       },
-      initialValue: 'all',
+      initialValue: 'training',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

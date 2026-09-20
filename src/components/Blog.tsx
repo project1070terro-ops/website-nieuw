@@ -15,9 +15,9 @@ interface BlogProps {
 }
 
 const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string; categories: Record<string, string> }> = {
-  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner' } },
-  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner' } },
-  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio' } },
+  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner / Sponsor' } },
+  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner / Sponsor' } },
+  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio / Patrocinador' } },
 };
 
 // Etappes herkennen we aan de slug (/blog/dag-1, /blog/day-2, /blog/dia-3, ...).
