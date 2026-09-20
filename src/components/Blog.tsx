@@ -263,7 +263,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       </div>
 
       {/* Categorie-filters */}
-      <div className="blog-category-bar flex-wrap md:flex-nowrap gap-y-2 md:gap-y-0" role="tablist" aria-label="Categorieën">
+      <div className="blog-category-bar grid grid-cols-2 md:flex md:flex-nowrap gap-2 md:gap-2.5" role="tablist" aria-label="Categorieën">
         {CATEGORIES.map((cat) => {
           const active = category === cat;
           return (
@@ -272,7 +272,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               type="button"
               role="tab"
               aria-selected={active}
-              className={`blog-category-pill whitespace-normal md:whitespace-nowrap ${active ? 'active' : 'inactive'}`}
+              className={`blog-category-pill whitespace-normal md:whitespace-nowrap ${cat === 'all' ? 'col-span-2 text-center' : ''} ${active ? 'active' : 'inactive'}`}
               onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
             >
               {labels.categories[cat]}
