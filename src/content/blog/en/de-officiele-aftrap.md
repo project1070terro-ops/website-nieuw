@@ -2,14 +2,18 @@
 date: 01 / 2027
 slug: /blog/de-officiele-aftrap
 category: ANNOUNCEMENT
-title: 'The Kick-off: On the road to 2029'
-fullTitle: 'The Official Kick-off of PROJECT 15/70: On the Road to a Grueling Challenge'
+title: 'The Official Kick-off of PROJECT 15/70: The Road to Project Terro'
+fullTitle: 'The Official Kick-off of PROJECT 15/70: The Road to Project Terro'
 image: /images/hero/blog-aankondiging.webp
 status: published
 ---
 
-The launch of Project 15/70 is official. What started as a wild dream on a bike is growing into one of the most challenging cycling adventures that I have ever undertaken. In 2029, Forza Fortuna Financial Group will have existed for fifteen years, and Terro will have been part of the team for just as long. On top of that, he turns seventy years young. Three reasons to take on the Spanish mountains for charity.
+The launch of Project 15/70 is a fact. What once began as a wild dream on the bike is now growing into the most boundary-pushing cycling adventure I have ever undertaken. In 2029, Forza Fortuna Financial Group is celebrating its fifteenth anniversary. For just as long, Terro has been inextricably linked to this team. And to complete the symbolism: in that same year he will turn seventy years young. Three rock-solid reasons to take on the ultimate sporting challenge and do battle with the Spanish mountains for a good cause.
 
-For ten consecutive days, Terro will be in the saddle non-stop to conquer more than 17,500 vertical meters in the hills around Albir. This is not just a casual ride; it is a boundary-pushing statement that age is just a number. With the right preparation, an unbreakable mindset and a team that stands behind you as one, the impossible becomes negotiable.
+For ten days straight, Terro will climb into the saddle non-stop to conquer more than 17,500 vertical meters in the merciless hills around Albir. This is not just a bike ride; it is a powerful statement proving that age is just a number.
 
-Every meter ridden contributes to a greater cause. Support us and follow the adventure from the first training session to the final descent. Together we will make Project 15/70 a story that lasts.
+With the right preparation, an unbreakable mindset and a main sponsor that stands behind this project as one, the impossible becomes possible.
+
+Every meter pedaled contributes directly to a higher cause. Support us and follow this extraordinary journey from the very first training kilometer to the very last descent.
+
+Together we will make Project Terro a legendary story that lasts.

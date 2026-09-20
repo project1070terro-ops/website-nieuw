@@ -222,7 +222,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
               </span>
             </button>
           )}
-          {nextPost && (
+          {nextPost && slug !== '/blog/waarom-save-the-children' && (
             <button className="blog-detail-nav-card next" onClick={() => goToBlog(nextPost.slug)}>
               <span className="blog-detail-nav-text">
                 <span className="blog-detail-nav-label">{labels.next}</span>
