@@ -2190,8 +2190,6 @@ footer.footer-orange-top {
 
 /* ===== BLOG CATEGORY FILTER ===== */
 .blog-category-bar {
-  display: flex;
-  gap: 10px;
   padding: 8px 40px 12px;
   max-width: 1200px;
   margin: 0 auto 24px;

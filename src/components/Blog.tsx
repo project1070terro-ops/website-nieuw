@@ -263,7 +263,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       </div>
 
       {/* Categorie-filters */}
-      <div className="blog-category-bar grid grid-cols-2 md:flex md:flex-nowrap gap-2 md:gap-2.5" role="tablist" aria-label="Categorieën">
+      <div className="blog-category-bar grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-3 md:grid-cols-none" role="tablist" aria-label="Categorieën">
         {CATEGORIES.map((cat) => {
           const active = category === cat;
           return (
