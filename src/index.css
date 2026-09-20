@@ -1125,7 +1125,6 @@ main { flex: 1; }
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: background-color 0.3s ease;
   animation: blog-card-in 0.4s ease both;
 }
 
@@ -2252,11 +2251,9 @@ footer.footer-orange-top {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 .blog-card-mini:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.12);
+  /* geen transform of border-animatie; alleen titelkleur */
 }
 .blog-card-mini:hover .blog-mini-title { color: var(--orange); }
 .blog-card-mini img {
