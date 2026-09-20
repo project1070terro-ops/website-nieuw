@@ -2240,8 +2240,6 @@ footer.footer-orange-top {
 /* ===== BLOG HYBRID TIMELINE ===== */
 .blog-top-cards,
 .blog-mini-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-bottom: 32px;
 }
@@ -2287,12 +2285,8 @@ footer.footer-orange-top {
   overflow: hidden;
 }
 .blog-card-mini.upcoming { opacity: 0.6; }
-@media (max-width: 1024px) {
-  .blog-top-cards,
-  .blog-mini-grid { grid-template-columns: repeat(2, 1fr); }
-}
 @media (max-width: 640px) {
   .blog-top-cards,
-  .blog-mini-grid { grid-template-columns: 1fr; margin-bottom: 24px; }
+  .blog-mini-grid { margin-bottom: 24px; }
   .blog-card-mini img { height: 180px; }
 }

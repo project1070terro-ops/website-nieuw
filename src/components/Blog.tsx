@@ -284,10 +284,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       {/* Tijdlijn van updates & etappes */}
       <section className="blog-timeline blog-fade-in" key={`${year}-${category}`}>
         {topCards.length > 0 && (
-          <div className="blog-top-cards">{topCards.map(renderItem)}</div>
+          <div className="blog-top-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{topCards.map(renderItem)}</div>
         )}
         {listCards.length > 0 && (
-          <div className="blog-mini-grid">{listCards.map(renderMiniCard)}</div>
+          <div className="blog-mini-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{listCards.map(renderMiniCard)}</div>
         )}
         {hasMore && (
           <div className="blog-show-more-wrap">
@@ -299,7 +299,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         {year === 2029 && stages.length > 0 && (
           <>
             <h3 className="blog-challenge-subheading">{labels.challenge}</h3>
-            <div className="blog-mini-grid">{stages.map(renderMiniCard)}</div>
+            <div className="blog-mini-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{stages.map(renderMiniCard)}</div>
           </>
         )}
       </section>
