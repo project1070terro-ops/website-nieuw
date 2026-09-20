@@ -72,8 +72,8 @@ function truncateText(text: string, maxChars = 100): string {
   return slice.trim() + '...';
 }
 
-const INITIAL_COUNT = 12;
-const LOAD_MORE = 9;
+const INITIAL_COUNT = 9;
+const LOAD_MORE = 6;
 
 export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }: BlogProps) {
   const [year, setYear] = useState(initialYear ?? 2027);
