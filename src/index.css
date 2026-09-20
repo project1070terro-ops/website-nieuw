@@ -1037,7 +1037,7 @@ main { flex: 1; }
 .blog-info-card:active h2 .title-suffix { color: var(--orange); }
 
 .blog-stages-heading {
-  max-width: 768px;
+  max-width: 1200px;
   margin: 64px auto 32px;
   padding: 0 40px;
   font-size: 24px;
@@ -1048,9 +1048,10 @@ main { flex: 1; }
 .blog-year-tabs {
   display: flex;
   gap: 16px;
-  max-width: 768px;
+  max-width: 1200px;
   margin: 0 auto 32px;
   padding: 0 40px;
+  justify-content: flex-start;
 }
 .blog-year-tabs button {
   background: none;
@@ -2196,7 +2197,7 @@ footer.footer-orange-top {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 8px 0 12px;
+  padding: 8px 40px 12px;
   max-width: 1200px;
   margin: 0 auto 24px;
   scrollbar-width: none;
