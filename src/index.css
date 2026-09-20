@@ -1195,7 +1195,7 @@ main { flex: 1; }
 }
 .blog-card .tag.upcoming-tag { background: var(--orange); color: var(--white); }
 .blog-expected { font-size: 12px; color: rgba(255,255,255,0.4); }
-.blog-list-meta { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.blog-list-meta { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 0; }
 .blog-list-date { font-size: 12px; color: rgba(255,255,255,0.4); }
 .blog-list-cat { font-size: 12px; display: inline-flex; align-items: center; gap: 4px; }
 .blog-cat-emoji { opacity: 1; font-size: 1.1em; line-height: 1; }

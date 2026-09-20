@@ -34,15 +34,17 @@ const INFO_SLUGS = new Set([
 
 const YEARS = [2027, 2028, 2029];
 
-function CategoryLabel({ label, className }: { label: string; className?: string }) {
+function CategoryLabel({ label }: { label: string }) {
   const parts = label.split(' ');
   const emoji = parts[0];
   const text = parts.slice(1).join(' ');
-  if (!text) return <span className={className}>{label}</span>;
+  if (!text) {
+    return <span className="text-xs font-normal text-zinc-300 flex items-center gap-1">{label}</span>;
+  }
   return (
-    <span className={className}>
-      <span className="blog-cat-emoji" aria-hidden="true">{emoji}</span>
-      <span className="blog-cat-text">{text}</span>
+    <span className="text-xs font-normal text-zinc-300 flex items-center gap-1">
+      <span>{emoji}</span>
+      <span>{text}</span>
     </span>
   );
 }
@@ -152,9 +154,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           <div className="blog-card-body">
             <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
-              <div className="flex-1 flex w-full justify-between items-center gap-2">
-                <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
-                <CategoryLabel label={categoryLabel} className="blog-list-cat" />
+              <div className="flex justify-between items-center w-full mb-3">
+                <span className="text-xs text-zinc-400">{expected ? `${labels.expected}: ${expected}` : date}</span>
+                <CategoryLabel label={categoryLabel} />
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
@@ -182,9 +184,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div className="blog-card-body">
           <div className="blog-list-meta w-full justify-between">
             <span className="tag">{label[language]}</span>
-            <div className="flex-1 flex w-full justify-between items-center gap-2">
-              <span className="blog-list-date">{date}</span>
-              <CategoryLabel label={categoryLabel} className="blog-list-cat" />
+            <div className="flex justify-between items-center w-full mb-3">
+              <span className="text-xs text-zinc-400">{date}</span>
+              <CategoryLabel label={categoryLabel} />
             </div>
           </div>
           <h3>{titleNode}</h3>
@@ -206,9 +208,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div key={slug} className="blog-card-mini upcoming">
           {image && <img src={image} alt="" loading="lazy" />}
           <div className="blog-mini-body">
-            <span className="blog-mini-date flex w-full justify-between items-center">
-              <span className="blog-mini-date-text">{expected ? `${labels.expected}: ${expected}` : date}</span>
-              <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
+            <span className="flex justify-between items-center w-full mb-3">
+              <span className="text-xs text-zinc-400">{expected ? `${labels.expected}: ${expected}` : date}</span>
+              <CategoryLabel label={categoryLabel} />
             </span>
             <span className="blog-mini-title">{displayTitle}</span>
           </div>
@@ -227,9 +229,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img src={image} alt="" loading="lazy" />}
         <div className="blog-mini-body">
-          <span className="blog-mini-date flex w-full justify-between items-center">
-            <span className="blog-mini-date-text">{date}</span>
-            <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
+          <span className="flex justify-between items-center w-full mb-3">
+            <span className="text-xs text-zinc-400">{date}</span>
+            <CategoryLabel label={categoryLabel} />
           </span>
           <span className="blog-mini-title">{displayTitle}</span>
         </div>
