@@ -2197,7 +2197,8 @@ footer.footer-orange-top {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 8px 0 12px;
-  margin: 0 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto 24px;
   scrollbar-width: none;
 }
 .blog-category-bar::-webkit-scrollbar { display: none; }
@@ -2221,11 +2222,11 @@ footer.footer-orange-top {
 }
 .blog-category-pill.active {
   border-color: #FF5722;
-  background: rgba(255, 87, 34, 0.1);
+  background: rgba(255, 255, 255, 0.06);
   color: #FF5722;
 }
 @media (max-width: 640px) {
-  .blog-category-bar { margin: 0 24px 20px; }
+  .blog-category-bar { padding: 8px 24px 12px; margin-bottom: 20px; }
   .blog-category-pill { padding: 6px 14px; font-size: 12px; }
 }
 
