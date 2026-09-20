@@ -118,7 +118,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
 
-  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected }: (typeof yearCards)[number]) => {
+  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+    const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     const excerptText = toPlainText(inleiding?.[language] || []);
     const truncated = excerptText ? truncateText(excerptText, 100) : '';
     const displayTitle = title[language];
@@ -139,6 +140,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <div className="blog-list-meta">
               <span className="tag upcoming-tag">{label[language]}</span>
               <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
+              <span className="text-zinc-500" aria-hidden="true">•</span>
+              <span className="blog-list-cat text-zinc-400">{categoryLabel}</span>
               <Lock className="upcoming-lock" size={13} />
             </div>
             <h3>{titleNode}</h3>
@@ -166,6 +169,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           <div className="blog-list-meta">
             <span className="tag">{label[language]}</span>
             <span className="blog-list-date">{date}</span>
+            <span className="text-zinc-500" aria-hidden="true">•</span>
+            <span className="blog-list-cat text-zinc-400">{categoryLabel}</span>
           </div>
           <h3>{titleNode}</h3>
           {truncated ? (
@@ -178,14 +183,19 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     );
   };
 
-  const renderMiniCard = ({ date, slug, title, image, status, expected }: (typeof yearCards)[number]) => {
+  const renderMiniCard = ({ date, slug, title, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
     const displayTitle = title[language];
+    const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     if (status === 'upcoming') {
       return (
         <div key={slug} className="blog-card-mini upcoming">
           {image && <img src={image} alt="" loading="lazy" />}
           <div className="blog-mini-body">
-            <span className="blog-mini-date">{expected ? `${labels.expected}: ${expected}` : date}</span>
+            <span className="blog-mini-date">
+              {expected ? `${labels.expected}: ${expected}` : date}
+              <span className="mx-1 text-zinc-500" aria-hidden="true">•</span>
+              <span className="text-zinc-400">{categoryLabel}</span>
+            </span>
             <span className="blog-mini-title">{displayTitle}</span>
           </div>
         </div>
@@ -203,7 +213,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img src={image} alt="" loading="lazy" />}
         <div className="blog-mini-body">
-          <span className="blog-mini-date">{date}</span>
+          <span className="blog-mini-date">
+            {date}
+            <span className="mx-1 text-zinc-500" aria-hidden="true">•</span>
+            <span className="text-zinc-400">{categoryLabel}</span>
+          </span>
           <span className="blog-mini-title">{displayTitle}</span>
         </div>
       </a>
