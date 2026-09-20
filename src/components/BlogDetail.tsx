@@ -26,6 +26,14 @@ const navLabels: Record<Language, { prev: string; next: string }> = {
 
 const YEARS = [2027, 2028, 2029];
 
+const ptComponents = {
+  marks: {
+    brandName: ({ children }: { children: React.ReactNode }) => <span className="font-bold tracking-wider uppercase">{children}</span>,
+    brandSubtitle: ({ children }: { children: React.ReactNode }) => <span className="italic font-normal">{children}</span>,
+    orangeSlash: ({ children }: { children: React.ReactNode }) => <span className="text-[#FF5722]">{children}</span>,
+  },
+} as any;
+
 export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
   const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
@@ -116,7 +124,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
         </h1>
         {post.inleiding?.[language]?.length ? (
           <div className="blog-detail-body">
-            <PortableText value={post.inleiding[language]} />
+            <PortableText value={post.inleiding[language]} components={ptComponents} />
           </div>
         ) : null}
         {post.strava?.image && (
@@ -154,7 +162,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
           </button>
         </section>
         <div className="blog-detail-body">
-          <PortableText value={post.body[language]} />
+          <PortableText value={post.body[language]} components={ptComponents} />
         </div>
         {photoCount > 0 && (
           <div className="blog-slider">

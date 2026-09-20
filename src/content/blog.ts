@@ -15,6 +15,38 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
   return { data, content: match[2].trim() };
 }
 
+const BRAND_RE = /(Forza Fortuna Financial Group|15\/70)/gi;
+
+function tokenize(text: string, blockIndex: number): any[] {
+  const children: any[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = BRAND_RE.exec(text))) {
+    if (match.index > lastIndex) {
+      children.push({ _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: text.slice(lastIndex, match.index), marks: [] });
+    }
+    const matched = match[0];
+    if (matched === '15/70') {
+      children.push(
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: '15', marks: [] },
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: '/', marks: ['orangeSlash'] },
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: '70', marks: [] }
+      );
+    } else {
+      children.push(
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: 'FORZA FORTUNA', marks: ['brandName'] },
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: ' ', marks: [] },
+        { _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: 'Financial Group', marks: ['brandSubtitle'] }
+      );
+    }
+    lastIndex = match.index + matched.length;
+  }
+  if (lastIndex < text.length) {
+    children.push({ _type: 'span', _key: `s-${blockIndex}-${children.length}`, text: text.slice(lastIndex), marks: [] });
+  }
+  return children;
+}
+
 function toPortableText(content: string): any[] {
   if (!content) return [];
   const normalized = content.replace(/\r\n/g, '\n');
@@ -26,7 +58,7 @@ function toPortableText(content: string): any[] {
       _type: 'block',
       _key: `b-${i}`,
       style: 'normal',
-      children: [{ _type: 'span', _key: `s-${i}`, text: p.replace(/\s+/g, ' '), marks: [] }],
+      children: tokenize(p.replace(/\s+/g, ' '), i),
       markDefs: [],
     }));
 }
