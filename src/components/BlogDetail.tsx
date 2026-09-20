@@ -205,7 +205,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
           </div>
         )}
         <nav className="blog-detail-nav" aria-label="Blog navigation">
-          {prevPost && (
+          {prevPost && slug !== '/blog/de-officiele-aftrap' && (
             <button className="blog-detail-nav-card" onClick={() => goToBlog(prevPost.slug)}>
               <ChevronLeft size={18} />
               <span className="blog-detail-nav-text">
