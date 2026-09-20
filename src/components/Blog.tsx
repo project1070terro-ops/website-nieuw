@@ -150,9 +150,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div key={slug} className="blog-card upcoming">
           {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
           <div className="blog-card-body">
-            <div className="blog-list-meta justify-between">
+            <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
-              <div className="flex-1 flex justify-between items-center gap-2">
+              <div className="flex-1 flex w-full justify-between items-center gap-2">
                 <span className="blog-expected">{expected ? `${labels.expected}: ${expected}` : date}</span>
                 <CategoryLabel label={categoryLabel} className="blog-list-cat" />
               </div>
@@ -180,9 +180,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
         <div className="blog-card-body">
-          <div className="blog-list-meta justify-between">
+          <div className="blog-list-meta w-full justify-between">
             <span className="tag">{label[language]}</span>
-            <div className="flex-1 flex justify-between items-center gap-2">
+            <div className="flex-1 flex w-full justify-between items-center gap-2">
               <span className="blog-list-date">{date}</span>
               <CategoryLabel label={categoryLabel} className="blog-list-cat" />
             </div>
@@ -206,7 +206,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <div key={slug} className="blog-card-mini upcoming">
           {image && <img src={image} alt="" loading="lazy" />}
           <div className="blog-mini-body">
-            <span className="blog-mini-date flex justify-between items-center">
+            <span className="blog-mini-date flex w-full justify-between items-center">
               <span className="blog-mini-date-text">{expected ? `${labels.expected}: ${expected}` : date}</span>
               <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
             </span>
@@ -227,7 +227,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       >
         {image && <img src={image} alt="" loading="lazy" />}
         <div className="blog-mini-body">
-          <span className="blog-mini-date flex justify-between items-center">
+          <span className="blog-mini-date flex w-full justify-between items-center">
             <span className="blog-mini-date-text">{date}</span>
             <CategoryLabel label={categoryLabel} className="blog-mini-cat" />
           </span>
