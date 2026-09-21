@@ -72,7 +72,7 @@ Die wetenschap verhardt het karakter. Opgeven is geen optie; het hoofd regeert o
 - Vanaf maart: Trainingsuren en kilometers worden gestaag opgebouwd, terwijl de krachttraining de onmisbare fundering blijft.
 - Richting 2027/2028: De ultieme voorbereiding in Spanje, waarbij de specifieke etappes stilaan worden verkend vanuit Albir.
 
-Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer van Fortuna Financial Group. Hij zorgt ervoor dat Terro zo professioneel mogelijk aan de start verschijnt.`]],
+Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun van vriend en sponsor Frank Peeraer CEO van Fortuna Financial Group. Hij zorgt ervoor dat Terro zo professioneel mogelijk aan de start verschijnt.`]],
     causeTitle: 'Het goede doel: Save the Children',
     causeLead: `Elke hoogtemeter van Project 15/70 staat in dienst van iets groters dan de sport. Daarom kiezen we bewust voor Save the Children, een wereldwijde organisatie die zich al meer dan honderd jaar inzet voor kinderen die het het hardst nodig hebben.`,
     causeSections: [
@@ -177,7 +177,7 @@ That knowledge hardens character and ensures the switch flips when it gets tough
 - From March: Training hours and kilometers are built up steadily, while strength training remains the indispensable foundation.
 - Towards 2027/2028: The ultimate preparation in Spain, with the specific stages gradually being explored from Albir.
 
-When it comes to equipment, Terro can rely on the unconditional support of friend and sponsor Frank Peeraer of Fortuna Financial Group, who ensures Terro appears at the start looking as professional as possible.`]],
+When it comes to equipment, Terro can rely on the unconditional support of friend and sponsor Frank Peeraer, CEO of Fortuna Financial Group, who ensures Terro appears at the start looking as professional as possible.`]],
     causeTitle: 'Our cause: Save the Children',
     causeLead: `Every vertical meter of Project 15/70 serves something bigger than the sport itself. That is why we deliberately chose Save the Children, a global organisation that has been fighting for children who need it most for over a hundred years.`,
     causeSections: [
@@ -282,7 +282,7 @@ Esa conciencia fortalece el carácter y hace que el interruptor salte cuando tod
 - A partir de marzo: Las horas de entrenamiento y los kilómetros se construyen poco a poco, mientras que el entrenamiento de fuerza sigue siendo la base indispensable.
 - Hacia 2027/2028: La preparación definitiva en España, explorando gradualmente las etapas específicas desde Albir.
 
-En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfecto hasta el último detalle. Para el equipamiento y la asistencia, Terro cuenta con el apoyo incondicional de su amigo y patrocinador Frank Peeraer de Fortuna Financial Group, quien se asegura de que Terro aparezca en la línea de salida lo más profesional posible.`]],
+En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfecto hasta el último detalle. Para el equipamiento y la asistencia, Terro cuenta con el apoyo incondicional de su amigo y patrocinador Frank Peeraer, CEO de Fortuna Financial Group, quien se asegura de que Terro aparezca en la línea de salida lo más profesional posible.`]],
     causeTitle: 'Nuestra causa: Save the Children',
     causeLead: `Cada metro de desnivel del Proyecto 15/70 está al servicio de algo más grande que el deporte. Por eso elegimos conscientemente a Save the Children, una organización mundial que lleva más de cien años luchando por los niños que más lo necesitan.`,
     causeSections: [

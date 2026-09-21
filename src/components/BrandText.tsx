@@ -20,7 +20,7 @@ function BrandName({ chunk }: { chunk: string }) {
   }
   return (
     <strong className="team-brand">
-      &ldquo;<span className="brand-name">FORTUNA</span>{' '}
+      &ldquo;Fortuna{' '}
       <em className="brand-italics">Financial Group</em>&rdquo;
     </strong>
   );
