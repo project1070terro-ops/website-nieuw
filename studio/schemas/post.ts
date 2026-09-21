@@ -32,8 +32,6 @@ export const post = defineType({
         ],
         layout: 'dropdown',
       },
-      initialValue: 'training',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'title',

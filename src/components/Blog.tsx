@@ -123,7 +123,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
   // Statische introductieblokken vs. tijdlijn-items (etappes, trainingen, updates)
   const infoCards = sortedCards.filter((c) => INFO_SLUGS.has(c.slug));
-  const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year && (category === 'all' || c.category === 'all' || c.category === category));
+  const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year && (category === 'all' || c.category === category));
   // In 2029 splitsen we: reguliere updates boven, de 10 etappes onder een sub-kop.
   const updates = yearCards.filter((c) => !isStage(c.slug));
   const stages = yearCards.filter((c) => isStage(c.slug));

@@ -16,11 +16,20 @@ export const sanityClient: SanityClient = createClient({
   ...(token ? { token } : {}),
 });
 
+// Live (non-CDN) client for blog posts so published changes appear immediately.
+const liveClient: SanityClient = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: false,
+  ...(token ? { token } : {}),
+});
+
 const builder = imageUrlBuilder(sanityClient);
 
 export const urlFor = (source: any) => builder.image(source);
 
-const POSTS_QUERY = `*[_type == "post"] | order(date desc) {
+const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**"))] | order(date desc) {
   _id,
   "slug": slug.current,
   date,
@@ -86,7 +95,7 @@ function toBlogPhotos(items: any[] | undefined): BlogPhoto[] | undefined {
 }
 
 export async function loadBlogPosts(): Promise<BlogPost[]> {
-  const result = await sanityClient.fetch(POSTS_QUERY);
+  const result = await liveClient.fetch(POSTS_QUERY);
   const posts = (result as any[]) ?? [];
 
   return posts.map((post) => ({
