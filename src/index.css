@@ -1516,7 +1516,9 @@ footer.footer-orange-top {
 .cause-inline { max-width: 720px; margin: 14px auto 0; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.55; }
 .cause-teaser-link { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; padding: 0; color: var(--orange); font-size: 13px; font-weight: 700; cursor: pointer; transition: color 0.25s ease; vertical-align: baseline; }
 .cause-teaser-link:hover { color: var(--orange-light); }
-.team-brand { font-style: italic; color: rgba(255,255,255,0.85); }
+.team-brand { font-weight: 700; color: rgba(255,255,255,0.85); }
+.team-brand .brand-name { text-transform: uppercase; font-style: normal; }
+.team-brand .brand-italics { font-style: italic; font-weight: 700; }
 .cause-banner { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); margin: 0 auto 24px; width: min(820px, calc(100% - 80px)); }
 @media (max-width: 768px) { .cause-banner { width: calc(100% - 48px); } }
 .cause-banner img { display: block; width: 100%; height: auto; }

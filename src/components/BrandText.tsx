@@ -1,5 +1,31 @@
 import { Fragment } from 'react';
 
+function BrandName({ chunk }: { chunk: string }) {
+  const isFull = chunk === 'Forza Fortuna Financial Group';
+  const isForza = chunk.startsWith('Forza Fortuna');
+  if (isFull) {
+    return (
+      <strong className="team-brand">
+        &ldquo;<span className="brand-name">FORZA FORTUNA</span>{' '}
+        <em className="brand-italics">Financial Group</em>&rdquo;
+      </strong>
+    );
+  }
+  if (isForza) {
+    return (
+      <strong className="team-brand">
+        &ldquo;<span className="brand-name">FORZA FORTUNA</span>&rdquo;
+      </strong>
+    );
+  }
+  return (
+    <strong className="team-brand">
+      &ldquo;<span className="brand-name">FORTUNA</span>{' '}
+      <em className="brand-italics">Financial Group</em>&rdquo;
+    </strong>
+  );
+}
+
 interface BrandTextProps {
   text: string;
   className?: string;
@@ -25,7 +51,7 @@ export function BrandText({ text, className }: BrandTextProps) {
           <Fragment key={i}>
             {part.split(/(Forza Fortuna Financial Group|Forza Fortuna|Fortuna Financial Group)/g).map((chunk, j) =>
               chunk.startsWith('Forza Fortuna') || chunk === 'Fortuna Financial Group' ? (
-                <em key={j} className="team-brand">&ldquo;{chunk}&rdquo;</em>
+                <BrandName key={j} chunk={chunk} />
               ) : (
                 <Fragment key={j}>
                   {chunk.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((sub, k) => {
