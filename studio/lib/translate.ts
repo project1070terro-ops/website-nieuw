@@ -46,7 +46,16 @@ async function fetchMyMemory(text: string, targetLang: 'en' | 'es', sourceLang: 
     throw new TranslationError('MyMemory returned no translation.', text);
   }
 
-  return data.responseData.translatedText;
+  const translated = data.responseData.translatedText;
+
+  if (translated.toUpperCase().startsWith('MYMEMORY') || translated.includes('WARNING')) {
+    throw new TranslationError(
+      'MyMemory daglimiet bereikt; Nederlandse tekst gebruikt.',
+      text
+    );
+  }
+
+  return translated;
 }
 
 function splitTextIntoChunks(text: string, maxLen: number): string[] {

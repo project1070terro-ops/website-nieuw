@@ -16,16 +16,26 @@ export function translateDocumentAction(props: any) {
     const patchValues: Record<string, any> = {};
     const warnings: string[] = [];
 
+    const tryTranslate = async (text: string, target: 'en' | 'es', fallback: string): Promise<string> => {
+      try {
+        return await translateText(text, target);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        warnings.push(`${target}: ${message}`);
+        return fallback;
+      }
+    };
+
     try {
       // 1. Titel en volledige titel
       if (doc.title?.nl) {
-        patchValues['title.en'] = await translateText(doc.title.nl, 'en');
-        patchValues['title.es'] = await translateText(doc.title.nl, 'es');
+        patchValues['title.en'] = await tryTranslate(doc.title.nl, 'en', doc.title.nl);
+        patchValues['title.es'] = await tryTranslate(doc.title.nl, 'es', doc.title.nl);
       }
 
       if (doc.fullTitle?.nl) {
-        patchValues['fullTitle.en'] = await translateText(doc.fullTitle.nl, 'en');
-        patchValues['fullTitle.es'] = await translateText(doc.fullTitle.nl, 'es');
+        patchValues['fullTitle.en'] = await tryTranslate(doc.fullTitle.nl, 'en', doc.fullTitle.nl);
+        patchValues['fullTitle.es'] = await tryTranslate(doc.fullTitle.nl, 'es', doc.fullTitle.nl);
       }
 
       // 2. Inleiding (voorrang op oude excerpt) en body
@@ -52,8 +62,8 @@ export function translateDocumentAction(props: any) {
           const caption = photo?.caption;
           if (!caption?.nl || !photo._key) continue;
           const basePath = `photos[_key=="${photo._key}"].caption`;
-          patchValues[`${basePath}.en`] = await translateText(caption.nl, 'en');
-          patchValues[`${basePath}.es`] = await translateText(caption.nl, 'es');
+          patchValues[`${basePath}.en`] = await tryTranslate(caption.nl, 'en', caption.nl);
+          patchValues[`${basePath}.es`] = await tryTranslate(caption.nl, 'es', caption.nl);
         }
       }
 
@@ -74,7 +84,6 @@ export function translateDocumentAction(props: any) {
           description: 'De Engelse en Spaanse velden zijn ingevuld.',
         });
       }
-      props.onComplete();
     } catch (error) {
       console.error('Translation failed:', error);
       toast.push({
@@ -84,6 +93,7 @@ export function translateDocumentAction(props: any) {
       });
     } finally {
       setIsTranslating(false);
+      props.onComplete();
     }
   };
 

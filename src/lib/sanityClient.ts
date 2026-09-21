@@ -55,10 +55,13 @@ const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**"))] | order(d
 function toLocaleString(value: unknown): Record<Language, string> {
   if (value && typeof value === 'object') {
     const obj = value as Record<string, string>;
+    const nl = obj.nl ?? '';
+    const en = obj.en ?? '';
+    const es = obj.es ?? '';
     return {
-      nl: obj.nl ?? '',
-      en: obj.en ?? '',
-      es: obj.es ?? '',
+      nl,
+      en: en || nl,
+      es: es || nl,
     };
   }
   return { nl: '', en: '', es: '' };
@@ -67,10 +70,13 @@ function toLocaleString(value: unknown): Record<Language, string> {
 function toLocaleBody(value: unknown): Record<Language, any[]> | undefined {
   if (!value || typeof value !== 'object') return undefined;
   const obj = value as Record<string, any[]>;
+  const nl = Array.isArray(obj.nl) ? obj.nl : [];
+  const en = Array.isArray(obj.en) ? obj.en : [];
+  const es = Array.isArray(obj.es) ? obj.es : [];
   const body = {
-    nl: Array.isArray(obj.nl) ? obj.nl : [],
-    en: Array.isArray(obj.en) ? obj.en : [],
-    es: Array.isArray(obj.es) ? obj.es : [],
+    nl,
+    en: en.length ? en : nl,
+    es: es.length ? es : nl,
   };
   return body.nl.length || body.en.length || body.es.length ? body : undefined;
 }
