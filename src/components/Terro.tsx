@@ -11,7 +11,7 @@ interface TerroProps {
 }
 
 const sectionImages: Record<number, { src: string; alt: string }> = {
-  0: { src: '/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp', alt: 'Berglandschap Costa Blanca' },
+  0: { src: '/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-Forza-renner.webp', alt: 'Berglandschap Costa Blanca' },
   2: { src: '/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp', alt: 'Cyclist op Spaanse bergweg' },
 };
 

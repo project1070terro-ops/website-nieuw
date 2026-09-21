@@ -2,7 +2,7 @@ import type { TranslationContent } from './types';
 
 export const heroImages = [
   '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-  '/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp',
+  '/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-Forza-renner.webp',
   '/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp',
 ];
 
