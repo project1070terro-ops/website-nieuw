@@ -32,6 +32,11 @@ const ptComponents = {
     brandSubtitle: ({ children }: { children: React.ReactNode }) => <span className="italic font-normal">{children}</span>,
     orangeSlash: ({ children }: { children: React.ReactNode }) => <span className="text-[#FF5722]">{children}</span>,
   },
+  list: {
+    bullet: ({ children }: { children: React.ReactNode }) => <ul className="list-disc pl-5 my-4 space-y-2 text-zinc-200">{children}</ul>,
+    number: ({ children }: { children: React.ReactNode }) => <ol className="list-decimal pl-5 my-4 space-y-2 text-zinc-200">{children}</ol>,
+  },
+  listItem: ({ children }: { children: React.ReactNode }) => <li className="leading-relaxed">{children}</li>,
 } as any;
 
 export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }: BlogDetailProps) {
