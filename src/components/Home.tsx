@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowRight, ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 import { heroImages } from '../constants';
+import { loadHeroSlider } from '../lib/sanityClient';
 import { BrandText } from './BrandText';
 import { Stats } from './Stats';
 import { Sponsor } from './Sponsor';
@@ -12,8 +13,19 @@ interface HomeProps {
 }
 
 export function Home({ t, navigate }: HomeProps) {
+  const [sliderImages, setSliderImages] = useState(heroImages);
   const [activeSlide, setActiveSlide] = useState(0);
-  const total = heroImages.length;
+  const total = sliderImages.length;
+
+  useEffect(() => {
+    loadHeroSlider().then((images) => {
+      if (images.length > 0) setSliderImages(images);
+    });
+  }, []);
+
+  useEffect(() => {
+    setActiveSlide(0);
+  }, [sliderImages]);
 
   const nextSlide = () => setActiveSlide((s) => (s + 1) % total);
   const prevSlide = () => setActiveSlide((s) => (s - 1 + total) % total);
@@ -22,7 +34,7 @@ export function Home({ t, navigate }: HomeProps) {
     <>
       <section className="hero flex items-center">
         <div className="hero-images">
-          {heroImages.map((image, index) => (
+          {sliderImages.map((image, index) => (
             <img
               key={image}
               src={image}
@@ -63,7 +75,7 @@ export function Home({ t, navigate }: HomeProps) {
           >
             <ChevronLeft size={20} />
           </button>
-          {heroImages.map((_, index) => (
+          {sliderImages.map((_, index) => (
             <button
               key={index}
               className={index === activeSlide ? 'slide-dot current' : 'slide-dot'}

@@ -151,6 +151,23 @@ export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
   }));
 }
 
+const HERO_SLIDER_QUERY = `*[_type == "siteSettings"][0] {
+  heroSlider[] {
+    alt,
+    asset -> { _id }
+  }
+}`;
+
+export async function loadHeroSlider(): Promise<string[]> {
+  const result = await liveClient.fetch(HERO_SLIDER_QUERY);
+  const images = (result?.heroSlider as any[]) ?? [];
+  if (images.length === 0) return [];
+
+  return images
+    .map((image) => (image?.asset ? urlFor(image).width(1920).url() : ''))
+    .filter((src) => src);
+}
+
 const TRAINING_STATS_QUERY = `*[_type == "trainingStats"][0] {
   stravaKilometersYTD,
   stravaElevationYTD,
