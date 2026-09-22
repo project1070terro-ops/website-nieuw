@@ -21,7 +21,9 @@ export function Home({ t, navigate }: HomeProps) {
   useEffect(() => {
     loadHeroSlider()
       .then((images) => {
-        if (images.length > 0) setSliderImages(images);
+        if (images.length > 0 && images.some((img, i) => img !== sliderImages[i])) {
+          setSliderImages(images);
+        }
       })
       .catch(() => {});
   }, []);
