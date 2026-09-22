@@ -492,7 +492,7 @@ export function RouteDayInteractive({
               }
             }}
           >
-            <BookOpen size={18} /> BEKIJK RITTEN-PREVIEW
+            <BookOpen size={18} /> {r.previewButton}
           </a>
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (

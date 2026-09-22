@@ -38,6 +38,7 @@ export interface TranslationContent {
     noRouteData: string;
     downloadGpx: string;
     viewOnStrava: string;
+    previewButton: string;
     distance: string;
     elevationGain: string;
     elevationLoss: string;
