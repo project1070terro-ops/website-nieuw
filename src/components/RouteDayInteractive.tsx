@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Chart } from 'chart.js/auto';
 import type { Plugin, TooltipItem } from 'chart.js';
-import { Download, ExternalLink } from 'lucide-react';
+import { BookOpen, Download, ExternalLink } from 'lucide-react';
 import type { RouteDay, Language, TranslationContent } from '../types';
 import { downloadGpxTrack } from '../utils/gpxExport';
 import { WeatherWidget } from './WeatherWidget';
@@ -477,6 +477,9 @@ export function RouteDayInteractive({
             className="route-strava-btn"
           >
             <ExternalLink size={18} /> {r.viewOnStrava}
+          </a>
+          <a href={`/blog#dag${day.day}`} className="route-preview-btn">
+            <BookOpen size={18} /> BEKIJK RITTEN-PREVIEW
           </a>
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (
