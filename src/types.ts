@@ -141,6 +141,7 @@ export interface RouteDay {
   title: string;
   gpx: string;
   stravaUrl?: string;
+  postSlug?: string;
 }
 
 export interface TrainingStats {

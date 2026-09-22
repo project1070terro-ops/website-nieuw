@@ -478,7 +478,10 @@ export function RouteDayInteractive({
           >
             <ExternalLink size={18} /> {r.viewOnStrava}
           </a>
-          <a href={`/blog#dag${day.day}`} className="route-preview-btn">
+          <a
+            href={day.postSlug ? `/blog/${day.postSlug}` : `/blog#dag${day.day}`}
+            className="route-preview-btn"
+          >
             <BookOpen size={18} /> BEKIJK RITTEN-PREVIEW
           </a>
           <div className="route-legend">

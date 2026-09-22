@@ -32,6 +32,13 @@ export const routeDay = defineType({
       type: 'url',
       description: 'Optionele link naar de Strava-activiteit',
     }),
+    defineField({
+      name: 'post',
+      title: 'Gekoppelde blogpost',
+      type: 'reference',
+      to: [{ type: 'post' }],
+      description: 'Selecteer de blogpost (ritverslag / ritten-preview) voor deze dag',
+    }),
   ],
   preview: {
     select: {
