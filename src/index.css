@@ -1618,7 +1618,7 @@ footer.footer-orange-top {
 
 .footer-sponsor-logo span { display: block; font-size: 22px; font-weight: 800; letter-spacing: 0.04em; color: var(--white); }
 .footer-sponsor-logo small { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); margin-top: 5px; padding-top: 7px; border-top: 1px solid rgba(255,255,255,0.25); width: fit-content; margin-left: auto; margin-right: auto; }
-.footer-forza-link { display: flex; justify-content: center; align-items: center; width: 150px; height: 80px; margin-top: 14px; text-decoration: none; text-align: center; transition: opacity 0.25s ease; background: transparent; border-radius: 10px; border: 1px solid rgba(255, 87, 34, 0.6); box-sizing: border-box; padding: 10px; overflow: hidden; }
+.footer-forza-link { display: flex; justify-content: center; align-items: center; width: 150px; height: 80px; margin-top: 14px; text-decoration: none; text-align: center; transition: opacity 0.25s ease; background: transparent; border-radius: 10px; border: 1px solid rgba(255, 87, 34, 0.4); box-sizing: border-box; padding: 10px; overflow: hidden; }
 .footer-forza-link:hover { opacity: 0.9; }
 .footer-forza-logo { width: 100%; height: 100%; display: block; object-fit: contain; }
 @media (max-width: 767px) {
