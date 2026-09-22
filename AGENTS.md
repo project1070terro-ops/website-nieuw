@@ -32,10 +32,14 @@ npm run preview  # preview the production build
 ## Git
 
 - Local branch: `master`
-- Remote branch: `origin/main`
-- Push command:
+- Remote branch: `origin/main` (preview), `origin/master` (Cloudflare Pages Production)
+- Push commands:
 
 ```bash
+# Production (Cloudflare Pages) — leidt naar project1570.pages.dev
+git push origin master:master
+
+# Preview / backup naar main
 git push origin master:main
 ```
 
