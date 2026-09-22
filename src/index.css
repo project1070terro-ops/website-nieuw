@@ -1273,7 +1273,7 @@ main { flex: 1; }
   padding: 4px 12px;
   margin-bottom: 16px;
 }
-.blog-detail-title { font-size: 28px; font-weight: 700; line-height: 1.15; color: var(--white); margin-bottom: 28px; }
+.blog-detail-title { font-size: 24px; font-weight: 700; line-height: 1.15; color: var(--white); margin-bottom: 28px; }
 .blog-detail-title .title-prefix { color: var(--white); font-weight: 700; }
 .blog-detail-title .title-suffix { color: var(--white); font-weight: 500; }
 .project-15-70 { color: inherit; }
