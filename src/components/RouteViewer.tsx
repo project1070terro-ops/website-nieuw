@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react';
-import type { Language, RouteDay, TranslationContent } from '../types';
+import type { Language, Page, RouteDay, TranslationContent } from '../types';
 import { loadRouteDays } from '../lib/sanityClient';
 import { RouteDayInteractive } from './RouteDayInteractive';
 
-export function RouteViewer({ t, language }: { t: TranslationContent; language: Language }) {
+export function RouteViewer({
+  t,
+  language,
+  navigate,
+}: {
+  t: TranslationContent;
+  language: Language;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
+}) {
   const [days, setDays] = useState<RouteDay[] | null>(null);
   const [selected, setSelected] = useState(0); // start op Dag 1
   const r = t.routeViewer;
@@ -63,6 +71,7 @@ export function RouteViewer({ t, language }: { t: TranslationContent; language: 
         r={r}
         language={language}
         placeholder={t.routePlaceholder}
+        navigate={navigate}
       />
     </section>
   );

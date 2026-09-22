@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { Chart } from 'chart.js/auto';
 import type { Plugin, TooltipItem } from 'chart.js';
 import { BookOpen, Download, ExternalLink } from 'lucide-react';
-import type { RouteDay, Language, TranslationContent } from '../types';
+import type { Page, RouteDay, Language, TranslationContent } from '../types';
 import { downloadGpxTrack } from '../utils/gpxExport';
 import { WeatherWidget } from './WeatherWidget';
 
@@ -111,11 +111,13 @@ export function RouteDayInteractive({
   r,
   language,
   placeholder,
+  navigate,
 }: {
   day: RouteDay;
   r: RouteLabels;
   language: Language;
   placeholder: string;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
 }) {
   const [points, setPoints] = useState<GpxPoint[]>([]);
   const [loading, setLoading] = useState(true);
@@ -479,8 +481,16 @@ export function RouteDayInteractive({
             <ExternalLink size={18} /> {r.viewOnStrava}
           </a>
           <a
-            href={day.postSlug ? `/blog/${day.postSlug}` : `/blog#dag${day.day}`}
+            href={day.postSlug ? `/blog/${day.postSlug}` : '/blog'}
             className="route-preview-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              if (day.postSlug) {
+                navigate?.('blog', { slug: day.postSlug });
+              } else {
+                navigate?.('blog');
+              }
+            }}
           >
             <BookOpen size={18} /> BEKIJK RITTEN-PREVIEW
           </a>

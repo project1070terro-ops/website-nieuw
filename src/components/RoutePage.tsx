@@ -6,14 +6,14 @@ import { RouteViewer } from './RouteViewer';
 interface RoutePageProps {
   t: TranslationContent;
   language: Language;
-  navigate?: (page: Page) => void;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
 }
 
 export function RoutePage({ t, language, navigate }: RoutePageProps) {
   return (
     <>
       <PageIntro title={t.routeTitle} lead={t.routeLead} />
-      <RouteViewer t={t} language={language} />
+      <RouteViewer t={t} language={language} navigate={navigate} />
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>
           <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />

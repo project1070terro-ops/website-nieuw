@@ -30,7 +30,7 @@ function App() {
   const getInitialBlogSlug = () => {
     if (typeof window === 'undefined') return null;
     const path = window.location.pathname;
-    return path.startsWith('/blog/') ? path : null;
+    return path.startsWith('/blog/') ? path.replace('/blog/', '') : null;
   };
   const getInitialBlogYear = () => {
     if (typeof window === 'undefined') return 2027;
@@ -67,7 +67,7 @@ function App() {
       } else {
         const path = window.location.pathname;
         setPage(path.startsWith('/blog') ? 'blog' : 'home');
-        setBlogSlug(path.startsWith('/blog/') ? path : null);
+        setBlogSlug(path.startsWith('/blog/') ? path.replace('/blog/', '') : null);
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -137,7 +137,7 @@ function App() {
 
     let path = '/';
     if (state?.slug) {
-      path = state.slug;
+      path = `/blog/${state.slug}`;
     } else if (nextPage === 'blog') {
       const query = state?.year !== undefined ? `?year=${state.year}` : '';
       const hash = state?.hash ? `#${state.hash}` : '';
