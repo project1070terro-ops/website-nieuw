@@ -65,7 +65,9 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 <small>FINANCIAL GROUP</small>
               </div>
             </a>
-
+            <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link" title="Forza Fortuna">
+              <img className="footer-forza-logo" src="/images/hero/forza-fortuna-logo.webp" alt="Forza Fortuna" />
+            </a>
           </div>
         </div>
         

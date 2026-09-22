@@ -1618,6 +1618,9 @@ footer.footer-orange-top {
 
 .footer-sponsor-logo span { display: block; font-size: 22px; font-weight: 800; letter-spacing: 0.04em; color: var(--white); }
 .footer-sponsor-logo small { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); margin-top: 5px; padding-top: 7px; border-top: 1px solid rgba(255,255,255,0.25); width: fit-content; margin-left: auto; margin-right: auto; }
+.footer-forza-link { display: block; margin-top: 14px; text-decoration: none; transition: opacity 0.25s ease; }
+.footer-forza-link:hover { opacity: 0.9; }
+.footer-forza-logo { width: 150px; height: auto; display: block; border: 1px solid #FF5722; border-radius: 8px; }
 @media (max-width: 767px) {
   .footer-container { padding: 32px 24px 0; }
   .footer-flex { gap: 24px; }
