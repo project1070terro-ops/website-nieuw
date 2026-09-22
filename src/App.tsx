@@ -42,7 +42,6 @@ function App() {
   const [language, setLanguage] = useState<Language>('nl');
   const [page, setPage] = useState<Page>(getInitialPage);
   const [blogSlug, setBlogSlug] = useState<string | null>(getInitialBlogSlug);
-  const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([]);
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | null>(null);
@@ -75,19 +74,6 @@ function App() {
   }, []);
 
   const t = copy[language];
-
-  // Hero image carousel
-  useEffect(() => {
-    const heroImages = [
-      '/images/hero/l_albir_d2ae8820d05f96bc7f7d33001aaf5564.webp',
-      '/images/hero/Cumbre-del-Sol-Calpe-Costa-Blanca-3-1920x1080.webp',
-      '/images/hero/Cycling-calpe-and-costa-blanca-copyright-Sierras-Sports-Tours-3-1920x1080.webp',
-    ];
-    const timer = window.setInterval(() => {
-      setActiveSlide((slide) => (slide + 1) % heroImages.length);
-    }, 7000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   // Load blog posts from Sanity on mount and merge the static featured blocks.
   useEffect(() => {
@@ -170,7 +156,7 @@ function App() {
         t={t}
       />
       <main>
-        {page === 'home' && <Home t={t} activeSlide={activeSlide} navigate={navigate} />}
+        {page === 'home' && <Home t={t} navigate={navigate} />}
         {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
         {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
         {page === 'terro' && <Terro t={t} navigate={navigate} />}

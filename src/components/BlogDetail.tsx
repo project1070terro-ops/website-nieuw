@@ -103,8 +103,8 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
         <button
           className="blog-detail-back"
           onClick={() => {
-            if (from === 'route' && fromDay) {
-              navigate('route', { hash: `dag${fromDay}` });
+            if (from === 'route') {
+              navigate('route', { hash: fromDay ? `dag${fromDay}` : undefined });
             } else {
               navigate('blog', { hash: 'blog-content-section' });
             }

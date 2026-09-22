@@ -1,4 +1,5 @@
-import { ArrowRight, ArrowDownRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 import { heroImages } from '../constants';
 import { BrandText } from './BrandText';
@@ -7,11 +8,16 @@ import { Sponsor } from './Sponsor';
 
 interface HomeProps {
   t: TranslationContent;
-  activeSlide: number;
   navigate: (page: Page) => void;
 }
 
-export function Home({ t, activeSlide, navigate }: HomeProps) {
+export function Home({ t, navigate }: HomeProps) {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const total = heroImages.length;
+
+  const nextSlide = () => setActiveSlide((s) => (s + 1) % total);
+  const prevSlide = () => setActiveSlide((s) => (s - 1 + total) % total);
+
   return (
     <>
       <section className="hero flex items-center">
@@ -50,14 +56,28 @@ export function Home({ t, activeSlide, navigate }: HomeProps) {
           </div>
         </div>
         <div className="slide-dots">
+          <button
+            className="slide-arrow"
+            aria-label="Vorige slide"
+            onClick={prevSlide}
+          >
+            <ChevronLeft size={20} />
+          </button>
           {heroImages.map((_, index) => (
             <button
               key={index}
-              className={index === activeSlide ? 'current' : ''}
+              className={index === activeSlide ? 'slide-dot current' : 'slide-dot'}
               aria-label={`Slide ${index + 1}`}
-              onClick={() => {}}
+              onClick={() => setActiveSlide(index)}
             />
           ))}
+          <button
+            className="slide-arrow"
+            aria-label="Volgende slide"
+            onClick={nextSlide}
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </section>
 

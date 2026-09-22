@@ -314,17 +314,30 @@ main { flex: 1; }
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+  align-items: center;
   gap: 10px;
   z-index: 3;
 }
-.slide-dots button {
+.slide-dots .slide-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.25);
   transition: background 0.3s ease, width 0.3s ease;
 }
-.slide-dots button.current { background: var(--orange); width: 24px; border-radius: 4px; }
+.slide-dots .slide-dot.current { background: var(--orange); width: 24px; border-radius: 4px; }
+.slide-dots .slide-arrow {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+.slide-dots .slide-arrow:hover { color: var(--orange); }
 
 @media (max-width: 1024px) {
   .hero-images img { object-position: center center; }
@@ -977,17 +990,7 @@ main { flex: 1; }
     padding-left: 24px;
     padding-right: 24px;
     padding-bottom: 24px;
-    animation: terro-reveal-mobile 0.8s ease-out 0.1s both;
-  }
-  @keyframes terro-reveal-mobile {
-    from {
-      transform: translateY(-30px);
-      background-color: rgba(0, 0, 0, 1);
-    }
-    to {
-      transform: translateY(0);
-      background-color: rgba(0, 0, 0, 0);
-    }
+    animation: none;
   }
   .terro-block:not(:last-child) { margin-bottom: 20px; }
   .terro-inline-img { height: 200px; margin: 24px 0; }
