@@ -1,4 +1,4 @@
-import { Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Shield } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 
 interface FooterProps {
@@ -12,6 +12,12 @@ const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
   nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. Alle rechten voorbehouden.' },
   en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. All rights reserved.' },
   es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
+};
+
+const partnersLabel: Record<Language, string> = {
+  nl: 'Partners',
+  en: 'Partners',
+  es: 'Socios',
 };
 
 const STC_URL = 'https://www.savethechildren.net/what-we-do/advocacy/save-children-europe';
@@ -70,7 +76,18 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             </a>
           </div>
         </div>
-        
+
+        <div className="footer-partners">
+          <span className="footer-partners-label">{partnersLabel[language]}</span>
+          <div className="footer-partners-row" aria-label="Productpartners placeholders">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
+                <Shield size={20} />
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="footer-bottom">
           <div className="footer-legal">
             <button className="footer-privacy" onClick={() => navigate('privacy')}>

@@ -1621,6 +1621,11 @@ footer.footer-orange-top {
 .footer-forza-link { display: flex; justify-content: center; align-items: center; width: 150px; height: 80px; margin-top: 14px; text-decoration: none; text-align: center; transition: opacity 0.25s ease; background: transparent; border-radius: 10px; border: 1px solid #77402a; box-sizing: border-box; padding: 10px; overflow: hidden; }
 .footer-forza-link:hover { opacity: 0.9; }
 .footer-forza-logo { width: 100%; height: 100%; display: block; object-fit: contain; }
+.footer-partners { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 24px 0 12px; }
+.footer-partners-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.15em; }
+.footer-partners-row { display: flex; align-items: center; gap: 16px; }
+.footer-partner-placeholder { width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.4); border-radius: 10px; color: rgba(255,255,255,0.4); transition: color 0.25s ease, border-color 0.25s ease; cursor: default; }
+.footer-partner-placeholder:hover { color: rgba(255,255,255,1); border-color: rgba(255,255,255,1); }
 @media (max-width: 767px) {
   .footer-container { padding: 32px 24px 0; }
   .footer-flex { gap: 24px; }
