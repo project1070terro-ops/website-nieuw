@@ -25,7 +25,8 @@ export const post = defineType({
       type: 'string',
       options: {
         list: [
-          { title: '🚴‍♂️ Training', value: 'training' },
+          { title: '�️ Ritten-Preview', value: 'preview' },
+          { title: '�🚴‍♂️ Training', value: 'training' },
           { title: '🔧 Materiaal', value: 'material' },
           { title: '📈 Progressie', value: 'progress' },
           { title: '🤝 Partner / Sponsor', value: 'partner' },

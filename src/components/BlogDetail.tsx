@@ -96,7 +96,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
     <article className="blog-detail">
 
       <div className="blog-detail-content">
-        <button className="blog-detail-back" onClick={() => navigate('blog')}>
+        <button className="blog-detail-back" onClick={() => navigate('blog', { hash: 'blog-content-section' })}>
           <ArrowLeft size={18} /> {t.nav.blog}
         </button>
         <div className="blog-detail-years">

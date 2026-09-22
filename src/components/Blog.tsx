@@ -15,15 +15,15 @@ interface BlogProps {
 }
 
 const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string; categories: Record<string, string> }> = {
-  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner / Sponsor' } },
-  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner / Sponsor' } },
-  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio / Patrocinador' } },
+  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', preview: '🗺️ Ritten-Preview', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner / Sponsor' } },
+  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', preview: '🗺️ Route Preview', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner / Sponsor' } },
+  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', preview: '🗺️ Vista previa de ruta', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio / Patrocinador' } },
 };
 
 // Etappes herkennen we aan de slug (/blog/dag-1, /blog/day-2, /blog/dia-3, ...).
 const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
 
-const CATEGORIES = ['all', 'training', 'material', 'progress', 'partner'];
+const CATEGORIES = ['all', 'preview', 'training', 'material', 'progress', 'partner'];
 
 // De 3 vaste info-kaarten; alle overige posts vallen in de tijdlijn.
 const INFO_SLUGS = new Set([
@@ -103,12 +103,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   }, [initialYear]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (window.location.hash === '#blog-timeline-section') {
-      const el = document.getElementById('blog-timeline-section');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+    if (typeof window === 'undefined' || !window.location.hash) return;
+    const el = document.getElementById(window.location.hash.slice(1));
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
 
@@ -282,32 +280,34 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       {/* Tussenkop */}
       <h2 className="blog-stages-heading">{labels.stages}</h2>
 
-      {/* Jaartabs */}
-      <div id="blog-timeline-section" className="blog-year-tabs">
-        {YEARS.map((y) => (
-          <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}>
-            {y}
-          </button>
-        ))}
-      </div>
-
-      {/* Categorie-filters */}
-      <div className="blog-category-bar grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-3 md:grid-cols-none" role="tablist" aria-label="Categorieën">
-        {CATEGORIES.map((cat) => {
-          const active = category === cat;
-          return (
-            <button
-              key={cat}
-              type="button"
-              role="tab"
-              aria-selected={active}
-              className={`blog-category-pill whitespace-normal md:whitespace-nowrap ${cat === 'all' ? 'col-span-2 text-center' : ''} ${active ? 'active' : 'inactive'}`}
-              onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
-            >
-              {labels.categories[cat]}
+      <div id="blog-content-section">
+        {/* Jaartabs */}
+        <div id="blog-timeline-section" className="blog-year-tabs">
+          {YEARS.map((y) => (
+            <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}>
+              {y}
             </button>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* Categorie-filters */}
+        <div className="blog-category-bar grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-3 md:grid-cols-none" role="tablist" aria-label="Categorieën">
+          {CATEGORIES.map((cat) => {
+            const active = category === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                className={`blog-category-pill whitespace-normal md:whitespace-nowrap ${active ? 'active' : 'inactive'}`}
+                onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
+              >
+                {labels.categories[cat]}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Tijdlijn van updates & etappes */}
