@@ -48,6 +48,10 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
   const postIndex = sortedCards.findIndex((card) => card.slug === slug);
   const post = sortedCards[postIndex];
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const from = searchParams.get('from');
+  const fromDay = searchParams.get('day');
+
   const [lightbox, setLightbox] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
   const [slide, setSlide] = useState(0);
@@ -96,8 +100,17 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
     <article className="blog-detail">
 
       <div className="blog-detail-content">
-        <button className="blog-detail-back" onClick={() => navigate('blog', { hash: 'blog-content-section' })}>
-          <ArrowLeft size={18} /> {t.nav.blog}
+        <button
+          className="blog-detail-back"
+          onClick={() => {
+            if (from === 'route' && fromDay) {
+              navigate('route', { hash: `dag${fromDay}` });
+            } else {
+              navigate('blog', { hash: 'blog-content-section' });
+            }
+          }}
+        >
+          <ArrowLeft size={18} /> {from === 'route' ? `← ${t.nav.route}` : t.nav.blog}
         </button>
         <div className="blog-detail-years">
           {YEARS.map((year) => (

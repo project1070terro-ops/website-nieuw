@@ -117,7 +117,7 @@ export function RouteDayInteractive({
   r: RouteLabels;
   language: Language;
   placeholder: string;
-  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string; from?: string; day?: number }) => void;
 }) {
   const [points, setPoints] = useState<GpxPoint[]>([]);
   const [loading, setLoading] = useState(true);
@@ -481,12 +481,12 @@ export function RouteDayInteractive({
             <ExternalLink size={18} /> {r.viewOnStrava}
           </a>
           <a
-            href={day.postSlug ? `/blog/${day.postSlug}` : '/blog'}
+            href={day.postSlug ? `/blog/${day.postSlug}?from=route&day=${day.day}` : '/blog'}
             className="route-preview-btn"
             onClick={(event) => {
               event.preventDefault();
               if (day.postSlug) {
-                navigate?.('blog', { slug: day.postSlug });
+                navigate?.('blog', { slug: day.postSlug, from: 'route', day: day.day });
               } else {
                 navigate?.('blog');
               }

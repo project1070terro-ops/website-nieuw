@@ -10,7 +10,7 @@ export function RouteViewer({
 }: {
   t: TranslationContent;
   language: Language;
-  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string; from?: string; day?: number }) => void;
 }) {
   const [days, setDays] = useState<RouteDay[] | null>(null);
   const [selected, setSelected] = useState(0); // start op Dag 1
@@ -55,6 +55,7 @@ export function RouteViewer({
         {days.map((d, i) => (
           <button
             key={d.day}
+            id={`dag${d.day}`}
             role="tab"
             aria-selected={i === selected}
             className={`route-tab ${i === selected ? 'active' : ''}`}

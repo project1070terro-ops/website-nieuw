@@ -129,23 +129,28 @@ function App() {
     }
   }
 
-  function navigate(nextPage: Page, state?: { slug?: string; year?: number; hash?: string }) {
+  function navigate(nextPage: Page, state?: { slug?: string; year?: number; hash?: string; from?: string; day?: number }) {
     setPage(nextPage);
     setBlogSlug(state?.slug ?? null);
     setMenuOpen(false);
     if (state?.year !== undefined) setBlogYear(state.year);
 
+    const params = new URLSearchParams();
+    if (state?.year !== undefined) params.set('year', String(state.year));
+    if (state?.from) params.set('from', state.from);
+    if (state?.day !== undefined) params.set('day', String(state.day));
+    const query = params.toString() ? `?${params.toString()}` : '';
+    const hash = state?.hash ? `#${state.hash}` : '';
+
     let path = '/';
     if (state?.slug) {
-      path = `/blog/${state.slug}`;
+      path = `/blog/${state.slug}${query}${hash}`;
     } else if (nextPage === 'blog') {
-      const query = state?.year !== undefined ? `?year=${state.year}` : '';
-      const hash = state?.hash ? `#${state.hash}` : '';
       path = `/blog${query}${hash}`;
     } else if (nextPage !== 'home') {
-      path = `/${nextPage}`;
+      path = `/${nextPage}${query}${hash}`;
     }
-    window.history.pushState({ page: nextPage, slug: state?.slug ?? null, year: state?.year ?? null, hash: state?.hash ?? null }, '', path);
+    window.history.pushState({ page: nextPage, slug: state?.slug ?? null, year: state?.year ?? null, hash: state?.hash ?? null, from: state?.from ?? null, day: state?.day ?? null }, '', path);
     if (!state?.hash) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

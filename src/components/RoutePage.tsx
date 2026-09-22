@@ -6,7 +6,7 @@ import { RouteViewer } from './RouteViewer';
 interface RoutePageProps {
   t: TranslationContent;
   language: Language;
-  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string }) => void;
+  navigate?: (page: Page, state?: { slug?: string; year?: number; hash?: string; from?: string; day?: number }) => void;
 }
 
 export function RoutePage({ t, language, navigate }: RoutePageProps) {
