@@ -14,12 +14,6 @@ const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
   es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
 };
 
-const partnersLabel: Record<Language, string> = {
-  nl: 'Partners',
-  en: 'Partners',
-  es: 'Socios',
-};
-
 const STC_URL = 'https://www.savethechildren.net/what-we-do/advocacy/save-children-europe';
 
 export function Footer({ t, language, navigate, className }: FooterProps) {
@@ -78,7 +72,6 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
         </div>
 
         <div className="footer-partners">
-          <span className="footer-partners-label">{partnersLabel[language]}</span>
           <div className="footer-partners-row" aria-label="Productpartners placeholders">
             {[0, 1, 2].map((i) => (
               <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
