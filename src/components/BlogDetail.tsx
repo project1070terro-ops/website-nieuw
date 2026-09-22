@@ -54,8 +54,8 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
   const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 768px)').matches);
 
   useEffect(() => {
-    if (!post) navigate('blog');
-  }, [post, navigate]);
+    if (blogCards.length > 0 && !post) navigate('blog');
+  }, [blogCards, post, navigate]);
 
   useEffect(() => {
     setSlide(0);

@@ -483,9 +483,12 @@ export function RouteDayInteractive({
           <a
             href={day.postSlug ? `/blog/${day.postSlug}` : '/blog'}
             className="route-preview-btn"
-            onClick={() => {
+            onClick={(event) => {
+              event.preventDefault();
               if (day.postSlug) {
-                window.location.href = `/blog/${day.postSlug}`;
+                navigate?.('blog', { slug: day.postSlug });
+              } else {
+                navigate?.('blog');
               }
             }}
           >
