@@ -106,7 +106,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
 
   return posts.map((post) => ({
     date: post.date ?? '',
-    slug: post.slug ? `/blog/${post.slug}` : '',
+    slug: post.slug || '',
     category: post.category || 'all',
     label: toLocaleString(post.category ?? ''),
     title: toLocaleString(post.title),
@@ -138,7 +138,7 @@ const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
 }`;
 
 export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
-  const result = await sanityClient.fetch(ROUTE_DAYS_QUERY);
+  const result = await liveClient.fetch(ROUTE_DAYS_QUERY);
   const days = (result as any[]) ?? [];
   if (days.length === 0) return [];
 

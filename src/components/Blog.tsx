@@ -171,7 +171,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     return (
       <a
         key={slug}
-        href={slug}
+        href={`/blog/${slug}`}
         className="blog-card"
         onClick={(event) => {
           event.preventDefault();
@@ -218,7 +218,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     return (
       <a
         key={slug}
-        href={slug}
+        href={`/blog/${slug}`}
         className="blog-card-mini"
         onClick={(event) => {
           event.preventDefault();
@@ -249,7 +249,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           return (
             <a
               key={slug}
-              href={slug}
+              href={`/blog/${slug}`}
               className="blog-info-card"
               onClick={(event) => {
                 event.preventDefault();
