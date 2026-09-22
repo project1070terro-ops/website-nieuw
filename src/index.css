@@ -977,11 +977,11 @@ main { flex: 1; }
     padding-left: 24px;
     padding-right: 24px;
     padding-bottom: 24px;
-    animation: terro-reveal-mobile 4s ease-out 0.2s both;
+    animation: terro-reveal-mobile 1.6s ease-out 0.15s both;
   }
   @keyframes terro-reveal-mobile {
     from {
-      transform: translateY(-220px);
+      transform: translateY(-80px);
       background-color: rgba(0, 0, 0, 1);
     }
     to {
