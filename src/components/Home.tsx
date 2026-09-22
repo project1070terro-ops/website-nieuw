@@ -16,16 +16,15 @@ export function Home({ t, navigate }: HomeProps) {
   const [sliderImages, setSliderImages] = useState(heroImages);
   const [activeSlide, setActiveSlide] = useState(0);
   const total = sliderImages.length;
+  const currentSlide = total > 0 ? activeSlide % total : 0;
 
   useEffect(() => {
-    loadHeroSlider().then((images) => {
-      if (images.length > 0) setSliderImages(images);
-    });
+    loadHeroSlider()
+      .then((images) => {
+        if (images.length > 0) setSliderImages(images);
+      })
+      .catch(() => {});
   }, []);
-
-  useEffect(() => {
-    setActiveSlide(0);
-  }, [sliderImages]);
 
   const nextSlide = () => setActiveSlide((s) => (s + 1) % total);
   const prevSlide = () => setActiveSlide((s) => (s - 1 + total) % total);
@@ -38,7 +37,7 @@ export function Home({ t, navigate }: HomeProps) {
             <img
               key={image}
               src={image}
-              className={index === activeSlide ? 'visible' : ''}
+              className={index === currentSlide ? 'visible' : ''}
               alt="Costa Blanca cycling landscape"
             />
           ))}
@@ -78,7 +77,7 @@ export function Home({ t, navigate }: HomeProps) {
           {sliderImages.map((_, index) => (
             <button
               key={index}
-              className={index === activeSlide ? 'slide-dot current' : 'slide-dot'}
+              className={index === currentSlide ? 'slide-dot current' : 'slide-dot'}
               aria-label={`Slide ${index + 1}`}
               onClick={() => setActiveSlide(index)}
             />
