@@ -95,6 +95,15 @@ function App() {
     void loadDonations();
   }, []);
 
+  // Supabase keep-alive ping on every visit
+  useEffect(() => {
+    if (!supabase) return;
+    supabase
+      .from('donations')
+      .select('*', { count: 'exact', head: true })
+      .catch(() => {});
+  }, []);
+
   const totalDonated = useMemo(() => {
     return donations.reduce((sum, donation) => sum + Number(donation.amount_eur), 0);
   }, [donations]);
