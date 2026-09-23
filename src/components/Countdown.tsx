@@ -43,7 +43,7 @@ export function Countdown({ language, targetDate }: CountdownProps) {
             <p className="!text-[8px] md:!text-xs text-white/60 uppercase tracking-wide !whitespace-nowrap mb-1">
               {label}
             </p>
-            <p className="text-xl md:text-2xl font-bold whitespace-nowrap" style={{ color: 'var(--orange)' }}>
+            <p className="text-xl md:text-2xl font-medium leading-snug tracking-wide whitespace-nowrap" style={{ color: 'var(--orange)' }}>
               {values[i]}
             </p>
           </div>

@@ -26,7 +26,7 @@ export function Story({ t, language, navigate }: StoryProps) {
     block.type === 'subtitle' ? (
       <h3
         key={index}
-        className="!mt-3 md:!mt-6 !mb-2 !w-full !max-w-[720px] !mx-auto !text-left !text-xl !font-bold !text-white"
+        className="!mt-3 md:!mt-6 !mb-2 !w-full !max-w-[720px] !mx-auto !text-left !text-xl !font-medium !leading-snug !tracking-wide !text-white"
       >
         {block.text}
       </h3>
