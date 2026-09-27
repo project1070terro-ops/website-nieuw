@@ -54,32 +54,26 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
             <div className="footer-contact-line">
-              <a
-                className="footer-contact-label"
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('contact');
-                }}
+              <button 
+                className="footer-contact-text-link"
+                onClick={() => navigate('contact')}
+                style={{ background: 'none', border: 'none', padding: 0, color: '#ffffff', cursor: 'pointer', textAlign: 'left' }}
               >
                 Algemeen:
-              </a>
-              <a className="footer-email" href="mailto:info@project1570.org">
+              </button>
+              <a className="footer-email-clickable" href="mailto:info@project1570.org" style={{ color: '#FF5722', marginLeft: '6px' }}>
                 info@project1570.org
               </a>
             </div>
             <div className="footer-contact-line">
-              <a
-                className="footer-contact-label"
-                href="/contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('contact');
-                }}
+              <button 
+                className="footer-contact-text-link"
+                onClick={() => navigate('contact')}
+                style={{ background: 'none', border: 'none', padding: 0, color: '#ffffff', cursor: 'pointer', textAlign: 'left' }}
               >
                 Sponsoring & Diensten:
-              </a>
-              <a className="footer-email" href="mailto:sponsoring@project1570.org">
+              </button>
+              <a className="footer-email-clickable" href="mailto:sponsoring@project1570.org" style={{ color: '#FF5722', marginLeft: '6px' }}>
                 sponsoring@project1570.org
               </a>
             </div>
