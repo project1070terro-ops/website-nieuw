@@ -64,8 +64,11 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             </div>
             <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center' }}>
               <span style={{ color: '#ffffff', marginRight: '6px' }}>Sponsoring & Diensten:</span>
-              <button 
-                onClick={() => navigate('contact')}
+              <button
+                onClick={() => {
+                  navigate('contact');
+                  window.history.replaceState({ ...window.history.state, subject: 'sponsoring' }, '', window.location.href);
+                }}
                 style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
               >
                 sponsoring@project1570.org

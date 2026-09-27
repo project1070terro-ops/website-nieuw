@@ -1,5 +1,5 @@
 import { ArrowRight, Check } from 'lucide-react';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import type { Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
@@ -11,6 +11,15 @@ interface ContactProps {
 export function Contact({ t, navigate }: ContactProps) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [subject, setSubject] = useState('Algemene vraag of opmerking');
+
+  useEffect(() => {
+    const location = { state: window.history.state };
+    const initialSubject = (location.state as { subject?: string } | null)?.subject;
+    if (initialSubject === 'sponsoring') {
+      setSubject('Sponsoring met producten en/of diensten');
+    }
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -61,7 +70,7 @@ export function Contact({ t, navigate }: ContactProps) {
           </label>
           <label>
             Onderwerp
-            <select name="subject" required>
+            <select name="subject" required value={subject} onChange={(e) => setSubject(e.target.value)}>
               <option value="Algemene vraag of opmerking">Algemene vraag of opmerking</option>
               <option value="Sponsoring met producten en/of diensten">Sponsoring met producten en/of diensten</option>
               <option value="Sponsoring via een financieel engagement">Sponsoring via een financieel engagement</option>
