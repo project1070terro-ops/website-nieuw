@@ -63,7 +63,7 @@ export function Contact({ t, navigate }: ContactProps) {
             Onderwerp
             <select name="subject" required>
               <option value="Algemene vraag of opmerking">Algemene vraag of opmerking</option>
-              <option value="Sponsoring met producten coffee/of diensten">Sponsoring met producten coffee/of diensten</option>
+              <option value="Sponsoring met producten en/of diensten">Sponsoring met producten en/of diensten</option>
               <option value="Sponsoring via een financieel engagement">Sponsoring via een financieel engagement</option>
             </select>
           </label>
