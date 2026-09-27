@@ -20,6 +20,7 @@ export function Contact({ t, navigate }: ContactProps) {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
+      subject: formData.get('subject'),
       message: formData.get('message'),
     };
 
@@ -59,6 +60,14 @@ export function Contact({ t, navigate }: ContactProps) {
             <input name="email" required type="email" />
           </label>
           <label>
+            Onderwerp
+            <select name="subject" required>
+              <option value="Algemene vraag of opmerking">Algemene vraag of opmerking</option>
+              <option value="Sponsoring met producten coffee/of diensten">Sponsoring met producten coffee/of diensten</option>
+              <option value="Sponsoring via een financieel engagement">Sponsoring via een financieel engagement</option>
+            </select>
+          </label>
+          <label>
             Bericht
             <textarea name="message" required rows={7} />
           </label>
@@ -72,6 +81,15 @@ export function Contact({ t, navigate }: ContactProps) {
             </p>
           )}
         </form>
+
+        <div className="contact-info">
+          <a className="contact-email" href="mailto:info@project1570.org">
+            Algemeen: info@project1570.org
+          </a>
+          <a className="contact-email" href="mailto:sponsoring@project1570.org">
+            Sponsoring & Diensten: sponsoring@project1570.org
+          </a>
+        </div>
       </section>
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>

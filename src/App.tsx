@@ -95,6 +95,25 @@ function App() {
     void loadDonations();
   }, []);
 
+  // Lightweight Supabase keep-alive ping on page load
+  useEffect(() => {
+    async function pingSupabase() {
+      try {
+        if (!supabase) return;
+        const { error } = await supabase
+          .from('donations')
+          .select('id', { count: 'exact', head: true });
+        if (error) {
+          console.warn('Supabase keep-alive ping returned:', error.message);
+        }
+      } catch (e) {
+        // Silent — never crash the DOM for a keep-alive ping
+        console.warn('Supabase keep-alive ping failed:', e);
+      }
+    }
+    void pingSupabase();
+  }, []);
+
   const totalDonated = useMemo(() => {
     return donations.reduce((sum, donation) => sum + Number(donation.amount_eur), 0);
   }, [donations]);

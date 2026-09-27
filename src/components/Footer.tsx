@@ -53,15 +53,11 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
 
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
-            <a
-              className="footer-email"
-              href="/contact"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('contact');
-              }}
-            >
-              info@project1570.org
+            <a className="footer-email" href="mailto:info@project1570.org">
+              Algemeen: info@project1570.org
+            </a>
+            <a className="footer-email" href="mailto:sponsoring@project1570.org">
+              Sponsoring & Diensten: sponsoring@project1570.org
             </a>
           </div>
 
