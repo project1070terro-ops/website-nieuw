@@ -2331,3 +2331,17 @@ footer.footer-orange-top {
   .blog-mini-grid { margin-bottom: 24px; }
   .blog-card-mini img { height: 180px; }
 }
+
+/* Premium Typography Global Overrides */
+h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"] {
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.4 !important;
+}
+
+/* Fix Oversized Blog Card Titles */
+.blog-card h3, [class*="blog-card"] h3, .card-title {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+}

@@ -54,22 +54,22 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
             <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-              <span style={{ color: '#ffffff', marginRight: '6px' }}>Algemeen:</span>
+              <span className="text-xs" style={{ color: '#ffffff', marginRight: '6px' }}>Algemeen:</span>
               <button 
                 onClick={() => navigate('contact')}
-                style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
+                className="text-xs" style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
               >
                 info@project1570.org
               </button>
             </div>
             <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center' }}>
-              <span style={{ color: '#ffffff', marginRight: '6px' }}>Sponsoring & Diensten:</span>
+              <span className="text-xs" style={{ color: '#ffffff', marginRight: '6px' }}>Sponsoring & Diensten:</span>
               <button
                 onClick={() => {
                   navigate('contact');
                   window.history.replaceState({ ...window.history.state, subject: 'sponsoring' }, '', window.location.href);
                 }}
-                style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
+                className="text-xs" style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
               >
                 sponsoring@project1570.org
               </button>

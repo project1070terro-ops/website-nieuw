@@ -10,7 +10,7 @@ export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
   nl: {
     nav: { home: 'Home', story: 'Het Verhaal', route: 'De Route', terro: 'Project Terro', blog: 'Blog', cause: 'Het Goede Doel', donate: 'Doneren', contact: 'Contact' },
     support: 'Save the Children & doneer nu',
-    heroEyebrow: ['NAJAAR 2029', '10 DAGEN NON-STOP VANAF HET STRAND VAN ALBIR'],
+    heroEyebrow: ['NAJAAR 2029', '5 DAGEN FIETSEN | 1 RUSTDAG | 5 DAGEN FIETSEN'],
     heroTitle: 'PROJECT 15/70',
     heroText: 'Vijftien jaar passie. Zeventig jaar jong. Eén legendarische uitdaging voor Save the Children.',
     discover: 'Volg onze reis naar 2029',
