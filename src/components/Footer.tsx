@@ -14,7 +14,7 @@ const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
   es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
 };
 
-const STC_URL = 'https://www.savethechildren.net/what-we-do/advocacy/save-children-europe';
+const STC_URL = 'https://savethechildren.net';
 
 export function Footer({ t, language, navigate, className }: FooterProps) {
   return (
@@ -53,29 +53,23 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
 
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
-            <div className="footer-contact-line">
+            <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+              <span style={{ color: '#ffffff', marginRight: '6px' }}>Algemeen:</span>
               <button 
-                className="footer-contact-text-link"
                 onClick={() => navigate('contact')}
-                style={{ background: 'none', border: 'none', padding: 0, color: '#ffffff', cursor: 'pointer', textAlign: 'left' }}
+                style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
               >
-                Algemeen:
-              </button>
-              <a className="footer-email-clickable" href="mailto:info@project1570.org" style={{ color: '#FF5722', marginLeft: '6px' }}>
                 info@project1570.org
-              </a>
-            </div>
-            <div className="footer-contact-line">
-              <button 
-                className="footer-contact-text-link"
-                onClick={() => navigate('contact')}
-                style={{ background: 'none', border: 'none', padding: 0, color: '#ffffff', cursor: 'pointer', textAlign: 'left' }}
-              >
-                Sponsoring & Diensten:
               </button>
-              <a className="footer-email-clickable" href="mailto:sponsoring@project1570.org" style={{ color: '#FF5722', marginLeft: '6px' }}>
+            </div>
+            <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ color: '#ffffff', marginRight: '6px' }}>Sponsoring & Diensten:</span>
+              <button 
+                onClick={() => navigate('contact')}
+                style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
+              >
                 sponsoring@project1570.org
-              </a>
+              </button>
             </div>
           </div>
 
