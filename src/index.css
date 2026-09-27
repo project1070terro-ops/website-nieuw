@@ -1597,17 +1597,17 @@ footer.footer-orange-top {
   align-items: baseline;
 }
 .footer-contact-label {
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.25s ease;
 }
 .footer-contact-label:hover { color: var(--orange); }
 .footer-email { 
-  color: rgba(255, 255, 255, 0.6); 
+  color: var(--orange); 
   font-size: 14px; 
-  font-weight: 400; 
+  font-weight: 500; 
   transition: color 0.25s ease; 
   text-decoration: none;
   margin: 0;
@@ -1615,7 +1615,7 @@ footer.footer-orange-top {
   line-height: 1;
   display: inline;
 }
-.footer-email:hover { color: var(--orange); }
+.footer-email:hover { text-decoration: underline; }
 .footer-socials { display: flex; gap: 14px; }
 .footer-socials a { color: var(--orange); transition: opacity 0.25s ease, transform 0.25s ease; }
 .footer-socials a:hover { opacity: 0.8; transform: translateY(-1px); }

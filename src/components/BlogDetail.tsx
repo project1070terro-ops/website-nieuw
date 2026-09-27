@@ -28,7 +28,7 @@ const YEARS = [2027, 2028, 2029];
 
 const ptComponents = {
   marks: {
-    brandName: ({ children }: { children: React.ReactNode }) => <span className="font-bold tracking-wider uppercase">{children}</span>,
+    brandName: ({ children }: { children: React.ReactNode }) => <span className="font-medium tracking-wider uppercase">{children}</span>,
     brandSubtitle: ({ children }: { children: React.ReactNode }) => <span className="italic font-normal">{children}</span>,
     orangeSlash: ({ children }: { children: React.ReactNode }) => <span className="text-[#FF5722]">{children}</span>,
   },
