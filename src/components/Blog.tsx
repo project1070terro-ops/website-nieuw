@@ -259,16 +259,17 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               {image && <img src={image} alt="" loading="lazy" />}
               <div className="blog-info-card-body">
                 <span className="tag">{label[language]}</span>
-                <h2>
-                  {suffix === undefined ? (
-                    <span className="title-prefix">{displayTitle}</span>
-                  ) : (
-                    <>
-                      <span className="title-prefix">{prefix}:</span>
-                      <span className="title-suffix">{suffix}</span>
-                    </>
-                  )}
-                </h2>
+<h2 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
+  {suffix === undefined ? (
+    <span className="title-prefix">{displayTitle}</span>
+  ) : (
+    <>
+      <span className="title-prefix">{prefix}:</span>
+      <span className="title-suffix">{suffix}</span>
+    </>
+  )}
+</h2>
+
               </div>
             </a>
           );
