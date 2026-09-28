@@ -30,7 +30,7 @@ const INFO_SLUGS = new Set([
   '/blog/waarom-save-the-children',
 ]);
 
-const YEARS =;
+const YEARS = [2027, 2028, 2029];
 
 function CategoryLabel({ label }: { label: string }) {
   const parts = label.split(' ');
