@@ -2345,3 +2345,31 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"] {
   font-weight: 500 !important;
   line-height: 1.3 !important;
 }
+
+/* Premium Typography Overrides */
+h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="blog-card"] h3, .card-title {
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.4 !important;
+}
+
+/* Story paragraph breaks */
+.story-break { display: block; margin-bottom: 1.5em; }
+
+/* Subtle mobile Project Terro reveal */
+@media (max-width: 768px) {
+  .terro-sections {
+    animation: terro-reveal-mobile 1.2s ease-out both;
+  }
+}
+
+@keyframes terro-reveal-mobile {
+  from {
+    transform: translateY(-80px);
+    opacity: 0.95;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

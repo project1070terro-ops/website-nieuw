@@ -28,6 +28,16 @@ const GRADIENT_BANDS = [
 // Vaste waarde — pas deze later gerust aan
 const AVG_SPEED_KMH = 16.5;
 
+function getKomootEmbedUrl(url: string, language: Language) {
+  try {
+    const { pathname } = new URL(url);
+    const lang = language === 'nl' ? 'nl' : language === 'en' ? 'en' : 'es';
+    return `https://komoot.com${pathname}/embed?profile=1&style=default&width=100%&height=400&route=1&showLabel=1&hideStats=0&lang=${lang}`;
+  } catch {
+    return null;
+  }
+}
+
 function colorForGradient(gradient: number) {
   const abs = Math.abs(gradient);
   return GRADIENT_BANDS.find((b) => abs < b.max)!.color;
@@ -225,7 +235,10 @@ export function RouteDayInteractive({
   const distances = useMemo(() => computeDistances(points), [points]);
   const gradients = useMemo(() => computeGradients(points, distances), [points, distances]);
 
-
+  const komootEmbedUrl = useMemo(
+    () => (day.komootUrl ? getKomootEmbedUrl(day.komootUrl, language) : null),
+    [day.komootUrl, language]
+  );
 
   const stats = useMemo(() => {
     if (!points.length) return null;
@@ -446,7 +459,7 @@ export function RouteDayInteractive({
     };
   }, [points, distances, gradients, r]);
 
-  if (!day.gpx) {
+  if (!day.gpx && !day.komootUrl) {
     return (
       <div className="route-map-wrap">
         <p className="route-loading">{placeholder}</p>
@@ -457,7 +470,19 @@ export function RouteDayInteractive({
   return (
     <div className="route-map-wrap">
       {error && <p className="route-map-error">{error}</p>}
-      <div className="route-map lg:!h-[500px]" ref={mapContainerRef} />
+      {komootEmbedUrl ? (
+        <iframe
+          className="route-map route-komoot-iframe"
+          src={komootEmbedUrl}
+          title={day.title}
+          loading="lazy"
+          allowFullScreen
+          referrerPolicy="no-referrer-when-downgrade"
+          style={{ border: 0, width: '100%', minHeight: '400px' }}
+        />
+      ) : (
+        <div className="route-map lg:!h-[500px]" ref={mapContainerRef} />
+      )}
 
       <aside ref={sidebarRef} className="route-sidebar">
         <div className="route-sidebar-top">
@@ -473,7 +498,7 @@ export function RouteDayInteractive({
             <Download size={18} /> {r.downloadGpx}
           </button>
           <a
-            href={day.stravaUrl || 'https://strava.com'}
+            href={day.komootUrl || 'https://komoot.com'}
             target="_blank"
             rel="noopener noreferrer"
             className="route-strava-btn"
@@ -552,10 +577,6 @@ export function RouteDayInteractive({
               <span className="route-chart-stat-label">{r.distance}</span>
             </div>
             <div className="route-chart-stat">
-              <span className="route-chart-stat-value">{stats.estTime}</span>
-              <span className="route-chart-stat-label">{r.estTime}</span>
-            </div>
-            <div className="route-chart-stat">
               <span className="route-chart-stat-value">
                 {Math.round(stats.gain)}
                 <small>m</small>
@@ -568,23 +589,6 @@ export function RouteDayInteractive({
                 <small>m</small>
               </span>
               <span className="route-chart-stat-label">{r.descent}</span>
-            </div>
-            <div className="route-chart-stat">
-              <span className="route-badge">
-                {stats.gain / stats.distance > 20
-                  ? r.hard
-                  : stats.gain / stats.distance > 10
-                    ? r.moderate
-                    : r.easy}
-              </span>
-              <span className="route-chart-stat-label">{r.difficulty}</span>
-            </div>
-            <div className="route-chart-stat">
-              <span className="route-chart-stat-value">
-                {r.avgLabel} {stats.avgSpeed.toFixed(1)}
-                <small>km/h</small>
-              </span>
-              <span className="route-chart-stat-label">{r.speed}</span>
             </div>
           </div>
         )}

@@ -130,7 +130,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
 const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
   day,
   title,
-  stravaUrl,
+  komootUrl,
   "postSlug": post->slug.current,
   gpx {
     asset -> { url }
@@ -146,7 +146,7 @@ export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
     day: day.day,
     title: toLocaleString(day.title ?? '')[language],
     gpx: day.gpx?.asset?.url ?? '',
-    stravaUrl: day.stravaUrl ?? undefined,
+    komootUrl: day.komootUrl ?? undefined,
     postSlug: day.postSlug ?? undefined,
   }));
 }

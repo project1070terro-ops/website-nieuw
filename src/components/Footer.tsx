@@ -53,23 +53,39 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
 
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
-            <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-              <span className="text-xs" style={{ color: '#ffffff', marginRight: '6px' }}>Algemeen:</span>
-              <button 
+            <div className="footer-contact-line" style={{ display: 'block', marginBottom: '12px' }}>
+              <a
+                className="text-xs footer-contact-label"
+                href="/contact"
+                onClick={(e) => { e.preventDefault(); navigate('contact'); }}
+                style={{ display: 'block', color: '#ffffff', marginBottom: '2px', textDecoration: 'none' }}
+              >
+                Algemeen:
+              </a>
+              <button
+                className="text-xs"
                 onClick={() => navigate('contact')}
-                className="text-xs" style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
+                style={{ display: 'block', background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', textDecoration: 'underline' }}
               >
                 info@project1570.org
               </button>
             </div>
-            <div className="footer-contact-line" style={{ display: 'flex', alignItems: 'center' }}>
-              <span className="text-xs" style={{ color: '#ffffff', marginRight: '6px' }}>Sponsoring & Diensten:</span>
+            <div className="footer-contact-line" style={{ display: 'block' }}>
+              <a
+                className="text-xs footer-contact-label"
+                href="/contact"
+                onClick={(e) => { e.preventDefault(); navigate('contact'); }}
+                style={{ display: 'block', color: '#ffffff', marginBottom: '2px', textDecoration: 'none' }}
+              >
+                Sponsoring & Diensten:
+              </a>
               <button
+                className="text-xs"
                 onClick={() => {
                   navigate('contact');
                   window.history.replaceState({ ...window.history.state, subject: 'sponsoring' }, '', window.location.href);
                 }}
-                className="text-xs" style={{ background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', fontInherit: true, textDecoration: 'underline' }}
+                style={{ display: 'block', background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', textDecoration: 'underline' }}
               >
                 sponsoring@project1570.org
               </button>

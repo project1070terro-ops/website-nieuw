@@ -61,7 +61,7 @@ export function Header({ page, language, setLanguage, navigate, menuOpen, setMen
         <div className="language-switcher nav-language-switcher">
           {(['nl', 'en', 'es'] as Language[]).map((item, index) => (
             <span key={item}>
-              <button className={language === item ? 'selected' : ''} onClick={() => setLanguage(item)}>
+              <button className={language === item ? 'selected' : ''} onClick={() => { setLanguage(item); setMenuOpen(false); }}>
                 {item.toUpperCase()}
               </button>
               {index < 2 && <b>|</b>}

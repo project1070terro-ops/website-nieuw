@@ -27,10 +27,10 @@ export const routeDay = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'stravaUrl',
-      title: 'Strava-link',
+      name: 'komootUrl',
+      title: 'Komoot-link',
       type: 'url',
-      description: 'Optionele link naar de Strava-activiteit',
+      description: 'Plak hier de openbare link naar de Komoot-tour for the route-preview',
     }),
     defineField({
       name: 'post',
