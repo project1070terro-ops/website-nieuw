@@ -20,19 +20,17 @@ const overviewLabels: Record<Language, { stages: string; challenge: string; expe
   es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', preview: '🗺️ Vista previa de ruta', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio / Patrocinador' } },
 };
 
-// Etappes herkennen we aan de slug (/blog/dag-1, /blog/day-2, /blog/dia-3, ...).
 const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
 
 const CATEGORIES = ['all', 'preview', 'training', 'material', 'progress', 'partner'];
 
-// De 3 vaste info-kaarten; alle overige posts vallen in de tijdlijn.
 const INFO_SLUGS = new Set([
   '/blog/de-officiele-aftrap',
   '/blog/de-rekensom-hoogtemeters',
   '/blog/waarom-save-the-children',
 ]);
 
-const YEARS = [2027, 2028, 2029];
+const YEARS =;
 
 function CategoryLabel({ label }: { label: string }) {
   const parts = label.split(' ');
@@ -119,10 +117,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     .sort((a, b) => parseBlogDate(b.card.date).getTime() - parseBlogDate(a.card.date).getTime() || a.index - b.index)
     .map((item) => item.card);
 
-  // Statische introductieblokken vs. tijdlijn-items (etappes, trainingen, updates)
   const infoCards = sortedCards.filter((c) => INFO_SLUGS.has(c.slug));
   const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year && (category === 'all' || c.category === category));
-  // In 2029 splitsen we: reguliere updates boven, de 10 etappes onder een sub-kop.
   const updates = yearCards.filter((c) => !isStage(c.slug));
   const stages = yearCards.filter((c) => isStage(c.slug));
   const timelineSource = year === 2029 ? updates : yearCards;
@@ -130,7 +126,6 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const listCards = timelineSource.slice(3, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
-
   const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     const excerptText = toPlainText(inleiding?.[language] || []);
@@ -198,147 +193,100 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     );
   };
 
-  const renderMiniCard = ({ date, slug, title, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
-    const displayTitle = title[language];
-    const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
-    if (status === 'upcoming') {
-      return (
-        <div key={slug} className="blog-card-mini upcoming">
-          {image && <img src={image} alt="" loading="lazy" />}
-          <div className="blog-mini-body">
-            <span className="flex justify-between items-center w-full mb-3">
-              <span className="text-xs text-zinc-400">{expected ? `${labels.expected}: ${expected}` : date}</span>
-              <CategoryLabel label={categoryLabel} />
-            </span>
-            <span className="blog-mini-title">{displayTitle}</span>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <a
-        key={slug}
-        href={`/blog/${slug}`}
-        className="blog-card-mini"
-        onClick={(event) => {
-          event.preventDefault();
-          goToBlog?.(slug);
-        }}
-      >
-        {image && <img src={image} alt="" loading="lazy" />}
-        <div className="blog-mini-body">
-          <span className="flex justify-between items-center w-full mb-3">
-            <span className="text-xs text-zinc-400">{date}</span>
-            <CategoryLabel label={categoryLabel} />
-          </span>
-          <span className="blog-mini-title">{displayTitle}</span>
-        </div>
-      </a>
-    );
-  };
-
   return (
-    <>
-      <PageIntro title={t.blogTitle} lead={t.blogLead} />
-
-      {/* Project-info: 3 statische kaarten */}
-      <section className="blog-info-grid">
-        {infoCards.map(({ slug, label, title, image }) => {
-          const displayTitle = title[language];
-          const [prefix, suffix] = displayTitle.split(':', 2);
+    <div className="blog-page">
+      <PageIntro title={t.blog.title} description={t.blog.description} />
+      
+      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {infoCards.map((card) => {
+          const excerptText = toPlainText(card.inleiding?.[language] || []);
+          const truncated = excerptText ? truncateText(excerptText, 120) : '';
           return (
             <a
-              key={slug}
-              href={`/blog/${slug}`}
-              className="blog-info-card"
-              onClick={(event) => {
-                event.preventDefault();
-                goToBlog?.(slug);
+              key={card.slug}
+              href={`/blog/${card.slug}`}
+              className="blog-card featured-info-card"
+              onClick={(e) => {
+                e.preventDefault();
+                goToBlog?.(card.slug);
               }}
             >
-              {image && <img src={image} alt="" loading="lazy" />}
-              <div className="blog-info-card-body">
-                <span className="tag">{label[language]}</span>
-<h2 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
-  {suffix === undefined ? (
-    <span className="title-prefix">{displayTitle}</span>
-  ) : (
-    <>
-      <span className="title-prefix">{prefix}:</span>
-      <span className="title-suffix">{suffix}</span>
-    </>
-  )}
-</h2>
-
+              {card.image && <img className="blog-card-media" src={card.image} alt="" loading="lazy" />}
+              <div className="blog-card-body">
+                <span className="tag mb-2 inline-block">{card.label[language]}</span>
+                <h2 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
+                  {card.title[language]}
+                </h2>
+                {truncated && <p className="text-sm text-zinc-400 leading-relaxed">{truncated}</p>}
               </div>
             </a>
           );
         })}
-      </section>
+      </div>
 
-      <BlogStats language={language} stats={trainingStats} />
+      <BlogStats t={t} language={language} stats={trainingStats} />
 
-      {/* Tussenkop */}
-      <h2 className="blog-stages-heading">{labels.stages}</h2>
-
-      <div id="blog-content-section">
-        {/* Jaartabs */}
-        <div id="blog-timeline-section" className="blog-year-tabs">
+      <div className="timeline-section mt-16" id="timeline">
+        <h2 className="section-title mb-8">{labels.stages}</h2>
+        
+        <div className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
           {YEARS.map((y) => (
-            <button key={y} className={year === y ? 'active' : ''} onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}>
+            <button
+              key={y}
+              onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}
+              className={`px-4 py-2 font-medium transition-all ${year === y ? 'text-orange-500 border-b-2 border-orange-500' : 'text-zinc-400 hover:text-zinc-200'}`}
+            >
               {y}
             </button>
           ))}
         </div>
 
-        {/* Categorie-filters */}
-        <div className="blog-category-bar grid grid-cols-2 gap-2 md:flex md:flex-row md:space-x-3 md:grid-cols-none" role="tablist" aria-label="Categorieën">
-          {CATEGORIES.map((cat) => {
-            const active = category === cat;
-            return (
-              <button
-                key={cat}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                className={`blog-category-pill whitespace-normal md:whitespace-nowrap ${active ? 'active' : 'inactive'}`}
-                onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
-              >
-                {labels.categories[cat]}
-              </button>
-            );
-          })}
+        <div className="category-filter mb-8 flex flex-wrap gap-2">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
+              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700'}`}
+            >
+              {labels.categories[cat]}
+            </button>
+          ))}
         </div>
-      </div>
 
-      {/* Tijdlijn van updates & etappes */}
-      <section className="blog-timeline blog-fade-in" key={`${year}-${category}`}>
         {topCards.length > 0 && (
-          <div className="blog-top-cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{topCards.map(renderItem)}</div>
+          <div className="featured-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {topCards.map(renderItem)}
+          </div>
         )}
+
         {listCards.length > 0 && (
-          <div className="blog-mini-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{listCards.map(renderMiniCard)}</div>
+          <div className="blog-list-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+            {listCards.map(renderItem)}
+          </div>
         )}
+
         {hasMore && (
-          <div className="blog-show-more-wrap mt-8 mb-8">
-            <button className="read-more-btn blog-show-more" onClick={() => setVisibleCount((v) => v + LOAD_MORE)}>
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setVisibleCount(prev => prev + LOAD_MORE)}
+              className="px-6 py-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded hover:bg-zinc-800 transition-all text-sm font-medium"
+            >
               {labels.loadMore}
             </button>
           </div>
         )}
-        {year === 2029 && stages.length > 0 && (
-          <>
-            <h3 className="blog-challenge-subheading">{labels.challenge}</h3>
-            <div className="blog-mini-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">{stages.map(renderMiniCard)}</div>
-          </>
-        )}
-      </section>
 
-      <section className="home-cta">
-        <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>
-          <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
-        </button>
-      </section>
-    </>
+        {year === 2029 && stages.length > 0 && (
+          <div className="stages-section mt-16 border-t border-zinc-800 pt-12">
+            <h3 className="text-xl font-medium text-zinc-200 mb-8 flex items-center gap-2">
+              <span>🏁</span> {labels.challenge}
+            </h3>
+            <div className="stages-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+              {stages.map(renderItem)}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
