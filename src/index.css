@@ -2390,3 +2390,16 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
   line-height: 1.4 !important;
 }
 
+/* --- CHIRURGISCHE LAYOUT CORRECTIE --- */
+.project-terro-page .grid-cols-1.md\:grid-cols-3, 
+.story-page .grid-cols-1.md\:grid-cols-3, 
+.blog-card h2, 
+.blog-card h3, 
+.featured-info-card h2, 
+.featured-info-card h3 { 
+  max-width: 1024px !important; 
+  margin: 0 auto !important; 
+  width: 100% !important; 
+  font-size: 18px !important; 
+  font-weight: 500 !important; 
+}
