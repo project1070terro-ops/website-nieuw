@@ -1,5 +1,4 @@
 import { BrandText } from './BrandText';
-
 import type { ReactNode } from 'react';
 
 interface PageIntroProps {
@@ -15,7 +14,7 @@ export function PageIntro({ title, lead, className, children }: PageIntroProps) 
       <p className="eyebrow">
         <BrandText text="PROJECT 15/70" />
       </p>
-      <h1>
+      <h1 style={{ fontSize: '36px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.3', color: '#ffffff', marginBottom: '16px' }}>
         <BrandText text={title} />
       </h1>
       {children}

@@ -158,7 +158,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
-            <h3>{titleNode}</h3>
+            <h3 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
               <div className="blog-card-excerpt">
                 <p>{truncated}</p>
@@ -187,7 +187,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               <CategoryLabel label={categoryLabel} />
             </div>
           </div>
-          <h3>{titleNode}</h3>
+          <h3 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
           {truncated ? (
             <div className="blog-card-excerpt">
               <p>{truncated}</p>
