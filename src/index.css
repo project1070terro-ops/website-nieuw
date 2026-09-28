@@ -2373,3 +2373,15 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
     opacity: 1;
   }
 }
+
+/* --- CRUCIAL OVERRIDES VOOR DE BLOGS EN DETAILPAGINA'S --- */
+.blog-card h3, 
+.featured-info-card h3, 
+.blog-page h3, 
+.blog-detail-page h1, 
+.blog-detail h1 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1.4 !important;
+}
