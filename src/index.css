@@ -2403,3 +2403,16 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
   font-size: 18px !important; 
   font-weight: 500 !important; 
 }
+
+/* --- ULTIEME OVERRIDE VOOR DE QUOTE EN KAARTEN --- */
+.story-quote, 
+blockquote.story-quote,
+section.stats,
+.stats {
+  max-width: 768px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
