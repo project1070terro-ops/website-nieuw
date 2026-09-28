@@ -2374,14 +2374,19 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
   }
 }
 
-/* --- CRUCIAL OVERRIDES VOOR DE BLOGS EN DETAILPAGINA'S --- */
+/* --- DE ULTRA FORCED OVERRIDE VOOR DE 3 VASTE HOOFDKAARTEN EN ALLE BLOGS --- */
+.featured-info-card h3,
+.featured-info-card h3 span,
 .blog-card h3, 
-.featured-info-card h3, 
+.blog-card h4,
 .blog-page h3, 
+.blog-page h4,
 .blog-detail-page h1, 
-.blog-detail h1 {
+.blog-detail h1,
+[class*="featured-info"] h3 {
   font-size: 18px !important;
   font-weight: 500 !important;
   letter-spacing: 0.03em !important;
   line-height: 1.4 !important;
 }
+
