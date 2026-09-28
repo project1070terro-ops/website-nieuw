@@ -56,11 +56,11 @@ export function Story({ t, language, navigate }: StoryProps) {
         {postBlocks.map((block, i) => renderBlock(block, splitIndex + 1 + i))}
       </section>
 
-<blockquote className="story-quote" style={{ maxWidth: '768px', margin: '0 auto', width: '100%', paddingLeft: '1rem', paddingRight: '1rem' }} dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
-<section style={{ maxWidth: '768px', margin: '0 auto', width: '100%' }} className="bg-neutral-900 md:bg-neutral-950 py-6">
+<blockquote className="story-quote max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
+<section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-neutral-900 md:bg-neutral-950 py-6">
         <Stats t={t} />
       </section>
-<section style={{ maxWidth: '768px', margin: '0 auto', width: '100%', paddingLeft: '1rem', paddingRight: '1rem' }} className="story-grid">
+<section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 story-grid">
         {t.storySections.map(([title, text], index) => (
           <article key={title}>
             <span>0{index + 1}</span>
