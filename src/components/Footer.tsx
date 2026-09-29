@@ -61,9 +61,9 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 Algemeen:
               </span>
               <button
-                className="text-xs"
+                className="text-xs text-[#99815e] hover:text-white transition-colors"
                 onClick={() => navigate('contact')}
-                style={{ display: 'block', background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', textDecoration: 'underline' }}
+                style={{ display: 'block', background: 'none', border: 'none', padding: 0, cursor: 'pointer', textDecoration: 'underline' }}
               >
                 info@project1570.org
               </button>
@@ -76,12 +76,12 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 Sponsoring & Diensten:
               </span>
               <button
-                className="text-xs"
+                className="text-xs text-[#99815e] hover:text-white transition-colors"
                 onClick={() => {
                   navigate('contact');
                   window.history.replaceState({ ...window.history.state, subject: 'sponsoring' }, '', window.location.href);
                 }}
-                style={{ display: 'block', background: 'none', border: 'none', padding: 0, color: '#FF5722', cursor: 'pointer', textDecoration: 'underline' }}
+                style={{ display: 'block', background: 'none', border: 'none', padding: 0, cursor: 'pointer', textDecoration: 'underline' }}
               >
                 sponsoring@project1570.org
               </button>
