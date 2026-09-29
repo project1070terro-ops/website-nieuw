@@ -54,14 +54,12 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           <div className="footer-module footer-contact-module">
             <h3 className="footer-title">CONTACT</h3>
             <div className="footer-contact-line" style={{ display: 'block', marginBottom: '12px' }}>
-              <a
+              <span
                 className="text-xs footer-contact-label"
-                href="/contact"
-                onClick={(e) => { e.preventDefault(); navigate('contact'); }}
-                style={{ display: 'block', color: '#99815e', marginBottom: '2px', textDecoration: 'none' }}
+                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
                 Algemeen:
-              </a>
+              </span>
               <button
                 className="text-xs"
                 onClick={() => navigate('contact')}
@@ -71,14 +69,12 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               </button>
             </div>
             <div className="footer-contact-line" style={{ display: 'block' }}>
-              <a
+              <span
                 className="text-xs footer-contact-label"
-                href="/contact"
-                onClick={(e) => { e.preventDefault(); navigate('contact'); }}
-                style={{ display: 'block', color: '#99815e', marginBottom: '2px', textDecoration: 'none' }}
+                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
                 Sponsoring & Diensten:
-              </a>
+              </span>
               <button
                 className="text-xs"
                 onClick={() => {

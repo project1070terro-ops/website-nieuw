@@ -216,7 +216,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               {card.image && <img className="blog-card-media" src={card.image} alt="" loading="lazy" />}
               <div className="blog-card-body">
                 <span className="tag mb-2 inline-block">{card.label[language]}</span>
-                <h2 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
+                <h2 className="mt-2" style={{ fontSize: '16px', fontWeight: 400, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
                   {card.title[language]}
                 </h2>
                 {truncated && <p className="text-sm text-zinc-400 leading-relaxed">{truncated}</p>}
