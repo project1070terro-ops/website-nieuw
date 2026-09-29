@@ -468,11 +468,11 @@ export function RouteDayInteractive({
   }
 
   return (
-    <div className="route-map-wrap">
+    <div className="route-map-wrap max-w-4xl mx-auto px-4">
       {error && <p className="route-map-error">{error}</p>}
       {komootEmbedUrl ? (
         <iframe
-          className="route-map route-komoot-iframe w-full !h-auto !min-h-[450px] md:!min-h-[550px] aspect-[16/9]"
+          className="route-map route-komoot-iframe w-full !h-[380px] !min-h-[380px] max-h-[380px]"
           src={komootEmbedUrl}
           title={day.title}
           loading="lazy"
@@ -481,7 +481,7 @@ export function RouteDayInteractive({
           style={{ border: 0 }}
         />
       ) : (
-        <div className="route-map lg:!h-[500px]" ref={mapContainerRef} />
+        <div className="route-map !h-[380px] !min-h-[380px]" ref={mapContainerRef} />
       )}
 
       <aside ref={sidebarRef} className="route-sidebar">
