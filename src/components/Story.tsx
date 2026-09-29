@@ -56,7 +56,7 @@ export function Story({ t, language, navigate }: StoryProps) {
         {postBlocks.map((block, i) => renderBlock(block, splitIndex + 1 + i))}
       </section>
 
-<blockquote className="story-quote max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
+<blockquote className="story-quote max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
       <Stats t={t} />
 <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 story-grid">
         {t.storySections.map(([title, text], index) => (
