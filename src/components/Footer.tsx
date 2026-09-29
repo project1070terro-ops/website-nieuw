@@ -14,7 +14,7 @@ const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
   es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
 };
 
-const STC_URL = 'https://savethechildren.net';
+const STC_URL = 'https://www.savethechildren.org/';
 
 export function Footer({ t, language, navigate, className }: FooterProps) {
   return (

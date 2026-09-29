@@ -514,9 +514,7 @@ main { flex: 1; }
   border: 1px solid var(--orange);
   border-radius: 20px;
   padding: 28px 24px;
-  transition: transform 0.3s ease, background 0.3s ease;
 }
-.sponsor-cards article:hover { transform: translateY(-4px); background: #0c1a2e; }
 .sponsor-cards span {
   display: block;
   font-size: 12px;

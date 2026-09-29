@@ -90,15 +90,6 @@ export function Contact({ t, navigate }: ContactProps) {
             </p>
           )}
         </form>
-
-        <div className="contact-info">
-          <a className="contact-email" href="mailto:info@project1570.org">
-            Algemeen: info@project1570.org
-          </a>
-          <a className="contact-email" href="mailto:sponsoring@project1570.org">
-            Sponsoring & Diensten: sponsoring@project1570.org
-          </a>
-        </div>
       </section>
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>
