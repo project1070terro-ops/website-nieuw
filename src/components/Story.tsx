@@ -44,7 +44,7 @@ export function Story({ t, language, navigate }: StoryProps) {
         <p className="eyebrow">
           <BrandText text="PROJECT 15/70" />
         </p>
-        <h1>{t.storyTitle}</h1>
+        <h2>{t.storyTitle}</h2>
         <div className="story-banner">
           <img
             src="/images/hero/verhaal-banner.webp"
@@ -56,18 +56,16 @@ export function Story({ t, language, navigate }: StoryProps) {
         {postBlocks.map((block, i) => renderBlock(block, splitIndex + 1 + i))}
       </section>
 
-<blockquote className="story-quote max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
-<section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-neutral-900 md:bg-neutral-950 py-6">
-        <Stats t={t} />
-      </section>
-<section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 story-grid">
+<blockquote className="story-quote max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" dangerouslySetInnerHTML={{ __html: t.storyQuote }} />
+      <Stats t={t} />
+<section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 story-grid">
         {t.storySections.map(([title, text], index) => (
           <article key={title}>
             <span>0{index + 1}</span>
             <div className="story-content-wrapper">
               <div className="story-line"></div>
               <div className="story-text">
-                <h2>{title}</h2>
+                <h3>{title}</h3>
                 <p><BrandText text={text} /></p>
               </div>
             </div>

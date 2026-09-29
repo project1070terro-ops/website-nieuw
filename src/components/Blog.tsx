@@ -153,7 +153,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
-            <h3 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+            <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
               <div className="blog-card-excerpt">
                 <p>{truncated}</p>
@@ -182,7 +182,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               <CategoryLabel label={categoryLabel} />
             </div>
           </div>
-          <h3 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+          <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
           {truncated ? (
             <div className="blog-card-excerpt">
               <p>{truncated}</p>
@@ -214,7 +214,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               {card.image && <img className="blog-card-media" src={card.image} alt="" loading="lazy" />}
               <div className="blog-card-body">
                 <span className="tag mb-2 inline-block">{card.label[language]}</span>
-                <h2 style={{ fontSize: '18px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
+                <h2 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
                   {card.title[language]}
                 </h2>
                 {truncated && <p className="text-sm text-zinc-400 leading-relaxed">{truncated}</p>}
@@ -224,7 +224,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         })}
       </div>
 
-      <BlogStats t={t} language={language} stats={trainingStats} />
+      <BlogStats language={language} stats={trainingStats} />
 
       <div className="timeline-section mt-16" id="timeline">
         <h2 className="section-title mb-8">{labels.stages}</h2>

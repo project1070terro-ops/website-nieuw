@@ -58,7 +58,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 className="text-xs footer-contact-label"
                 href="/contact"
                 onClick={(e) => { e.preventDefault(); navigate('contact'); }}
-                style={{ display: 'block', color: '#ffffff', marginBottom: '2px', textDecoration: 'none' }}
+                style={{ display: 'block', color: '#99815e', marginBottom: '2px', textDecoration: 'none' }}
               >
                 Algemeen:
               </a>
@@ -75,7 +75,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 className="text-xs footer-contact-label"
                 href="/contact"
                 onClick={(e) => { e.preventDefault(); navigate('contact'); }}
-                style={{ display: 'block', color: '#ffffff', marginBottom: '2px', textDecoration: 'none' }}
+                style={{ display: 'block', color: '#99815e', marginBottom: '2px', textDecoration: 'none' }}
               >
                 Sponsoring & Diensten:
               </a>

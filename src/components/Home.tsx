@@ -50,12 +50,12 @@ export function Home({ t, navigate }: HomeProps) {
             <span className="eyebrow-date">{t.heroEyebrow[0]}</span>
             <span className="eyebrow-line2">{t.heroEyebrow[1]}</span>
           </p>
-          <h1>
+          <h2>
             <BrandText text="PROJECT" />
             <span className="hero-title-number">
               <BrandText text="15/70" />
             </span>
-          </h1>
+          </h2>
           <p className="hero-text">
             <BrandText text={t.heroText} />
           </p>

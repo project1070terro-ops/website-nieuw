@@ -29,8 +29,8 @@ export const routeDay = defineType({
     defineField({
       name: 'komootUrl',
       title: 'Komoot-link',
-      type: 'url',
-      description: 'Plak hier de openbare link naar de Komoot-tour for the route-preview',
+      type: 'string',
+      description: 'Plak hier de openbare link naar de Komoot-tour voor de route-preview',
     }),
     defineField({
       name: 'post',

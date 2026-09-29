@@ -19,7 +19,7 @@ export function Terro({ t, navigate }: TerroProps) {
   return (
     <>
       <PageIntro title={t.terroTitle} lead="" className="terro-intro" />
-      <div className="terro-image-wrapper w-full max-w-4xl mx-auto">
+      <div className="terro-image-wrapper w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <img
           src="/images/sponsor/WhatsApp_Image_2026-08-28_at_20.00.57.webp"
           alt="Terro"
@@ -28,14 +28,14 @@ export function Terro({ t, navigate }: TerroProps) {
         <div className="absolute inset-0 bg-black/60 lg:bg-black/75 pointer-events-none" />
         <div className="terro-image-vignette absolute inset-0 pointer-events-none" />
       </div>
-      <article className="terro-sections relative z-10 -mt-12 pt-8">
+      <article className="terro-sections relative z-10 -mt-12 pt-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {t.terroSections.map(([title, text], index) => {
           const paragraphs = text.trim().split(/\r?\n\s*\r?\n/);
           const image = sectionImages[index];
           return (
             <Fragment key={title}>
               <div className="terro-block">
-                <h2>{title}</h2>
+                <h3>{title}</h3>
                 {paragraphs.map((para, i) => {
                   const lines = para.split('\n').filter(line => line.trim() !== '');
                   const isList = lines.length > 0 && lines.every(line => line.trim().startsWith('- '));

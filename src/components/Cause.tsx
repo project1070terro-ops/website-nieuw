@@ -21,10 +21,10 @@ export function Cause({ t, navigate }: CauseProps) {
           alt="Fietsende silhouetten en juichende kinderen bij zonsondergang in de Spaanse bergen"
         />
       </div>
-      <article className="terro-sections no-reveal">
+      <article className="terro-sections no-reveal max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {t.causeSections.map(([title, text]) => (
           <div className="terro-block" key={title}>
-            <h2>{title}</h2>
+            <h3>{title}</h3>
             {text.trim().split(/\r?\n\s*\r?\n/).map((para, i) => (
               <p key={i}><BrandText text={para} /></p>
             ))}
