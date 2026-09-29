@@ -9,7 +9,7 @@ interface StatsProps {
 
 export function Stats({ t }: StatsProps) {
   return (
-    <section className="stats" style={{ width: '100%', display: 'block', margin: 0, padding: 0, background: '#0a0a0a' }}>
+    <section className="stats" style={{ width: '100%', maxWidth: 'none', display: 'block', margin: 0, padding: 0, background: '#0a0a0a' }}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 md:grid-cols-3 gap-6">
         {t.stats.map(([number, label], index) => {
           const Icon = statIcons[index];

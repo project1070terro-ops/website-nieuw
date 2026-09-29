@@ -127,6 +127,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
   const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+    if (!title || !title[language]) return null;
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     const excerptText = toPlainText(inleiding?.[language] || []);
     const truncated = excerptText ? truncateText(excerptText, 100) : '';
@@ -195,10 +196,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
   return (
     <div className="blog-page">
-      <PageIntro title={t.blog.title} description={t.blog.description} />
+      <PageIntro title={t.blogTitle} lead={t.blogLead} />
       
       <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
         {infoCards.map((card) => {
+          if (!card || !card.title?.[language]) return null;
           const excerptText = toPlainText(card.inleiding?.[language] || []);
           const truncated = excerptText ? truncateText(excerptText, 120) : '';
           return (
