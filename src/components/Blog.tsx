@@ -195,10 +195,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   };
 
   return (
-    <div className="blog-page">
+    <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       <PageIntro title={t.blogTitle} lead={t.blogLead} />
       
-      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6">
         {infoCards.map((card) => {
           if (!card || !card.title?.[language]) return null;
           const excerptText = toPlainText(card.inleiding?.[language] || []);
@@ -228,7 +228,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats language={language} stats={trainingStats} />
 
-      <div className="timeline-section mt-16" id="timeline">
+      <div className="timeline-section" id="timeline">
         <h2 className="section-title mb-8">{labels.stages}</h2>
         
         <div className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
