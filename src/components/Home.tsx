@@ -95,11 +95,7 @@ export function Home({ t, navigate }: HomeProps) {
       </section>
 
       <section className="intro">
-        <div className="intro-inner">
-          <p>
-            <BrandText text={t.introOfficial} />
-          </p>
-        </div>
+        <div className="intro-inner" dangerouslySetInnerHTML={{ __html: t.introOfficial }} />
       </section>
 
       <Stats t={t} />

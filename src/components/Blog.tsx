@@ -243,12 +243,12 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           ))}
         </div>
 
-        <div className="category-filter mb-8 flex flex-wrap gap-2">
+        <div className="category-filter mb-4 flex flex-wrap gap-1.5 sm:gap-2">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
-              className={`px-3 py-1.5 text-xs rounded-full border transition-all ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700'}`}
+              className={`px-2 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs rounded-full border transition-all ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700'}`}
             >
               {labels.categories[cat]}
             </button>

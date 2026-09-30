@@ -9,9 +9,9 @@ interface FooterProps {
 }
 
 const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. Alle rechten voorbehouden.' },
-  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 – 2027 Project 15/70. All rights reserved.' },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 – 2027 Project 15/70. Todos los derechos reservados.' },
+  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 - 2029 Project 15/70' },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';
@@ -56,7 +56,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="footer-contact-line" style={{ display: 'block', marginBottom: '12px' }}>
               <span
                 className="text-xs footer-contact-label"
-                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
+                style={{ display: 'block', color: '#99815e', marginBottom: '2px' }}
               >
                 Algemeen:
               </span>
@@ -71,7 +71,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="footer-contact-line" style={{ display: 'block' }}>
               <span
                 className="text-xs footer-contact-label"
-                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
+                style={{ display: 'block', color: '#99815e', marginBottom: '2px' }}
               >
                 Sponsoring & Diensten:
               </span>

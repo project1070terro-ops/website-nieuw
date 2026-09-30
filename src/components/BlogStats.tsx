@@ -61,19 +61,19 @@ export function BlogStats({ language, stats }: BlogStatsProps) {
       <h2 className="text-xl md:text-2xl font-bold text-white mb-3">{t.title}</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="px-2 md:px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--orange)] transition-colors">
-          <p className="text-[9px] md:text-xs text-white/60 uppercase tracking-wide whitespace-nowrap mb-1">{t.km}</p>
+          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wide whitespace-normal break-words mb-1 leading-tight">{t.km}</p>
           <p className="text-xl md:text-2xl font-bold text-[var(--orange)]">{fmt(data.stravaKilometersYTD, language)}</p>
         </div>
         <div className="px-2 md:px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--orange)] transition-colors">
-          <p className="text-[9px] md:text-xs text-white/60 uppercase tracking-wide whitespace-nowrap mb-1">{t.elevation}</p>
+          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wide whitespace-normal break-words mb-1 leading-tight">{t.elevation}</p>
           <p className="text-xl md:text-2xl font-bold text-[var(--orange)]">{fmt(data.stravaElevationYTD, language)}</p>
         </div>
         <div className="px-2 md:px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--orange)] transition-colors">
-          <p className="text-[9px] md:text-xs text-white/60 uppercase tracking-wide whitespace-nowrap mb-1">{t.ctl}</p>
+          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wide whitespace-normal break-words mb-1 leading-tight">{t.ctl}</p>
           <p className="text-xl md:text-2xl font-bold text-[var(--orange)]">{data.intervalsFitnessCTL.toFixed(1)}</p>
         </div>
         <div className="px-2 md:px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--orange)] transition-colors">
-          <p className="text-[9px] md:text-xs text-white/60 uppercase tracking-wide whitespace-nowrap mb-1">{t.target}</p>
+          <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wide whitespace-normal break-words mb-1 leading-tight">{t.target}</p>
           <p className="text-xl md:text-2xl font-bold text-[var(--orange)]">{fmt(TARGET, language)}</p>
         </div>
       </div>
