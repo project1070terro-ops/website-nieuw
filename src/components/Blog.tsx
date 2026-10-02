@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { ArrowRight, Lock } from 'lucide-react';
+import { Fragment, useEffect, useState } from 'react';
+import { ArrowRight, ArrowUp, Lock } from 'lucide-react';
 import type { BlogPost, Language, Page, TrainingStats, TranslationContent } from '../types';
 import { loadTrainingStats } from '../lib/sanityClient';
 import { PageIntro } from './PageIntro';
@@ -15,9 +15,9 @@ interface BlogProps {
 }
 
 const overviewLabels: Record<Language, { stages: string; challenge: string; expected: string; loadMore: string; categories: Record<string, string> }> = {
-  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', preview: '🗺️ Ritten-Preview', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Partner / Sponsor' } },
-  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', preview: '🗺️ Route Preview', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Partner / Sponsor' } },
-  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', preview: '🗺️ Vista previa de ruta', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Socio / Patrocinador' } },
+  nl: { stages: 'De Weg naar het Najaar 2029', challenge: 'De Uitdaging: 10 Dagen Verslagen', expected: 'Verwacht', loadMore: 'Laad meer berichten', categories: { all: 'Alles', preview: '🗺️ Ritten-Preview', training: '🚴‍♂️ Training', material: '🔧 Materiaal', progress: '📈 Progressie', partner: '🤝 Sponsors' } },
+  en: { stages: 'The Road to Autumn 2029', challenge: 'The Challenge: 10 Days of Reports', expected: 'Expected', loadMore: 'Load more posts', categories: { all: 'All', preview: '🗺️ Route Preview', training: '🚴‍♂️ Training', material: '🔧 Material', progress: '📈 Progress', partner: '🤝 Sponsors' } },
+  es: { stages: 'El Camino hacia el Otoño 2029', challenge: 'El Desafío: Crónicas de 10 Días', expected: 'Previsto', loadMore: 'Cargar más entradas', categories: { all: 'Todo', preview: '🗺️ Vista previa de ruta', training: '🚴‍♂️ Entrenamiento', material: '🔧 Material', progress: '📈 Progreso', partner: '🤝 Patrocinadores' } },
 };
 
 const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
@@ -126,9 +126,13 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const listCards = timelineSource.slice(3, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
-  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+  const renderItem = (card: (typeof yearCards)[number], variant: 'default' | 'compact' | 'mini' = 'default') => {
+    const { date, slug, label, title, inleiding, image, status, expected, category: cat } = card;
     if (!title || !title[language]) return null;
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
+    const mediaStyle = variant === 'compact' ? { aspectRatio: '16/7' } : variant === 'mini' ? { aspectRatio: '16/5' } : undefined;
+    const bodyStyle = variant === 'compact' ? { padding: '18px 18px 24px' } : variant === 'mini' ? { padding: '14px 14px 18px' } : undefined;
+    const titleSize = variant === 'mini' ? '14px' : '16px';
     const excerptText = toPlainText(inleiding?.[language] || []);
     const truncated = excerptText ? truncateText(excerptText, 100) : '';
     const displayTitle = title[language];
@@ -144,8 +148,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     if (status === 'upcoming') {
       return (
         <div key={slug} className="blog-card upcoming">
-          {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
-          <div className="blog-card-body">
+          {image && <img className="blog-card-media" src={image} alt="" loading="lazy" style={mediaStyle} />}
+          <div className="blog-card-body" style={bodyStyle}>
             <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
               <div className="flex justify-between items-center w-full mb-3">
@@ -154,7 +158,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
-            <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+            <h3 style={{ fontSize: titleSize, fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
               <div className="blog-card-excerpt">
                 <p>{truncated}</p>
@@ -174,8 +178,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           goToBlog?.(slug);
         }}
       >
-        {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
-        <div className="blog-card-body">
+        {image && <img className="blog-card-media" src={image} alt="" loading="lazy" style={mediaStyle} />}
+        <div className="blog-card-body" style={bodyStyle}>
           <div className="blog-list-meta w-full justify-between">
             <span className="tag">{label[language]}</span>
             <div className="flex justify-between items-center w-full mb-3">
@@ -183,7 +187,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               <CategoryLabel label={categoryLabel} />
             </div>
           </div>
-          <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+          <h3 style={{ fontSize: titleSize, fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
           {truncated ? (
             <div className="blog-card-excerpt">
               <p>{truncated}</p>
@@ -195,7 +199,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   };
 
   return (
-    <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
       <PageIntro title={t.blogTitle} lead={t.blogLead} className="!pb-0" />
       
       <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -231,7 +235,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <div className="timeline-section" id="timeline">
         <h2 className="section-title mb-8">{labels.stages}</h2>
         
-        <div className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
+        <div id="year-menu" className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
           {YEARS.map((y) => (
             <button
               key={y}
@@ -243,12 +247,12 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           ))}
         </div>
 
-        <div className="category-filter mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="category-filter mb-4 grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:gap-2">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => { setCategory(cat); setVisibleCount(INITIAL_COUNT); }}
-              className={`px-2 py-1 text-[10px] sm:px-3 sm:py-1.5 sm:text-xs rounded-full border transition-all ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700'}`}
+              className={`w-full h-auto px-2 py-1 text-[10px] sm:w-auto sm:px-3 sm:py-1.5 sm:text-xs rounded-full border transition-all whitespace-normal leading-tight ${category === cat ? 'bg-orange-500 text-white border-orange-500' : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:border-zinc-700'}`}
             >
               {labels.categories[cat]}
             </button>
@@ -257,13 +261,26 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
         {topCards.length > 0 && (
           <div className="featured-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {topCards.map(renderItem)}
+            {topCards.map((card) => renderItem(card, 'default'))}
           </div>
         )}
 
         {listCards.length > 0 && (
           <div className="blog-list-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-            {listCards.map(renderItem)}
+            {listCards.map((card, i) => (
+              <Fragment key={card.slug}>
+                {renderItem(card, i < 6 ? 'compact' : 'mini')}
+                {(i + 1) % 6 === 0 && (
+                  <button
+                    key={`back-to-top-${i}`}
+                    onClick={() => document.getElementById('year-menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                    className="col-span-1 md:col-span-3 mt-2 py-2 text-xs text-zinc-400 hover:text-white flex items-center justify-center gap-1 transition-colors"
+                  >
+                    <ArrowUp size={14} /> {language === 'nl' ? 'Terug naar boven' : language === 'en' ? 'Back to top' : 'Volver arriba'}
+                  </button>
+                )}
+              </Fragment>
+            ))}
           </div>
         )}
 

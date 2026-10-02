@@ -56,7 +56,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="footer-contact-line" style={{ display: 'block', marginBottom: '12px' }}>
               <span
                 className="text-xs footer-contact-label"
-                style={{ display: 'block', color: '#99815e', marginBottom: '2px' }}
+                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
                 Algemeen:
               </span>
@@ -71,7 +71,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="footer-contact-line" style={{ display: 'block' }}>
               <span
                 className="text-xs footer-contact-label"
-                style={{ display: 'block', color: '#99815e', marginBottom: '2px' }}
+                style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
                 Sponsoring & Diensten:
               </span>
@@ -104,9 +104,18 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
         <div className="footer-partners">
           <div className="footer-partners-row" aria-label="Productpartners placeholders">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
-                <Shield size={20} />
-              </div>
+              i === 0 ? (
+                <img
+                  key={i}
+                  className="footer-partner-placeholder"
+                  src="/images/hero/bikefit-logo.webp"
+                  alt="BikeFit"
+                />
+              ) : (
+                <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
+                  <Shield size={20} />
+                </div>
+              )
             ))}
           </div>
         </div>

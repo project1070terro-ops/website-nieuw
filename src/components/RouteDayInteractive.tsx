@@ -472,7 +472,7 @@ export function RouteDayInteractive({
       {error && <p className="route-map-error">{error}</p>}
       {komootEmbedUrl ? (
         <iframe
-          className="route-map route-komoot-iframe w-full !h-auto !min-h-[450px] md:!min-h-[550px] aspect-[16/9]"
+          className="route-map route-komoot-iframe w-full !h-auto !min-h-[300px] md:!min-h-[350px] !max-h-[80vh] aspect-[16/9]"
           src={komootEmbedUrl}
           title={day.title}
           loading="lazy"
@@ -498,14 +498,6 @@ export function RouteDayInteractive({
             <Download size={18} /> {r.downloadGpx}
           </button>
           <a
-            href={day.komootUrl || 'https://komoot.com'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="route-strava-btn"
-          >
-            <ExternalLink size={18} /> {r.viewOnStrava}
-          </a>
-          <a
             href={day.postSlug ? `/blog/${day.postSlug}?from=route&day=${day.day}` : '/blog'}
             className="route-preview-btn"
             onClick={(event) => {
@@ -518,6 +510,17 @@ export function RouteDayInteractive({
             }}
           >
             <BookOpen size={18} /> {r.previewButton}
+          </a>
+          <a
+            href={day.komootUrl || '#'}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-disabled={!day.komootUrl}
+            tabIndex={!day.komootUrl ? -1 : undefined}
+            onClick={(event) => { if (!day.komootUrl) event.preventDefault(); }}
+            className={`route-strava-btn whitespace-normal leading-tight text-center ${!day.komootUrl ? 'pointer-events-none opacity-50' : ''}`}
+          >
+            <ExternalLink size={18} /> {r.viewOnStrava}
           </a>
           <div className="route-legend">
             {GRADIENT_BANDS.map((b) => (
