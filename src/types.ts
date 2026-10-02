@@ -142,6 +142,8 @@ export interface RouteDay {
   title: string;
   gpx: string;
   komootUrl?: string;
+  stravaLink?: string;
+  url?: string;
   postSlug?: string;
 }
 

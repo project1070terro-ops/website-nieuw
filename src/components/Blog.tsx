@@ -202,7 +202,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
       <PageIntro title={t.blogTitle} lead={t.blogLead} className="!pb-0" />
       
-      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 gap-6">
         {infoCards.map((card) => {
           if (!card || !card.title?.[language]) return null;
           const excerptText = toPlainText(card.inleiding?.[language] || []);
@@ -260,13 +260,13 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         </div>
 
         {topCards.length > 0 && (
-          <div className="featured-grid grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="featured-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             {topCards.map((card) => renderItem(card, 'default'))}
           </div>
         )}
 
         {listCards.length > 0 && (
-          <div className="blog-list-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="blog-list-grid grid grid-cols-1 md:grid-cols-2 gap-6">
             {listCards.map((card, i) => (
               <Fragment key={card.slug}>
                 {renderItem(card, i < 6 ? 'compact' : 'mini')}
@@ -300,7 +300,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <h3 className="text-xl font-medium text-zinc-200 mb-8 flex items-center gap-2">
               <span>🏁</span> {labels.challenge}
             </h3>
-            <div className="stages-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="stages-grid grid grid-cols-1 md:grid-cols-2 gap-6">
               {stages.map(renderItem)}
             </div>
           </div>

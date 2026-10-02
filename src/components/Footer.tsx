@@ -105,12 +105,17 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           <div className="footer-partners-row" aria-label="Productpartners placeholders">
             {[0, 1, 2].map((i) => (
               i === 0 ? (
-                <img
+                <div
                   key={i}
                   className="footer-partner-placeholder"
-                  src="/images/hero/bikefit-logo.webp"
-                  alt="BikeFit"
-                />
+                  aria-label="BikeFit"
+                >
+                  <img
+                    className="w-full h-full object-contain p-1"
+                    src="/images/hero/bikefit-logo.webp"
+                    alt="BikeFit"
+                  />
+                </div>
               ) : (
                 <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
                   <Shield size={20} />

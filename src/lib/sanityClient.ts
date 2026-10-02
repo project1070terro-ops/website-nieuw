@@ -131,6 +131,8 @@ const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
   day,
   title,
   komootUrl,
+  stravaLink,
+  url,
   "postSlug": post->slug.current,
   gpx {
     asset -> { url }
@@ -147,6 +149,8 @@ export async function loadRouteDays(language: Language): Promise<RouteDay[]> {
     title: toLocaleString(day.title ?? '')[language],
     gpx: day.gpx?.asset?.url ?? '',
     komootUrl: day.komootUrl ?? undefined,
+    stravaLink: day.stravaLink ?? undefined,
+    url: day.url ?? undefined,
     postSlug: day.postSlug ?? undefined,
   }));
 }

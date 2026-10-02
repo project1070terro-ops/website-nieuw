@@ -240,6 +240,9 @@ export function RouteDayInteractive({
     [day.komootUrl, language]
   );
 
+  const rideUrl = day.stravaLink || day.komootUrl || day.url || '';
+  const hasRideUrl = Boolean(rideUrl);
+
   const stats = useMemo(() => {
     if (!points.length) return null;
     let gain = 0;
@@ -472,7 +475,7 @@ export function RouteDayInteractive({
       {error && <p className="route-map-error">{error}</p>}
       {komootEmbedUrl ? (
         <iframe
-          className="route-map route-komoot-iframe w-full !h-auto !min-h-[300px] md:!min-h-[350px] !max-h-[80vh] aspect-[16/9]"
+          className="route-map route-komoot-iframe w-full !h-auto !min-h-[300px] md:!min-h-[350px] !max-h-[70vh] aspect-[16/9]"
           src={komootEmbedUrl}
           title={day.title}
           loading="lazy"
@@ -512,13 +515,13 @@ export function RouteDayInteractive({
             <BookOpen size={18} /> {r.previewButton}
           </a>
           <a
-            href={day.komootUrl || '#'}
+            href={rideUrl || '#'}
             target="_blank"
             rel="noopener noreferrer"
-            aria-disabled={!day.komootUrl}
-            tabIndex={!day.komootUrl ? -1 : undefined}
-            onClick={(event) => { if (!day.komootUrl) event.preventDefault(); }}
-            className={`route-strava-btn whitespace-normal leading-tight text-center ${!day.komootUrl ? 'pointer-events-none opacity-50' : ''}`}
+            aria-disabled={!hasRideUrl}
+            tabIndex={!hasRideUrl ? -1 : undefined}
+            onClick={(event) => { if (!hasRideUrl) event.preventDefault(); }}
+            className={`route-strava-btn whitespace-normal leading-tight text-center ${!hasRideUrl ? 'pointer-events-none opacity-50' : ''}`}
           >
             <ExternalLink size={18} /> {r.viewOnStrava}
           </a>
