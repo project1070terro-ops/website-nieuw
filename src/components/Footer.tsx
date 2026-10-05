@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Shield } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
+import type { ReactNode } from 'react';
 
 interface FooterProps {
   t: TranslationContent;
@@ -8,10 +9,10 @@ interface FooterProps {
   className?: string;
 }
 
-const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70. Website ontwikkeld door Roel Terro.' },
-  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70. Website created by Roel Terro.' },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 - 2029 Project 15/70. Sitio web creado por Roel Terro.' },
+const footerLabels: Record<Language, { privacy: string; copyright: ReactNode }> = {
+  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</> },
+  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</> },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</> },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';
@@ -107,10 +108,10 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               i === 0 ? (
                 <a
                   key={i}
-                  href="https://bikefit.com"
+                  href="https://www.bikefit-vanstaeyen.com/"
                   target="_blank"
                   rel="noreferrer"
-                  className="footer-partner-placeholder !w-[75px] !h-[40px]"
+                  className="footer-partner-placeholder !w-[75px] !h-[40px] !cursor-pointer"
                   aria-label="BikeFit"
                 >
                   <img
