@@ -1652,7 +1652,7 @@ footer.footer-orange-top {
 .footer-partner-placeholder { width: 48px; height: 48px; display: flex; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.4); border-radius: 10px; color: #ffffff; transition: border-color 0.25s ease; cursor: default; }
 .footer-partner-placeholder > svg,
 .footer-partner-placeholder > img { display: block; filter: grayscale(100%); opacity: 0.4; transition: filter 0.25s ease, opacity 0.25s ease; }
-.footer-partner-placeholder:hover { border-color: rgba(255,255,255,1); }
+.footer-partner-placeholder:hover { border-color: var(--orange); }
 .footer-partner-placeholder:hover > svg,
 .footer-partner-placeholder:hover > img { filter: grayscale(0%); opacity: 1; }
 @media (max-width: 767px) {

@@ -50,7 +50,7 @@ export function RouteViewer({
   const day = days[selected];
 
   return (
-    <section className="route-viewer">
+    <section className="route-viewer !max-w-4xl">
       <div className="route-tabs" role="tablist" aria-label={r.daysAria}>
         {days.map((d, i) => (
           <button
