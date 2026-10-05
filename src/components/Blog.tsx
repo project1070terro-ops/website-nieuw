@@ -129,14 +129,17 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const stages = yearCards.filter((c) => isStage(c.slug));
   const timelineSource = year === 2029 ? updates : yearCards;
   const topCards = timelineSource.slice(0, 3);
-  const listCards = timelineSource.slice(3, visibleCount);
+  const listCards = timelineSource.slice(3, INITIAL_COUNT);
+  const moreCards = timelineSource.slice(INITIAL_COUNT, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
-  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
+  const renderCard = (card: (typeof yearCards)[number], variant: 'default' | 'compact' | 'mini' = 'default') => {
+    const { date, slug, label, title, inleiding, image, status, expected, category: cat } = card;
     if (!title || !title[language]) return null;
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     const excerptText = toPlainText(inleiding?.[language] || []);
-    const truncated = excerptText ? truncateText(excerptText, 100) : '';
+    const truncateAt = variant === 'mini' ? 50 : variant === 'compact' ? 75 : 100;
+    const truncated = excerptText ? truncateText(excerptText, truncateAt) : '';
     const displayTitle = title[language];
     const [prefix, suffix] = displayTitle.split(':', 2);
     const titleNode = suffix === undefined ? (
@@ -147,11 +150,15 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         <span className="title-suffix">{suffix}</span>
       </>
     );
+    const mediaAspect = variant === 'mini' ? '16/5' : variant === 'compact' ? '16/7' : '16/9';
+    const bodyPadding = variant === 'mini' ? '12px 12px 16px' : variant === 'compact' ? '16px 16px 20px' : undefined;
+    const excerptLines = variant === 'mini' ? 2 : 3;
+    const cardClass = `blog-card ${variant === 'mini' ? 'blog-card-mini' : variant === 'compact' ? 'blog-card-compact' : ''}`;
     if (status === 'upcoming') {
       return (
-        <div key={slug} className="blog-card upcoming">
-          {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
-          <div className="blog-card-body">
+        <div key={slug} className={`${cardClass} upcoming`}>
+          {image && <img className="blog-card-media" style={{ aspectRatio: mediaAspect }} src={image} alt="" loading="lazy" />}
+          <div className="blog-card-body" style={bodyPadding ? { padding: bodyPadding } : undefined}>
             <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
               <div className="flex justify-between items-center w-full mb-3">
@@ -163,7 +170,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
               <div className="blog-card-excerpt">
-                <p>{truncated}</p>
+                <p style={{ WebkitLineClamp: excerptLines }}>{truncated}</p>
               </div>
             ) : null}
           </div>
@@ -174,14 +181,14 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <a
         key={slug}
         href={`/blog/${slug}`}
-        className="blog-card"
+        className={cardClass}
         onClick={(event) => {
           event.preventDefault();
           goToBlog?.(slug);
         }}
       >
-        {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
-        <div className="blog-card-body">
+        {image && <img className="blog-card-media" style={{ aspectRatio: mediaAspect }} src={image} alt="" loading="lazy" />}
+        <div className="blog-card-body" style={bodyPadding ? { padding: bodyPadding } : undefined}>
           <div className="blog-list-meta w-full justify-between">
             <span className="tag">{label[language]}</span>
             <div className="flex justify-between items-center w-full mb-3">
@@ -192,13 +199,16 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
           {truncated ? (
             <div className="blog-card-excerpt">
-              <p>{truncated}</p>
+              <p style={{ WebkitLineClamp: excerptLines }}>{truncated}</p>
             </div>
           ) : null}
         </div>
       </a>
     );
   };
+  const renderItem = (card: (typeof yearCards)[number]) => renderCard(card, 'default');
+  const renderCompact = (card: (typeof yearCards)[number]) => renderCard(card, 'compact');
+  const renderMini = (card: (typeof yearCards)[number]) => renderCard(card, 'mini');
 
   return (
     <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
@@ -269,7 +279,13 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
         {listCards.length > 0 && (
           <div className="blog-list-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {listCards.map(renderItem)}
+            {listCards.map(renderCompact)}
+          </div>
+        )}
+
+        {moreCards.length > 0 && (
+          <div className="blog-list-grid blog-more-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            {moreCards.map(renderMini)}
           </div>
         )}
 
