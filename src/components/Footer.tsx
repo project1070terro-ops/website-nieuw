@@ -102,29 +102,40 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           </div>
         </div>
 
-        <div className="footer-partners">
-          <div className="footer-partners-row" aria-label="Productpartners placeholders">
-            {[0, 1, 2].map((i) => (
-              i === 0 ? (
-                <a
-                  key={i}
-                  href="https://www.bikefit-vanstaeyen.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="footer-partner-placeholder !w-[75px] !h-[40px] !cursor-pointer"
-                  aria-label="BikeFit"
-                >
-                  <img
-                    className="w-full h-full object-contain p-1 !grayscale-0 !opacity-100"
-                    src="/images/hero/Bikefit-logo.webp"
-                    alt="BikeFit"
-                  />
-                </a>
-              ) : (
-                <div key={i} className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder">
-                  <Shield size={20} className="!grayscale-0 !opacity-100" />
-                </div>
-              )
+        <div className="footer-partners gap-4">
+          <div className="footer-partners-row" aria-label="Hoofdsponsors">
+            <a
+              href="https://www.bikefit-vanstaeyen.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-partner-placeholder !w-[112px] !h-[60px] !cursor-pointer"
+              aria-label="BikeFit"
+            >
+              <img
+                className="w-full h-full object-contain p-1 !grayscale-0 !opacity-100"
+                src="/images/hero/Bikefit-logo.webp"
+                alt="BikeFit"
+              />
+            </a>
+            <a
+              href="https://www.bikefit-vanstaeyen.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-partner-placeholder !w-[112px] !h-[60px] !cursor-pointer"
+              aria-label="BikeFit"
+            >
+              <img
+                className="w-full h-full object-contain p-1 !grayscale-0 !opacity-100"
+                src="/images/hero/Bikefit-logo.webp"
+                alt="BikeFit"
+              />
+            </a>
+          </div>
+          <div className="footer-partners-row" aria-label="Diensten placeholders">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder">
+                <Shield size={20} className="!grayscale-0 !opacity-100" />
+              </div>
             ))}
           </div>
         </div>
