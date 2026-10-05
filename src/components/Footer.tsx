@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Shield } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 import type { ReactNode } from 'react';
 
@@ -117,11 +117,14 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 alt="BikeFit"
               />
             </a>
+            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
+          </div>
+          <div className="footer-partners-row" aria-label="Diensten placeholders">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
               target="_blank"
               rel="noreferrer"
-              className="footer-partner-placeholder !w-[112px] !h-[60px] !cursor-pointer"
+              className="footer-partner-placeholder !w-[75px] !h-[40px] !cursor-pointer"
               aria-label="BikeFit"
             >
               <img
@@ -130,13 +133,8 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 alt="BikeFit"
               />
             </a>
-          </div>
-          <div className="footer-partners-row" aria-label="Diensten placeholders">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder">
-                <Shield size={20} className="!grayscale-0 !opacity-100" />
-              </div>
-            ))}
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
           </div>
         </div>
 
