@@ -107,7 +107,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               i === 0 ? (
                 <div
                   key={i}
-                  className="footer-partner-placeholder"
+                  className="footer-partner-placeholder !w-[75px] !h-[40px]"
                   aria-label="BikeFit"
                 >
                   <img
@@ -117,7 +117,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                   />
                 </div>
               ) : (
-                <div key={i} className="footer-partner-placeholder" aria-label="Partner placeholder">
+                <div key={i} className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder">
                   <Shield size={20} />
                 </div>
               )

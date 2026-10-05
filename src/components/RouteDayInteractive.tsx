@@ -475,7 +475,7 @@ export function RouteDayInteractive({
       {error && <p className="route-map-error">{error}</p>}
       {komootEmbedUrl ? (
         <iframe
-          className="route-map route-komoot-iframe w-full !h-auto !min-h-[300px] md:!min-h-[350px] !max-h-[55vh] aspect-[16/9]"
+          className="route-map route-komoot-iframe w-full !h-auto !min-h-[300px] md:!min-h-[350px] !max-h-[80vh] aspect-[16/9]"
           src={komootEmbedUrl}
           title={day.title}
           loading="lazy"
