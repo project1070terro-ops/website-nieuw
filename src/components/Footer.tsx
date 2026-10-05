@@ -9,9 +9,9 @@ interface FooterProps {
 }
 
 const footerLabels: Record<Language, { privacy: string; copyright: string }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70' },
-  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70' },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 - 2029 Project 15/70' },
+  nl: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70. Website ontwikkeld door Roel Terro.' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: '© 2026 - 2029 Project 15/70. Website created by Roel Terro.' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: '© 2026 - 2029 Project 15/70. Sitio web creado por Roel Terro.' },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';
@@ -112,7 +112,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 >
                   <img
                     className="w-full h-full object-contain p-1"
-                    src="/images/hero/bikefit-logo.webp"
+                    src="/images/hero/Bikefit-logo.webp"
                     alt="BikeFit"
                   />
                 </div>

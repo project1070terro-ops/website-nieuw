@@ -33,6 +33,18 @@ export const routeDay = defineType({
       description: 'Plak hier de openbare link naar de Komoot-tour voor de route-preview',
     }),
     defineField({
+      name: 'stravaLink',
+      title: 'Strava-link',
+      type: 'string',
+      description: 'Plak hier de openbare link naar de voltooide Strava-rit',
+    }),
+    defineField({
+      name: 'url',
+      title: 'Externe URL',
+      type: 'string',
+      description: 'Vul hier een andere externe link in (Komoot, Strava, etc.)',
+    }),
+    defineField({
       name: 'post',
       title: 'Gekoppelde blogpost',
       type: 'reference',

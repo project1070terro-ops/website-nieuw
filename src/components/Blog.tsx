@@ -24,6 +24,12 @@ const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
 
 const CATEGORIES = ['all', 'preview', 'training', 'material', 'progress', 'partner'];
 
+const backToTopLabels: Record<Language, string> = {
+  nl: 'Terug naar boven',
+  en: 'Back to top',
+  es: 'Volver arriba',
+};
+
 const INFO_SLUGS = new Set([
   '/blog/de-officiele-aftrap',
   '/blog/de-rekensom-hoogtemeters',
@@ -126,13 +132,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const listCards = timelineSource.slice(3, visibleCount);
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
-  const renderItem = (card: (typeof yearCards)[number], variant: 'default' | 'compact' | 'mini' = 'default') => {
-    const { date, slug, label, title, inleiding, image, status, expected, category: cat } = card;
+  const renderItem = ({ date, slug, label, title, inleiding, image, status, expected, category: cat }: (typeof yearCards)[number]) => {
     if (!title || !title[language]) return null;
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
-    const mediaStyle = variant === 'compact' ? { aspectRatio: '16/7' } : variant === 'mini' ? { aspectRatio: '16/5' } : undefined;
-    const bodyStyle = variant === 'compact' ? { padding: '18px 18px 24px' } : variant === 'mini' ? { padding: '14px 14px 18px' } : undefined;
-    const titleSize = variant === 'mini' ? '14px' : '16px';
     const excerptText = toPlainText(inleiding?.[language] || []);
     const truncated = excerptText ? truncateText(excerptText, 100) : '';
     const displayTitle = title[language];
@@ -148,8 +150,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     if (status === 'upcoming') {
       return (
         <div key={slug} className="blog-card upcoming">
-          {image && <img className="blog-card-media" src={image} alt="" loading="lazy" style={mediaStyle} />}
-          <div className="blog-card-body" style={bodyStyle}>
+          {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
+          <div className="blog-card-body">
             <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
               <div className="flex justify-between items-center w-full mb-3">
@@ -158,7 +160,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               </div>
               <Lock className="upcoming-lock" size={13} />
             </div>
-            <h3 style={{ fontSize: titleSize, fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+            <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
               <div className="blog-card-excerpt">
                 <p>{truncated}</p>
@@ -178,8 +180,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           goToBlog?.(slug);
         }}
       >
-        {image && <img className="blog-card-media" src={image} alt="" loading="lazy" style={mediaStyle} />}
-        <div className="blog-card-body" style={bodyStyle}>
+        {image && <img className="blog-card-media" src={image} alt="" loading="lazy" />}
+        <div className="blog-card-body">
           <div className="blog-list-meta w-full justify-between">
             <span className="tag">{label[language]}</span>
             <div className="flex justify-between items-center w-full mb-3">
@@ -187,7 +189,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               <CategoryLabel label={categoryLabel} />
             </div>
           </div>
-          <h3 style={{ fontSize: titleSize, fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
+          <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
           {truncated ? (
             <div className="blog-card-excerpt">
               <p>{truncated}</p>
@@ -202,7 +204,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
       <PageIntro title={t.blogTitle} lead={t.blogLead} className="!pb-0" />
       
-      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {infoCards.map((card) => {
           if (!card || !card.title?.[language]) return null;
           const excerptText = toPlainText(card.inleiding?.[language] || []);
@@ -260,27 +262,14 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         </div>
 
         {topCards.length > 0 && (
-          <div className="featured-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {topCards.map((card) => renderItem(card, 'default'))}
+          <div className="featured-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {topCards.map(renderItem)}
           </div>
         )}
 
         {listCards.length > 0 && (
-          <div className="blog-list-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-            {listCards.map((card, i) => (
-              <Fragment key={card.slug}>
-                {renderItem(card, i < 6 ? 'compact' : 'mini')}
-                {(i + 1) % 6 === 0 && (
-                  <button
-                    key={`back-to-top-${i}`}
-                    onClick={() => document.getElementById('year-menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                    className="col-span-1 md:col-span-3 mt-2 py-2 text-xs text-zinc-400 hover:text-white flex items-center justify-center gap-1 transition-colors"
-                  >
-                    <ArrowUp size={14} /> {language === 'nl' ? 'Terug naar boven' : language === 'en' ? 'Back to top' : 'Volver arriba'}
-                  </button>
-                )}
-              </Fragment>
-            ))}
+          <div className="blog-list-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {listCards.map(renderItem)}
           </div>
         )}
 
@@ -300,11 +289,21 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <h3 className="text-xl font-medium text-zinc-200 mb-8 flex items-center gap-2">
               <span>🏁</span> {labels.challenge}
             </h3>
-            <div className="stages-grid grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="stages-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {stages.map(renderItem)}
             </div>
           </div>
         )}
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => document.getElementById('year-menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded hover:bg-zinc-800 transition-all text-sm font-medium"
+            type="button"
+          >
+            <ArrowUp size={16} /> {backToTopLabels[language]}
+          </button>
+        </div>
       </div>
     </div>
   );
