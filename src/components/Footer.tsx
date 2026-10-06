@@ -91,7 +91,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
         </div>
 
         <div className="footer-partners gap-4">
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4" aria-label="Partners en sponsors header">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12" aria-label="Partners en sponsors header">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">
               PARTNERS <span style={{ color: 'var(--orange)' }}>&</span> SPONSORS
