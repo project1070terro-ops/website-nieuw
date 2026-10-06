@@ -92,11 +92,11 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
 
         <div className="footer-partners gap-4">
           <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12" aria-label="Partners en sponsors header">
-            <div className="flex-1 h-px bg-white/10" />
+            <div className="flex-1 h-[2px] bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">
               PARTNERS <span style={{ color: 'var(--orange)' }}>&</span> SPONSORS
             </span>
-            <div className="flex-1 h-px bg-white/10" />
+            <div className="flex-1 h-[2px] bg-white/10" />
           </div>
           <div className="footer-partners-row" aria-label="Hoofdpartners">
             <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link">
@@ -109,7 +109,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               <img className="footer-forza-logo" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
             </a>
           </div>
-          <div className="footer-partners-row" aria-label="Medium sponsors">
+          <div className="footer-partners-row !grid grid-cols-2 place-items-center gap-4 md:!flex md:!flex-row md:!justify-center" aria-label="Medium sponsors">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
               target="_blank"
@@ -127,7 +127,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
             <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
           </div>
-          <div className="footer-partners-row" aria-label="Small sponsors">
+          <div className="footer-partners-row flex flex-wrap justify-center gap-2 md:gap-4 md:flex-nowrap" aria-label="Small sponsors">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
               target="_blank"
