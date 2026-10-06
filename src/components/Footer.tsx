@@ -9,10 +9,10 @@ interface FooterProps {
   className?: string;
 }
 
-const footerLabels: Record<Language, { privacy: string; copyright: ReactNode }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</> },
-  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</> },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</> },
+const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; contact: string; general: string; sponsorship: string; partners: string }> = {
+  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</>, contact: 'CONTACT', general: 'Algemeen:', sponsorship: 'Sponsoring & Diensten:', partners: 'PARTNERS & SPONSORS' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</>, contact: 'CONTACT', general: 'General:', sponsorship: 'Sponsorship & Services:', partners: 'PARTNERS & SPONSORS' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</>, contact: 'CONTACTO', general: 'General:', sponsorship: 'Patrocinio & Servicios:', partners: 'SOCIOS & PATROCINADORES' },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';
@@ -53,13 +53,13 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           </div>
 
           <div className="footer-module footer-contact-module">
-            <h3 className="footer-title">CONTACT</h3>
+            <h3 className="footer-title">{footerLabels[language].contact}</h3>
             <div className="footer-contact-line" style={{ display: 'block', marginBottom: '12px' }}>
               <span
                 className="text-xs footer-contact-label"
                 style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
-                Algemeen:
+                {footerLabels[language].general}
               </span>
               <button
                 className="text-xs text-[#99815e] hover:text-white transition-colors"
@@ -74,7 +74,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 className="text-xs footer-contact-label"
                 style={{ display: 'block', color: 'rgba(255, 255, 255, 0.6)', marginBottom: '2px' }}
               >
-                Sponsoring & Diensten:
+                {footerLabels[language].sponsorship}
               </span>
               <button
                 className="text-xs text-[#99815e] hover:text-white transition-colors"
@@ -94,7 +94,14 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12" aria-label="Partners en sponsors header">
             <div className="flex-1 h-[2px] bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">
-              PARTNERS <span style={{ color: 'var(--orange)' }}>&</span> SPONSORS
+              {(() => {
+                const [pre, post] = footerLabels[language].partners.split(' & ');
+                return (
+                  <>
+                    {pre} <span style={{ color: 'var(--orange)' }}>&</span> {post}
+                  </>
+                );
+              })()}
             </span>
             <div className="flex-1 h-[2px] bg-white/10" />
           </div>
