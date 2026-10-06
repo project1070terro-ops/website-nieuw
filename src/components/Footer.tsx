@@ -91,6 +91,13 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
         </div>
 
         <div className="footer-partners gap-4">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4" aria-label="Partners en sponsors header">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">
+              PARTNERS <span style={{ color: 'var(--orange)' }}>&</span> SPONSORS
+            </span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
           <div className="footer-partners-row" aria-label="Hoofdpartners">
             <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link">
               <div className="footer-sponsor-logo">
