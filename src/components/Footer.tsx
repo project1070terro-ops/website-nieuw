@@ -98,11 +98,11 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 <small>FINANCIAL GROUP</small>
               </div>
             </a>
-            <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link" title="Forza Fortuna">
+            <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0" title="Forza Fortuna">
               <img className="footer-forza-logo" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
             </a>
           </div>
-          <div className="footer-partners-row" aria-label="Hoofdsponsors">
+          <div className="footer-partners-row" aria-label="Medium sponsors">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
               target="_blank"
@@ -117,8 +117,10 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               />
             </a>
             <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
           </div>
-          <div className="footer-partners-row" aria-label="Diensten placeholders">
+          <div className="footer-partners-row" aria-label="Small sponsors">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
               target="_blank"
@@ -132,6 +134,10 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
                 alt="BikeFit"
               />
             </a>
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
+            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
             <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
             <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
           </div>
