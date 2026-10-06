@@ -88,8 +88,10 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               </button>
             </div>
           </div>
+        </div>
 
-          <div className="footer-module footer-sponsor">
+        <div className="footer-partners gap-4">
+          <div className="footer-partners-row" aria-label="Hoofdpartners">
             <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link">
               <div className="footer-sponsor-logo">
                 <span>FORTUNA</span>
@@ -100,9 +102,6 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
               <img className="footer-forza-logo" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
             </a>
           </div>
-        </div>
-
-        <div className="footer-partners gap-4">
           <div className="footer-partners-row" aria-label="Hoofdsponsors">
             <a
               href="https://www.bikefit-vanstaeyen.com/"
