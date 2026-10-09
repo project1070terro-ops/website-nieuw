@@ -98,13 +98,14 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           </div>
           <div className="footer-partners-row flex-wrap justify-center gap-4" aria-label="Hoofdpartners">
             <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link !w-[200px] !h-[100px]">
-              <div className="footer-sponsor-logo">
-                <span>FORTUNA</span>
-                <small>FINANCIAL GROUP</small>
-              </div>
+              <img
+                className="w-full h-full object-contain p-1"
+                src="/images/hero/logo-fortuna-kleur.png"
+                alt="Fortuna Financial Group"
+              />
             </a>
             <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0 !w-[200px] !h-[100px]" title="Forza Fortuna">
-              <img className="footer-forza-logo" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
+              <img className="w-full h-full object-contain p-1" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
             </a>
           </div>
 
