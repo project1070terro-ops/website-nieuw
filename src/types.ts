@@ -109,6 +109,7 @@ export interface TranslationContent {
   send: string;
   sent: string;
   email: string;
+  contactSubjects: { general: string; products: string; financial: string };
 }
 
 export interface BlogPhoto {

@@ -11,26 +11,31 @@ interface ContactProps {
 export function Contact({ t, navigate }: ContactProps) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [subject, setSubject] = useState('Algemene vraag of opmerking');
+  const [subject, setSubject] = useState(t.contactSubjects.general);
 
   useEffect(() => {
     const location = { state: window.history.state };
     const initialSubject = (location.state as { subject?: string } | null)?.subject;
     if (initialSubject === 'sponsoring') {
-      setSubject('Sponsoring met producten en/of diensten');
+      setSubject(t.contactSubjects.products);
     }
-  }, []);
+  }, [t]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
 
     const formData = new FormData(event.currentTarget);
+    const selectedSubject = formData.get('subject') as string;
+    const to = selectedSubject === t.contactSubjects.general
+      ? 'info@project1570.org'
+      : 'sponsoring@project1570.org';
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
-      subject: formData.get('subject'),
+      subject: selectedSubject,
       message: formData.get('message'),
+      to,
     };
 
     try {
@@ -71,9 +76,9 @@ export function Contact({ t, navigate }: ContactProps) {
           <label>
             Onderwerp
             <select name="subject" required value={subject} onChange={(e) => setSubject(e.target.value)}>
-              <option value="Algemene vraag of opmerking">Algemene vraag of opmerking</option>
-              <option value="Sponsoring met producten en/of diensten">Sponsoring met producten en/of diensten</option>
-              <option value="Sponsoring via een financieel engagement">Sponsoring via een financieel engagement</option>
+              <option value={t.contactSubjects.general}>{t.contactSubjects.general}</option>
+              <option value={t.contactSubjects.products}>{t.contactSubjects.products}</option>
+              <option value={t.contactSubjects.financial}>{t.contactSubjects.financial}</option>
             </select>
           </label>
           <label>

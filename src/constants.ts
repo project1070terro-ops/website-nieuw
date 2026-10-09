@@ -114,7 +114,8 @@ Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun
 Laat maar iets horen — we staan voor je klaar.`,
     send: 'Verstuur bericht',
     sent: 'Bedankt. We nemen zo snel mogelijk contact met je op.',
-    email: 'Officieel e-mailadres'
+    email: 'Officieel e-mailadres',
+    contactSubjects: { general: 'Algemene vraag of opmerking', products: 'Sponsoring met producten en/of diensten', financial: 'Sponsoring via een financieel engagement' }
   },
   en: {
     nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', cause: 'Our Cause', donate: 'Donate', contact: 'Contact' },
@@ -223,7 +224,8 @@ When it comes to equipment, Terro can rely on the unconditional support of frien
 Let us know — we're here for you.`,
     send: 'Send message',
     sent: 'Thank you. We\'ll get back to you as soon as possible.',
-    email: 'Official email address'
+    email: 'Official email address',
+    contactSubjects: { general: 'General question or remark', products: 'Sponsorship with products and/or services', financial: 'Sponsorship through a financial commitment' }
   },
   es: {
     nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', cause: 'Nuestra Causa', donate: 'Donar', contact: 'Contacto' },
@@ -332,6 +334,7 @@ En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfe
 Cuéntanos — estamos aquí para ti.`,
     send: 'Enviar mensaje',
     sent: 'Gracias. Te responderemos lo antes posible.',
-    email: 'Dirección de correo electrónico oficial'
+    email: 'Dirección de correo electrónico oficial',
+    contactSubjects: { general: 'Pregunta o comentario general', products: 'Patrocinio con productos y/o servicios', financial: 'Patrocinio a través de un compromiso financiero' }
   }
 };
