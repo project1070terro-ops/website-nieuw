@@ -9,10 +9,10 @@ interface FooterProps {
   className?: string;
 }
 
-const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; contact: string; general: string; sponsorship: string; partners: string }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</>, contact: 'CONTACT', general: 'Algemeen:', sponsorship: 'Sponsoring & Diensten:', partners: 'PARTNERS & SPONSORS' },
-  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</>, contact: 'CONTACT', general: 'General:', sponsorship: 'Sponsorship & Services:', partners: 'PARTNERS & SPONSORS' },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</>, contact: 'CONTACTO', general: 'General:', sponsorship: 'Patrocinio & Servicios:', partners: 'SOCIOS & PATROCINADORES' },
+const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; contact: string; general: string; sponsorship: string; partners: string; sponsorsGold: string; sponsorsSilver: string; sponsorsBronze: string }> = {
+  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</>, contact: 'CONTACT', general: 'Algemeen:', sponsorship: 'Sponsoring & Diensten:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS ZILVER', sponsorsBronze: 'SPONSORS BRONS' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</>, contact: 'CONTACT', general: 'General:', sponsorship: 'Sponsorship & Services:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS SILVER', sponsorsBronze: 'SPONSORS BRONZE' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</>, contact: 'CONTACTO', general: 'General:', sponsorship: 'Patrocinio & Servicios:', partners: 'SOCIOS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'PATROCINADORES PLATA', sponsorsBronze: 'PATROCINADORES BRONCE' },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';
@@ -90,70 +90,61 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           </div>
         </div>
 
-        <div className="footer-partners gap-4">
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12" aria-label="Partners en sponsors header">
+        <div className="footer-partners gap-6">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12">
             <div className="flex-1 h-[2px] bg-white/10" />
-            <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">
-              {(() => {
-                const [pre, post] = footerLabels[language].partners.split(' & ');
-                return (
-                  <>
-                    {pre} <span style={{ color: 'var(--orange)' }}>&</span> {post}
-                  </>
-                );
-              })()}
-            </span>
+            <span className="text-[11px] uppercase tracking-wider whitespace-nowrap" style={{ color: 'var(--orange)' }}>{footerLabels[language].partners}</span>
             <div className="flex-1 h-[2px] bg-white/10" />
           </div>
-          <div className="footer-partners-row" aria-label="Hoofdpartners">
-            <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link">
+          <div className="footer-partners-row flex-wrap justify-center gap-4" aria-label="Hoofdpartners">
+            <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link !w-[200px] !h-[100px]">
               <div className="footer-sponsor-logo">
                 <span>FORTUNA</span>
                 <small>FINANCIAL GROUP</small>
               </div>
             </a>
-            <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0" title="Forza Fortuna">
+            <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0 !w-[200px] !h-[100px]" title="Forza Fortuna">
               <img className="footer-forza-logo" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
             </a>
           </div>
-          <div className="footer-partners-row !grid grid-cols-2 place-items-center gap-4 md:!flex md:!flex-row md:!justify-center" aria-label="Medium sponsors">
-            <a
-              href="https://www.bikefit-vanstaeyen.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="footer-partner-placeholder !w-[112px] !h-[60px] !cursor-pointer"
-              aria-label="BikeFit"
-            >
-              <img
-                className="w-full h-full object-contain p-1 !grayscale-0 !opacity-100"
-                src="/images/hero/Bikefit-logo.webp"
-                alt="BikeFit"
-              />
-            </a>
-            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[112px] !h-[60px]" aria-label="Partner placeholder" />
+
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsGold}</span>
+            <div className="flex-1 h-px bg-white/10" />
           </div>
-          <div className="footer-partners-row flex flex-wrap justify-center gap-2 md:gap-4 md:flex-nowrap" aria-label="Small sponsors">
-            <a
-              href="https://www.bikefit-vanstaeyen.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="footer-partner-placeholder !w-[75px] !h-[40px] !cursor-pointer"
-              aria-label="BikeFit"
-            >
-              <img
-                className="w-full h-full object-contain p-1 !grayscale-0 !opacity-100"
-                src="/images/hero/Bikefit-logo.webp"
-                alt="BikeFit"
-              />
-            </a>
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
-            <div className="footer-partner-placeholder !w-[75px] !h-[40px]" aria-label="Partner placeholder" />
+          <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Gold sponsors">
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
+          </div>
+
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsSilver}</span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+          <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Silver sponsors">
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+          </div>
+
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsBronze}</span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+          <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Bronze sponsors">
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
           </div>
         </div>
 

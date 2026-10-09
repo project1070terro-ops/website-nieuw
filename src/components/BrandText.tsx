@@ -5,24 +5,24 @@ function BrandName({ chunk }: { chunk: string }) {
   const isForza = chunk.startsWith('Forza Fortuna');
   if (isFull) {
     return (
-      <strong className="team-brand">
+      <span className="team-brand" style={{ fontWeight: 400 }}>
         &ldquo;<span className="brand-name">FORZA FORTUNA</span>{' '}
-        <em className="brand-italics">Financial Group</em>&rdquo;
-      </strong>
+        <em className="brand-italics" style={{ fontWeight: 400 }}>Financial Group</em>&rdquo;
+      </span>
     );
   }
   if (isForza) {
     return (
-      <strong className="team-brand">
+      <span className="team-brand" style={{ fontWeight: 400 }}>
         &ldquo;<span className="brand-name">FORZA FORTUNA</span>&rdquo;
-      </strong>
+      </span>
     );
   }
   return (
-    <strong className="team-brand">
+    <span className="team-brand" style={{ fontWeight: 400 }}>
       &ldquo;Fortuna{' '}
-      <em className="brand-italics">Financial Group</em>&rdquo;
-    </strong>
+      <em className="brand-italics" style={{ fontWeight: 400 }}>Financial Group</em>&rdquo;
+    </span>
   );
 }
 
@@ -33,7 +33,7 @@ interface BrandTextProps {
 
 export function BrandText({ text, className }: BrandTextProps) {
   if (!text) return null;
-  const parts = text.split(/(\d+\/\d+)/g);
+  const parts = text.split(/(15\/70)/g);
   return (
     <span className={className}>
       {parts.map((part, i) => {
