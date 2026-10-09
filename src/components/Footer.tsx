@@ -97,7 +97,7 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             <div className="flex-1 h-[2px] bg-white/10" />
           </div>
           <div className="footer-partners-row flex-wrap justify-center gap-4" aria-label="Hoofdpartners">
-            <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link !w-[200px] !h-[100px]">
+            <a href="https://fortunafg.com" target="_blank" rel="noreferrer" className="footer-sponsor-link !w-[200px] !h-[100px] !bg-transparent">
               <img
                 className="w-full h-full object-contain p-1"
                 src="/images/hero/logo-fortuna-kleur.png"
