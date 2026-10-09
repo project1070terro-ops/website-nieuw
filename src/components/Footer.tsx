@@ -90,8 +90,8 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
           </div>
         </div>
 
-        <div className="footer-partners gap-6">
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-12">
+        <div className="footer-partners gap-2 py-2">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
             <div className="flex-1 h-[2px] bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider whitespace-nowrap" style={{ color: 'var(--orange)' }}>{footerLabels[language].partners}</span>
             <div className="flex-1 h-[2px] bg-white/10" />
@@ -108,43 +108,43 @@ export function Footer({ t, language, navigate, className }: FooterProps) {
             </a>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsGold}</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
           <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Gold sponsors">
-            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[160px] !h-[80px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
           </div>
 
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsSilver}</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
           <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Silver sponsors">
-            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[130px] !h-[65px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
           </div>
 
-          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-4">
+          <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
             <div className="flex-1 h-px bg-white/10" />
             <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsBronze}</span>
             <div className="flex-1 h-px bg-white/10" />
           </div>
           <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Bronze sponsors">
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
-            <div className="footer-partner-placeholder !w-[100px] !h-[50px]" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+            <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
           </div>
         </div>
 
