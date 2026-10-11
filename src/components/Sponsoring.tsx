@@ -40,7 +40,7 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Word deel van deze extreme sportieve uitdaging en steun rechtstreeks Save the Children. Dankzij de officiële samenwerking met het goede doel is uw zakelijke sponsoring 100% fiscaal aftrekbaar. Kies het pakket dat bij uw onderneming past en claim uw plek in de schijnwerpers.',
+    lead: 'Met uw gift maken we het verschil voor kinderen. We bieden o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles, we werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verloren. Vanaf een gift van 40 euro per jaar ontvangt u een fiscaal attest en krijgt u 30% belastingvermindering. Steun kinderen vandaag nog!',
     table: [
       { tier: '🥇 GOLD SPONSORS', size: '160x80px (Maximum impact)', link: 'Ja, directe link vanuit uw logo', social: 'Premium standalone vermelding in alle officiële updates', price: '€ TBD' },
       { tier: '🥈 SILVER SPONSORS', size: '130x65px (Subtiel en elegant)', link: 'Ja, directe link vanuit uw logo', social: 'Opname in het collectieve sponsoroverzicht', price: '€ TBD' },
@@ -66,7 +66,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   en: {
     title: 'Pushing Borders Together',
-    lead: 'Become part of this extreme sporting challenge and directly support Save the Children. Thanks to our official partnership with the charity, your corporate sponsorship is 100% tax-deductible. Choose the package that fits your company and claim your spot in the spotlight.',
+    lead: 'With your donation, we make the difference for children. We provide food, water, shelter and medical care, among other things. But that is not all — we also work on sustainable solutions and give children the chance to learn. Prevent children from losing their life and future now. From a donation of 40 euros per year you will receive a tax certificate and get a 30% tax reduction. Support children today!',
     table: [
       { tier: '🥇 GOLD SPONSORS', size: '160x80px (Maximum impact)', link: 'Yes, direct link from your logo', social: 'Premium standalone tag in all official updates', price: '€ TBD' },
       { tier: '🥈 SILVER SPONSORS', size: '130x65px (Subtle and elegant)', link: 'Yes, direct link from your logo', social: 'Inclusion in the collective sponsor overview updates', price: '€ TBD' },
@@ -92,7 +92,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   es: {
     title: 'Superando Límites Juntos',
-    lead: 'Forme parte de este desafío deportivo extremo y apoye directamente a Save the Children. Gracias a nuestra colaboración oficial con la organización benéfica, su patrocinio corporativo es 100% deducible de impuestos. Elija el paquete que mejor se adapte a su empresa y reclame su lugar en el centro de atención.',
+    lead: 'Con su donación, hacemos la diferencia para los niños. Ofrecemos, entre otras cosas, alimentos, agua, refugio y atención médica. Pero eso no es todo, también trabajamos en soluciones sostenibles y damos a los niños la oportunidad de aprender. Evite ahora que los niños pierdan su vida y su futuro. A partir de una donación de 40 euros al año recibirá un certificado fiscal y obtendrá una reducción del 30% en impuestos. ¡Apoye a los niños hoy mismo!',
     table: [
       { tier: '🥇 GOLD SPONSORS', size: '160x80px (Máximo impacto)', link: 'Sí, enlace directo desde su logo', social: 'Etiqueta premium destacada en todas las actualizaciones oficiales', price: '€ TBD' },
       { tier: '🥈 SILVER SPONSORS', size: '130x65px (Sutil y elegante)', link: 'Sí, enlace directo desde su logo', social: 'Inclusión en el resumen colectivo de patrocinadores', price: '€ TBD' },
@@ -160,10 +160,10 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
 
   return (
     <>
-      <PageIntro title={c.title} lead={c.lead} />
+      <PageIntro title={c.title} lead={c.lead} className="!pb-2" />
 
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="overflow-x-auto">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr>
@@ -184,6 +184,22 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="md:hidden space-y-4">
+          {c.table.map((tier, i) => (
+            <div
+              key={i}
+              className={`rounded-lg border border-white/10 p-4 ${i === 0 ? 'bg-amber-600/10' : i === 1 ? 'bg-slate-500/10' : 'bg-orange-800/10'}`}
+            >
+              <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${i === 0 ? 'text-amber-400' : 'text-white/90'}`}>
+                {tier.tier}
+              </h3>
+              <p className="text-sm text-white/80 mb-1">{tier.size}</p>
+              <p className="text-sm text-white/80 mb-1">{tier.link}</p>
+              <p className="text-sm text-white/80 mb-1">{tier.social}</p>
+              <p className="text-sm text-white/80 font-semibold">{tier.price}</p>
+            </div>
+          ))}
         </div>
       </section>
 

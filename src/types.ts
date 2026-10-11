@@ -10,7 +10,7 @@ export interface Donation {
 }
 
 export interface TranslationContent {
-  nav: Record<'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'donate' | 'contact', string>;
+  nav: Record<'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'sponsoring' | 'donate' | 'contact', string>;
   support: string;
   heroEyebrow: [string, string];
   heroTitle: string;
