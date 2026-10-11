@@ -43,7 +43,7 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Met uw zakelijke sponsoring maken we samen het verschil voor kinderen. Save the Children biedt o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles: zij werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verliezen.\n\nKies hieronder het sponsorpakket dat bij uw bedrijf past en vul uw gegevens in. U ontvangt de officiële factuur/documentatie rechtstreeks van Save the Children. Uw investering gaat integraal naar het goede doel en is fiscaal aftrekbaar binnen de vennootschapsbelasting. Steun dit cruciale werk vandaag nog!',
+    lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Uw investering gaat integraal naar Save the Children en is fiscaal aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang de officiële documentatie rechtstreeks van het goede doel. Steun dit cruciale werk vandaag nog!',
     toast: 'Bedankt voor uw aanvraag en uw steun! Wij hebben uw gegevens in goede orde ontvangen en de gereserveerde meters zijn alvast toegevoegd aan onze live-balk. Er is zojuist een automatische bevestiging naar uw e-mailadres verzonden. Samen verleggen we grenzen voor kinderen wereldwijd!',
     close: 'Sluiten',
     table: [
@@ -86,7 +86,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   en: {
     title: 'Pushing Borders Together',
-    lead: 'With your corporate sponsorship, we make a difference for children together. Save the Children provides food, water, shelter, and medical care. But that\'s not all: they also work on sustainable solutions and give children the opportunity to learn. Prevent children from losing their lives and futures now.\n\nChoose the sponsorship package below that fits your company and fill in your details. You will receive the official invoice/documentation directly from Save the Children. Your investment goes entirely to the charity and is tax-deductible within corporate income tax. Support this crucial work today!',
+    lead: 'With your corporate sponsorship, your company makes a difference. Your investment goes entirely to Save the Children and is tax-deductible within corporate income tax.\n\nChoose the sponsorship package below that fits your business, fill in your details, and receive the official documentation directly from the charity. Support this crucial work today!',
     toast: 'Thank you for your request and your support! We have successfully received your details, and the reserved meters have been added to our live progress bar. An automatic confirmation has just been sent to your email address. Together, we are pushing boundaries for children worldwide!',
     close: 'Close',
     table: [
@@ -129,7 +129,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   es: {
     title: 'Superando Límites Juntos',
-    lead: 'Con su patrocinio corporativo, juntos marcamos la diferencia para los niños. Save the Children proporciona alimentos, agua, refugio y atención médica. Pero eso no es todo: también trabajan en soluciones sostenibles y brindan a los niños la oportunidad de aprender. Evite que los niños pierdan sus vidas y su futuro ahora.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa y complete sus datos. Recibirá la factura/documentación oficial directamente de Save the Children. Su inversión va íntegramente a la organización benéfica y es deducible de impuestos dentro del impuesto sobre sociedades. ¡Apoye este trabajo crucial hoy mismo!',
+    lead: 'Con su patrocinio corporativo, su empresa marca la diferencia. Su inversión se destina íntegramente a Save the Children y es deducible de impuestos dentro del impuesto sobre sociedades.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa, complete sus datos y reciba la documentación oficial directamente de la organización benéfica. ¡Apoye este trabajo crucial hoy mismo!',
     toast: '¡Gracias por su solicitud y por su apoyo! Hemos recibido sus datos correctamente y los metros reservados ya se han sumado a nuestra barra de progreso en vivo. Se acaba de enviar una confirmación automática a su correo electrónico. ¡Juntos, superamos límites por los niños de todo el mundo!',
     close: 'Cerrar',
     table: [

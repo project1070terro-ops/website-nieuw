@@ -1,4 +1,3 @@
-import { BrandText } from './BrandText';
 import type { TranslationContent } from '../types';
 
 interface MeterProps {
@@ -12,7 +11,7 @@ export function Meter({ totalDonated, t }: MeterProps) {
   const goalReached = verticalMeters >= 17500;
 
   return (
-    <section className="meter-section">
+    <section className="meter-section" style={{ paddingBottom: '1rem' }}>
       <div className="meter-head">
         <div className="meter-head-left">
           <img
@@ -33,9 +32,6 @@ export function Meter({ totalDonated, t }: MeterProps) {
       <div className={`meter${goalReached ? ' meter-complete' : ''}`}>
         <div style={{ width: `${progress}%` }} />
       </div>
-      <p>
-        <BrandText text={t.donateIntro} />
-      </p>
     </section>
   );
 }
