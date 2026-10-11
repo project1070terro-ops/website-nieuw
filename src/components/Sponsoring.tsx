@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { ArrowRight, Check, X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
@@ -35,7 +35,7 @@ interface SponsoringCopy {
     phone: string;
     tier: string;
     tierOptions: [string, string, string];
-    message: string;
+    submit: string;
     success: string;
   };
 }
@@ -80,7 +80,7 @@ const copy: Record<Language, SponsoringCopy> = {
       phone: 'Telefoonnummer',
       tier: 'Gewenst sponsorpakket',
       tierOptions: ['Gold', 'Silver', 'Bronze'],
-      message: 'Bericht',
+      submit: 'SPONSOR NU SAVE THE CHILDREN ➔',
       success: 'Bedankt voor uw interesse. We nemen zo snel mogelijk contact met u op.',
     },
   },
@@ -123,7 +123,7 @@ const copy: Record<Language, SponsoringCopy> = {
       phone: 'Phone Number',
       tier: 'Preferred Sponsorship Tier',
       tierOptions: ['Gold', 'Silver', 'Bronze'],
-      message: 'Message',
+      submit: 'SPONSOR SAVE THE CHILDREN NOW ➔',
       success: 'Thank you for your interest. We will get back to you as soon as possible.',
     },
   },
@@ -166,7 +166,7 @@ const copy: Record<Language, SponsoringCopy> = {
       phone: 'Número de Teléfono',
       tier: 'Paquete de Patrocinio Deseado',
       tierOptions: ['Gold', 'Silver', 'Bronze'],
-      message: 'Mensaje',
+      submit: 'PATROCINE A SAVE THE CHILDREN AHORA ➔',
       success: 'Gracias por su interés. Nos pondremos en contacto con usted lo antes posible.',
     },
   },
@@ -196,7 +196,6 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     const email = String(formData.get('email') || '').trim();
     const phone = String(formData.get('phone') || '').trim();
     const selectedTier = String(formData.get('tier') || tier);
-    const message = String(formData.get('message') || '').trim();
     const euros = PACKAGE_EUROS[selectedTier] ?? 0;
 
     try {
@@ -226,7 +225,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
             email,
             phone,
             tier: selectedTier,
-            message,
+            message: '',
           }),
         });
 
@@ -324,13 +323,9 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
               ))}
             </select>
           </label>
-          <label>
-            {c.form.message}
-            <textarea name="message" required rows={3} />
-          </label>
           {error && <p className="error-message">{error}</p>}
-          <button className="button button-primary" type="submit" disabled={saving}>
-            {saving ? '...' : t.send} <ArrowRight size={17} />
+          <button className="button button-primary cta-large" type="submit" disabled={saving}>
+            {saving ? '...' : c.form.submit}
           </button>
         </form>
       </section>
@@ -368,11 +363,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
         </div>
       )}
 
-      <section className="home-cta">
-        <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
-          {t.support} <ArrowRight size={18} />
-        </button>
-      </section>
+      <section className="home-cta"></section>
     </>
   );
 }

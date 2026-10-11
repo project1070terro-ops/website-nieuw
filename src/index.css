@@ -535,7 +535,7 @@ main { flex: 1; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 40px;
+  padding: calc(80px * 2 / 3) 40px;
   background: var(--anthracite);
   border-bottom: 1px solid rgba(192, 90, 40, 0.6);
   position: relative;
@@ -558,7 +558,7 @@ main { flex: 1; }
 }
 
 @media (max-width: 640px) {
-  .home-cta { padding: 60px 24px 100px; }
+  .home-cta { padding: calc(60px * 2 / 3) 24px calc(100px * 2 / 3); }
   .home-cta .button,
   .home-cta .cta-large {
     font-size: 10px;

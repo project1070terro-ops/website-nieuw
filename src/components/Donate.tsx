@@ -207,6 +207,8 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           </div>
         </div>
       )}
+
+      <section className="home-cta"></section>
     </>
   );
 }
