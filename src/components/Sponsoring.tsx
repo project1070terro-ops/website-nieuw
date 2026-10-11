@@ -171,9 +171,9 @@ const copy: Record<Language, SponsoringCopy> = {
 };
 
 const PACKAGE_METERS: Record<string, number> = {
-  Gold: 5000,
-  Silver: 2500,
-  Bronze: 1000,
+  Gold: 1000,
+  Silver: 500,
+  Bronze: 250,
 };
 
 export function Sponsoring({ t, language, navigate, onSponsoring }: SponsoringProps) {
