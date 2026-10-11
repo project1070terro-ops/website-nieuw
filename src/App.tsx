@@ -17,6 +17,7 @@ import { BlogDetail } from './components/BlogDetail';
 import { Cause } from './components/Cause';
 import { Donate } from './components/Donate';
 import { Contact } from './components/Contact';
+import { Sponsoring } from './components/Sponsoring';
 import { PrivacyDisclaimer } from './components/PrivacyDisclaimer';
 import { CookieBanner } from './components/CookieBanner';
 import { Analytics } from './components/Analytics';
@@ -25,7 +26,9 @@ function App() {
   const getInitialPage = (): Page => {
     if (typeof window === 'undefined') return 'home';
     const path = window.location.pathname;
-    return path.startsWith('/blog') ? 'blog' : 'home';
+    if (path.startsWith('/blog')) return 'blog';
+    if (path.startsWith('/sponsoring')) return 'sponsoring';
+    return 'home';
   };
   const getInitialBlogSlug = () => {
     if (typeof window === 'undefined') return null;
@@ -189,6 +192,7 @@ function App() {
           <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
+        {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} />}
         {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
       </main>
       <Footer t={t} language={language} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />

@@ -1,5 +1,5 @@
 export type Language = 'nl' | 'en' | 'es';
-export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'donate' | 'contact' | 'privacy';
+export type Page = 'home' | 'story' | 'route' | 'terro' | 'blog' | 'cause' | 'donate' | 'contact' | 'privacy' | 'sponsoring';
 
 export interface Donation {
   id: string;
