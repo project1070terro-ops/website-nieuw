@@ -48,7 +48,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer afmeting', value: '160x80px (Maximum impact)' },
         { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
-        { label: 'Social media', value: 'Exclusieve individuele vermelding in alle officiële updates' },
+        { label: 'Social media', value: 'Eigen social post' },
         { label: 'Investering', value: '€ 1000' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -68,7 +68,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Onderdeel', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Footer afmeting', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Ja', silver: 'Ja', bronze: 'Nee' },
-      { label: 'Social media', gold: 'Exclusieve individuele vermelding', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
+      { label: 'Social media', gold: 'Eigen social post', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
       { label: 'Investering', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
@@ -91,7 +91,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer size', value: '160x80px (Maximum impact)' },
         { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
-        { label: 'Social media', value: 'Exclusive individual mention in all official updates' },
+        { label: 'Social media', value: 'Dedicated social post' },
         { label: 'Investment', value: '€ 1000' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -111,7 +111,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Component', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Footer size', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Yes', silver: 'Yes', bronze: 'No' },
-      { label: 'Social media', gold: 'Exclusive individual mention', silver: 'Collective overview', bronze: 'Collective overview' },
+      { label: 'Social media', gold: 'Dedicated social post', silver: 'Collective overview', bronze: 'Collective overview' },
       { label: 'Investment', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
@@ -134,7 +134,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Tamaño footer', value: '160x80px (Máximo impacto)' },
         { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
-        { label: 'Redes sociales', value: 'Mención individual exclusiva en todas las actualizaciones oficiales' },
+        { label: 'Redes sociales', value: 'Publicación dedicada' },
         { label: 'Inversión', value: '€ 1000' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -154,7 +154,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Componente', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Tamaño footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Hipervínculo web', gold: 'Sí', silver: 'Sí', bronze: 'No' },
-      { label: 'Redes sociales', gold: 'Mención individual exclusiva', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
+      { label: 'Redes sociales', gold: 'Publicación dedicada', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
       { label: 'Inversión', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
