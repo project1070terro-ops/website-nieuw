@@ -1,17 +1,21 @@
 import { useState, FormEvent } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, X } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
+import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
 
 interface SponsoringProps {
   t: TranslationContent;
   language: Language;
   navigate: (page: Page) => void;
+  onSponsoring: () => Promise<void>;
 }
 
 interface SponsoringCopy {
   title: string;
   lead: string;
+  toast: string;
+  close: string;
   table: {
     tier: string;
     features: { label: string; value: string }[];
@@ -38,6 +42,8 @@ const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
     lead: 'Met uw zakelijke sponsoring maken we samen het verschil voor kinderen. Save the Children biedt o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles: zij werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verliezen.\n\nKies hieronder het sponsorpakket dat bij uw bedrijf past en vul uw gegevens in. U ontvangt de officiële factuur/documentatie rechtstreeks van Save the Children. Uw investering gaat integraal naar het goede doel en is fiscaal aftrekbaar binnen de vennootschapsbelasting. Steun dit cruciale werk vandaag nog!',
+    toast: 'Bedankt voor uw aanvraag en uw steun! Wij hebben uw gegevens in goede orde ontvangen en de gereserveerde meters zijn alvast toegevoegd aan onze live-balk. Er is zojuist een automatische bevestiging naar uw e-mailadres verzonden. Samen verleggen we grenzen voor kinderen wereldwijd!',
+    close: 'Sluiten',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer afmeting', value: '160x80px (Maximum impact)' },
@@ -79,6 +85,8 @@ const copy: Record<Language, SponsoringCopy> = {
   en: {
     title: 'Pushing Borders Together',
     lead: 'With your corporate sponsorship, we make a difference for children together. Save the Children provides food, water, shelter, and medical care. But that\'s not all: they also work on sustainable solutions and give children the opportunity to learn. Prevent children from losing their lives and futures now.\n\nChoose the sponsorship package below that fits your company and fill in your details. You will receive the official invoice/documentation directly from Save the Children. Your investment goes entirely to the charity and is tax-deductible within corporate income tax. Support this crucial work today!',
+    toast: 'Thank you for your request and your support! We have successfully received your details, and the reserved meters have been added to our live progress bar. An automatic confirmation has just been sent to your email address. Together, we are pushing boundaries for children worldwide!',
+    close: 'Close',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer size', value: '160x80px (Maximum impact)' },
@@ -120,6 +128,8 @@ const copy: Record<Language, SponsoringCopy> = {
   es: {
     title: 'Superando Límites Juntos',
     lead: 'Con su patrocinio corporativo, juntos marcamos la diferencia para los niños. Save the Children proporciona alimentos, agua, refugio y atención médica. Pero eso no es todo: también trabajan en soluciones sostenibles y brindan a los niños la oportunidad de aprender. Evite que los niños pierdan sus vidas y su futuro ahora.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa y complete sus datos. Recibirá la factura/documentación oficial directamente de Save the Children. Su inversión va íntegramente a la organización benéfica y es deducible de impuestos dentro del impuesto sobre sociedades. ¡Apoye este trabajo crucial hoy mismo!',
+    toast: '¡Gracias por su solicitud y por su apoyo! Hemos recibido sus datos correctamente y los metros reservados ya se han sumado a nuestra barra de progreso en vivo. Se acaba de enviar una confirmación automática a su correo electrónico. ¡Juntos, superamos límites por los niños de todo el mundo!',
+    close: 'Cerrar',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Tamaño footer', value: '160x80px (Máximo impacto)' },
@@ -160,43 +170,74 @@ const copy: Record<Language, SponsoringCopy> = {
   },
 };
 
-export function Sponsoring({ t, language, navigate }: SponsoringProps) {
+const PACKAGE_METERS: Record<string, number> = {
+  Gold: 5000,
+  Silver: 2500,
+  Bronze: 1000,
+};
+
+export function Sponsoring({ t, language, navigate, onSponsoring }: SponsoringProps) {
   const c = copy[language];
-  const [sent, setSent] = useState(false);
+  const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [tier, setTier] = useState(c.form.tierOptions[0]);
+  const [showPopup, setShowPopup] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
+    setSaving(true);
 
     const formData = new FormData(event.currentTarget);
-    const data = {
-      name: formData.get('company'),
-      contact: formData.get('person'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      tier: formData.get('tier'),
-      message: formData.get('message'),
-      to: 'sponsoring@project1570.org',
-    };
+    const company = String(formData.get('company') || '').trim();
+    const person = String(formData.get('person') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const selectedTier = String(formData.get('tier') || tier);
+    const message = String(formData.get('message') || '').trim();
+    const meters = PACKAGE_METERS[selectedTier] ?? 0;
 
     try {
+      if (!supabase) {
+        throw new Error('Database connection not available');
+      }
+
+      const { error: insertError } = await supabase.from('donations').insert({
+        name: company,
+        amount_eur: meters,
+        message: `Sponsoring: ${selectedTier}`,
+      });
+
+      if (insertError) {
+        throw insertError;
+      }
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          type: 'sponsoring',
+          language,
+          company,
+          contact: person,
+          email,
+          phone,
+          tier: selectedTier,
+          message,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error('Failed to send confirmation email');
       }
 
-      setSent(true);
       (event.target as HTMLFormElement).reset();
-      setTimeout(() => setSent(false), 6000);
+      await onSponsoring();
+      setShowPopup(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send message');
+      setError(err instanceof Error ? err.message : 'Failed to submit request');
+    } finally {
+      setSaving(false);
     }
   }
 
@@ -280,16 +321,44 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
             <textarea name="message" required rows={3} />
           </label>
           {error && <p className="error-message">{error}</p>}
-          <button className="button button-primary" type="submit">
-            {t.send} <ArrowRight size={17} />
+          <button className="button button-primary" type="submit" disabled={saving}>
+            {saving ? '...' : t.send} <ArrowRight size={17} />
           </button>
-          {sent && (
-            <p className="success">
-              <Check size={16} /> {c.form.success}
-            </p>
-          )}
         </form>
       </section>
+
+      {showPopup && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowPopup(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative max-w-md w-full rounded-xl border border-white/10 bg-[#18181b] p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-white/60 hover:text-white"
+              onClick={() => setShowPopup(false)}
+              aria-label={c.close}
+            >
+              <X size={20} />
+            </button>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--orange)]/20 text-[var(--orange)]">
+              <Check size={24} />
+            </div>
+            <h3 className="mb-2 text-lg font-semibold text-white">{c.form.success}</h3>
+            <p className="text-sm leading-relaxed text-white/80">{c.toast}</p>
+            <button
+              className="button button-primary mt-6 w-full"
+              onClick={() => setShowPopup(false)}
+            >
+              {c.close}
+            </button>
+          </div>
+        </div>
+      )}
 
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
