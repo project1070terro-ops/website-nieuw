@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Mountain } from 'lucide-react';
+import { ArrowRight, Check, Mountain, X } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import type { Donation, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
@@ -20,7 +20,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [sent, setSent] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [messageBlocked, setMessageBlocked] = useState(false);
   const [nameInvalid, setNameInvalid] = useState(false);
 
@@ -66,8 +66,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
       setName('');
       setMessage('');
       setAmount(25);
-      setSent(true);
-      setTimeout(() => setSent(false), 5000);
+      setShowPopup(true);
       await onDonation();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit donation');
@@ -160,11 +159,6 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           <button className="button button-primary" disabled={saving}>
             {saving ? 'Saving...' : t.donateNow} <Check size={17} />
           </button>
-          {sent && (
-            <p className="success">
-              <Check size={16} /> {t.donationThanks}
-            </p>
-          )}
         </form>
 
         <div className="donor-feed">
@@ -186,6 +180,33 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           )}
         </div>
       </section>
+
+      {showPopup && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowPopup(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative max-w-md w-full rounded-xl border border-white/10 bg-[#18181b] p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-white/60 hover:text-white"
+              onClick={() => setShowPopup(false)}
+              aria-label="Sluiten"
+            >
+              <X size={20} />
+            </button>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--orange)]/20 text-[var(--orange)]">
+              <Check size={24} />
+            </div>
+            <h3 className="mb-2 text-lg font-semibold text-white">{t.donateNow}</h3>
+            <p className="text-sm leading-relaxed text-white/80">{t.donationThanks}</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
