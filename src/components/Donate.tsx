@@ -23,6 +23,16 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
   const [showPopup, setShowPopup] = useState(false);
   const [messageBlocked, setMessageBlocked] = useState(false);
   const [nameInvalid, setNameInvalid] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  function clearFieldError(name: string) {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  }
 
   // Hoogtemeters-logica: 1 euro = 1 hoogtemeter
   const verticalMeters = Math.round(totalDonated);
@@ -33,10 +43,16 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
     event.preventDefault();
     setError(null);
 
-    if (!name.trim() || amount < 1) {
-      setError('Please fill in required fields');
+    const nextErrors: Record<string, string> = {};
+    if (!name.trim()) nextErrors.name = t.required;
+    if (amount < 1) nextErrors.amount = t.required;
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors);
       return;
     }
+
+    setFieldErrors({});
 
     const nameCheck = checkName(name);
     if (!nameCheck.ok) {
@@ -124,24 +140,34 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
       </section>
 
       <section className="donate-lower">
-        <form className="donation-form" onSubmit={submit}>
+        <form className="donation-form" onSubmit={submit} noValidate>
           <p className="eyebrow">{t.donationForm}</p>
           <h2>{t.choose}</h2>
           <div className="amount-input">
             <span>€</span>
-            <input type="number" min="1" value={amount} onChange={(event) => setAmount(Number(event.target.value))} />
+            <input
+              type="number"
+              min="1"
+              value={amount}
+              onChange={(event) => {
+                setAmount(Number(event.target.value));
+                clearFieldError('amount');
+              }}
+            />
           </div>
+          {fieldErrors.amount && <p className="field-error">{fieldErrors.amount}</p>}
           <label>
             {t.name}
             <input
-              required
               value={name}
               onChange={(event) => {
                 setName(event.target.value);
                 if (nameInvalid) setNameInvalid(false);
+                clearFieldError('name');
               }}
             />
           </label>
+          {fieldErrors.name && <p className="field-error">{fieldErrors.name}</p>}
           {nameInvalid && <p className="field-error">{t.nameInvalid}</p>}
           <label>
             {t.message}

@@ -99,6 +99,7 @@ export interface TranslationContent {
   donationForm: string;
   choose: string;
   name: string;
+  required: string;
   message: string;
   donateNow: string;
   recent: string;

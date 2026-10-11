@@ -185,10 +185,20 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
   const [tier, setTier] = useState(c.form.tierOptions[0]);
   const [showPopup, setShowPopup] = useState(false);
 
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  function clearFieldError(name: string) {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  }
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
-    setSaving(true);
 
     const formData = new FormData(event.currentTarget);
     const company = String(formData.get('company') || '').trim();
@@ -196,6 +206,21 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     const email = String(formData.get('email') || '').trim();
     const phone = String(formData.get('phone') || '').trim();
     const selectedTier = String(formData.get('tier') || tier);
+
+    const nextErrors: Record<string, string> = {};
+    if (!company) nextErrors.company = t.required;
+    if (!person) nextErrors.person = t.required;
+    if (!email) nextErrors.email = t.required;
+    if (!phone) nextErrors.phone = t.required;
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors);
+      return;
+    }
+
+    setFieldErrors({});
+    setSaving(true);
+
     const euros = PACKAGE_EUROS[selectedTier] ?? 0;
 
     try {
@@ -296,28 +321,32 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
       </section>
 
       <section className="contact-layout !py-6">
-        <form className="contact-form !p-6" onSubmit={handleSubmit}>
+        <form className="contact-form !p-6" onSubmit={handleSubmit} noValidate>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <label>
               {c.form.company}
-              <input name="company" required />
+              <input name="company" onInput={() => clearFieldError('company')} />
+              {fieldErrors.company && <p className="field-error">{fieldErrors.company}</p>}
             </label>
             <label>
               {c.form.person}
-              <input name="person" required />
+              <input name="person" onInput={() => clearFieldError('person')} />
+              {fieldErrors.person && <p className="field-error">{fieldErrors.person}</p>}
             </label>
             <label>
               {c.form.email}
-              <input name="email" required type="email" />
+              <input name="email" type="email" onInput={() => clearFieldError('email')} />
+              {fieldErrors.email && <p className="field-error">{fieldErrors.email}</p>}
             </label>
             <label>
               {c.form.phone}
-              <input name="phone" type="tel" />
+              <input name="phone" type="tel" onInput={() => clearFieldError('phone')} />
+              {fieldErrors.phone && <p className="field-error">{fieldErrors.phone}</p>}
             </label>
           </div>
           <label>
             {c.form.tier}
-            <select name="tier" required value={tier} onChange={(e) => setTier(e.target.value)}>
+            <select name="tier" value={tier} onChange={(e) => { setTier(e.target.value); clearFieldError('tier'); }}>
               {c.form.tierOptions.map((option) => (
                 <option key={option} value={option}>{option}</option>
               ))}
