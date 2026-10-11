@@ -14,10 +14,7 @@ interface SponsoringCopy {
   lead: string;
   table: {
     tier: string;
-    size: string;
-    link: string;
-    social: string;
-    price: string;
+    features: { label: string; value: string }[];
   }[];
   tableRows: {
     label: string;
@@ -42,9 +39,24 @@ const copy: Record<Language, SponsoringCopy> = {
     title: 'Samen Grenzen Verleggen',
     lead: 'Met uw gift maken we het verschil voor kinderen. We bieden o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles, we werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verloren. Vanaf een gift van 40 euro per jaar ontvangt u een fiscaal attest en krijgt u 30% belastingvermindering. Steun kinderen vandaag nog!',
     table: [
-      { tier: '🥇 GOLD SPONSORS', size: '160x80px (Maximum impact)', link: 'Ja, directe link vanuit uw logo', social: 'Premium standalone vermelding in alle officiële updates', price: '€ TBD' },
-      { tier: '🥈 SILVER SPONSORS', size: '130x65px (Subtiel en elegant)', link: 'Ja, directe link vanuit uw logo', social: 'Opname in het collectieve sponsoroverzicht', price: '€ TBD' },
-      { tier: '🥉 BRONZE SPONSORS', size: '100x50px (Compact en clean)', link: 'Nee, enkel logo-vermelding', social: 'Opname in het collectieve sponsoroverzicht', price: '€ TBD' },
+      { tier: '🥇 GOLD SPONSORS', features: [
+        { label: 'Footer afmeting', value: '160x80px (Maximum impact)' },
+        { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
+        { label: 'Social media', value: 'Premium standalone vermelding in alle officiële updates' },
+        { label: 'Investering', value: '€ TBD' },
+      ]},
+      { tier: '🥈 SILVER SPONSORS', features: [
+        { label: 'Footer afmeting', value: '130x65px (Subtiel en elegant)' },
+        { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
+        { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
+        { label: 'Investering', value: '€ TBD' },
+      ]},
+      { tier: '🥉 BRONZE SPONSORS', features: [
+        { label: 'Footer afmeting', value: '100x50px (Compact en clean)' },
+        { label: 'Website hyperlink', value: 'Nee, enkel logo-vermelding' },
+        { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
+        { label: 'Investering', value: '€ TBD' },
+      ]},
     ],
     tableRows: [
       { label: 'Onderdeel', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
@@ -68,9 +80,24 @@ const copy: Record<Language, SponsoringCopy> = {
     title: 'Pushing Borders Together',
     lead: 'With your donation, we make the difference for children. We provide food, water, shelter and medical care, among other things. But that is not all — we also work on sustainable solutions and give children the chance to learn. Prevent children from losing their life and future now. From a donation of 40 euros per year you will receive a tax certificate and get a 30% tax reduction. Support children today!',
     table: [
-      { tier: '🥇 GOLD SPONSORS', size: '160x80px (Maximum impact)', link: 'Yes, direct link from your logo', social: 'Premium standalone tag in all official updates', price: '€ TBD' },
-      { tier: '🥈 SILVER SPONSORS', size: '130x65px (Subtle and elegant)', link: 'Yes, direct link from your logo', social: 'Inclusion in the collective sponsor overview updates', price: '€ TBD' },
-      { tier: '🥉 BRONZE SPONSORS', size: '100x50px (Compact and clean)', link: 'No, logo listing only', social: 'Inclusion in the collective sponsor overview updates', price: '€ TBD' },
+      { tier: '🥇 GOLD SPONSORS', features: [
+        { label: 'Footer size', value: '160x80px (Maximum impact)' },
+        { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
+        { label: 'Social media', value: 'Premium standalone tag in all official updates' },
+        { label: 'Investment', value: '€ TBD' },
+      ]},
+      { tier: '🥈 SILVER SPONSORS', features: [
+        { label: 'Footer size', value: '130x65px (Subtle and elegant)' },
+        { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
+        { label: 'Social media', value: 'Inclusion in the collective sponsor overview updates' },
+        { label: 'Investment', value: '€ TBD' },
+      ]},
+      { tier: '🥉 BRONZE SPONSORS', features: [
+        { label: 'Footer size', value: '100x50px (Compact and clean)' },
+        { label: 'Website hyperlink', value: 'No, logo listing only' },
+        { label: 'Social media', value: 'Inclusion in the collective sponsor overview updates' },
+        { label: 'Investment', value: '€ TBD' },
+      ]},
     ],
     tableRows: [
       { label: 'Component', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
@@ -94,9 +121,24 @@ const copy: Record<Language, SponsoringCopy> = {
     title: 'Superando Límites Juntos',
     lead: 'Con su donación, hacemos la diferencia para los niños. Ofrecemos, entre otras cosas, alimentos, agua, refugio y atención médica. Pero eso no es todo, también trabajamos en soluciones sostenibles y damos a los niños la oportunidad de aprender. Evite ahora que los niños pierdan su vida y su futuro. A partir de una donación de 40 euros al año recibirá un certificado fiscal y obtendrá una reducción del 30% en impuestos. ¡Apoye a los niños hoy mismo!',
     table: [
-      { tier: '🥇 GOLD SPONSORS', size: '160x80px (Máximo impacto)', link: 'Sí, enlace directo desde su logo', social: 'Etiqueta premium destacada en todas las actualizaciones oficiales', price: '€ TBD' },
-      { tier: '🥈 SILVER SPONSORS', size: '130x65px (Sutil y elegante)', link: 'Sí, enlace directo desde su logo', social: 'Inclusión en el resumen colectivo de patrocinadores', price: '€ TBD' },
-      { tier: '🥉 BRONZE SPONSORS', size: '100x50px (Compacto y limpio)', link: 'No, solo listado del logo', social: 'Inclusión en el resumen colectivo de patrocinadores', price: '€ TBD' },
+      { tier: '🥇 GOLD SPONSORS', features: [
+        { label: 'Tamaño footer', value: '160x80px (Máximo impacto)' },
+        { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
+        { label: 'Redes sociales', value: 'Etiqueta premium destacada en todas las actualizaciones oficiales' },
+        { label: 'Inversión', value: '€ TBD' },
+      ]},
+      { tier: '🥈 SILVER SPONSORS', features: [
+        { label: 'Tamaño footer', value: '130x65px (Sutil y elegante)' },
+        { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
+        { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
+        { label: 'Inversión', value: '€ TBD' },
+      ]},
+      { tier: '🥉 BRONZE SPONSORS', features: [
+        { label: 'Tamaño footer', value: '100x50px (Compacto y limpio)' },
+        { label: 'Hipervínculo web', value: 'No, solo listado del logo' },
+        { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
+        { label: 'Inversión', value: '€ TBD' },
+      ]},
     ],
     tableRows: [
       { label: 'Componente', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
@@ -194,10 +236,12 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
               <h3 className={`text-sm font-bold uppercase tracking-wider mb-2 ${i === 0 ? 'text-amber-400' : 'text-white/90'}`}>
                 {tier.tier}
               </h3>
-              <p className="text-sm text-white/80 mb-1">{tier.size}</p>
-              <p className="text-sm text-white/80 mb-1">{tier.link}</p>
-              <p className="text-sm text-white/80 mb-1">{tier.social}</p>
-              <p className="text-sm text-white/80 font-semibold">{tier.price}</p>
+              {tier.features.map((feature, fi) => (
+                <div key={fi} className="mb-1">
+                  <span className="text-xs font-semibold text-white/70 mr-1">{feature.label}:</span>
+                  <span className="text-sm text-white/90">{feature.value}</span>
+                </div>
+              ))}
             </div>
           ))}
         </div>
