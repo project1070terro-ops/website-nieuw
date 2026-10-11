@@ -108,6 +108,7 @@ export interface TranslationContent {
   contactLead: string;
   send: string;
   sent: string;
+  donationThanks: string;
   email: string;
   contactSubjects: { general: string; products: string; financial: string };
 }

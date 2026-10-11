@@ -114,6 +114,7 @@ Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun
 Laat maar iets horen — we staan voor je klaar.`,
     send: 'Verstuur bericht',
     sent: 'Bedankt. We nemen zo snel mogelijk contact met je op.',
+    donationThanks: 'Bedankt voor uw donatie! Uw bijdrage is toegevoegd aan de live-balk.',
     email: 'Officieel e-mailadres',
     contactSubjects: { general: 'Algemene vraag of opmerking', products: 'Sponsoring met producten en/of diensten', financial: 'Sponsoring via een financieel engagement' }
   },
@@ -224,6 +225,7 @@ When it comes to equipment, Terro can rely on the unconditional support of frien
 Let us know — we're here for you.`,
     send: 'Send message',
     sent: 'Thank you. We\'ll get back to you as soon as possible.',
+    donationThanks: 'Thank you for your donation! Your contribution has been added to the live progress bar.',
     email: 'Official email address',
     contactSubjects: { general: 'General question or remark', products: 'Sponsorship with products and/or services', financial: 'Sponsorship through a financial commitment' }
   },
@@ -334,6 +336,7 @@ En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfe
 Cuéntanos — estamos aquí para ti.`,
     send: 'Enviar mensaje',
     sent: 'Gracias. Te responderemos lo antes posible.',
+    donationThanks: '¡Gracias por su donación! Su contribución se ha añadido a la barra de progreso en vivo.',
     email: 'Dirección de correo electrónico oficial',
     contactSubjects: { general: 'Pregunta o comentario general', products: 'Patrocinio con productos y/o servicios', financial: 'Patrocinio a través de un compromiso financiero' }
   }

@@ -20,6 +20,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
   const [messageBlocked, setMessageBlocked] = useState(false);
   const [nameInvalid, setNameInvalid] = useState(false);
 
@@ -65,6 +66,8 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
       setName('');
       setMessage('');
       setAmount(25);
+      setSent(true);
+      setTimeout(() => setSent(false), 5000);
       await onDonation();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to submit donation');
@@ -157,6 +160,11 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           <button className="button button-primary" disabled={saving}>
             {saving ? 'Saving...' : t.donateNow} <Check size={17} />
           </button>
+          {sent && (
+            <p className="success">
+              <Check size={16} /> {t.donationThanks}
+            </p>
+          )}
         </form>
 
         <div className="donor-feed">
