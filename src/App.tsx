@@ -192,7 +192,7 @@ function App() {
           <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
         )}
         {page === 'contact' && <Contact t={t} navigate={navigate} />}
-        {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} />}
+        {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} totalDonated={totalDonated} />}
         {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
       </main>
       <Footer t={t} language={language} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />

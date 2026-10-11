@@ -3,12 +3,14 @@ import { ArrowRight, Check, X } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
+import { Meter } from './Meter';
 
 interface SponsoringProps {
   t: TranslationContent;
   language: Language;
   navigate: (page: Page) => void;
   onSponsoring: () => Promise<void>;
+  totalDonated: number;
 }
 
 interface SponsoringCopy {
@@ -176,7 +178,7 @@ const PACKAGE_METERS: Record<string, number> = {
   Bronze: 250,
 };
 
-export function Sponsoring({ t, language, navigate, onSponsoring }: SponsoringProps) {
+export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }: SponsoringProps) {
   const c = copy[language];
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -212,23 +214,27 @@ export function Sponsoring({ t, language, navigate, onSponsoring }: SponsoringPr
         throw insertError;
       }
 
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'sponsoring',
-          language,
-          company,
-          contact: person,
-          email,
-          phone,
-          tier: selectedTier,
-          message,
-        }),
-      });
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'sponsoring',
+            language,
+            company,
+            contact: person,
+            email,
+            phone,
+            tier: selectedTier,
+            message,
+          }),
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to send confirmation email');
+        if (!response.ok && response.status !== 404) {
+          console.warn('Email worker returned', response.status);
+        }
+      } catch (emailErr) {
+        console.warn('Email worker unavailable:', emailErr);
       }
 
       (event.target as HTMLFormElement).reset();
@@ -244,6 +250,8 @@ export function Sponsoring({ t, language, navigate, onSponsoring }: SponsoringPr
   return (
     <>
       <PageIntro title={c.title} lead={c.lead} className="!pb-2" />
+
+      <Meter totalDonated={totalDonated} t={t} />
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="hidden md:block overflow-x-auto">
