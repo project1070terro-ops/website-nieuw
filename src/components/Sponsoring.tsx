@@ -37,7 +37,7 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Met uw gift maken we het verschil voor kinderen. We bieden o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles, we werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verloren. Vanaf een gift van 40 euro per jaar ontvangt u een fiscaal attest en krijgt u 30% belastingvermindering. Steun kinderen vandaag nog!',
+    lead: 'Met uw gift maken we samen het verschil voor kinderen. Save the Children biedt o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles: zij werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verliezen. Vanaf een gift van 40 euro per jaar ontvangt u een fiscaal attest en krijgt u 30% belastingvermindering. Steun dit cruciale werk vandaag nog!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer afmeting', value: '160x80px (Maximum impact)' },
@@ -78,7 +78,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   en: {
     title: 'Pushing Borders Together',
-    lead: 'With your donation, we make the difference for children. We provide food, water, shelter and medical care, among other things. But that is not all — we also work on sustainable solutions and give children the chance to learn. Prevent children from losing their life and future now. From a donation of 40 euros per year you will receive a tax certificate and get a 30% tax reduction. Support children today!',
+    lead: 'With your gift, together we make a difference for children. Save the Children provides food, water, shelter and medical care, among other things. But that is not all: they also work on sustainable solutions and give children the chance to learn. Prevent children from losing their lives and futures now. From a gift of 40 euros per year you will receive a tax certificate and get a 30% tax reduction. Support this crucial work today!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer size', value: '160x80px (Maximum impact)' },
@@ -119,7 +119,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   es: {
     title: 'Superando Límites Juntos',
-    lead: 'Con su donación, hacemos la diferencia para los niños. Ofrecemos, entre otras cosas, alimentos, agua, refugio y atención médica. Pero eso no es todo, también trabajamos en soluciones sostenibles y damos a los niños la oportunidad de aprender. Evite ahora que los niños pierdan su vida y su futuro. A partir de una donación de 40 euros al año recibirá un certificado fiscal y obtendrá una reducción del 30% en impuestos. ¡Apoye a los niños hoy mismo!',
+    lead: 'Con su donación, juntos marcamos la diferencia para los niños. Save the Children ofrece, entre otras cosas, alimentos, agua, refugio y atención médica. Pero eso no es todo: también trabajan en soluciones sostenibles y dan a los niños la oportunidad de aprender. Evite ahora que los niños pierdan sus vidas y su futuro. A partir de una donación de 40 euros al año recibirá un certificado fiscal y obtendrá una reducción del 30% en impuestos. ¡Apoye este trabajo crucial hoy mismo!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Tamaño footer', value: '160x80px (Máximo impacto)' },
