@@ -187,24 +187,26 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
         </div>
       </section>
 
-      <section className="contact-layout">
-        <form className="contact-form max-w-xl mx-auto" onSubmit={handleSubmit}>
-          <label>
-            {c.form.company}
-            <input name="company" required />
-          </label>
-          <label>
-            {c.form.person}
-            <input name="person" required />
-          </label>
-          <label>
-            {c.form.email}
-            <input name="email" required type="email" />
-          </label>
-          <label>
-            {c.form.phone}
-            <input name="phone" type="tel" />
-          </label>
+      <section className="contact-layout !py-6">
+        <form className="contact-form !p-6" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label>
+              {c.form.company}
+              <input name="company" required />
+            </label>
+            <label>
+              {c.form.person}
+              <input name="person" required />
+            </label>
+            <label>
+              {c.form.email}
+              <input name="email" required type="email" />
+            </label>
+            <label>
+              {c.form.phone}
+              <input name="phone" type="tel" />
+            </label>
+          </div>
           <label>
             {c.form.tier}
             <select name="tier" required value={tier} onChange={(e) => setTier(e.target.value)}>
@@ -215,7 +217,7 @@ export function Sponsoring({ t, language, navigate }: SponsoringProps) {
           </label>
           <label>
             {c.form.message}
-            <textarea name="message" required rows={5} />
+            <textarea name="message" required rows={3} />
           </label>
           {error && <p className="error-message">{error}</p>}
           <button className="button button-primary" type="submit">
