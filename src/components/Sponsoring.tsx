@@ -172,7 +172,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
 };
 
-const PACKAGE_METERS: Record<string, number> = {
+const PACKAGE_EUROS: Record<string, number> = {
   Gold: 1000,
   Silver: 500,
   Bronze: 250,
@@ -197,7 +197,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     const phone = String(formData.get('phone') || '').trim();
     const selectedTier = String(formData.get('tier') || tier);
     const message = String(formData.get('message') || '').trim();
-    const meters = PACKAGE_METERS[selectedTier] ?? 0;
+    const euros = PACKAGE_EUROS[selectedTier] ?? 0;
 
     try {
       if (!supabase) {
@@ -206,7 +206,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
 
       const { error: insertError } = await supabase.from('donations').insert({
         name: company,
-        amount_eur: meters,
+        amount_eur: euros,
         message: `Sponsoring: ${selectedTier}`,
       });
 
