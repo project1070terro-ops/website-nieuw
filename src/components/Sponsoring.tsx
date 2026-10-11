@@ -37,12 +37,12 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Met uw gift maken we samen het verschil voor kinderen. Save the Children biedt o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles: zij werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verliezen. Vanaf een gift van 40 euro per jaar ontvangt u een fiscaal attest en krijgt u 30% belastingvermindering. Steun dit cruciale werk vandaag nog!',
+    lead: 'Met uw zakelijke sponsoring maken we samen het verschil voor kinderen. Save the Children biedt o.a. voedsel, water, onderdak en medische zorg. Maar dat is niet alles: zij werken ook aan duurzame oplossingen en geven kinderen de kans om te leren. Voorkom nu dat kinderen hun leven en toekomst verliezen.\n\nKies hieronder het sponsorpakket dat bij uw bedrijf past en vul uw gegevens in. U ontvangt de officiële factuur/documentatie rechtstreeks van Save the Children. Uw investering gaat integraal naar het goede doel en is fiscaal aftrekbaar binnen de vennootschapsbelasting. Steun dit cruciale werk vandaag nog!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer afmeting', value: '160x80px (Maximum impact)' },
         { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
-        { label: 'Social media', value: 'Premium standalone vermelding in alle officiële updates' },
+        { label: 'Social media', value: 'Exclusieve individuele vermelding in alle officiële updates' },
         { label: 'Investering', value: '€ TBD' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -62,7 +62,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Onderdeel', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Footer afmeting', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Ja', silver: 'Ja', bronze: 'Nee' },
-      { label: 'Social media', gold: 'Premium standalone tag', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
+      { label: 'Social media', gold: 'Exclusieve individuele vermelding', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
       { label: 'Investering', gold: '€ TBD', silver: '€ TBD', bronze: '€ TBD' },
     ],
     form: {
@@ -78,12 +78,12 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   en: {
     title: 'Pushing Borders Together',
-    lead: 'With your gift, together we make a difference for children. Save the Children provides food, water, shelter and medical care, among other things. But that is not all: they also work on sustainable solutions and give children the chance to learn. Prevent children from losing their lives and futures now. From a gift of 40 euros per year you will receive a tax certificate and get a 30% tax reduction. Support this crucial work today!',
+    lead: 'With your corporate sponsorship, we make a difference for children together. Save the Children provides food, water, shelter, and medical care. But that\'s not all: they also work on sustainable solutions and give children the opportunity to learn. Prevent children from losing their lives and futures now.\n\nChoose the sponsorship package below that fits your company and fill in your details. You will receive the official invoice/documentation directly from Save the Children. Your investment goes entirely to the charity and is tax-deductible within corporate income tax. Support this crucial work today!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Footer size', value: '160x80px (Maximum impact)' },
         { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
-        { label: 'Social media', value: 'Premium standalone tag in all official updates' },
+        { label: 'Social media', value: 'Exclusive individual mention in all official updates' },
         { label: 'Investment', value: '€ TBD' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -103,7 +103,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Component', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Footer size', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Yes', silver: 'Yes', bronze: 'No' },
-      { label: 'Social media', gold: 'Premium standalone tag', silver: 'Collective overview', bronze: 'Collective overview' },
+      { label: 'Social media', gold: 'Exclusive individual mention', silver: 'Collective overview', bronze: 'Collective overview' },
       { label: 'Investment', gold: '€ TBD', silver: '€ TBD', bronze: '€ TBD' },
     ],
     form: {
@@ -119,12 +119,12 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   es: {
     title: 'Superando Límites Juntos',
-    lead: 'Con su donación, juntos marcamos la diferencia para los niños. Save the Children ofrece, entre otras cosas, alimentos, agua, refugio y atención médica. Pero eso no es todo: también trabajan en soluciones sostenibles y dan a los niños la oportunidad de aprender. Evite ahora que los niños pierdan sus vidas y su futuro. A partir de una donación de 40 euros al año recibirá un certificado fiscal y obtendrá una reducción del 30% en impuestos. ¡Apoye este trabajo crucial hoy mismo!',
+    lead: 'Con su patrocinio corporativo, juntos marcamos la diferencia para los niños. Save the Children proporciona alimentos, agua, refugio y atención médica. Pero eso no es todo: también trabajan en soluciones sostenibles y brindan a los niños la oportunidad de aprender. Evite que los niños pierdan sus vidas y su futuro ahora.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa y complete sus datos. Recibirá la factura/documentación oficial directamente de Save the Children. Su inversión va íntegramente a la organización benéfica y es deducible de impuestos dentro del impuesto sobre sociedades. ¡Apoye este trabajo crucial hoy mismo!',
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Tamaño footer', value: '160x80px (Máximo impacto)' },
         { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
-        { label: 'Redes sociales', value: 'Etiqueta premium destacada en todas las actualizaciones oficiales' },
+        { label: 'Redes sociales', value: 'Mención individual exclusiva en todas las actualizaciones oficiales' },
         { label: 'Inversión', value: '€ TBD' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
@@ -144,7 +144,7 @@ const copy: Record<Language, SponsoringCopy> = {
       { label: 'Componente', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
       { label: 'Tamaño footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Hipervínculo web', gold: 'Sí', silver: 'Sí', bronze: 'No' },
-      { label: 'Redes sociales', gold: 'Etiqueta premium destacada', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
+      { label: 'Redes sociales', gold: 'Mención individual exclusiva', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
       { label: 'Inversión', gold: '€ TBD', silver: '€ TBD', bronze: '€ TBD' },
     ],
     form: {
