@@ -211,7 +211,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const renderMini = (card: (typeof yearCards)[number]) => renderCard(card, 'mini');
 
   return (
-    <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
+    <>
+      <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
       <PageIntro title={t.blogTitle} lead={t.blogLead} className="!pb-0" />
       
       <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -322,5 +323,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         </div>
       </div>
     </div>
+      <section className="home-cta">
+        <button className="button button-primary cta-large" onClick={() => navigate?.('donate')}>
+          {t.support} <ArrowRight size={18} />
+        </button>
+      </section>
+    </>
   );
 }
