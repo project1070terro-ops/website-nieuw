@@ -18,6 +18,7 @@ interface SponsoringCopy {
   lead: string;
   toast: string;
   close: string;
+  tierHeaders: [string, string, string];
   table: {
     tier: string;
     features: { label: string; value: string }[];
@@ -46,20 +47,21 @@ const copy: Record<Language, SponsoringCopy> = {
     lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Uw investering gaat integraal naar Save the Children en is fiscaal aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang de officiële documentatie rechtstreeks van het goede doel. Steun dit cruciale werk vandaag nog!',
     toast: 'Bedankt voor uw aanvraag en uw steun! Wij hebben uw gegevens in goede orde ontvangen en de gereserveerde meters zijn alvast toegevoegd aan onze live-balk. Er is zojuist een automatische bevestiging naar uw e-mailadres verzonden. Samen verleggen we grenzen voor kinderen wereldwijd!',
     close: 'Sluiten',
+    tierHeaders: ['GOUD', 'ZILVER', 'BRONS'],
     table: [
-      { tier: '🥇 GOLD SPONSORS', features: [
+      { tier: '🥇 GOUD SPONSORS', features: [
         { label: 'Uw logo in footer', value: '160x80px (Maximum impact)' },
         { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
         { label: 'Social media', value: 'Eigen social post' },
         { label: 'Investering', value: '€ 1000' },
       ]},
-      { tier: '🥈 SILVER SPONSORS', features: [
+      { tier: '🥈 ZILVER SPONSORS', features: [
         { label: 'Uw logo in footer', value: '130x65px (Subtiel en elegant)' },
         { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
         { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
         { label: 'Investering', value: '€ 500' },
       ]},
-      { tier: '🥉 BRONZE SPONSORS', features: [
+      { tier: '🥉 BRONS SPONSORS', features: [
         { label: 'Uw logo in footer', value: '100x50px (Compact en clean)' },
         { label: 'Website hyperlink', value: 'Nee, enkel logo-vermelding' },
         { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
@@ -67,7 +69,7 @@ const copy: Record<Language, SponsoringCopy> = {
       ]},
     ],
     tableRows: [
-      { label: 'Onderdeel', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
+      { label: 'Onderdeel', gold: 'GOUD', silver: 'ZILVER', bronze: 'BRONS' },
       { label: 'Uw logo in footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Ja', silver: 'Ja', bronze: 'Nee' },
       { label: 'Social media', gold: 'Eigen social post', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
@@ -89,6 +91,7 @@ const copy: Record<Language, SponsoringCopy> = {
     lead: 'With your corporate sponsorship, your company makes a difference. Your investment goes entirely to Save the Children and is tax-deductible within corporate income tax.\n\nChoose the sponsorship package below that fits your business, fill in your details, and receive the official documentation directly from the charity. Support this crucial work today!',
     toast: 'Thank you for your request and your support! We have successfully received your details, and the reserved meters have been added to our live progress bar. An automatic confirmation has just been sent to your email address. Together, we are pushing boundaries for children worldwide!',
     close: 'Close',
+    tierHeaders: ['GOLD', 'SILVER', 'BRONZE'],
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
         { label: 'Your logo in footer', value: '160x80px (Maximum impact)' },
@@ -110,7 +113,7 @@ const copy: Record<Language, SponsoringCopy> = {
       ]},
     ],
     tableRows: [
-      { label: 'Component', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
+      { label: 'Component', gold: 'GOLD', silver: 'SILVER', bronze: 'BRONZE' },
       { label: 'Your logo in footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Website hyperlink', gold: 'Yes', silver: 'Yes', bronze: 'No' },
       { label: 'Social media', gold: 'Dedicated social post', silver: 'Collective overview', bronze: 'Collective overview' },
@@ -132,20 +135,21 @@ const copy: Record<Language, SponsoringCopy> = {
     lead: 'Con su patrocinio corporativo, su empresa marca la diferencia. Su inversión se destina íntegramente a Save the Children y es deducible de impuestos dentro del impuesto sobre sociedades.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa, complete sus datos y reciba la documentación oficial directamente de la organización benéfica. ¡Apoye este trabajo crucial hoy mismo!',
     toast: '¡Gracias por su solicitud y por su apoyo! Hemos recibido sus datos correctamente y los metros reservados ya se han sumado a nuestra barra de progreso en vivo. Se acaba de enviar una confirmación automática a su correo electrónico. ¡Juntos, superamos límites por los niños de todo el mundo!',
     close: 'Cerrar',
+    tierHeaders: ['ORO', 'PLATA', 'BRONCE'],
     table: [
-      { tier: '🥇 GOLD SPONSORS', features: [
+      { tier: '🥇 ORO SPONSORS', features: [
         { label: 'Su logo en el pie de página', value: '160x80px (Máximo impacto)' },
         { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
         { label: 'Redes sociales', value: 'Publicación dedicada' },
         { label: 'Inversión', value: '€ 1000' },
       ]},
-      { tier: '🥈 SILVER SPONSORS', features: [
+      { tier: '🥈 PLATA SPONSORS', features: [
         { label: 'Su logo en el pie de página', value: '130x65px (Sutil y elegante)' },
         { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
         { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
         { label: 'Inversión', value: '€ 500' },
       ]},
-      { tier: '🥉 BRONZE SPONSORS', features: [
+      { tier: '🥉 BRONCE SPONSORS', features: [
         { label: 'Su logo en el pie de página', value: '100x50px (Compacto y limpio)' },
         { label: 'Hipervínculo web', value: 'No, solo listado del logo' },
         { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
@@ -153,7 +157,7 @@ const copy: Record<Language, SponsoringCopy> = {
       ]},
     ],
     tableRows: [
-      { label: 'Componente', gold: 'Gold', silver: 'Silver', bronze: 'Bronze' },
+      { label: 'Componente', gold: 'ORO', silver: 'PLATA', bronze: 'BRONCE' },
       { label: 'Su logo en el pie de página', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
       { label: 'Hipervínculo web', gold: 'Sí', silver: 'Sí', bronze: 'No' },
       { label: 'Redes sociales', gold: 'Publicación dedicada', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
@@ -283,9 +287,9 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
             <thead>
               <tr>
                 <th className="p-3 text-xs uppercase tracking-wider text-white/40 border-b border-white/10"></th>
-                <th className="p-3 text-xs uppercase tracking-wider text-amber-400 border-b border-white/10 w-1/4 bg-amber-600/10">🥇 Gold</th>
-                <th className="p-3 text-xs uppercase tracking-wider text-slate-300 border-b border-white/10 w-1/4 bg-slate-500/10">🥈 Silver</th>
-                <th className="p-3 text-xs uppercase tracking-wider text-orange-300 border-b border-white/10 w-1/4 bg-orange-800/10">🥉 Bronze</th>
+                <th className="p-3 text-xs uppercase tracking-wider text-amber-400 border-b border-white/10 w-1/4 bg-amber-600/10">🥇 {c.tierHeaders[0]}</th>
+                <th className="p-3 text-xs uppercase tracking-wider text-slate-300 border-b border-white/10 w-1/4 bg-slate-500/10">🥈 {c.tierHeaders[1]}</th>
+                <th className="p-3 text-xs uppercase tracking-wider text-orange-300 border-b border-white/10 w-1/4 bg-orange-800/10">🥉 {c.tierHeaders[2]}</th>
               </tr>
             </thead>
             <tbody>
