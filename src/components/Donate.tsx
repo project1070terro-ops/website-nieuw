@@ -155,7 +155,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
               }}
             />
           </div>
-          {fieldErrors.amount && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.amount}</p>}
+          {fieldErrors.amount && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.amount}</p>}
           <label>
             {t.name}
             <input
@@ -167,8 +167,8 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
               }}
             />
           </label>
-          {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.name}</p>}
-          {nameInvalid && <p className="text-xs font-normal text-orange-500 mt-1">{t.nameInvalid}</p>}
+          {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.name}</p>}
+          {nameInvalid && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{t.nameInvalid}</p>}
           <label>
             {t.message}
             <textarea
@@ -180,7 +180,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
               rows={4}
             />
           </label>
-          {messageBlocked && <p className="text-xs font-normal text-orange-500 mt-1">{t.messageBlocked}</p>}
+          {messageBlocked && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{t.messageBlocked}</p>}
           {error && <p className="error-message">{error}</p>}
           <button className="button button-primary" disabled={saving}>
             {saving ? 'Saving...' : t.donateNow} <Check size={17} />

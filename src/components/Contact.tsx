@@ -12,6 +12,16 @@ export function Contact({ t, navigate }: ContactProps) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [subject, setSubject] = useState(t.contactSubjects.general);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  function clearFieldError(name: string) {
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  }
 
   useEffect(() => {
     const location = { state: window.history.state };
@@ -26,15 +36,32 @@ export function Contact({ t, navigate }: ContactProps) {
     setError(null);
 
     const formData = new FormData(event.currentTarget);
-    const selectedSubject = formData.get('subject') as string;
+    const selectedSubject = String(formData.get('subject') || '');
+    const name = String(formData.get('name') || '').trim();
+    const email = String(formData.get('email') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const nextErrors: Record<string, string> = {};
+    if (!name) nextErrors.name = t.required;
+    if (!email) nextErrors.email = t.required;
+    if (!selectedSubject) nextErrors.subject = t.required;
+    if (!message) nextErrors.message = t.required;
+
+    if (Object.keys(nextErrors).length > 0) {
+      setFieldErrors(nextErrors);
+      return;
+    }
+
+    setFieldErrors({});
+
     const to = selectedSubject === t.contactSubjects.general
       ? 'info@project1570.org'
       : 'sponsoring@project1570.org';
     const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
+      name,
+      email,
       subject: selectedSubject,
-      message: formData.get('message'),
+      message,
       to,
     };
 
@@ -64,26 +91,30 @@ export function Contact({ t, navigate }: ContactProps) {
     <>
       <PageIntro title={t.contactTitle} lead={t.contactLead} />
       <section className="contact-layout">
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={handleSubmit} noValidate>
           <label>
             {t.name}
-            <input name="name" required />
+            <input name="name" onInput={() => clearFieldError('name')} />
+            {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.name}</p>}
           </label>
           <label>
             E-mail
-            <input name="email" required type="email" />
+            <input name="email" type="email" onInput={() => clearFieldError('email')} />
+            {fieldErrors.email && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.email}</p>}
           </label>
           <label>
             Onderwerp
-            <select name="subject" required value={subject} onChange={(e) => setSubject(e.target.value)}>
+            <select name="subject" value={subject} onChange={(e) => { setSubject(e.target.value); clearFieldError('subject'); }}>
               <option value={t.contactSubjects.general}>{t.contactSubjects.general}</option>
               <option value={t.contactSubjects.products}>{t.contactSubjects.products}</option>
               <option value={t.contactSubjects.financial}>{t.contactSubjects.financial}</option>
             </select>
+            {fieldErrors.subject && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.subject}</p>}
           </label>
           <label>
             Bericht
-            <textarea name="message" required rows={7} />
+            <textarea name="message" rows={7} onInput={() => clearFieldError('message')} />
+            {fieldErrors.message && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.message}</p>}
           </label>
           {error && <p className="error-message">{error}</p>}
           <button className="button button-primary">
