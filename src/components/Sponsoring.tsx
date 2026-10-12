@@ -326,22 +326,22 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
             <label>
               {c.form.company}
               <input name="company" onInput={() => clearFieldError('company')} />
-              {fieldErrors.company && <p className="field-error">{fieldErrors.company}</p>}
+              {fieldErrors.company && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.company}</p>}
             </label>
             <label>
               {c.form.person}
               <input name="person" onInput={() => clearFieldError('person')} />
-              {fieldErrors.person && <p className="field-error">{fieldErrors.person}</p>}
+              {fieldErrors.person && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.person}</p>}
             </label>
             <label>
               {c.form.email}
               <input name="email" type="email" onInput={() => clearFieldError('email')} />
-              {fieldErrors.email && <p className="field-error">{fieldErrors.email}</p>}
+              {fieldErrors.email && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.email}</p>}
             </label>
             <label>
               {c.form.phone}
               <input name="phone" type="tel" onInput={() => clearFieldError('phone')} />
-              {fieldErrors.phone && <p className="field-error">{fieldErrors.phone}</p>}
+              {fieldErrors.phone && <p className="text-xs font-normal text-orange-500 mt-1">{fieldErrors.phone}</p>}
             </label>
           </div>
           <label>
