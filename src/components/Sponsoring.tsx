@@ -35,7 +35,7 @@ interface SponsoringCopy {
     email: string;
     phone: string;
     tier: string;
-    tierOptions: [string, string, string];
+    tierOptions: { key: string; label: string }[];
     submit: string;
     success: string;
   };
@@ -50,29 +50,33 @@ const copy: Record<Language, SponsoringCopy> = {
     tierHeaders: ['GOUD', 'ZILVER', 'BRONS'],
     table: [
       { tier: '🥇 GOUD SPONSORS', features: [
-        { label: 'Uw logo in footer', value: '160x80px (Maximum impact)' },
-        { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
-        { label: 'Social media', value: 'Eigen social post' },
+        { label: 'Uw logo in footer', value: 'Prominente monochrome logovermelding in de footer van alle pagina\'s.' },
+        { label: 'Website hyperlink', value: 'Directe hyperlink naar uw website voor maximale SEO-waarde.' },
+        { label: 'Social media', value: 'Exclusieve, individuele feature post op onze officiële socialmediakanalen.' },
+        { label: 'Mogelijke persvermelding', value: 'Officiële vermelding in mogelijke pers- en media-updates.' },
         { label: 'Investering', value: '€ 1000' },
       ]},
       { tier: '🥈 ZILVER SPONSORS', features: [
-        { label: 'Uw logo in footer', value: '130x65px (Subtiel en elegant)' },
-        { label: 'Website hyperlink', value: 'Ja, directe link vanuit uw logo' },
-        { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
+        { label: 'Uw logo in footer', value: 'Monochrome logovermelding in de footer van alle pagina\'s.' },
+        { label: 'Website hyperlink', value: 'Directe hyperlink naar uw website.' },
+        { label: 'Social media', value: 'Vermelding in ons collectieve sponsoroverzicht op social media.' },
+        { label: 'Mogelijke persvermelding', value: '—' },
         { label: 'Investering', value: '€ 500' },
       ]},
       { tier: '🥉 BRONS SPONSORS', features: [
-        { label: 'Uw logo in footer', value: '100x50px (Compact en clean)' },
-        { label: 'Website hyperlink', value: 'Nee, enkel logo-vermelding' },
-        { label: 'Social media', value: 'Opname in het collectieve sponsoroverzicht' },
+        { label: 'Uw logo in footer', value: 'Monochrome logovermelding in de footer van alle pagina\'s.' },
+        { label: 'Website hyperlink', value: 'Tekst-hyperlink naar uw website.' },
+        { label: 'Social media', value: 'Vermelding in ons collectieve sponsoroverzicht op social media.' },
+        { label: 'Mogelijke persvermelding', value: '—' },
         { label: 'Investering', value: '€ 250' },
       ]},
     ],
     tableRows: [
       { label: 'Onderdeel', gold: 'GOUD', silver: 'ZILVER', bronze: 'BRONS' },
-      { label: 'Uw logo in footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
-      { label: 'Website hyperlink', gold: 'Ja', silver: 'Ja', bronze: 'Nee' },
-      { label: 'Social media', gold: 'Eigen social post', silver: 'In collectief overzicht', bronze: 'In collectief overzicht' },
+      { label: 'Uw logo in footer', gold: 'Prominente monochrome logovermelding in de footer van alle pagina\'s.', silver: 'Monochrome logovermelding in de footer van alle pagina\'s.', bronze: 'Monochrome logovermelding in de footer van alle pagina\'s.' },
+      { label: 'Website hyperlink', gold: 'Directe hyperlink naar uw website voor maximale SEO-waarde.', silver: 'Directe hyperlink naar uw website.', bronze: 'Tekst-hyperlink naar uw website.' },
+      { label: 'Social media', gold: 'Exclusieve, individuele feature post op onze officiële socialmediakanalen.', silver: 'Vermelding in ons collectieve sponsoroverzicht op social media.', bronze: 'Vermelding in ons collectieve sponsoroverzicht op social media.' },
+      { label: 'Mogelijke persvermelding', gold: 'Officiële vermelding in mogelijke pers- en media-updates.', silver: '—', bronze: '—' },
       { label: 'Investering', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
@@ -81,7 +85,11 @@ const copy: Record<Language, SponsoringCopy> = {
       email: 'E-mailadres',
       phone: 'Telefoonnummer',
       tier: 'Gewenst sponsorpakket',
-      tierOptions: ['Gold', 'Silver', 'Bronze'],
+      tierOptions: [
+        { key: 'Gold', label: 'Goud' },
+        { key: 'Silver', label: 'Zilver' },
+        { key: 'Bronze', label: 'Brons' },
+      ],
       submit: 'SPONSOR NU SAVE THE CHILDREN ➔',
       success: 'Bedankt voor uw interesse. We nemen zo snel mogelijk contact met u op.',
     },
@@ -94,29 +102,33 @@ const copy: Record<Language, SponsoringCopy> = {
     tierHeaders: ['GOLD', 'SILVER', 'BRONZE'],
     table: [
       { tier: '🥇 GOLD SPONSORS', features: [
-        { label: 'Your logo in footer', value: '160x80px (Maximum impact)' },
-        { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
-        { label: 'Social media', value: 'Dedicated social post' },
+        { label: 'Your logo in footer', value: 'Prominent monochrome logo listing in the footer of all pages.' },
+        { label: 'Website hyperlink', value: 'Direct hyperlink to your website for maximum SEO value.' },
+        { label: 'Social media', value: 'Exclusive, individual feature post on our official social media channels.' },
+        { label: 'Potential press mention', value: 'Official mention in potential press and media updates.' },
         { label: 'Investment', value: '€ 1000' },
       ]},
       { tier: '🥈 SILVER SPONSORS', features: [
-        { label: 'Your logo in footer', value: '130x65px (Subtle and elegant)' },
-        { label: 'Website hyperlink', value: 'Yes, direct link from your logo' },
-        { label: 'Social media', value: 'Inclusion in the collective sponsor overview updates' },
+        { label: 'Your logo in footer', value: 'Monochrome logo listing in the footer of all pages.' },
+        { label: 'Website hyperlink', value: 'Direct hyperlink to your website.' },
+        { label: 'Social media', value: 'Inclusion in our collective sponsor overview updates on social media.' },
+        { label: 'Potential press mention', value: '—' },
         { label: 'Investment', value: '€ 500' },
       ]},
       { tier: '🥉 BRONZE SPONSORS', features: [
-        { label: 'Your logo in footer', value: '100x50px (Compact and clean)' },
-        { label: 'Website hyperlink', value: 'No, logo listing only' },
-        { label: 'Social media', value: 'Inclusion in the collective sponsor overview updates' },
+        { label: 'Your logo in footer', value: 'Monochrome logo listing in the footer of all pages.' },
+        { label: 'Website hyperlink', value: 'Text hyperlink to your website.' },
+        { label: 'Social media', value: 'Inclusion in our collective sponsor overview updates on social media.' },
+        { label: 'Potential press mention', value: '—' },
         { label: 'Investment', value: '€ 250' },
       ]},
     ],
     tableRows: [
       { label: 'Component', gold: 'GOLD', silver: 'SILVER', bronze: 'BRONZE' },
-      { label: 'Your logo in footer', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
-      { label: 'Website hyperlink', gold: 'Yes', silver: 'Yes', bronze: 'No' },
-      { label: 'Social media', gold: 'Dedicated social post', silver: 'Collective overview', bronze: 'Collective overview' },
+      { label: 'Your logo in footer', gold: 'Prominent monochrome logo listing in the footer of all pages.', silver: 'Monochrome logo listing in the footer of all pages.', bronze: 'Monochrome logo listing in the footer of all pages.' },
+      { label: 'Website hyperlink', gold: 'Direct hyperlink to your website for maximum SEO value.', silver: 'Direct hyperlink to your website.', bronze: 'Text hyperlink to your website.' },
+      { label: 'Social media', gold: 'Exclusive, individual feature post on our official social media channels.', silver: 'Inclusion in our collective sponsor overview updates on social media.', bronze: 'Inclusion in our collective sponsor overview updates on social media.' },
+      { label: 'Potential press mention', gold: 'Official mention in potential press and media updates.', silver: '—', bronze: '—' },
       { label: 'Investment', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
@@ -125,7 +137,11 @@ const copy: Record<Language, SponsoringCopy> = {
       email: 'Email Address',
       phone: 'Phone Number',
       tier: 'Preferred Sponsorship Tier',
-      tierOptions: ['Gold', 'Silver', 'Bronze'],
+      tierOptions: [
+        { key: 'Gold', label: 'Gold' },
+        { key: 'Silver', label: 'Silver' },
+        { key: 'Bronze', label: 'Bronze' },
+      ],
       submit: 'SPONSOR SAVE THE CHILDREN NOW ➔',
       success: 'Thank you for your interest. We will get back to you as soon as possible.',
     },
@@ -138,29 +154,33 @@ const copy: Record<Language, SponsoringCopy> = {
     tierHeaders: ['ORO', 'PLATA', 'BRONCE'],
     table: [
       { tier: '🥇 ORO SPONSORS', features: [
-        { label: 'Su logo en el pie de página', value: '160x80px (Máximo impacto)' },
-        { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
-        { label: 'Redes sociales', value: 'Publicación dedicada' },
+        { label: 'Su logo en el pie de página', value: 'Mención destacada del logotipo monocromático en el pie de página de todas las páginas.' },
+        { label: 'Hipervínculo web', value: 'Hipervínculo directo a su sitio web para obtener el máximo valor de SEO.' },
+        { label: 'Redes sociales', value: 'Publicación destacada exclusiva e individual en nuestros canales oficiales de redes sociales.' },
+        { label: 'Posible mención en prensa', value: 'Mención oficial en posibles actualizaciones de prensa y medios.' },
         { label: 'Inversión', value: '€ 1000' },
       ]},
       { tier: '🥈 PLATA SPONSORS', features: [
-        { label: 'Su logo en el pie de página', value: '130x65px (Sutil y elegante)' },
-        { label: 'Hipervínculo web', value: 'Sí, enlace directo desde su logo' },
-        { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
+        { label: 'Su logo en el pie de página', value: 'Mención del logotipo monocromático en el pie de página de todas las páginas.' },
+        { label: 'Hipervínculo web', value: 'Hipervínculo directo a su sitio web.' },
+        { label: 'Redes sociales', value: 'Inclusión en nuestras actualizaciones colectivas de patrocinadores en las redes sociales.' },
+        { label: 'Posible mención en prensa', value: '—' },
         { label: 'Inversión', value: '€ 500' },
       ]},
       { tier: '🥉 BRONCE SPONSORS', features: [
-        { label: 'Su logo en el pie de página', value: '100x50px (Compacto y limpio)' },
-        { label: 'Hipervínculo web', value: 'No, solo listado del logo' },
-        { label: 'Redes sociales', value: 'Inclusión en el resumen colectivo de patrocinadores' },
+        { label: 'Su logo en el pie de página', value: 'Mención del logotipo monocromático en el pie de página de todas las páginas.' },
+        { label: 'Hipervínculo web', value: 'Hipervínculo de texto a su sitio web.' },
+        { label: 'Redes sociales', value: 'Inclusión en nuestras actualizaciones colectivas de patrocinadores en las redes sociales.' },
+        { label: 'Posible mención en prensa', value: '—' },
         { label: 'Inversión', value: '€ 250' },
       ]},
     ],
     tableRows: [
       { label: 'Componente', gold: 'ORO', silver: 'PLATA', bronze: 'BRONCE' },
-      { label: 'Su logo en el pie de página', gold: '160x80px', silver: '130x65px', bronze: '100x50px' },
-      { label: 'Hipervínculo web', gold: 'Sí', silver: 'Sí', bronze: 'No' },
-      { label: 'Redes sociales', gold: 'Publicación dedicada', silver: 'Resumen colectivo', bronze: 'Resumen colectivo' },
+      { label: 'Su logo en el pie de página', gold: 'Mención destacada del logotipo monocromático en el pie de página de todas las páginas.', silver: 'Mención del logotipo monocromático en el pie de página de todas las páginas.', bronze: 'Mención del logotipo monocromático en el pie de página de todas las páginas.' },
+      { label: 'Hipervínculo web', gold: 'Hipervínculo directo a su sitio web para obtener el máximo valor de SEO.', silver: 'Hipervínculo directo a su sitio web.', bronze: 'Hipervínculo de texto a su sitio web.' },
+      { label: 'Redes sociales', gold: 'Publicación destacada exclusiva e individual en nuestros canales oficiales de redes sociales.', silver: 'Inclusión en nuestras actualizaciones colectivas de patrocinadores en las redes sociales.', bronze: 'Inclusión en nuestras actualizaciones colectivas de patrocinadores en las redes sociales.' },
+      { label: 'Posible mención en prensa', gold: 'Mención oficial en posibles actualizaciones de prensa y medios.', silver: '—', bronze: '—' },
       { label: 'Inversión', gold: '€ 1000', silver: '€ 500', bronze: '€ 250' },
     ],
     form: {
@@ -169,7 +189,11 @@ const copy: Record<Language, SponsoringCopy> = {
       email: 'Correo Electrónico',
       phone: 'Número de Teléfono',
       tier: 'Paquete de Patrocinio Deseado',
-      tierOptions: ['Gold', 'Silver', 'Bronze'],
+      tierOptions: [
+        { key: 'Gold', label: 'Oro' },
+        { key: 'Silver', label: 'Plata' },
+        { key: 'Bronze', label: 'Bronce' },
+      ],
       submit: 'PATROCINE A SAVE THE CHILDREN AHORA ➔',
       success: 'Gracias por su interés. Nos pondremos en contacto con usted lo antes posible.',
     },
@@ -186,7 +210,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
   const c = copy[language];
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [tier, setTier] = useState(c.form.tierOptions[0]);
+  const [tier, setTier] = useState(c.form.tierOptions[0].key);
   const [showPopup, setShowPopup] = useState(false);
 
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -352,7 +376,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
             {c.form.tier}
             <select name="tier" value={tier} onChange={(e) => { setTier(e.target.value); clearFieldError('tier'); }}>
               {c.form.tierOptions.map((option) => (
-                <option key={option} value={option}>{option}</option>
+                <option key={option.key} value={option.key}>{option.label}</option>
               ))}
             </select>
           </label>
