@@ -24,7 +24,14 @@ export function Holding({ t }: HoldingProps) {
           </p>
         </div>
       </div>
-      <div className="home-cta w-full" style={{ borderBottom: '1px solid rgba(192, 90, 40, .6) !important' }} aria-hidden="true" />
+      <div
+        className="home-cta w-full"
+        style={{
+          borderTop: '1px solid rgba(192, 90, 40, .6) !important',
+          borderBottom: 'none !important',
+        }}
+        aria-hidden="true"
+      />
     </section>
   );
 }
