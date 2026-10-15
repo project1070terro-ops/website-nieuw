@@ -205,8 +205,10 @@ function App() {
           </>
         )}
       </main>
-      <Footer t={t} language={language} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
-      {cookieConsent === null && (
+      {!isMaintenance && (
+        <Footer t={t} language={language} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
+      )}
+      {!isMaintenance && cookieConsent === null && (
         <CookieBanner
           navigate={navigate}
           onConsent={(consent) => {
@@ -215,7 +217,7 @@ function App() {
           }}
         />
       )}
-      <Analytics consent={cookieConsent} />
+      {!isMaintenance && <Analytics consent={cookieConsent} />}
     </div>
   );
 }
