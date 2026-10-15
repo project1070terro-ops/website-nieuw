@@ -178,22 +178,7 @@ function App() {
         t={t}
       />
       <main>
-        {page === 'home' && <Holding t={t} />}
-        {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
-        {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
-        {page === 'terro' && <Terro t={t} navigate={navigate} />}
-        {page === 'blog' && blogSlug ? (
-          <BlogDetail t={t} slug={blogSlug} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
-        ) : page === 'blog' ? (
-          <Blog t={t} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} initialYear={blogYear} />
-        ) : null}
-        {page === 'cause' && <Cause t={t} navigate={navigate} />}
-        {page === 'donate' && (
-          <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
-        )}
-        {page === 'contact' && <Contact t={t} navigate={navigate} />}
-        {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} totalDonated={totalDonated} />}
-        {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
+        <Holding t={t} />
       </main>
       <Footer t={t} language={language} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       {cookieConsent === null && (

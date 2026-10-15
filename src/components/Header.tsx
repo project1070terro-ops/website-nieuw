@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'; // 1. Geïmporteerd om scrollen bij te houden
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import type { Language, Page } from '../types';
 import type { TranslationContent } from '../types';
 
@@ -14,50 +13,18 @@ interface HeaderProps {
 }
 
 export function Header({ page, language, setLanguage, navigate, menuOpen, setMenuOpen, t }: HeaderProps) {
-  const navItems: [Page, keyof typeof t.nav][] = [['home', 'home'], ['story', 'story'], ['route', 'route'], ['terro', 'terro'], ['blog', 'blog'], ['cause', 'cause'], ['sponsoring', 'sponsoring']];
-
-  // State om bij te houden of de gebruiker gescrold heeft
-  const [scrolled, setScrolled] = useState(false);
-
-  // Effect om te luisteren naar het scroll-gedrag
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Bepaal of de header in scrolled-modus moet zijn
-  // Op home-pagina: alleen bij scrollen
-  // Op andere pagina's: altijd
-  const isHeaderScrolled = page === 'home' ? scrolled : true;
-
   return (
-    <header className={`site-header ${isHeaderScrolled ? 'scrolled' : ''}`}>
+    <header className="site-header scrolled">
       <div className="brand">
         <span>FORZA FORTUNA</span>
         <em>Financial Group</em>
       </div>
-      
+
       <button className="menu-toggle" aria-label="Menu" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
-      
+
       <nav className={menuOpen ? 'main-nav open' : 'main-nav'}>
-        {navItems.map(([key, label]) => (
-          <button key={key} className={page === key ? 'active' : ''} onClick={() => { navigate(key); setMenuOpen(false); }}>
-            {t.nav[label]}
-          </button>
-        ))}
-        <button className={`nav-donate-btn ${page === 'donate' ? 'active' : ''}`} onClick={() => { navigate('donate'); setMenuOpen(false); }}>
-          {t.nav.donate}
-        </button>
         <div className="language-switcher nav-language-switcher">
           {(['nl', 'en', 'es'] as Language[]).map((item, index) => (
             <span key={item}>
@@ -69,10 +36,6 @@ export function Header({ page, language, setLanguage, navigate, menuOpen, setMen
           ))}
         </div>
       </nav>
-
-      <button className={`donate-btn ${page === 'donate' ? 'active' : ''}`} onClick={() => navigate('donate')}>
-        {t.nav.donate}
-      </button>
 
       <div className="language-switcher header-language-switcher">
         {(['nl', 'en', 'es'] as Language[]).map((item, index) => (
