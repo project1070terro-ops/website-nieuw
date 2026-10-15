@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import { BrandText } from './BrandText';
 import type { TranslationContent } from '../types';
 
@@ -14,22 +13,15 @@ export function Holding({ t }: HoldingProps) {
           <h1 className="text-3xl md:text-5xl font-semibold uppercase tracking-wider text-white mb-6">
             <BrandText text="Project 15/70" />
           </h1>
-          <p className="text-sm md:text-base leading-relaxed text-white/80">
-            {t.holding.split('\n').map((line, i, arr) => (
-              <Fragment key={i}>
-                {line}
-                {i < arr.length - 1 && <br />}
-              </Fragment>
-            ))}
-          </p>
+          {t.holding.split('\n').map((line, i) => (
+            <p key={i} className="text-sm md:text-base leading-relaxed text-white/80">
+              {line}
+            </p>
+          ))}
         </div>
       </div>
       <div
-        className="home-cta w-full"
-        style={{
-          borderTop: '1px solid rgba(192, 90, 40, .6) !important',
-          borderBottom: 'none !important',
-        }}
+        className="home-cta w-full !border-b-0 border-t border-[#c05a28]/60"
         aria-hidden="true"
       />
     </section>
