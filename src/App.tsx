@@ -9,6 +9,7 @@ import { featuredMarkdownPosts } from './content/blog';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Holding } from './components/Holding';
+import { Home } from './components/Home';
 import { Story } from './components/Story';
 import { RoutePage } from './components/RoutePage';
 import { Terro } from './components/Terro';
@@ -41,6 +42,8 @@ function App() {
     const parsed = value ? Number(value) : 2027;
     return [2027, 2028, 2029].includes(parsed) ? parsed : 2027;
   };
+
+  const isMaintenance = typeof window !== 'undefined' && (window.location.hostname === 'project1570.org' || window.location.hostname === 'www.project1570.org');
 
   const [language, setLanguage] = useState<Language>('nl');
   const [page, setPage] = useState<Page>(getInitialPage);
@@ -175,12 +178,34 @@ function App() {
         navigate={navigate}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
+        maintenance={isMaintenance}
         t={t}
       />
       <main>
-        <Holding t={t} />
+        {isMaintenance ? (
+          <Holding t={t} />
+        ) : (
+          <>
+            {page === 'home' && <Home t={t} navigate={navigate} />}
+            {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
+            {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
+            {page === 'terro' && <Terro t={t} navigate={navigate} />}
+            {page === 'blog' && blogSlug ? (
+              <BlogDetail t={t} slug={blogSlug} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} />
+            ) : page === 'blog' ? (
+              <Blog t={t} language={language} blogCards={blogPosts} navigate={navigate} goToBlog={goToBlog} initialYear={blogYear} />
+            ) : null}
+            {page === 'cause' && <Cause t={t} navigate={navigate} />}
+            {page === 'donate' && (
+              <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
+            )}
+            {page === 'contact' && <Contact t={t} navigate={navigate} />}
+            {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} totalDonated={totalDonated} />}
+            {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
+          </>
+        )}
       </main>
-      <Footer t={t} language={language} navigate={navigate} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
+      <Footer t={t} language={language} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       {cookieConsent === null && (
         <CookieBanner
           navigate={navigate}
