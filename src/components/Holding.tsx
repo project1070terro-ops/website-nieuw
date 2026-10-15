@@ -1,3 +1,4 @@
+import { BrandText } from './BrandText';
 import type { TranslationContent } from '../types';
 
 interface HoldingProps {
@@ -6,12 +7,18 @@ interface HoldingProps {
 
 export function Holding({ t }: HoldingProps) {
   return (
-    <section className="min-h-screen bg-[#111] flex items-center justify-center px-4 py-20">
-      <img
-        src="/images/hero/coming-soon-afbeelding.webp"
-        alt="Project 15/70 — coming soon"
-        className="w-full h-auto max-w-[85vw] md:max-w-2xl"
-      />
+    <section className="min-h-screen flex flex-col justify-between bg-[#111]">
+      <div className="flex-1 flex items-center justify-center px-6">
+        <div className="max-w-3xl text-center">
+          <h1 className="text-3xl md:text-5xl font-semibold uppercase tracking-wider text-white mb-6">
+            <BrandText text="Project 15/70" />
+          </h1>
+          <p className="text-sm md:text-base leading-relaxed text-white/80 whitespace-pre-line">
+            {t.holding}
+          </p>
+        </div>
+      </div>
+      <div className="home-cta w-full" aria-hidden="true" />
     </section>
   );
 }
