@@ -18,7 +18,7 @@ export function Holding({ t }: HoldingProps) {
           </p>
         </div>
       </div>
-      <div className="home-cta w-full" aria-hidden="true" />
+      <div className="home-cta w-full" style={{ borderBottom: '1px solid rgba(192, 90, 40, .6)' }} aria-hidden="true" />
     </section>
   );
 }
