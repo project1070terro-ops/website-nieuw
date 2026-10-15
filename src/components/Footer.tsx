@@ -10,9 +10,9 @@ interface FooterProps {
 }
 
 const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; contact: string; general: string; sponsorship: string; partners: string; sponsorsGold: string; sponsorsSilver: string; sponsorsBronze: string }> = {
-  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Roel Terro.</>, contact: 'CONTACT', general: 'Algemeen:', sponsorship: 'Sponsoring & Diensten:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS ZILVER', sponsorsBronze: 'SPONSORS BRONS' },
-  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website created by Roel Terro.</>, contact: 'CONTACT', general: 'General:', sponsorship: 'Sponsorship & Services:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS SILVER', sponsorsBronze: 'SPONSORS BRONZE' },
-  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web creado por Roel Terro.</>, contact: 'CONTACTO', general: 'General:', sponsorship: 'Patrocinio & Servicios:', partners: 'SOCIOS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'PATROCINADORES PLATA', sponsorsBronze: 'PATROCINADORES BRONCE' },
+  nl: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website ontwikkeld door Terro.</>, contact: 'CONTACT', general: 'Algemeen:', sponsorship: 'Sponsoring & Diensten:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS ZILVER', sponsorsBronze: 'SPONSORS BRONS' },
+  en: { privacy: 'Privacy & Disclaimer', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Website developed by Terro.</>, contact: 'CONTACT', general: 'General:', sponsorship: 'Sponsorship & Services:', partners: 'PARTNERS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'SPONSORS SILVER', sponsorsBronze: 'SPONSORS BRONZE' },
+  es: { privacy: 'Privacidad y Aviso Legal', copyright: <>© 2026 - 2029 Project 15<span className="brand-slash">/</span>70. Sitio web desarrollado por Terro.</>, contact: 'CONTACTO', general: 'General:', sponsorship: 'Patrocinio & Servicios:', partners: 'SOCIOS', sponsorsGold: 'SPONSORS GOLD', sponsorsSilver: 'PATROCINADORES PLATA', sponsorsBronze: 'PATROCINADORES BRONCE' },
 };
 
 const STC_URL = 'https://www.savethechildren.org/';

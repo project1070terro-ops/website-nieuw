@@ -112,6 +112,7 @@ export interface TranslationContent {
   donationThanks: string;
   email: string;
   contactSubjects: { general: string; products: string; financial: string };
+  holding: string;
 }
 
 export interface BlogPhoto {

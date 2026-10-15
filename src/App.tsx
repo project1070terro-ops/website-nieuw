@@ -8,7 +8,7 @@ import { featuredMarkdownPosts } from './content/blog';
 // Components
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import { Home } from './components/Home';
+import { Holding } from './components/Holding';
 import { Story } from './components/Story';
 import { RoutePage } from './components/RoutePage';
 import { Terro } from './components/Terro';
@@ -178,7 +178,7 @@ function App() {
         t={t}
       />
       <main>
-        {page === 'home' && <Home t={t} navigate={navigate} />}
+        {page === 'home' && <Holding t={t} />}
         {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
         {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
         {page === 'terro' && <Terro t={t} navigate={navigate} />}

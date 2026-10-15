@@ -117,7 +117,8 @@ Laat maar iets horen — we staan voor je klaar.`,
     sent: 'Bedankt. We nemen zo snel mogelijk contact met je op.',
     donationThanks: 'Bedankt voor uw donatie! Uw bijdrage is toegevoegd aan de live-balk.',
     email: 'Officieel e-mailadres',
-    contactSubjects: { general: 'Algemene vraag of opmerking', products: 'Sponsoring met producten en/of diensten', financial: 'Sponsoring via een financieel engagement' }
+    contactSubjects: { general: 'Algemene vraag of opmerking', products: 'Sponsoring met producten en/of diensten', financial: 'Sponsoring via een financieel engagement' },
+    holding: 'PROJECT 15/70 — B2B Sponsoring & Fondsenwerving voor Save the Children. Achter de schermen leggen wij de laatste hand aan ons internationale portaal. Online vanaf uiterlijk 1 januari 2027.'
   },
   en: {
     nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', cause: 'Our Cause', sponsoring: 'Sponsorship', donate: 'Donate', contact: 'Contact' },
@@ -229,7 +230,8 @@ Let us know — we're here for you.`,
     sent: 'Thank you. We\'ll get back to you as soon as possible.',
     donationThanks: 'Thank you for your donation! Your contribution has been added to the live progress bar.',
     email: 'Official email address',
-    contactSubjects: { general: 'General question or remark', products: 'Sponsorship with products and/or services', financial: 'Sponsorship through a financial commitment' }
+    contactSubjects: { general: 'General question or remark', products: 'Sponsorship with products and/or services', financial: 'Sponsorship through a financial commitment' },
+    holding: 'PROJECT 15/70 — B2B Sponsorship & Fundraising for Save the Children. Behind the scenes, we are putting the finishing touches on our international portal. Online no later than January 1, 2027.'
   },
   es: {
     nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', cause: 'Nuestra Causa', sponsoring: 'Patrocinio', donate: 'Donar', contact: 'Contacto' },
@@ -341,6 +343,7 @@ Cuéntanos — estamos aquí para ti.`,
     sent: 'Gracias. Te responderemos lo antes posible.',
     donationThanks: '¡Gracias por su donación! Su contribución se ha añadido a la barra de progreso en vivo.',
     email: 'Dirección de correo electrónico oficial',
-    contactSubjects: { general: 'Pregunta o comentario general', products: 'Patrocinio con productos y/o servicios', financial: 'Patrocinio a través de un compromiso financiero' }
+    contactSubjects: { general: 'Pregunta o comentario general', products: 'Patrocinio con productos y/o servicios', financial: 'Patrocinio a través de un compromiso financiero' },
+    holding: 'PROJECT 15/70 — Patrocinio B2B y Recaudación de fondos para Save the Children. Detrás de escena, estamos dando los últimos toques a nuestro portal internacional. Online a más tardar el 1 de enero de 2027.'
   }
 };
