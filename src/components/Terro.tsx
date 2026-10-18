@@ -16,11 +16,14 @@ const sectionImages: Record<number, { src: string; alt: string }> = {
 
 export function Terro({ t, navigate }: TerroProps) {
   return (
-    <main className="bg-black text-white">
-      <section className="bg-black py-8 text-center px-4">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase tracking-wider">
-          <BrandText text={t.terroTitle} />
-        </h1>
+    <div className="bg-black w-full overflow-x-hidden">
+      <section className="page-intro story-intro">
+        <p className="eyebrow">
+          <BrandText text="PROJECT 15/70" />
+        </p>
+        <h2 className="text-3xl md:text-5xl font-bold text-white text-center mt-2 mb-8">
+          {t.terroTitle}
+        </h2>
       </section>
 
       <section className="bg-black px-4 pb-8">
@@ -88,6 +91,6 @@ export function Terro({ t, navigate }: TerroProps) {
           <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
         </button>
       </section>
-    </main>
+    </div>
   );
 }
