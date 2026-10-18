@@ -19,16 +19,14 @@ export function Terro({ t, navigate }: TerroProps) {
   return (
     <>
       <PageIntro title={t.terroTitle} lead="" className="terro-intro" />
-      <div className="terro-image-wrapper w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
         <img
-          src="/images/sponsor/WhatsApp_Image_2026-08-28_at_20.00.57.webp"
+          src="/images/hero/project-terro.webp"
           alt="Terro"
-          className="w-full h-[250px] md:h-[420px] object-cover object-[center_45%] md:object-[center_46%]"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/80 lg:bg-black/90 pointer-events-none" />
-        <div className="terro-image-vignette absolute inset-0 pointer-events-none" />
-      </div>
-      <article className="terro-sections relative z-10 -mt-12 pt-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      </section>
+      <article className="terro-sections relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         {t.terroSections.map(([title, text], index) => {
           const paragraphs = text.trim().split(/\r?\n\s*\r?\n/);
           const image = sectionImages[index];
