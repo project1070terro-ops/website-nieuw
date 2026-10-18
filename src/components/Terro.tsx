@@ -21,8 +21,8 @@ export function Terro({ t, navigate }: TerroProps) {
         <p className="eyebrow">
           <BrandText text="PROJECT 15/70" />
         </p>
-        <h2 className="text-3xl md:text-5xl font-bold text-white text-center mt-2 mb-8">
-          {t.terroTitle}
+        <h2 className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold text-white text-center mt-2 mb-8 whitespace-nowrap">
+          <BrandText text={t.terroTitle} />
         </h2>
       </section>
 
