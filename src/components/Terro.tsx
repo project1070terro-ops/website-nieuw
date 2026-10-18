@@ -15,14 +15,15 @@ const sectionImages: Record<number, { src: string; alt: string }> = {
 };
 
 export function Terro({ t, navigate }: TerroProps) {
+  const [terroStart, terroEnd] = t.terroTitle.split('15/70');
   return (
     <div className="bg-black w-full overflow-x-hidden">
       <section className="page-intro story-intro">
         <p className="eyebrow">
           <BrandText text="PROJECT 15/70" />
         </p>
-        <h2 className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold text-white text-center mt-2 mb-8 whitespace-nowrap">
-          <BrandText text={t.terroTitle} />
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4 mt-2 mb-8 md:whitespace-nowrap">
+          {terroStart}15<span className="text-[#c05a28]">/</span>70{terroEnd}
         </h2>
       </section>
 
