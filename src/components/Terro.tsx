@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { ArrowRight } from 'lucide-react';
 import type { Page, TranslationContent } from '../types';
 import { BrandText } from './BrandText';
-import { PageIntro } from './PageIntro';
 import { Stats } from './Stats';
 
 interface TerroProps {
@@ -17,23 +16,29 @@ const sectionImages: Record<number, { src: string; alt: string }> = {
 
 export function Terro({ t, navigate }: TerroProps) {
   return (
-    <>
-      <PageIntro title={t.terroTitle} lead="" className="terro-intro" />
-      <section className="bg-[#111] py-4 md:py-8">
+    <main className="bg-black text-white">
+      <section className="bg-black py-8 text-center px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold uppercase tracking-wider">
+          <BrandText text={t.terroTitle} />
+        </h1>
+      </section>
+
+      <section className="bg-black px-4 pb-8">
         <img
           src="/images/hero/project-terro.webp"
           alt="Terro"
-          className="w-full max-w-[90vw] md:max-w-4xl lg:max-w-5xl mx-auto block h-auto"
+          className="w-full max-w-4xl lg:max-w-5xl mx-auto block h-auto object-contain rounded-sm shadow-2xl"
         />
       </section>
-      <article className="terro-sections relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+
+      <article className="bg-black max-w-4xl lg:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         {t.terroSections.map(([title, text], index) => {
           const paragraphs = text.trim().split(/\r?\n\s*\r?\n/);
           const image = sectionImages[index];
           return (
             <Fragment key={title}>
-              <div className="terro-block">
-                <h3>{title}</h3>
+              <div className="mb-6">
+                <h3 className="text-xl md:text-2xl font-semibold mb-4">{title}</h3>
                 {paragraphs.map((para, i) => {
                   const lines = para.split('\n').filter(line => line.trim() !== '');
                   const isList = lines.length > 0 && lines.every(line => line.trim().startsWith('- '));
@@ -50,7 +55,7 @@ export function Terro({ t, navigate }: TerroProps) {
                   }
                   const mobileBlocks = para.split('[MOBIELE WITREGEL]');
                   return (
-                    <p key={i}>
+                    <p key={i} className="text-white/75 text-base leading-relaxed mb-4">
                       {mobileBlocks.map((block, bi) => (
                         <Fragment key={bi}>
                           {bi > 0 && <span className="hidden md:inline">&nbsp;</span>}
@@ -75,12 +80,14 @@ export function Terro({ t, navigate }: TerroProps) {
           );
         })}
       </article>
+
       <Stats t={t} />
+
       <section className="home-cta">
         <button className="button button-primary cta-large" onClick={() => navigate('donate')}>
           <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
         </button>
       </section>
-    </>
+    </main>
   );
 }
