@@ -19,11 +19,11 @@ export function Terro({ t, navigate }: TerroProps) {
   return (
     <>
       <PageIntro title={t.terroTitle} lead="" className="terro-intro" />
-      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
+      <section className="bg-[#111] py-4 md:py-8">
         <img
           src="/images/hero/project-terro.webp"
           alt="Terro"
-          className="w-full h-full object-cover object-center"
+          className="w-full max-w-[90vw] md:max-w-4xl lg:max-w-5xl mx-auto block h-auto"
         />
       </section>
       <article className="terro-sections relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
