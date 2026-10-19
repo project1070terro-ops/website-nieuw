@@ -215,30 +215,44 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <div className="blog-page max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
       <PageIntro title={t.blogTitle} lead={t.blogLead} className="!pb-0" />
       
-      <section className="relative w-full h-[40vh] min-h-[260px] max-h-[420px] overflow-hidden rounded-xl">
-        <img
-          src="/images/hero/blog-aftrap-project1570.webp"
-          alt="Project 15/70 blog launch"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          {t.blogBanner.split('\n').map((line, i) => (
-            <p
-              key={i}
-              className={`text-sm sm:text-base md:text-lg font-bold uppercase tracking-wider leading-tight ${
-                i === 1 ? 'text-[#c05a28]' : 'text-white'
-              }`}
-            >
-              {line}
-            </p>
-          ))}
-        </div>
-      </section>
-
       <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {infoCards.map((card) => {
           if (!card || !card.title?.[language]) return null;
+          if (card.slug === '/blog/de-officiele-aftrap') {
+            return (
+              <a
+                key={card.slug}
+                href={`/blog/${card.slug}`}
+                className="blog-card featured-info-card"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToBlog?.(card.slug);
+                }}
+              >
+                <div className="relative w-full">
+                  <img
+                    className="blog-card-media"
+                    src="/images/hero/blog-aftrap-project1570.webp"
+                    alt=""
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-2">
+                    {t.blogBanner.split('\n').map((line, i) => (
+                      <p
+                        key={i}
+                        className={`text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wider leading-tight ${
+                          i === 1 ? 'text-[#c05a28]' : 'text-white'
+                        }`}
+                      >
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            );
+          }
           const excerptText = toPlainText(card.inleiding?.[language] || []);
           const truncated = excerptText ? truncateText(excerptText, 120) : '';
           return (
