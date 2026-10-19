@@ -255,6 +255,10 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                       alt=""
                       loading="lazy"
                     />
+                    <div
+                      className="bg-gradient-to-l from-black/60 via-black/20 to-transparent absolute right-0 top-0 h-full w-[60%] pointer-events-none"
+                      aria-hidden="true"
+                    />
                     <div className="absolute inset-0 flex flex-col items-end justify-center text-right px-4">
                       {t.blogBanner.split('\n').map((line, i) => (
                         <p
