@@ -255,7 +255,6 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                       alt=""
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/60" />
                     <div className="absolute inset-0 flex flex-col items-end justify-center text-right px-4">
                       {t.blogBanner.split('\n').map((line, i) => (
                         <p
