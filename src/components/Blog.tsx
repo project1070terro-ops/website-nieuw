@@ -254,7 +254,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                         <p
                           key={i}
                           className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide leading-tight ${
-                            i === 1 ? 'text-[#c05a28] uppercase' : 'text-white'
+                            i === 1 ? 'text-[#c05a28] uppercase' : 'text-white/80'
                           }`}
                         >
                           {line}
