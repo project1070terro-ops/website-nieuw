@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: AANKONDIGING
 title: 'De Officiële Aftrap van PROJECT 15/70: De Weg naar Project Terro'
 fullTitle: 'De Officiële Aftrap van PROJECT 15/70: De Weg naar Project Terro'
-image: /images/hero/blog-aankondiging.webp
+image: /images/hero/blog-aftrap-project1570.webp
 status: published
 ---
 

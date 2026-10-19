@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: ANNOUNCEMENT
 title: 'The Official Kick-off of PROJECT 15/70: The Road to Project Terro'
 fullTitle: 'The Official Kick-off of PROJECT 15/70: The Road to Project Terro'
-image: /images/hero/blog-aankondiging.webp
+image: /images/hero/blog-aftrap-project1570.webp
 status: published
 ---
 

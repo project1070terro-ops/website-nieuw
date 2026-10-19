@@ -4,7 +4,7 @@ slug: /blog/de-officiele-aftrap
 category: ANUNCIO
 title: 'El Lanzamiento Oficial del PROYECTO 15/70: El Camino hacia el Proyecto Terro'
 fullTitle: 'El Lanzamiento Oficial del PROYECTO 15/70: El Camino hacia el Proyecto Terro'
-image: /images/hero/blog-aankondiging.webp
+image: /images/hero/blog-aftrap-project1570.webp
 status: published
 ---
 

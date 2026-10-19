@@ -90,6 +90,7 @@ export interface TranslationContent {
   goalReached: string;
   blogTitle: string;
   blogLead: string;
+  blogBanner: string;
   donateTitle: string;
   donateLead: string;
   donated: string;

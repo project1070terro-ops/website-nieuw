@@ -502,7 +502,7 @@ export function RouteDayInteractive({
           </button>
           <a
             href={day.postSlug ? `/blog/${day.postSlug}?from=route&day=${day.day}` : '/blog'}
-            className="route-preview-btn"
+            className="route-preview-btn !whitespace-nowrap !text-xs sm:!text-sm md:!text-xs lg:!text-sm"
             onClick={(event) => {
               event.preventDefault();
               if (day.postSlug) {

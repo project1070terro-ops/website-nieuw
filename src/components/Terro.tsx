@@ -23,7 +23,7 @@ export function Terro({ t, navigate }: TerroProps) {
           <BrandText text="PROJECT 15/70" />
         </p>
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white text-center px-4 mt-2 mb-8 md:whitespace-nowrap">
-          {terroStart}15<span className="text-[#c05a28]">/</span>70{terroEnd}
+          {terroStart}<br className="md:hidden" />15<span className="text-[#c05a28]">/</span>70{terroEnd}
         </h2>
       </section>
 
