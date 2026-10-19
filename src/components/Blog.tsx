@@ -123,7 +123,14 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     .sort((a, b) => parseBlogDate(b.card.date).getTime() - parseBlogDate(a.card.date).getTime() || a.index - b.index)
     .map((item) => item.card);
 
-  const infoCards = sortedCards.filter((c) => INFO_SLUGS.has(c.slug));
+  const infoCardOrder: Record<string, number> = {
+    '/blog/de-officiele-aftrap': 0,
+    '/blog/waarom-save-the-children': 1,
+    '/blog/de-rekensom-hoogtemeters': 2,
+  };
+  const infoCards = sortedCards
+    .filter((c) => INFO_SLUGS.has(c.slug))
+    .sort((a, b) => infoCardOrder[a.slug] - infoCardOrder[b.slug]);
   const yearCards = sortedCards.filter((c) => !INFO_SLUGS.has(c.slug) && postYear(c.date) === year && (category === 'all' || c.category === category));
   const updates = yearCards.filter((c) => !isStage(c.slug));
   const stages = yearCards.filter((c) => isStage(c.slug));
