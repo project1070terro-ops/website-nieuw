@@ -218,43 +218,17 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       <div className="info-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {infoCards.map((card) => {
           if (!card || !card.title?.[language]) return null;
-          if (card.slug === '/blog/de-officiele-aftrap') {
-            return (
-              <a
-                key={card.slug}
-                href={`/blog/${card.slug}`}
-                className="blog-card featured-info-card"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToBlog?.(card.slug);
-                }}
-              >
-                <div className="relative w-full">
-                  <img
-                    className="blog-card-media"
-                    src="/images/hero/blog-aftrap-project1570.webp"
-                    alt=""
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/60" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-2">
-                    {t.blogBanner.split('\n').map((line, i) => (
-                      <p
-                        key={i}
-                        className={`text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-wider leading-tight ${
-                          i === 1 ? 'text-[#c05a28]' : 'text-white'
-                        }`}
-                      >
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            );
-          }
           const excerptText = toPlainText(card.inleiding?.[language] || []);
           const truncated = excerptText ? truncateText(excerptText, 120) : '';
+          const body = (
+            <div className="blog-card-body">
+              <span className="tag mb-2 inline-block">{card.label[language]}</span>
+              <h2 className="mt-2" style={{ fontSize: '16px', fontWeight: 400, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
+                {card.title[language]}
+              </h2>
+              {truncated && <p className="text-sm text-zinc-400 leading-relaxed">{truncated}</p>}
+            </div>
+          );
           return (
             <a
               key={card.slug}
@@ -265,14 +239,37 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                 goToBlog?.(card.slug);
               }}
             >
-              {card.image && <img className="blog-card-media" src={card.image} alt="" loading="lazy" />}
-              <div className="blog-card-body">
-                <span className="tag mb-2 inline-block">{card.label[language]}</span>
-                <h2 className="mt-2" style={{ fontSize: '16px', fontWeight: 400, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5', marginBottom: '8px' }}>
-                  {card.title[language]}
-                </h2>
-                {truncated && <p className="text-sm text-zinc-400 leading-relaxed">{truncated}</p>}
-              </div>
+              {card.slug === '/blog/de-officiele-aftrap' ? (
+                <>
+                  <div className="relative w-full">
+                    <img
+                      className="blog-card-media"
+                      src="/images/hero/blog-aftrap-project1570.webp"
+                      alt=""
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="absolute inset-0 flex flex-col items-end justify-center text-right px-4">
+                      {t.blogBanner.split('\n').map((line, i) => (
+                        <p
+                          key={i}
+                          className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide leading-tight ${
+                            i === 1 ? 'text-[#c05a28] uppercase' : 'text-white'
+                          }`}
+                        >
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                  {body}
+                </>
+              ) : (
+                <>
+                  {card.image && <img className="blog-card-media" src={card.image} alt="" loading="lazy" />}
+                  {body}
+                </>
+              )}
             </a>
           );
         })}

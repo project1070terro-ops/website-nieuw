@@ -55,7 +55,7 @@ export const copy: Record<'nl' | 'en' | 'es', TranslationContent> = {
       weatherTitle: 'Het weer', weatherToday: 'Vandaag', weatherTemp: 'Temp', weatherWind: 'Wind', weatherPrecip: 'Neerslag', weatherError: 'Weerdata niet beschikbaar',
       axisHint: 'beweeg voor info',
     },
-    terroTitle: 'PROJECT TERRO: DE MAN ACHTER 15/70',
+    terroTitle: 'Project Terro: De man achter 15/70',
     terroSections: [['Wie is Terro?', `Achter de intense blik schuilt een man van principes, karakter en diepe discipline. Voor Terro zijn waarheid en correctheid de hoogste wetten.
 
 Het verleden heeft zijn geheimen, maar die liggen veilig opgeborgen.
@@ -94,7 +94,7 @@ Voor de uitrusting en omkadering kan Terro rekenen op de onvoorwaardelijke steun
     goalReached: 'Doel bereikt — fantastisch!',
     blogTitle: 'Nieuws uit het peloton',
     blogLead: 'Updates, verhalen en momenten onderweg naar Project 15/70.',
-    blogBanner: 'DE OFFICIËLE AFTRAP VAN\nPROJECT 15/70\nOP WEG NAAR EEN LOODZWARE UITDAGING',
+    blogBanner: 'De officiële aftrap van\nPROJECT 15/70\nOp weg naar een loodzware uitdaging',
     donateTitle: 'Klim mee naar 17.500',
     donateLead: 'Elke euro is één hoogtemeter. Elke hoogtemeter brengt ons dichter bij een toekomst voor het goede doel.',
     donated: 'Al',
@@ -169,7 +169,7 @@ Laat maar iets horen — we staan voor je klaar.`,
       weatherTitle: 'Weather', weatherToday: 'Today', weatherTemp: 'Temp', weatherWind: 'Wind', weatherPrecip: 'Precip', weatherError: 'Weather data not available',
       axisHint: 'hover for info',
     },
-    terroTitle: 'PROJECT TERRO: THE MAN BEHIND 15/70',
+    terroTitle: 'Project Terro: The man behind 15/70',
     terroSections: [['Who is Terro?', `Behind the intense gaze lies a man of principles, character and deep discipline. For Terro, truth and correctness are the highest laws.
 
 The past has its secrets, but they are safely stored where they belong.
@@ -208,7 +208,7 @@ When it comes to equipment, Terro can rely on the unconditional support of frien
     goalReached: 'Goal reached — amazing!',
     blogTitle: 'News from the peloton',
     blogLead: 'Updates, stories and moments on the way to Project 15/70.',
-    blogBanner: 'THE OFFICIAL LAUNCH OF\nPROJECT 15/70\nTHE ROAD TO A GRUELLING CHALLENGE',
+    blogBanner: 'The official launch of\nPROJECT 15/70\nThe road to a gruelling challenge',
     donateTitle: 'Climb with us to 17,500',
     donateLead: 'Every euro is one vertical meter. Every vertical meter brings us closer to a future for the good cause.',
     donated: 'Already',
@@ -283,7 +283,7 @@ Let us know — we're here for you.`,
       weatherTitle: 'El tiempo', weatherToday: 'Hoy', weatherTemp: 'Temp', weatherWind: 'Viento', weatherPrecip: 'Precip', weatherError: 'Datos meteorológicos no disponibles',
       axisHint: 'toca para info',
     },
-    terroTitle: 'PROYECTO TERRO: EL HOMBRE DETRÁS DE 15/70',
+    terroTitle: 'Proyecto Terro: El hombre detrás de 15/70',
     terroSections: [['¿Quién es Terro?', `Detrás de la mirada intensa se esconde un hombre de principios, carácter y profunda disciplina. Para Terro, la verdad y la corrección son las leyes supremas.
 
 El pasado tiene sus secretos, pero están guardados con seguridad donde corresponden.
@@ -322,7 +322,7 @@ En cuanto al material, Terro no deja nada al azar: todo debe estar siempre perfe
     goalReached: '¡Meta alcanzada — increíble!',
     blogTitle: 'Noticias del pelotón',
     blogLead: 'Actualizaciones, historias y momentos en el camino hacia el Proyecto 15/70.',
-    blogBanner: 'EL LANZAMIENTO OFICIAL DE\nPROJECT 15/70\nRUMBO A UN RETO EXTREMO',
+    blogBanner: 'El lanzamiento oficial de\nPROJECT 15/70\nRumbo a un reto extremo',
     donateTitle: 'Sube con nosotros a 17.500',
     donateLead: 'Cada euro es un metro de desnivel. Cada metro de desnivel nos acerca a un futuro para la buena causa.',
     donated: 'Ya',
