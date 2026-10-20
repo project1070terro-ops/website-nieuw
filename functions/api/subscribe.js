@@ -57,14 +57,20 @@ export async function onRequestPost(context) {
     const unsubscribeUrl = `https://project1570.pages.dev/api/unsubscribe?token=${data.unsubscribe_token}`;
     const { subject, html, text } = getWelcomeTemplate(language, unsubscribeUrl);
 
-    await sendEmail({
-      env,
-      to: email,
-      subject,
-      html,
-      text,
-      replyTo: 'info@project1570.org',
-    });
+    try {
+      await sendEmail({
+        env,
+        to: email,
+        subject,
+        html,
+        text,
+        replyTo: 'info@project1570.org',
+      });
+    } catch (mailError) {
+      // Log but do not fail the subscription: the user is saved and can be
+      // reached later once Resend domain / from-address is fully verified.
+      console.error('Welcome email failed:', mailError.message);
+    }
 
     return jsonResponse({ ok: true });
   } catch (error) {
