@@ -115,6 +115,17 @@ export interface TranslationContent {
   email: string;
   contactSubjects: { general: string; products: string; financial: string };
   holding: string;
+  subscribeLabel: string;
+  subscribeSubject: string;
+  subscribeHeading: string;
+  subscribeSubtext: string;
+  subscribePlaceholder: string;
+  subscribeButton: string;
+  subscribeSuccess: string;
+  subscribeError: string;
+  invalidEmail: string;
+  footerSubscribeText: string;
+  footerSubscribeButton: string;
 }
 
 export interface BlogPhoto {

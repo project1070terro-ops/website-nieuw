@@ -1,5 +1,6 @@
 import { ArrowRight, Check } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
+import { subscribeEmail } from '../lib/subscribe';
 import type { Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
@@ -41,11 +42,16 @@ export function Contact({ t, navigate }: ContactProps) {
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
 
+    const isUpdate = selectedSubject === t.subscribeSubject;
+
     const nextErrors: Record<string, string> = {};
     if (!name) nextErrors.name = t.required;
     if (!email) nextErrors.email = t.required;
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = t.invalidEmail;
+    }
     if (!selectedSubject) nextErrors.subject = t.required;
-    if (!message) nextErrors.message = t.required;
+    if (!isUpdate && !message) nextErrors.message = t.required;
 
     if (Object.keys(nextErrors).length > 0) {
       setFieldErrors(nextErrors);
@@ -54,7 +60,7 @@ export function Contact({ t, navigate }: ContactProps) {
 
     setFieldErrors({});
 
-    const to = selectedSubject === t.contactSubjects.general
+    const to = isUpdate || selectedSubject === t.contactSubjects.general
       ? 'info@project1570.org'
       : 'sponsoring@project1570.org';
     const data = {
@@ -75,6 +81,10 @@ export function Contact({ t, navigate }: ContactProps) {
 
       if (!response.ok) {
         throw new Error('Failed to send message');
+      }
+
+      if (isUpdate) {
+        await subscribeEmail(email, 'contact');
       }
 
       setSent(true);
@@ -108,6 +118,7 @@ export function Contact({ t, navigate }: ContactProps) {
               <option value={t.contactSubjects.general}>{t.contactSubjects.general}</option>
               <option value={t.contactSubjects.products}>{t.contactSubjects.products}</option>
               <option value={t.contactSubjects.financial}>{t.contactSubjects.financial}</option>
+              <option value={t.subscribeSubject}>{t.subscribeSubject}</option>
             </select>
             {fieldErrors.subject && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.subject}</p>}
           </label>

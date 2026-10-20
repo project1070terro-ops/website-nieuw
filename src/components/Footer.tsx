@@ -1,4 +1,6 @@
 import { Facebook, Instagram } from 'lucide-react';
+import { FormEvent, useState } from 'react';
+import { subscribeEmail } from '../lib/subscribe';
 import type { Language, Page, TranslationContent } from '../types';
 import type { ReactNode } from 'react';
 
@@ -19,6 +21,21 @@ const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; co
 const STC_URL = 'https://www.savethechildren.org/';
 
 export function Footer({ t, language, navigate, maintenance, className }: FooterProps) {
+  const [footerEmail, setFooterEmail] = useState('');
+  const [footerStatus, setFooterStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  async function handleFooterSubscribe(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setFooterStatus('idle');
+    const { error } = await subscribeEmail(footerEmail, 'footer');
+    if (error) {
+      setFooterStatus('error');
+    } else {
+      setFooterStatus('success');
+      setFooterEmail('');
+    }
+  }
+
   return (
     <footer className={className}>
       <div className="footer-container">
@@ -167,6 +184,34 @@ export function Footer({ t, language, navigate, maintenance, className }: Footer
             </div>
           </div>
         )}
+
+        <div className="footer-subscribe w-full max-w-4xl mx-auto px-4 py-8 border-t border-white/10">
+          <form onSubmit={handleFooterSubscribe} className="flex flex-col md:flex-row items-center justify-center gap-4" noValidate>
+            <p className="text-sm text-white/80 text-center md:text-left">{t.footerSubscribeText}</p>
+            <div className="flex w-full md:w-auto gap-2">
+              <input
+                type="email"
+                value={footerEmail}
+                onChange={(e) => setFooterEmail(e.target.value)}
+                placeholder={t.subscribePlaceholder}
+                className="flex-1 md:w-64 rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
+                required
+              />
+              <button
+                type="submit"
+                className="rounded-md bg-[#c05a28] px-4 py-2 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors whitespace-nowrap"
+              >
+                {t.footerSubscribeButton}
+              </button>
+            </div>
+          </form>
+          {footerStatus === 'success' && (
+            <p className="text-center text-sm text-green-400 mt-3">{t.subscribeSuccess}</p>
+          )}
+          {footerStatus === 'error' && (
+            <p className="text-center text-sm text-orange-500 mt-3">{t.subscribeError}</p>
+          )}
+        </div>
 
         <div className="footer-bottom">
           {!maintenance && (

@@ -2,6 +2,7 @@ import { ArrowRight, Check, Mountain, X } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import type { Donation, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
+import { subscribeEmail } from '../lib/subscribe';
 import { checkMessage, checkName } from '../utils/messageFilter';
 import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
@@ -17,6 +18,8 @@ interface DonateProps {
 export function Donate({ t, navigate, donations, totalDonated, onDonation }: DonateProps) {
   const [amount, setAmount] = useState(25);
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subscribe, setSubscribe] = useState(false);
   const [message, setMessage] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -46,6 +49,14 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
     const nextErrors: Record<string, string> = {};
     if (!name.trim()) nextErrors.name = t.required;
     if (amount < 1) nextErrors.amount = t.required;
+    if (subscribe) {
+      const emailValue = email.trim();
+      if (!emailValue) {
+        nextErrors.email = t.required;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+        nextErrors.email = t.invalidEmail;
+      }
+    }
 
     if (Object.keys(nextErrors).length > 0) {
       setFieldErrors(nextErrors);
@@ -79,7 +90,13 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
         throw insertError;
       }
 
+      if (subscribe && email) {
+        await subscribeEmail(email, 'donation');
+      }
+
       setName('');
+      setEmail('');
+      setSubscribe(false);
       setMessage('');
       setAmount(25);
       setShowPopup(true);
@@ -169,6 +186,27 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           </label>
           {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.name}</p>}
           {nameInvalid && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{t.nameInvalid}</p>}
+          <label>
+            E-mail
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                clearFieldError('email');
+              }}
+            />
+            {fieldErrors.email && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.email}</p>}
+          </label>
+          <label className="flex items-start gap-3 text-sm text-white/80 cursor-pointer mt-2">
+            <input
+              type="checkbox"
+              className="mt-1 h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
+              checked={subscribe}
+              onChange={(event) => setSubscribe(event.target.checked)}
+            />
+            <span className="leading-snug">{t.subscribeLabel}</span>
+          </label>
           <label>
             {t.message}
             <textarea

@@ -1,6 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Check, X } from 'lucide-react';
 import type { Language, Page, TranslationContent } from '../types';
+import { subscribeEmail } from '../lib/subscribe';
 import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
 import { Meter } from './Meter';
@@ -212,6 +213,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
   const [error, setError] = useState<string | null>(null);
   const [tier, setTier] = useState(c.form.tierOptions[0].key);
   const [showPopup, setShowPopup] = useState(false);
+  const [subscribe, setSubscribe] = useState(false);
 
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -239,6 +241,9 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     if (!company) nextErrors.company = t.required;
     if (!person) nextErrors.person = t.required;
     if (!email) nextErrors.email = t.required;
+    if (subscribe && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      nextErrors.email = t.invalidEmail;
+    }
     if (!phone) nextErrors.phone = t.required;
 
     if (Object.keys(nextErrors).length > 0) {
@@ -289,7 +294,12 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
         console.warn('Email worker unavailable:', emailErr);
       }
 
+      if (subscribe && email) {
+        await subscribeEmail(email, 'sponsor');
+      }
+
       (event.target as HTMLFormElement).reset();
+      setSubscribe(false);
       await onSponsoring();
       setShowPopup(true);
     } catch (err) {
@@ -379,6 +389,16 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
                 <option key={option.key} value={option.key}>{option.label}</option>
               ))}
             </select>
+          </label>
+          <label className="flex items-start gap-3 text-sm text-white/80 cursor-pointer">
+            <input
+              type="checkbox"
+              name="subscribe"
+              className="mt-1 h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
+              checked={subscribe}
+              onChange={(event) => setSubscribe(event.target.checked)}
+            />
+            <span className="leading-snug">{t.subscribeLabel}</span>
           </label>
           {error && <p className="error-message">{error}</p>}
           <button className="button button-primary cta-large" type="submit" disabled={saving}>
