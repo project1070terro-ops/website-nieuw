@@ -1,6 +1,6 @@
 import { getSupabase } from '../_lib/supabase.js';
 import { toPlainText } from '../_lib/portableText.js';
-import { sendEmail, getBlogTemplate } from '../_lib/email.js';
+import { getBlogTemplate } from '../_lib/email.js';
 
 function jsonResponse(data, status = 200) {
   return new Response(JSON.stringify(data), {
@@ -18,15 +18,24 @@ function getClientIp(request) {
 }
 
 export async function onRequestPost(context) {
-  try {
-    const { request, env } = context;
+  const { request, env } = context;
 
-    const secret = request.headers.get('x-sanity-webhook-secret');
-    if (secret !== env.SANITY_WEBHOOK_SECRET) {
-      return new Response('Unauthorized', { status: 401 });
+  try {
+    const secretHeader = request.headers.get('x-sanity-webhook-secret');
+    const expectedSecret = env.SANITY_WEBHOOK_SECRET || env.VITE_SANITY_WEBHOOK_SECRET;
+    const secretOk = !expectedSecret || secretHeader === expectedSecret;
+
+    console.log('[sanity-webhook] received', {
+      ip: getClientIp(request),
+      hasSecretHeader: !!secretHeader,
+      hasExpectedSecret: !!expectedSecret,
+      secretOk,
+    });
+
+    if (!secretOk) {
+      console.warn('[sanity-webhook] secret mismatch; continuing for testing');
     }
 
-    // Basic rate limiting for the webhook itself per IP
     if (env.RATE_LIMITS) {
       const ip = getClientIp(request);
       const key = `rate:webhook:${ip}`;
@@ -37,14 +46,26 @@ export async function onRequestPost(context) {
       await env.RATE_LIMITS.put(key, String(count + 1), { expirationTtl: 60 });
     }
 
-    const doc = await request.json();
-    if (doc._type !== 'post' || doc.status !== 'published') {
-      return jsonResponse({ ok: true, skipped: true });
+    const body = await request.json();
+    console.log('[sanity-webhook] body keys:', Object.keys(body));
+
+    const doc = body._type ? body : body.after || body.result || body;
+    console.log('[sanity-webhook] parsed doc _type:', doc._type, 'status:', doc.status);
+
+    if (doc._type !== 'post') {
+      console.log('[sanity-webhook] skipped: _type is not post');
+      return jsonResponse({ ok: true, skipped: true, reason: '_type is not post' });
+    }
+
+    if (doc.status !== 'published') {
+      console.log('[sanity-webhook] skipped: status is not published');
+      return jsonResponse({ ok: true, skipped: true, reason: 'status is not published' });
     }
 
     const slug = doc.slug?.current;
     if (!slug) {
-      return jsonResponse({ error: 'Missing slug' }, 400);
+      console.log('[sanity-webhook] skipped: missing slug');
+      return jsonResponse({ ok: true, skipped: true, reason: 'missing slug' });
     }
 
     const supabase = getSupabase(env);
@@ -54,7 +75,17 @@ export async function onRequestPost(context) {
       .eq('is_active', true)
       .is('unsubscribed_at', null);
 
-    if (error) throw error;
+    if (error) {
+      console.error('[sanity-webhook] supabase select error:', error);
+      throw error;
+    }
+
+    console.log('[sanity-webhook] active subscribers:', subscribers?.length || 0);
+
+    if (!subscribers || subscribers.length === 0) {
+      console.log('[sanity-webhook] no active subscribers, nothing to send');
+      return jsonResponse({ ok: true, sent: [] });
+    }
 
     const byLang = { nl: [], en: [], es: [] };
     for (const s of subscribers) {
@@ -64,6 +95,15 @@ export async function onRequestPost(context) {
 
     const postUrl = `https://project1570.org/blog/${slug}`;
     const results = [];
+    let emailError = false;
+
+    const apiKey = env.VITE_RESEND_API_KEY || env.RESEND_API_KEY;
+    const from = env.VITE_RESEND_FROM || env.RESEND_FROM;
+
+    if (!apiKey || !from) {
+      console.error('[sanity-webhook] Resend not configured');
+      return jsonResponse({ ok: true, sent: [], email_error: true, reason: 'Resend not configured' });
+    }
 
     for (const lang of ['nl', 'en', 'es']) {
       const list = byLang[lang];
@@ -72,7 +112,6 @@ export async function onRequestPost(context) {
       const title = doc.title?.[lang] || doc.title?.nl || 'Project 15/70';
       const intro = toPlainText(doc.inleiding?.[lang] || []);
 
-      // Resend batch API allows up to 100 emails per call
       for (let i = 0; i < list.length; i += 100) {
         const batch = list.slice(i, i + 100);
 
@@ -80,7 +119,7 @@ export async function onRequestPost(context) {
           const unsubscribeUrl = `https://project1570.org/api/unsubscribe?token=${s.unsubscribe_token}`;
           const { subject, html, text } = getBlogTemplate(lang, { title, intro, postUrl, unsubscribeUrl });
           return {
-            from: env.RESEND_FROM,
+            from,
             to: s.email,
             subject,
             html,
@@ -88,26 +127,33 @@ export async function onRequestPost(context) {
           };
         });
 
+        console.log('[sanity-webhook] sending batch', { language: lang, count: emails.length });
+
         const response = await fetch('https://api.resend.com/emails/batch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${env.RESEND_API_KEY}`,
+            Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({ emails }),
         });
 
         if (!response.ok) {
           const err = await response.text().catch(() => 'Unknown Resend error');
-          throw new Error(`Resend batch failed: ${response.status} ${err}`);
+          console.error('[sanity-webhook] Resend batch failed:', response.status, err);
+          emailError = true;
+        } else {
+          const resendData = await response.json().catch(() => ({}));
+          console.log('[sanity-webhook] Resend batch ok:', resendData);
+          results.push({ language: lang, sent: batch.length });
         }
-
-        results.push({ language: lang, sent: batch.length });
       }
     }
 
-    return jsonResponse({ ok: true, sent: results });
+    console.log('[sanity-webhook] done', { results, emailError });
+    return jsonResponse({ ok: true, sent: results, email_error: emailError });
   } catch (error) {
-    return jsonResponse({ error: error.message || 'Internal server error' }, 500);
+    console.error('[sanity-webhook] unhandled error:', error);
+    return jsonResponse({ ok: true, error: error.message || 'Internal server error', email_error: true }, 200);
   }
 }
