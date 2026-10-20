@@ -36,7 +36,7 @@ export async function onRequestPost(context) {
       return okResponse({ ok: true, subscription_saved: false, email_error: false });
     }
 
-    await checkRateLimits(env.RATE_LIMITS, request, email);
+    await checkRateLimits(env.RATE_LIMITS, request);
 
     const supabase = getSupabase(env);
     const unsubscribeToken = crypto.randomUUID();
@@ -67,7 +67,7 @@ export async function onRequestPost(context) {
 
     console.log('[subscribe] Insert succeeded:', data);
 
-    const unsubscribeUrl = `https://project1570.pages.dev/api/unsubscribe?token=${unsubscribeToken}`;
+    const unsubscribeUrl = `https://project1570.org/api/unsubscribe?token=${unsubscribeToken}`;
     const { subject, html, text } = getWelcomeTemplate(language, unsubscribeUrl);
 
     try {

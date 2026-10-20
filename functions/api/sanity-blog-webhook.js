@@ -62,7 +62,7 @@ export async function onRequestPost(context) {
       byLang[lang].push(s);
     }
 
-    const postUrl = `https://project1570.pages.dev/blog/${slug}`;
+    const postUrl = `https://project1570.org/blog/${slug}`;
     const results = [];
 
     for (const lang of ['nl', 'en', 'es']) {
@@ -77,7 +77,7 @@ export async function onRequestPost(context) {
         const batch = list.slice(i, i + 100);
 
         const emails = batch.map((s) => {
-          const unsubscribeUrl = `https://project1570.pages.dev/api/unsubscribe?token=${s.unsubscribe_token}`;
+          const unsubscribeUrl = `https://project1570.org/api/unsubscribe?token=${s.unsubscribe_token}`;
           const { subject, html, text } = getBlogTemplate(lang, { title, intro, postUrl, unsubscribeUrl });
           return {
             from: env.RESEND_FROM,
