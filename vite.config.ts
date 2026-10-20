@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
-// Force a fresh Cloudflare Pages production build to re-inject VITE_ environment variables.
+// Rebuild with active RATE_LIMITS KV and SUPABASE_SERVICE_ROLE_KEY bindings.
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
 
