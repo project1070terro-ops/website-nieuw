@@ -88,8 +88,8 @@ function jsonResponse(data, status = 200) {
 }
 
 async function sendEmail({ env, to, subject, text, replyTo, from }) {
-  const apiKey = env.RESEND_API_KEY;
-  const sender = env.RESEND_FROM;
+  const apiKey = env.VITE_RESEND_API_KEY || env.RESEND_API_KEY;
+  const sender = env.VITE_RESEND_FROM || env.RESEND_FROM;
 
   if (!apiKey || !sender) {
     throw new Error('Email service not configured');
