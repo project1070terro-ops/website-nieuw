@@ -28,7 +28,9 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
   async function handleFooterSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFooterStatus('idle');
-    const { error } = await subscribeEmail(footerEmail, 'footer', language);
+    const formData = new FormData(event.currentTarget);
+    const website = String(formData.get('website') || '');
+    const { error } = await subscribeEmail(footerEmail, 'footer', language, website);
     if (error) {
       setFooterStatus('error');
     } else {
@@ -134,6 +136,15 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
         {!maintenance && page !== 'blog' && (
           <div className="footer-subscribe w-full max-w-4xl mx-auto px-4 py-8 border-t border-white/10">
             <form onSubmit={handleFooterSubscribe} className="flex flex-col md:flex-row items-center justify-center gap-4" noValidate>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                defaultValue=""
+                style={{ position: 'absolute', left: '-9999px' }}
+                aria-hidden="true"
+              />
               <p className="text-sm text-white/80 text-center md:text-left">{t.footerSubscribeText}</p>
               <div className="flex w-full md:w-auto gap-2">
                 <input

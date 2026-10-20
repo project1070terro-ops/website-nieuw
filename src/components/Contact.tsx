@@ -42,6 +42,7 @@ export function Contact({ t, language, navigate }: ContactProps) {
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
+    const website = String(formData.get('website') || '');
 
     const isUpdate = selectedSubject === t.subscribeSubject;
 
@@ -70,6 +71,7 @@ export function Contact({ t, language, navigate }: ContactProps) {
       subject: selectedSubject,
       message,
       to,
+      website,
     };
 
     try {
@@ -85,7 +87,7 @@ export function Contact({ t, language, navigate }: ContactProps) {
       }
 
       if (isUpdate) {
-        await subscribeEmail(email, 'contact', language);
+        await subscribeEmail(email, 'contact', language, website);
       }
 
       setSent(true);
@@ -103,6 +105,15 @@ export function Contact({ t, language, navigate }: ContactProps) {
       <PageIntro title={t.contactTitle} lead={t.contactLead} />
       <section className="contact-layout">
         <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+            style={{ position: 'absolute', left: '-9999px' }}
+            aria-hidden="true"
+          />
           <label>
             {t.name}
             <input name="name" onInput={() => clearFieldError('name')} />

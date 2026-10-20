@@ -43,9 +43,16 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
   const progress = Math.min((verticalMeters / 17500) * 100, 100);
   const goalReached = verticalMeters >= 17500;
 
-  async function submit(event: FormEvent) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
+
+    const formData = new FormData(event.currentTarget);
+    const website = String(formData.get('website') || '');
+    if (website !== '') {
+      // Honeypot filled — silently reject
+      return;
+    }
 
     const nextErrors: Record<string, string> = {};
     if (!name.trim()) nextErrors.name = t.required;
@@ -92,7 +99,7 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
       }
 
       if (subscribe && email) {
-        await subscribeEmail(email, 'donation', language);
+        await subscribeEmail(email, 'donation', language, website);
       }
 
       setName('');
@@ -159,6 +166,15 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
 
       <section className="donate-lower">
         <form className="donation-form" onSubmit={submit} noValidate>
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+            style={{ position: 'absolute', left: '-9999px' }}
+            aria-hidden="true"
+          />
           <p className="eyebrow">{t.donationForm}</p>
           <h2>{t.choose}</h2>
           <div className="amount-input">

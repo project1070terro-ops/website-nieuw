@@ -223,7 +223,9 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   async function handleBlogSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setBlogStatus('idle');
-    const { error } = await subscribeEmail(blogEmail, 'blog_page', language);
+    const formData = new FormData(event.currentTarget);
+    const website = String(formData.get('website') || '');
+    const { error } = await subscribeEmail(blogEmail, 'blog_page', language, website);
     if (error) {
       setBlogStatus('error');
     } else {
@@ -314,6 +316,15 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 my-8">
         <form onSubmit={handleBlogSubscribe} className="space-y-4" noValidate>
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              defaultValue=""
+              style={{ position: 'absolute', left: '-9999px' }}
+              aria-hidden="true"
+            />
           <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
           <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
           <div className="flex flex-col sm:flex-row gap-3">

@@ -1,3 +1,5 @@
+import { checkRateLimits } from '../_lib/rateLimit.js';
+
 const SPONSOR_TEMPLATES = {
   nl: {
     subject: 'Bevestiging aanmelding sponsorpakket – Project 15/70',
@@ -125,6 +127,17 @@ export async function onRequestPost(context) {
   try {
     const { request, env } = context;
     const payload = await request.json();
+
+    // Honeypot: bots usually fill this field
+    const honeypot = String(payload.website ?? '');
+    if (honeypot !== '') {
+      return jsonResponse({ error: 'Spam detected' }, 400);
+    }
+
+    const senderEmail = payload.type === 'sponsoring' ? payload.email : payload.email;
+    if (senderEmail) {
+      await checkRateLimits(env.RATE_LIMITS, request, senderEmail);
+    }
 
     if (payload.type === 'sponsoring') {
       const { language = 'nl', company, contact, email, phone, tier, message } = payload;

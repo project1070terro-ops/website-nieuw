@@ -1,31 +1,27 @@
-import { supabase } from '../supabaseClient';
-
 export async function subscribeEmail(
   email: string,
   source: string,
-  language = 'nl'
+  language = 'nl',
+  website = ''
 ): Promise<{ error: string | null }> {
-  if (!supabase) {
-    console.error('subscribeEmail: no Supabase client available');
-    return { error: 'Database connection not available' };
-  }
-  const clean = email.trim().toLowerCase();
-  if (!clean || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean)) {
-    return { error: 'Invalid email address' };
-  }
-
-  const { error } = await supabase.from('subscribers').insert({
-    email: clean,
-    source,
-    language,
-  });
-  if (error) {
-    console.error('subscribeEmail insert error:', error);
-    if (error.code === '23505') {
-      // duplicate email: treat as success to avoid leaking subscription status
-      return { error: null };
+  try {
+    const clean = email.trim().toLowerCase();
+    if (!clean || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean)) {
+      return { error: 'Invalid email address' };
     }
-    return { error: error.message };
+
+    const response = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: clean, source, language, website }),
+    });
+
+    const data = await response.json().catch(() => ({ error: 'Server error' }));
+    if (!response.ok) {
+      return { error: data.error || 'Subscription failed' };
+    }
+    return { error: null };
+  } catch (err) {
+    return { error: 'Subscription failed' };
   }
-  return { error: null };
 }

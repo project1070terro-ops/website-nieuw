@@ -231,6 +231,11 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     setError(null);
 
     const formData = new FormData(event.currentTarget);
+    const website = String(formData.get('website') || '');
+    if (website !== '') {
+      // Honeypot filled — silently reject
+      return;
+    }
     const company = String(formData.get('company') || '').trim();
     const person = String(formData.get('person') || '').trim();
     const email = String(formData.get('email') || '').trim();
@@ -284,6 +289,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
             phone,
             tier: selectedTier,
             message: '',
+            website,
           }),
         });
 
@@ -295,7 +301,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
       }
 
       if (subscribe && email) {
-        await subscribeEmail(email, 'sponsor', language);
+        await subscribeEmail(email, 'sponsor', language, website);
       }
 
       (event.target as HTMLFormElement).reset();
@@ -360,6 +366,15 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
 
       <section className="contact-layout !py-6">
         <form className="contact-form !p-6" onSubmit={handleSubmit} noValidate>
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+            style={{ position: 'absolute', left: '-9999px' }}
+            aria-hidden="true"
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <label>
               {c.form.company}
