@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: STATISTIEKEN
 title: 'De Rekensom: De Slopende Cijfers Achter +17.500 Hoogtemeters'
 fullTitle: 'De Rekensom: De Slopende Cijfers Achter +17.500 Hoogtemeters'
-image: /images/hero/blog-de-rekensom.webp
+image: /images/hero/blog-de-rekensom-1570.webp
 status: published
 ---
 

@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: ESTADÍSTICAS
 title: 'La Cuenta: Las Agotadoras Cifras Detrás de +17.500 Metros de Desnivel'
 fullTitle: 'La Cuenta: Las Agotadoras Cifras Detrás de +17.500 Metros de Desnivel'
-image: /images/hero/blog-de-rekensom.webp
+image: /images/hero/blog-de-rekensom-1570.webp
 status: published
 ---
 

@@ -246,15 +246,17 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                 goToBlog?.(card.slug);
               }}
             >
-              {card.slug === '/blog/de-officiele-aftrap' ? (
+              {['/blog/de-officiele-aftrap', '/blog/de-rekensom-hoogtemeters'].includes(card.slug) ? (
                 <>
                   <div className="relative w-full">
-                    <img
-                      className="blog-card-media"
-                      src="/images/hero/blog-aftrap-project1570.webp"
-                      alt=""
-                      loading="lazy"
-                    />
+                    {card.image && (
+                      <img
+                        className="blog-card-media"
+                        src={card.image}
+                        alt=""
+                        loading="lazy"
+                      />
+                    )}
                     <div
                       className="bg-gradient-to-l from-black/60 via-black/20 to-transparent absolute right-0 top-0 h-full w-[60%] pointer-events-none"
                       aria-hidden="true"

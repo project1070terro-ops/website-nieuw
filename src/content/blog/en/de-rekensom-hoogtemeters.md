@@ -4,7 +4,7 @@ slug: /blog/de-rekensom-hoogtemeters
 category: STATISTICS
 title: 'The Math: The Grueling Numbers Behind +17,500 Vertical Meters'
 fullTitle: 'The Math: The Grueling Numbers Behind +17,500 Vertical Meters'
-image: /images/hero/blog-de-rekensom.webp
+image: /images/hero/blog-de-rekensom-1570.webp
 status: published
 ---
 
