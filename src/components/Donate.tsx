@@ -187,7 +187,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
           {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.name}</p>}
           {nameInvalid && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{t.nameInvalid}</p>}
           <label>
-            E-mail
+            {t.email}
             <input
               type="email"
               value={email}

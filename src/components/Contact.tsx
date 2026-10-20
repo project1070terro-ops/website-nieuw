@@ -108,7 +108,7 @@ export function Contact({ t, navigate }: ContactProps) {
             {fieldErrors.name && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.name}</p>}
           </label>
           <label>
-            E-mail
+            {t.email}
             <input name="email" type="email" onInput={() => clearFieldError('email')} />
             {fieldErrors.email && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.email}</p>}
           </label>
