@@ -32,28 +32,42 @@ export async function onRequestPost(context) {
     const language = ['nl', 'en', 'es'].includes(payload.language) ? payload.language : 'nl';
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      console.log('Invalid email:', email);
       return okResponse({ ok: true, subscription_saved: false, email_error: false });
     }
 
     await checkRateLimits(env.RATE_LIMITS, request, email);
 
     const supabase = getSupabase(env);
+    const unsubscribeToken = crypto.randomUUID();
+
+    console.log('[subscribe] Inserting:', { email, source, language, unsubscribeToken });
 
     const { data, error } = await supabase
       .from('subscribers')
-      .insert({ email, source, language })
-      .select('unsubscribe_token')
+      .insert({ email, source, language, unsubscribe_token: unsubscribeToken })
+      .select('id, email')
       .single();
 
     if (error) {
+      console.error('[subscribe] Supabase insert error:', {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+      });
+
       if (error.code === '23505') {
-        // Duplicate: treat as success to avoid leaking subscription status
+        // Duplicate email
         return okResponse({ ok: true, subscription_saved: true, email_error: false });
       }
-      throw error;
+
+      return okResponse({ ok: true, subscription_saved: false, email_error: false });
     }
 
-    const unsubscribeUrl = `https://project1570.pages.dev/api/unsubscribe?token=${data.unsubscribe_token}`;
+    console.log('[subscribe] Insert succeeded:', data);
+
+    const unsubscribeUrl = `https://project1570.pages.dev/api/unsubscribe?token=${unsubscribeToken}`;
     const { subject, html, text } = getWelcomeTemplate(language, unsubscribeUrl);
 
     try {
@@ -66,15 +80,18 @@ export async function onRequestPost(context) {
         replyTo: 'info@project1570.org',
       });
     } catch (mailError) {
-      console.error('Welcome email failed:', mailError.message);
+      console.error('[subscribe] Welcome email failed:', mailError.message);
       return okResponse({ ok: true, subscription_saved: true, email_error: true });
     }
 
     return okResponse({ ok: true, subscription_saved: true, email_error: false });
   } catch (error) {
-    console.error('Subscribe worker error:', error);
+    console.error('[subscribe] Global worker error:', {
+      message: error.message,
+      stack: error.stack,
+    });
     // Never crash the function: return 200 so the frontend UI turns green.
-    return okResponse({ ok: true, subscription_saved: false, email_error: true });
+    return okResponse({ ok: true, subscription_saved: false, email_error: false });
   }
 }
 
