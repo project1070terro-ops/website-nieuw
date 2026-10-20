@@ -295,7 +295,7 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
       }
 
       if (subscribe && email) {
-        await subscribeEmail(email, 'sponsor');
+        await subscribeEmail(email, 'sponsor', language);
       }
 
       (event.target as HTMLFormElement).reset();

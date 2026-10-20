@@ -1,6 +1,6 @@
 import { ArrowRight, Check, Mountain, X } from 'lucide-react';
 import { FormEvent, useState } from 'react';
-import type { Donation, Page, TranslationContent } from '../types';
+import type { Donation, Language, Page, TranslationContent } from '../types';
 import { supabase } from '../supabaseClient';
 import { subscribeEmail } from '../lib/subscribe';
 import { checkMessage, checkName } from '../utils/messageFilter';
@@ -9,13 +9,14 @@ import { PageIntro } from './PageIntro';
 
 interface DonateProps {
   t: TranslationContent;
+  language: Language;
   navigate: (page: Page) => void;
   donations: Donation[];
   totalDonated: number;
   onDonation: () => Promise<void>;
 }
 
-export function Donate({ t, navigate, donations, totalDonated, onDonation }: DonateProps) {
+export function Donate({ t, language, navigate, donations, totalDonated, onDonation }: DonateProps) {
   const [amount, setAmount] = useState(25);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -91,7 +92,7 @@ export function Donate({ t, navigate, donations, totalDonated, onDonation }: Don
       }
 
       if (subscribe && email) {
-        await subscribeEmail(email, 'donation');
+        await subscribeEmail(email, 'donation', language);
       }
 
       setName('');

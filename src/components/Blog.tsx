@@ -223,7 +223,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   async function handleBlogSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setBlogStatus('idle');
-    const { error } = await subscribeEmail(blogEmail, 'blog_page');
+    const { error } = await subscribeEmail(blogEmail, 'blog_page', language);
     if (error) {
       setBlogStatus('error');
     } else {

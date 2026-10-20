@@ -197,9 +197,9 @@ function App() {
             ) : null}
             {page === 'cause' && <Cause t={t} navigate={navigate} />}
             {page === 'donate' && (
-              <Donate t={t} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
+              <Donate t={t} language={language} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
             )}
-            {page === 'contact' && <Contact t={t} navigate={navigate} />}
+            {page === 'contact' && <Contact t={t} language={language} navigate={navigate} />}
             {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} totalDonated={totalDonated} />}
             {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
           </>

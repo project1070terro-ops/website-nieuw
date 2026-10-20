@@ -27,7 +27,7 @@ export function Footer({ t, language, navigate, maintenance, className }: Footer
   async function handleFooterSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFooterStatus('idle');
-    const { error } = await subscribeEmail(footerEmail, 'footer');
+    const { error } = await subscribeEmail(footerEmail, 'footer', language);
     if (error) {
       setFooterStatus('error');
     } else {

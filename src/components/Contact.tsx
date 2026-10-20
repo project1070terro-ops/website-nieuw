@@ -1,15 +1,16 @@
 import { ArrowRight, Check } from 'lucide-react';
 import { FormEvent, useEffect, useState } from 'react';
 import { subscribeEmail } from '../lib/subscribe';
-import type { Page, TranslationContent } from '../types';
+import type { Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 
 interface ContactProps {
   t: TranslationContent;
+  language: Language;
   navigate?: (page: Page) => void;
 }
 
-export function Contact({ t, navigate }: ContactProps) {
+export function Contact({ t, language, navigate }: ContactProps) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [subject, setSubject] = useState(t.contactSubjects.general);
@@ -84,7 +85,7 @@ export function Contact({ t, navigate }: ContactProps) {
       }
 
       if (isUpdate) {
-        await subscribeEmail(email, 'contact');
+        await subscribeEmail(email, 'contact', language);
       }
 
       setSent(true);
