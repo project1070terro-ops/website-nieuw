@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
 
 // https://vitejs.dev/config/
-// Dummy change to force a fresh Cloudflare Pages production build.
+// Force a fresh Cloudflare Pages production build to re-inject VITE_ environment variables.
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
 
