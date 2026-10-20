@@ -312,6 +312,35 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats language={language} stats={trainingStats} />
 
+      <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 my-8">
+        <form onSubmit={handleBlogSubscribe} className="space-y-4" noValidate>
+          <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
+          <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              value={blogEmail}
+              onChange={(e) => setBlogEmail(e.target.value)}
+              placeholder={t.subscribePlaceholder}
+              className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
+              required
+            />
+            <button
+              type="submit"
+              className="rounded-md bg-[#c05a28] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors"
+            >
+              {t.subscribeButton}
+            </button>
+          </div>
+          {blogStatus === 'success' && (
+            <p className="text-sm text-green-400">{t.subscribeSuccess}</p>
+          )}
+          {blogStatus === 'error' && (
+            <p className="text-sm text-orange-500">{t.subscribeError}</p>
+          )}
+        </form>
+      </div>
+
       <div className="timeline-section" id="timeline">
         <h2 className="section-title mb-8">{labels.stages}</h2>
         
@@ -378,35 +407,6 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             </div>
           </div>
         )}
-
-        <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8">
-          <form onSubmit={handleBlogSubscribe} className="space-y-4" noValidate>
-            <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
-            <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                value={blogEmail}
-                onChange={(e) => setBlogEmail(e.target.value)}
-                placeholder={t.subscribePlaceholder}
-                className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
-                required
-              />
-              <button
-                type="submit"
-                className="rounded-md bg-[#c05a28] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors"
-              >
-                {t.subscribeButton}
-              </button>
-            </div>
-            {blogStatus === 'success' && (
-              <p className="text-sm text-green-400">{t.subscribeSuccess}</p>
-            )}
-            {blogStatus === 'error' && (
-              <p className="text-sm text-orange-500">{t.subscribeError}</p>
-            )}
-          </form>
-        </div>
 
         <div className="text-center mt-12">
           <button

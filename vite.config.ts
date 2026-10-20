@@ -5,10 +5,7 @@ import { fileURLToPath, URL } from 'node:url';
 // https://vitejs.dev/config/
 // Dummy change to force a fresh Cloudflare Pages production build.
 export default defineConfig(({ mode }) => {
-  const env = {
-    ...loadEnv(mode, process.cwd(), 'VITE_'),
-    ...loadEnv(mode, process.cwd(), 'SUPABASE_'),
-  };
+  const env = loadEnv(mode, process.cwd(), 'VITE_');
 
   const VITE_KEYS = [
     'VITE_SUPABASE_URL',
@@ -29,16 +26,6 @@ export default defineConfig(({ mode }) => {
     if (value !== undefined) {
       define[`import.meta.env.${key}`] = JSON.stringify(value);
     }
-  }
-
-  // Allow Cloudflare Pages env vars without VITE_ prefix for Supabase
-  const supabaseUrl = process.env.SUPABASE_URL ?? env.SUPABASE_URL;
-  if (supabaseUrl !== undefined && !define['import.meta.env.VITE_SUPABASE_URL']) {
-    define['import.meta.env.VITE_SUPABASE_URL'] = JSON.stringify(supabaseUrl);
-  }
-  const supabaseAnonKey = process.env.SUPABASE_ANON_KEY ?? env.SUPABASE_ANON_KEY;
-  if (supabaseAnonKey !== undefined && !define['import.meta.env.VITE_SUPABASE_ANON_KEY']) {
-    define['import.meta.env.VITE_SUPABASE_ANON_KEY'] = JSON.stringify(supabaseAnonKey);
   }
 
   return {
