@@ -262,16 +262,24 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                       aria-hidden="true"
                     />
                     <div className="absolute inset-0 flex flex-col items-end justify-center text-right px-4">
-                      {t.blogBanner.split('\n').map((line, i) => (
-                        <p
-                          key={i}
-                          className={`text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide leading-tight ${
-                            i === 1 ? 'text-[#c05a28] uppercase' : 'text-white/80'
-                          }`}
-                        >
-                          {line}
-                        </p>
-                      ))}
+                      {(card.slug === '/blog/de-rekensom-hoogtemeters' ? t.rekensomBanner : t.blogBanner)
+                        .split('\n')
+                        .map((line, i) => {
+                          const orangeIndex = card.slug === '/blog/de-rekensom-hoogtemeters' ? 2 : 1;
+                          const isOrange = i === orangeIndex;
+                          return (
+                            <p
+                              key={i}
+                              className={`text-[10px] sm:text-xs md:text-sm tracking-wide leading-tight ${
+                                isOrange
+                                  ? `text-[#c05a28] font-extrabold ${card.slug === '/blog/de-officiele-aftrap' ? 'uppercase' : ''}`
+                                  : 'text-white/80 font-semibold'
+                              }`}
+                            >
+                              {line}
+                            </p>
+                          );
+                        })}
                     </div>
                   </div>
                   {body}

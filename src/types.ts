@@ -91,6 +91,7 @@ export interface TranslationContent {
   blogTitle: string;
   blogLead: string;
   blogBanner: string;
+  rekensomBanner: string;
   donateTitle: string;
   donateLead: string;
   donated: string;
