@@ -22,9 +22,13 @@ export default defineConfig(({ mode }) => {
 
   const define: Record<string, string> = {};
   for (const key of VITE_KEYS) {
-    const value = process.env[key] ?? env[key];
-    if (value !== undefined) {
+    const isSupabase = key === 'VITE_SUPABASE_URL' || key === 'VITE_SUPABASE_ANON_KEY';
+    const raw = isSupabase ? process.env[key] : (process.env[key] ?? env[key]);
+    if (raw !== undefined) {
+      const value = isSupabase ? raw.trim() : raw;
       define[`import.meta.env.${key}`] = JSON.stringify(value);
+    } else if (isSupabase) {
+      console.error(`[vite.config.ts] ${key} is missing from the build environment. Make sure it is set in Cloudflare Pages.`);
     }
   }
 

@@ -206,7 +206,7 @@ function App() {
         )}
       </main>
       {!isMaintenance && (
-        <Footer t={t} language={language} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
+        <Footer t={t} language={language} page={page} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       )}
       {!isMaintenance && cookieConsent === null && (
         <CookieBanner
