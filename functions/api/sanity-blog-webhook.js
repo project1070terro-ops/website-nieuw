@@ -21,13 +21,16 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   try {
+    const allHeaders = Object.fromEntries([...request.headers]);
+    console.log('[sanity-webhook] headers:', JSON.stringify(allHeaders));
+
     const secretHeader = request.headers.get('x-sanity-webhook-secret');
     const expectedSecret = env.SANITY_WEBHOOK_SECRET || env.VITE_SANITY_WEBHOOK_SECRET;
     const secretOk = !expectedSecret || secretHeader === expectedSecret;
 
-    console.log('[sanity-webhook] received', {
+    console.log('[sanity-webhook] secret check:', {
       ip: getClientIp(request),
-      hasSecretHeader: !!secretHeader,
+      secretHeader,
       hasExpectedSecret: !!expectedSecret,
       secretOk,
     });
@@ -47,10 +50,10 @@ export async function onRequestPost(context) {
     }
 
     const body = await request.json();
-    console.log('[sanity-webhook] body keys:', Object.keys(body));
+    console.log('[sanity-webhook] raw body:', JSON.stringify(body, null, 2));
 
     const doc = body._type ? body : body.after || body.result || body;
-    console.log('[sanity-webhook] parsed doc _type:', doc._type, 'status:', doc.status);
+    console.log('[sanity-webhook] selected doc:', JSON.stringify({ _id: doc._id, _type: doc._type, status: doc.status, slug: doc.slug, title: doc.title }, null, 2));
 
     if (doc._type !== 'post') {
       console.log('[sanity-webhook] skipped: _type is not post');
