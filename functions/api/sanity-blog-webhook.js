@@ -135,7 +135,7 @@ export async function onRequestPost(context) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${apiKey}`,
           },
-          body: JSON.stringify({ emails }),
+          body: JSON.stringify({ batch: emails }),
         });
 
         if (!response.ok) {

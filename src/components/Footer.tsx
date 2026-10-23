@@ -24,15 +24,18 @@ const STC_URL = 'https://www.savethechildren.org/';
 export function Footer({ t, language, page, navigate, maintenance, className }: FooterProps) {
   const [footerEmail, setFooterEmail] = useState('');
   const [footerStatus, setFooterStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [footerError, setFooterError] = useState<'duplicate' | 'other' | null>(null);
 
   async function handleFooterSubscribe(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFooterStatus('idle');
+    setFooterError(null);
     const formData = new FormData(event.currentTarget);
     const website = String(formData.get('website') || '');
-    const { error } = await subscribeEmail(footerEmail, 'footer', language, website);
+    const { error, alreadySubscribed } = await subscribeEmail(footerEmail, 'footer', language, website);
     if (error) {
       setFooterStatus('error');
+      setFooterError(alreadySubscribed ? 'duplicate' : 'other');
     } else {
       setFooterStatus('success');
       setFooterEmail('');
@@ -134,7 +137,7 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
         </div>
 
         {!maintenance && page !== 'blog' && (
-          <div className="footer-subscribe w-full max-w-4xl mx-auto px-4 py-8 border-t border-white/10">
+          <div className="footer-subscribe w-full max-w-4xl mx-auto px-4 py-8 mt-12 border-t border-white/10">
             <form onSubmit={handleFooterSubscribe} className="flex flex-col md:flex-row items-center justify-center gap-4" noValidate>
               <input
                 type="text"
@@ -167,7 +170,9 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
               <p className="text-center text-sm text-green-400 mt-3">{t.subscribeSuccess}</p>
             )}
             {footerStatus === 'error' && (
-              <p className="text-center text-sm text-orange-500 mt-3">{t.subscribeError}</p>
+              <p className={`text-center text-sm mt-3 ${footerError === 'duplicate' ? 'text-red-500' : 'text-orange-500'}`}>
+                {footerError === 'duplicate' ? t.alreadySubscribed : t.subscribeError}
+              </p>
             )}
           </div>
         )}

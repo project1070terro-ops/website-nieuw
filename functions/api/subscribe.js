@@ -15,6 +15,13 @@ function okResponse(body) {
   });
 }
 
+function conflictResponse(body) {
+  return new Response(JSON.stringify(body), {
+    status: 409,
+    headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+  });
+}
+
 export async function onRequestPost(context) {
   try {
     const { request, env } = context;
@@ -59,7 +66,7 @@ export async function onRequestPost(context) {
 
       if (error.code === '23505') {
         // Duplicate email
-        return okResponse({ ok: true, subscription_saved: true, email_error: false });
+        return conflictResponse({ error: 'Already subscribed', already_subscribed: true });
       }
 
       return okResponse({ ok: true, subscription_saved: false, email_error: false });

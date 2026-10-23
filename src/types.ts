@@ -123,6 +123,7 @@ export interface TranslationContent {
   subscribeButton: string;
   subscribeSuccess: string;
   subscribeError: string;
+  alreadySubscribed: string;
   invalidEmail: string;
   footerSubscribeText: string;
   footerSubscribeButton: string;
