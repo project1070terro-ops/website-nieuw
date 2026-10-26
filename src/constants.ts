@@ -135,7 +135,7 @@ Laat maar iets horen — we staan voor je klaar.`,
     footerSubscribeButton: 'Inschrijven'
   },
   en: {
-    nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', cause: 'Our Cause', sponsoring: 'Sponsorship', donate: 'Donate', contact: 'Contact' },
+    nav: { home: 'Home', story: 'The Story', route: 'The Route', terro: 'Project Terro', blog: 'Blog', cause: 'The Charity', sponsoring: 'Sponsorship', donate: 'Donate', contact: 'Contact' },
     support: 'DONATE TO SAVE THE CHILDREN NOW',
     heroEyebrow: ['AUTUMN 2029', '5 DAYS CYCLING | 1 REST DAY | 5 DAYS CYCLING'],
     heroTitle: 'PROJECT 15/70',
@@ -262,7 +262,7 @@ Let us know — we're here for you.`,
     footerSubscribeButton: 'Sign up'
   },
   es: {
-    nav: { home: 'Inicio', story: 'La historia', route: 'La ruta', terro: 'Proyecto Terro', blog: 'Blog', cause: 'Nuestra Causa', sponsoring: 'Patrocinio', donate: 'Donar', contact: 'Contacto' },
+    nav: { home: 'Inicio', story: 'La Historia', route: 'La Ruta', terro: 'Proyecto Terro', blog: 'Blog', cause: 'La Causa', sponsoring: 'Patrocinio', donate: 'Donar', contact: 'Contacto' },
     support: 'DONA A SAVE THE CHILDREN AHORA',
     heroEyebrow: ['OTOÑO 2029', '5 DÍAS DE CICLISMO | 1 DÍA DE DESCANSO | 5 DÍAS DE CICLISMO'],
     heroTitle: 'PROJECT 15/70',

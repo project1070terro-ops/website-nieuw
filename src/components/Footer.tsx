@@ -69,7 +69,7 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
             <div className="footer-module footer-nav-module">
               <h3 className="footer-title">NAVIGATIE</h3>
               <div className="footer-nav-links">
-                {(['home', 'story', 'route', 'terro', 'blog', 'cause'] as (keyof typeof t.nav)[]).map((key) => (
+                {(['home', 'story', 'cause', 'terro', 'route', 'blog'] as (keyof typeof t.nav)[]).map((key) => (
                   <button key={key} onClick={() => navigate(key as Page)}>
                     {t.nav[key]}
                   </button>

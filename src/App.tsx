@@ -151,7 +151,7 @@ function App() {
     if (state?.from) params.set('from', state.from);
     if (state?.day !== undefined) params.set('day', String(state.day));
     const query = params.toString() ? `?${params.toString()}` : '';
-    const hash = state?.hash ? `#${state.hash}` : '';
+    const hash = state?.hash ? `#${state.hash}` : (nextPage === 'blog' && !state?.slug ? '#timeline' : '');
 
     let path = '/';
     if (state?.slug) {
@@ -162,7 +162,7 @@ function App() {
       path = `/${nextPage}${query}${hash}`;
     }
     window.history.pushState({ page: nextPage, slug: state?.slug ?? null, year: state?.year ?? null, hash: state?.hash ?? null, from: state?.from ?? null, day: state?.day ?? null }, '', path);
-    if (!state?.hash) window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!hash) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function goToBlog(slug: string) {

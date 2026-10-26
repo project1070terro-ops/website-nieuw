@@ -15,7 +15,7 @@ interface HeaderProps {
 }
 
 export function Header({ page, language, setLanguage, navigate, menuOpen, setMenuOpen, maintenance, t }: HeaderProps) {
-  const navItems: [Page, keyof typeof t.nav][] = [['home', 'home'], ['story', 'story'], ['route', 'route'], ['terro', 'terro'], ['blog', 'blog'], ['cause', 'cause'], ['sponsoring', 'sponsoring']];
+  const navItems: [Page, keyof typeof t.nav][] = [['home', 'home'], ['story', 'story'], ['cause', 'cause'], ['terro', 'terro'], ['route', 'route'], ['blog', 'blog'], ['sponsoring', 'sponsoring']];
 
   const [scrolled, setScrolled] = useState(false);
 
