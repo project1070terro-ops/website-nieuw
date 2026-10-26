@@ -165,9 +165,4 @@ export interface RouteDay {
   postSlug?: string;
 }
 
-export interface TrainingStats {
-  stravaKilometersYTD: number;
-  stravaElevationYTD: number;
-  intervalsFitnessCTL: number;
-  targetAlbirElevation: number;
-}
+

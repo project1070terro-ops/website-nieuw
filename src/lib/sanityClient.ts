@@ -1,6 +1,6 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { BlogPhoto, BlogPost, Language, RouteDay, TrainingStats } from '../types';
+import type { BlogPhoto, BlogPost, Language, RouteDay } from '../types';
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID ?? 'of8587ti';
 const dataset = import.meta.env.VITE_SANITY_DATASET ?? 'production';
@@ -168,21 +168,4 @@ export async function loadHeroSlider(): Promise<string[]> {
     .filter((src) => src);
 }
 
-const TRAINING_STATS_QUERY = `*[_type == "trainingStats"][0] {
-  stravaKilometersYTD,
-  stravaElevationYTD,
-  intervalsFitnessCTL,
-  targetAlbirElevation
-}`;
 
-export async function loadTrainingStats(): Promise<TrainingStats | null> {
-  const result = await sanityClient.fetch(TRAINING_STATS_QUERY);
-  if (!result) return null;
-
-  return {
-    stravaKilometersYTD: result.stravaKilometersYTD ?? 0,
-    stravaElevationYTD: result.stravaElevationYTD ?? 0,
-    intervalsFitnessCTL: result.intervalsFitnessCTL ?? 0,
-    targetAlbirElevation: result.targetAlbirElevation ?? 17500,
-  };
-}
