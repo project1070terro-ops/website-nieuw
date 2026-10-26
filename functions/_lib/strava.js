@@ -1,3 +1,14 @@
+const RIDE_TYPES = ['Ride', 'VirtualRide', 'GravelRide', 'MountainBikeRide'];
+const STRENGTH_TYPES = ['WeightTraining', 'Workout', 'Crossfit', 'FunctionalStrengthTraining', 'HIIT'];
+
+function isRide(type) {
+  return RIDE_TYPES.includes(type);
+}
+
+function isStrength(type) {
+  return STRENGTH_TYPES.includes(type);
+}
+
 export async function fetchStravaYTD(env) {
   const token = env.STRAVA_ACCESS_TOKEN || env.VITE_STRAVA_ACCESS_TOKEN;
   const startDate = env.TRAINING_START_DATE || env.VITE_TRAINING_START_DATE || '2027-01-01';
@@ -11,6 +22,7 @@ export async function fetchStravaYTD(env) {
   let page = 1;
   let totalKm = 0;
   let totalElev = 0;
+  let strengthSeconds = 0;
   let fetched = [];
 
   do {
@@ -33,8 +45,14 @@ export async function fetchStravaYTD(env) {
 
     fetched = activities;
     for (const a of activities) {
-      totalKm += (a.distance ?? 0) / 1000; // meters -> kilometers
-      totalElev += a.total_elevation_gain ?? 0; // meters
+      const type = a.type ?? '';
+      if (isRide(type)) {
+        totalKm += (a.distance ?? 0) / 1000; // meters -> kilometers
+        totalElev += a.total_elevation_gain ?? 0; // meters
+      }
+      if (isStrength(type)) {
+        strengthSeconds += a.moving_time ?? 0;
+      }
     }
 
     page++;
@@ -43,5 +61,6 @@ export async function fetchStravaYTD(env) {
   return {
     kilometers: Math.round(totalKm),
     elevation: Math.round(totalElev),
+    strengthHours: +(strengthSeconds / 3600).toFixed(1),
   };
 }

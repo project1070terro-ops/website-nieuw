@@ -313,12 +313,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         })}
       </div>
 
-      <BlogStats
-        language={language}
-        stats={dashboard?.stats}
-        totalDonated={dashboard?.totalDonated ?? 0}
-        charityGoal={dashboard?.charityGoal ?? 17500}
-      />
+      <BlogStats language={language} stats={dashboard?.stats ?? null} />
 
       <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 my-8">
         <form onSubmit={handleBlogSubscribe} className="space-y-4" noValidate>

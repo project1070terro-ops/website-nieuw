@@ -3,11 +3,10 @@ export interface DashboardStats {
   stats: {
     strava_kilometers_ytd: number;
     strava_elevation_ytd: number;
+    strength_training_hours: number;
     intervals_ctl: number;
     updated_at: string | null;
   };
-  totalDonated: number;
-  charityGoal: number;
   error?: string;
 }
 

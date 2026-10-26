@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS public.training_stats (
   id integer PRIMARY KEY DEFAULT 1,
   strava_kilometers_ytd numeric(12,2) NOT NULL DEFAULT 0,
   strava_elevation_ytd numeric(12,2) NOT NULL DEFAULT 0,
+  strength_training_hours numeric(10,2) NOT NULL DEFAULT 0,
   intervals_ctl numeric(8,2) NOT NULL DEFAULT 0,
   updated_at timestamptz NOT NULL DEFAULT now()
 );

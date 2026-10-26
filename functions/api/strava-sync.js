@@ -24,13 +24,14 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { kilometers, elevation } = await fetchStravaYTD(env);
+    const { kilometers, elevation, strengthHours } = await fetchStravaYTD(env);
     const supabase = getSupabase(env);
 
     const { error } = await supabase.from('training_stats').upsert({
       id: 1,
       strava_kilometers_ytd: kilometers,
       strava_elevation_ytd: elevation,
+      strength_training_hours: strengthHours,
       updated_at: new Date().toISOString(),
     });
 
