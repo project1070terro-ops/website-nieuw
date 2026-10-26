@@ -22,6 +22,7 @@ import { Sponsoring } from './components/Sponsoring';
 import { PrivacyDisclaimer } from './components/PrivacyDisclaimer';
 import { CookieBanner } from './components/CookieBanner';
 import { Analytics } from './components/Analytics';
+import { Seo } from './components/Seo';
 
 function App() {
   const getInitialPage = (): Page => {
@@ -36,6 +37,12 @@ function App() {
     const path = window.location.pathname;
     return path.startsWith('/blog/') ? path.replace('/blog/', '') : null;
   };
+  const getInitialLanguage = (): Language => {
+    if (typeof window === 'undefined') return 'nl';
+    const lang = new URLSearchParams(window.location.search).get('lang');
+    return lang === 'en' || lang === 'es' ? lang : 'nl';
+  };
+
   const getInitialBlogYear = () => {
     if (typeof window === 'undefined') return 2027;
     const value = new URLSearchParams(window.location.search).get('year');
@@ -45,7 +52,7 @@ function App() {
 
   const isMaintenance = typeof window !== 'undefined' && (window.location.hostname === 'project1570.org' || window.location.hostname === 'www.project1570.org');
 
-  const [language, setLanguage] = useState<Language>('nl');
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
   const [page, setPage] = useState<Page>(getInitialPage);
   const [blogSlug, setBlogSlug] = useState<string | null>(getInitialBlogSlug);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -73,6 +80,10 @@ function App() {
         const path = window.location.pathname;
         setPage(path.startsWith('/blog') ? 'blog' : 'home');
         setBlogSlug(path.startsWith('/blog/') ? path.replace('/blog/', '') : null);
+      }
+      const lang = new URLSearchParams(window.location.search).get('lang');
+      if (lang === 'en' || lang === 'es' || lang === 'nl') {
+        setLanguageState(lang as Language);
       }
     };
     window.addEventListener('popstate', onPopState);
@@ -147,6 +158,10 @@ function App() {
     if (state?.year !== undefined) setBlogYear(state.year);
 
     const params = new URLSearchParams();
+    const currentLang = new URLSearchParams(window.location.search).get('lang');
+    if (currentLang && (currentLang === 'nl' || currentLang === 'en' || currentLang === 'es')) {
+      params.set('lang', currentLang);
+    }
     if (state?.year !== undefined) params.set('year', String(state.year));
     if (state?.from) params.set('from', state.from);
     if (state?.day !== undefined) params.set('day', String(state.day));
@@ -169,8 +184,21 @@ function App() {
     navigate('blog', { slug });
   }
 
+  function setLanguage(next: Language) {
+    setLanguageState(next);
+    if (typeof window === 'undefined') return;
+    const url = new URL(window.location.href);
+    if (next === 'nl') {
+      url.searchParams.delete('lang');
+    } else {
+      url.searchParams.set('lang', next);
+    }
+    window.history.replaceState(window.history.state, '', url.toString());
+  }
+
   return (
     <div className="app-shell">
+      <Seo language={language} page={page} blogSlug={blogSlug} blogPosts={blogPosts} />
       <Header
         page={page}
         language={language}
