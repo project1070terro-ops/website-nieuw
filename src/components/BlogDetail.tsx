@@ -106,7 +106,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
             if (from === 'route') {
               navigate('route', { hash: fromDay ? `dag${fromDay}` : undefined });
             } else {
-              navigate('blog', { hash: 'timeline' });
+              navigate('blog', { hash: 'timeline-title' });
             }
           }}
         >
@@ -117,7 +117,7 @@ export function BlogDetail({ t, slug, language, blogCards, navigate, goToBlog }:
             <button
               key={year}
               className={year === postYear ? 'active' : ''}
-              onClick={() => navigate('blog', { year, hash: 'timeline' })}
+              onClick={() => navigate('blog', { year, hash: 'timeline-title' })}
             >
               {year}
             </button>

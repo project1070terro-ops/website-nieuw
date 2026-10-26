@@ -353,7 +353,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       </div>
 
       <div className="timeline-section" id="timeline">
-        <h2 className="section-title mb-8">{labels.stages}</h2>
+        <h2 id="timeline-title" className="section-title mb-8">{labels.stages}</h2>
         
         <div id="year-menu" className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
           {YEARS.map((y) => (
@@ -362,7 +362,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               onClick={() => {
                 setYear(y);
                 setVisibleCount(INITIAL_COUNT);
-                document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('timeline-title')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
               className={`px-4 py-2 font-medium transition-all ${year === y ? 'text-orange-500 border-b-2 border-orange-500' : 'text-zinc-400 hover:text-zinc-200'}`}
             >
