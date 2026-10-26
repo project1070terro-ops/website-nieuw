@@ -353,7 +353,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
       </div>
 
       <div className="timeline-section" id="timeline">
-        <h2 id="timeline-title" className="section-title mb-8">{labels.stages}</h2>
+        <h2 id="timeline-title" className="section-title mb-8" style={{ scrollMarginTop: '80px' }}>{labels.stages}</h2>
         
         <div id="year-menu" className="year-selector mb-8 flex gap-4 border-b border-zinc-800 pb-4">
           {YEARS.map((y) => (
