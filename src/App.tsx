@@ -151,7 +151,7 @@ function App() {
     if (state?.from) params.set('from', state.from);
     if (state?.day !== undefined) params.set('day', String(state.day));
     const query = params.toString() ? `?${params.toString()}` : '';
-    const hash = state?.hash ? `#${state.hash}` : (nextPage === 'blog' && !state?.slug ? '#timeline' : '');
+    const hash = state?.hash ? `#${state.hash}` : '';
 
     let path = '/';
     if (state?.slug) {

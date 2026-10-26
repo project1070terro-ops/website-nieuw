@@ -359,7 +359,11 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
           {YEARS.map((y) => (
             <button
               key={y}
-              onClick={() => { setYear(y); setVisibleCount(INITIAL_COUNT); }}
+              onClick={() => {
+                setYear(y);
+                setVisibleCount(INITIAL_COUNT);
+                document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
               className={`px-4 py-2 font-medium transition-all ${year === y ? 'text-orange-500 border-b-2 border-orange-500' : 'text-zinc-400 hover:text-zinc-200'}`}
             >
               {y}
