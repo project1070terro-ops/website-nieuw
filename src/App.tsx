@@ -214,7 +214,7 @@ function App() {
           <Holding t={t} />
         ) : (
           <>
-            {page === 'home' && <Home t={t} language={language} navigate={navigate} />}
+            {page === 'home' && <Home t={t} navigate={navigate} />}
             {page === 'story' && <Story t={t} language={language} navigate={navigate} />}
             {page === 'route' && <RoutePage t={t} language={language} navigate={navigate} />}
             {page === 'terro' && <Terro t={t} navigate={navigate} />}
