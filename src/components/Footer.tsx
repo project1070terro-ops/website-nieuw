@@ -69,7 +69,7 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
             <div className="footer-module footer-nav-module">
               <h3 className="footer-title">NAVIGATIE</h3>
               <div className="footer-nav-links">
-                {(['home', 'story', 'cause', 'terro', 'route', 'blog'] as (keyof typeof t.nav)[]).map((key) => (
+                {(['home', 'story', 'cause', 'terro', 'route', 'blog', 'sponsoring'] as (keyof typeof t.nav)[]).map((key) => (
                   <button key={key} onClick={() => navigate(key as Page)}>
                     {t.nav[key]}
                   </button>
@@ -137,8 +137,8 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
         </div>
 
         {!maintenance && page !== 'blog' && (
-          <div className="footer-subscribe w-full max-w-4xl mx-auto px-4 py-8 mt-12 border-t border-white/10">
-            <form onSubmit={handleFooterSubscribe} className="flex flex-col md:flex-row items-center justify-center gap-4" noValidate>
+          <div className="footer-subscribe w-full max-w-3xl mx-auto px-4 py-8">
+            <form onSubmit={handleFooterSubscribe} className="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 space-y-4" noValidate>
               <input
                 type="text"
                 name="website"
@@ -148,32 +148,33 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
                 style={{ position: 'absolute', left: '-9999px' }}
                 aria-hidden="true"
               />
-              <p className="text-sm text-white/80 text-center md:text-left">{t.footerSubscribeText}</p>
-              <div className="flex w-full md:w-auto gap-2">
+              <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
+              <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
                   value={footerEmail}
                   onChange={(e) => setFooterEmail(e.target.value)}
                   placeholder={t.subscribePlaceholder}
-                  className="flex-1 md:w-64 rounded-md border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
+                  className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
                   required
                 />
                 <button
                   type="submit"
-                  className="rounded-md bg-[#c05a28] px-4 py-2 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors whitespace-nowrap"
+                  className="rounded-md bg-[#c05a28] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors"
                 >
-                  {t.footerSubscribeButton}
+                  {t.subscribeButton}
                 </button>
               </div>
+              {footerStatus === 'success' && (
+                <p className="text-sm text-green-400">{t.subscribeSuccess}</p>
+              )}
+              {footerStatus === 'error' && (
+                <p className={`text-sm ${footerError === 'duplicate' ? 'text-red-500' : 'text-orange-500'}`}>
+                  {footerError === 'duplicate' ? t.alreadySubscribed : t.subscribeError}
+                </p>
+              )}
             </form>
-            {footerStatus === 'success' && (
-              <p className="text-center text-sm text-green-400 mt-3">{t.subscribeSuccess}</p>
-            )}
-            {footerStatus === 'error' && (
-              <p className={`text-center text-sm mt-3 ${footerError === 'duplicate' ? 'text-red-500' : 'text-orange-500'}`}>
-                {footerError === 'duplicate' ? t.alreadySubscribed : t.subscribeError}
-              </p>
-            )}
           </div>
         )}
 

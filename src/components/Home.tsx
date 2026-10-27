@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, ArrowDownRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import type { Page, TranslationContent } from '../types';
+import type { Language, Page, TranslationContent } from '../types';
 import { heroImages } from '../constants';
 import { loadHeroSlider } from '../lib/sanityClient';
 import { BrandText } from './BrandText';
 import { Stats } from './Stats';
 import { Sponsor } from './Sponsor';
+import { HomeStats } from './HomeStats';
 
 interface HomeProps {
   t: TranslationContent;
+  language: Language;
   navigate: (page: Page) => void;
 }
 
-export function Home({ t, navigate }: HomeProps) {
+export function Home({ t, language, navigate }: HomeProps) {
   const [sliderImages, setSliderImages] = useState(heroImages);
   const [activeSlide, setActiveSlide] = useState(0);
   const total = sliderImages.length;
@@ -106,6 +108,8 @@ export function Home({ t, navigate }: HomeProps) {
           <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={18} />
         </button>
       </section>
+
+      <HomeStats language={language} />
     </>
   );
 }

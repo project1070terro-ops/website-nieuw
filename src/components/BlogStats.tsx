@@ -9,6 +9,8 @@ interface BlogStatsProps {
     intervals_ctl?: number;
     updated_at?: string | null;
   } | null | undefined;
+  className?: string;
+  title?: string;
 }
 
 const content: Record<Language, { title: string; km: string; elevation: string; strength: string; ctl: string }> = {
@@ -41,7 +43,7 @@ function fmt(value: number, lang: Language) {
   });
 }
 
-export function BlogStats({ language, stats }: BlogStatsProps) {
+export function BlogStats({ language, stats, className, title }: BlogStatsProps) {
   const kilometers = stats?.strava_kilometers_ytd ?? 0;
   const elevation = stats?.strava_elevation_ytd ?? 0;
   const strengthHours = stats?.strength_training_hours ?? 0;
@@ -50,8 +52,8 @@ export function BlogStats({ language, stats }: BlogStatsProps) {
   const t = content[language];
 
   return (
-    <section className="max-w-[1120px] mx-2 md:mx-auto p-5 -mt-12 mb-6 bg-neutral-900 rounded-2xl">
-      <h2 className="text-xl md:text-2xl font-bold text-white mb-3">{t.title}</h2>
+    <section className={`max-w-[1120px] mx-2 md:mx-auto p-5 bg-neutral-900 rounded-2xl ${className ?? '-mt-12 mb-6'}`}>
+      <h2 className="text-xl md:text-2xl font-bold text-white mb-3">{title ?? t.title}</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div className="px-2 md:px-4 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--orange)] transition-colors">
           <p className="text-[10px] md:text-xs text-white/60 uppercase tracking-wide whitespace-normal break-words mb-1 leading-tight">{t.km}</p>
