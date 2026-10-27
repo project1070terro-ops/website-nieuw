@@ -315,7 +315,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats language={language} stats={dashboard?.stats ?? null} />
 
-      <div className="w-full max-w-3xl mx-auto rounded-lg border border-[#c05a28] bg-zinc-900/60 p-5 my-8">
+      <div className="w-full max-w-3xl mx-auto rounded-lg border border-[#c05a28]/30 bg-zinc-900/60 p-5 my-8">
         <form onSubmit={handleBlogSubscribe} className="space-y-3" noValidate>
             <input
               type="text"
