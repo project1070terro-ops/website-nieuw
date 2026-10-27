@@ -148,7 +148,7 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
                 style={{ position: 'absolute', left: '-9999px' }}
                 aria-hidden="true"
               />
-              <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0">{t.subscribeHeading}</h3>
               <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input

@@ -315,8 +315,8 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats language={language} stats={dashboard?.stats ?? null} />
 
-      <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 my-8">
-        <form onSubmit={handleBlogSubscribe} className="space-y-4" noValidate>
+      <div className="w-full max-w-3xl mx-auto rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 my-8">
+        <form onSubmit={handleBlogSubscribe} className="space-y-3" noValidate>
             <input
               type="text"
               name="website"
@@ -326,7 +326,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               style={{ position: 'absolute', left: '-9999px' }}
               aria-hidden="true"
             />
-          <h3 className="text-xl md:text-2xl font-semibold text-white">{t.subscribeHeading}</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0">{t.subscribeHeading}</h3>
           <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <input
