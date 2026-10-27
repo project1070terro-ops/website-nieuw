@@ -137,8 +137,8 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
         </div>
 
         {!maintenance && page !== 'blog' && (
-          <div className="footer-subscribe w-full max-w-3xl mx-auto px-4 py-8">
-            <form onSubmit={handleFooterSubscribe} className="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 space-y-4" noValidate>
+          <div className="footer-subscribe w-full max-w-3xl mx-auto px-4 py-6">
+            <form onSubmit={handleFooterSubscribe} className="w-full rounded-lg border border-zinc-800 bg-zinc-900/60 p-5 space-y-3" noValidate>
               <input
                 type="text"
                 name="website"
