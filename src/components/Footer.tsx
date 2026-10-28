@@ -4,6 +4,12 @@ import { subscribeEmail } from '../lib/subscribe';
 import type { Language, Page, TranslationContent } from '../types';
 import type { ReactNode } from 'react';
 
+const SlashHeading = ({ text }: { text: string }) => {
+  const i = text.indexOf('/');
+  if (i === -1) return <>{text}</>;
+  return <>{text.slice(0, i)}<span className="brand-slash">/</span>{text.slice(i + 1)}</>;
+};
+
 interface FooterProps {
   t: TranslationContent;
   language: Language;
@@ -148,7 +154,7 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
                 style={{ position: 'absolute', left: '-9999px' }}
                 aria-hidden="true"
               />
-              <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0">{t.subscribeHeading}</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0"><SlashHeading text={t.subscribeHeading} /></h3>
               <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input

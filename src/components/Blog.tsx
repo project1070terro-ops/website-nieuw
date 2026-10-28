@@ -24,6 +24,12 @@ const overviewLabels: Record<Language, { stages: string; challenge: string; expe
 
 const isStage = (slug: string) => /\/(dag|day|d[ií]a)[-\s]?\d+/i.test(slug);
 
+const SlashHeading = ({ text }: { text: string }) => {
+  const i = text.indexOf('/');
+  if (i === -1) return <>{text}</>;
+  return <>{text.slice(0, i)}<span className="brand-slash">/</span>{text.slice(i + 1)}</>;
+};
+
 const CATEGORIES = ['all', 'preview', 'training', 'material', 'progress', 'partner'];
 
 const backToTopLabels: Record<Language, string> = {
@@ -326,7 +332,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               style={{ position: 'absolute', left: '-9999px' }}
               aria-hidden="true"
             />
-          <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0">{t.subscribeHeading}</h3>
+          <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0"><SlashHeading text={t.subscribeHeading} /></h3>
           <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
           <div className="flex flex-col sm:flex-row gap-3">
             <input
