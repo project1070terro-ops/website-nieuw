@@ -225,7 +225,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       href={sponsor.websiteUrl || '#'}
                       target="_blank"
                       rel="noreferrer"
-                      className="footer-sponsor-link !w-[160px] !h-[80px] !bg-transparent"
+                      className="footer-sponsor-link !w-[160px] !h-[80px] !bg-transparent p-3 flex items-center justify-center"
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
@@ -259,7 +259,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       href={sponsor.websiteUrl || '#'}
                       target="_blank"
                       rel="noreferrer"
-                      className="footer-sponsor-link !w-[130px] !h-[65px] !bg-transparent"
+                      className="footer-sponsor-link !w-[130px] !h-[65px] !bg-transparent p-3 flex items-center justify-center"
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
@@ -294,7 +294,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       href={sponsor.websiteUrl || '#'}
                       target="_blank"
                       rel="noreferrer"
-                      className="footer-sponsor-link !w-[100px] !h-[50px] !bg-transparent"
+                      className="footer-sponsor-link !w-[100px] !h-[50px] !bg-transparent p-2 flex items-center justify-center"
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
