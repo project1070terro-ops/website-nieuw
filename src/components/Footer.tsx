@@ -38,8 +38,8 @@ interface SponsorTierProps {
 
 function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierProps) {
   const sizeClass =
-    tier === 'Gold' ? 'w-64 h-32' : tier === 'Silver' ? 'w-48 h-24' : 'w-36 h-16';
-  const paddingClass = tier === 'Bronze' ? 'p-3' : 'p-4';
+    tier === 'Gold' ? 'w-52 h-24' : tier === 'Silver' ? 'w-40 h-18' : 'w-32 h-14';
+  const paddingClass = tier === 'Bronze' ? 'p-2' : 'p-3';
 
   return (
     <div className="w-full max-w-5xl mx-auto">
