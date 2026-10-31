@@ -38,7 +38,7 @@ interface SponsorTierProps {
 
 function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierProps) {
   const sizeClass =
-    tier === 'Gold' ? 'w-52 h-24' : tier === 'Silver' ? 'w-40 h-18' : 'w-32 h-14';
+    tier === 'Gold' ? 'w-44 h-20' : tier === 'Silver' ? 'w-36 h-16' : 'w-28 h-12';
   const paddingClass = tier === 'Bronze' ? 'p-2' : 'p-3';
 
   return (
