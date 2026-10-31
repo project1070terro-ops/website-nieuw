@@ -266,10 +266,15 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
         throw new Error('Database connection not available');
       }
 
-      const { error: insertError } = await supabase.from('donations').insert({
-        name: company,
+      const { error: insertError } = await supabase.from('sponsors').insert({
+        company,
+        contact_person: person,
+        email,
+        phone,
+        tier: selectedTier,
         amount_eur: euros,
-        message: `Sponsoring: ${selectedTier}`,
+        message: '',
+        status: 'pending',
       });
 
       if (insertError) {

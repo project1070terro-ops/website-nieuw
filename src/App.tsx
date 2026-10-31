@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
-import type { BlogPost, Donation, Language, Page } from './types';
+import { useEffect, useState } from 'react';
+import type { BlogPost, Donation, Language, Page, SponsorLogo } from './types';
 import { copy } from './constants';
 import { supabase } from './supabaseClient';
-import { loadBlogPosts } from './lib/sanityClient';
+import { loadBlogPosts, loadSponsors } from './lib/sanityClient';
 import { featuredMarkdownPosts } from './content/blog';
 
 // Components
@@ -57,6 +57,8 @@ function App() {
   const [blogSlug, setBlogSlug] = useState<string | null>(getInitialBlogSlug);
   const [menuOpen, setMenuOpen] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([]);
+  const [sponsorLogos, setSponsorLogos] = useState<SponsorLogo[]>([]);
+  const [totalDonated, setTotalDonated] = useState(0);
   const [cookieConsent, setCookieConsent] = useState<'accepted' | 'declined' | null>(null);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [blogYear, setBlogYear] = useState(getInitialBlogYear);
@@ -107,9 +109,10 @@ function App() {
       });
   }, []);
 
-  // Load donations on mount
+  // Load donations + sponsors on mount
   useEffect(() => {
-    void loadDonations();
+    void loadData();
+    void loadSponsorLogos();
   }, []);
 
   // Lightweight Supabase keep-alive ping on page load
@@ -131,21 +134,49 @@ function App() {
     void pingSupabase();
   }, []);
 
-  const totalDonated = useMemo(() => {
-    return donations.reduce((sum, donation) => sum + Number(donation.amount_eur), 0);
-  }, [donations]);
-
-  async function loadDonations() {
+  async function loadSponsorLogos() {
     try {
-      const { data } = await supabase
+      const logos = await loadSponsors();
+      setSponsorLogos(logos);
+    } catch (error) {
+      console.error('Failed to load sponsor logos:', error);
+    }
+  }
+
+  async function loadData() {
+    try {
+      if (!supabase) return;
+
+      const { data: feedData } = await supabase
         .from('donations')
-        .select('id, name, amount_eur, message, created_at')
+        .select('id, name, amount_eur, message, status, created_at')
         .order('created_at', { ascending: false })
         .limit(8);
 
-      if (data) {
-        setDonations(data as Donation[]);
+      if (feedData) {
+        setDonations(feedData as Donation[]);
       }
+
+      const { data: confirmedDonations } = await supabase
+        .from('donations')
+        .select('amount_eur')
+        .eq('status', 'confirmed');
+
+      const { data: confirmedSponsors } = await supabase
+        .from('sponsors')
+        .select('amount_eur')
+        .eq('status', 'confirmed');
+
+      const donationTotal = (confirmedDonations ?? []).reduce(
+        (sum, row) => sum + Number(row.amount_eur),
+        0
+      );
+      const sponsorTotal = (confirmedSponsors ?? []).reduce(
+        (sum, row) => sum + Number(row.amount_eur),
+        0
+      );
+
+      setTotalDonated(donationTotal + sponsorTotal);
     } catch (error) {
       console.error('Failed to load donations:', error);
     }
@@ -225,16 +256,16 @@ function App() {
             ) : null}
             {page === 'cause' && <Cause t={t} navigate={navigate} />}
             {page === 'donate' && (
-              <Donate t={t} language={language} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadDonations} />
+              <Donate t={t} language={language} navigate={navigate} donations={donations} totalDonated={totalDonated} onDonation={loadData} />
             )}
             {page === 'contact' && <Contact t={t} language={language} navigate={navigate} />}
-            {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadDonations} totalDonated={totalDonated} />}
+            {page === 'sponsoring' && <Sponsoring t={t} language={language} navigate={navigate} onSponsoring={loadData} totalDonated={totalDonated} />}
             {page === 'privacy' && <PrivacyDisclaimer navigate={navigate} language={language} />}
           </>
         )}
       </main>
       {!isMaintenance && (
-        <Footer t={t} language={language} page={page} navigate={navigate} maintenance={isMaintenance} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
+        <Footer t={t} language={language} page={page} navigate={navigate} maintenance={isMaintenance} sponsorLogos={sponsorLogos} className={page === 'privacy' ? 'footer-orange-top' : undefined} />
       )}
       {!isMaintenance && cookieConsent === null && (
         <CookieBanner

@@ -1,6 +1,6 @@
 import { createClient, type SanityClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
-import type { BlogPhoto, BlogPost, Language, RouteDay } from '../types';
+import type { BlogPhoto, BlogPost, Language, RouteDay, SponsorLogo } from '../types';
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID ?? 'of8587ti';
 const dataset = import.meta.env.VITE_SANITY_DATASET ?? 'production';
@@ -157,6 +157,33 @@ const HERO_SLIDER_QUERY = `*[_type == "siteSettings"][0] {
     asset -> { _id }
   }
 }`;
+
+const SPONSORS_QUERY = `*[_type == "sponsor" && active == true] | order(order asc) {
+  _id,
+  company,
+  tier,
+  websiteUrl,
+  order,
+  active,
+  logo {
+    asset
+  }
+}`;
+
+export async function loadSponsors(): Promise<SponsorLogo[]> {
+  const result = await sanityClient.fetch(SPONSORS_QUERY);
+  const sponsors = (result as any[]) ?? [];
+
+  return sponsors.map((sponsor) => ({
+    _id: sponsor._id,
+    company: sponsor.company ?? '',
+    tier: (sponsor.tier === 'Gold' || sponsor.tier === 'Silver' || sponsor.tier === 'Bronze') ? sponsor.tier : 'Bronze',
+    websiteUrl: sponsor.websiteUrl ?? undefined,
+    src: sponsor.logo?.asset ? urlFor(sponsor.logo).width(400).url() : '',
+    order: sponsor.order ?? 0,
+    active: sponsor.active ?? true,
+  }));
+}
 
 export async function loadHeroSlider(): Promise<string[]> {
   const result = await liveClient.fetch(HERO_SLIDER_QUERY);

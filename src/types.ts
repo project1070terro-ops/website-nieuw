@@ -6,7 +6,31 @@ export interface Donation {
   name: string;
   amount_eur: number;
   message: string;
+  status: 'pending' | 'confirmed' | 'cancelled';
   created_at: string;
+}
+
+export interface Sponsor {
+  id: string;
+  company: string;
+  contact_person: string;
+  email: string;
+  phone: string | null;
+  tier: 'Gold' | 'Silver' | 'Bronze';
+  amount_eur: number;
+  message: string;
+  status: 'pending' | 'confirmed' | 'cancelled';
+  created_at: string;
+}
+
+export interface SponsorLogo {
+  _id: string;
+  company: string;
+  tier: 'Gold' | 'Silver' | 'Bronze';
+  websiteUrl?: string;
+  src: string;
+  order: number;
+  active: boolean;
 }
 
 export interface TranslationContent {

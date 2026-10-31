@@ -4,5 +4,6 @@ import { localeText } from './localeText';
 import { photo } from './photo';
 import { routeDay } from './routeDay';
 import { siteSettings } from './siteSettings';
+import { sponsor } from './sponsor';
 
-export const schemaTypes = [post, localeString, localeText, photo, routeDay, siteSettings];
+export const schemaTypes = [post, localeString, localeText, photo, routeDay, siteSettings, sponsor];

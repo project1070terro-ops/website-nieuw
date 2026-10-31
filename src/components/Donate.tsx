@@ -92,6 +92,7 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
         name: name.trim(),
         amount_eur: amount,
         message: message.trim(),
+        status: 'pending',
       });
 
       if (insertError) {

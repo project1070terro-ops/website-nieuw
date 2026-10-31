@@ -1,7 +1,7 @@
 import { Facebook, Instagram } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import { subscribeEmail } from '../lib/subscribe';
-import type { Language, Page, TranslationContent } from '../types';
+import type { Language, Page, SponsorLogo, TranslationContent } from '../types';
 import type { ReactNode } from 'react';
 
 const SlashHeading = ({ text }: { text: string }) => {
@@ -16,6 +16,7 @@ interface FooterProps {
   page: Page;
   navigate: (page: Page) => void;
   maintenance: boolean;
+  sponsorLogos: SponsorLogo[];
   className?: string;
 }
 
@@ -27,7 +28,7 @@ const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; co
 
 const STC_URL = 'https://www.savethechildren.org/';
 
-export function Footer({ t, language, page, navigate, maintenance, className }: FooterProps) {
+export function Footer({ t, language, page, navigate, maintenance, sponsorLogos, className }: FooterProps) {
   const [footerEmail, setFooterEmail] = useState('');
   const [footerStatus, setFooterStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [footerError, setFooterError] = useState<'duplicate' | 'other' | null>(null);
@@ -210,8 +211,31 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
               <div className="flex-1 h-px bg-white/10" />
             </div>
             <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Gold sponsors">
-              <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
+              {sponsorLogos.filter((s) => s.tier === 'Gold').length === 0 ? (
+                <>
+                  <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
+                </>
+              ) : (
+                sponsorLogos
+                  .filter((s) => s.tier === 'Gold')
+                  .map((sponsor) => (
+                    <a
+                      key={sponsor._id}
+                      href={sponsor.websiteUrl || '#'}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-sponsor-link !w-[160px] !h-[80px] !bg-transparent"
+                      aria-label={sponsor.company}
+                    >
+                      {sponsor.src ? (
+                        <img className="w-full h-full object-contain p-1" src={sponsor.src} alt={sponsor.company} />
+                      ) : (
+                        <span className="text-xs text-white/60 text-center px-2">{sponsor.company}</span>
+                      )}
+                    </a>
+                  ))
+              )}
             </div>
 
             <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
@@ -220,9 +244,32 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
               <div className="flex-1 h-px bg-white/10" />
             </div>
             <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Silver sponsors">
-              <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+              {sponsorLogos.filter((s) => s.tier === 'Silver').length === 0 ? (
+                <>
+                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
+                </>
+              ) : (
+                sponsorLogos
+                  .filter((s) => s.tier === 'Silver')
+                  .map((sponsor) => (
+                    <a
+                      key={sponsor._id}
+                      href={sponsor.websiteUrl || '#'}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-sponsor-link !w-[130px] !h-[65px] !bg-transparent"
+                      aria-label={sponsor.company}
+                    >
+                      {sponsor.src ? (
+                        <img className="w-full h-full object-contain p-1" src={sponsor.src} alt={sponsor.company} />
+                      ) : (
+                        <span className="text-[10px] text-white/60 text-center px-2">{sponsor.company}</span>
+                      )}
+                    </a>
+                  ))
+              )}
             </div>
 
             <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
@@ -231,10 +278,33 @@ export function Footer({ t, language, page, navigate, maintenance, className }: 
               <div className="flex-1 h-px bg-white/10" />
             </div>
             <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Bronze sponsors">
-              <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-              <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+              {sponsorLogos.filter((s) => s.tier === 'Bronze').length === 0 ? (
+                <>
+                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
+                </>
+              ) : (
+                sponsorLogos
+                  .filter((s) => s.tier === 'Bronze')
+                  .map((sponsor) => (
+                    <a
+                      key={sponsor._id}
+                      href={sponsor.websiteUrl || '#'}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="footer-sponsor-link !w-[100px] !h-[50px] !bg-transparent"
+                      aria-label={sponsor.company}
+                    >
+                      {sponsor.src ? (
+                        <img className="w-full h-full object-contain p-1" src={sponsor.src} alt={sponsor.company} />
+                      ) : (
+                        <span className="text-[10px] text-white/60 text-center px-1">{sponsor.company}</span>
+                      )}
+                    </a>
+                  ))
+              )}
             </div>
           </div>
         )}
