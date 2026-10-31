@@ -28,6 +28,47 @@ const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; co
 
 const STC_URL = 'https://www.savethechildren.org/';
 
+interface SponsorTierProps {
+  title: string;
+  textColor: string;
+  lineColor: string;
+  logos: SponsorLogo[];
+}
+
+function SponsorTier({ title, textColor, lineColor, logos }: SponsorTierProps) {
+  return (
+    <div className="w-full max-w-5xl mx-auto">
+      <div className="flex items-center gap-4 mt-3">
+        <div className={`flex-1 h-px ${lineColor}`} />
+        <span className={`text-[11px] uppercase tracking-wider whitespace-nowrap ${textColor}`}>{title}</span>
+        <div className={`flex-1 h-px ${lineColor}`} />
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 py-3" aria-label={title}>
+        {logos.map((sponsor) => (
+          <a
+            key={sponsor._id}
+            href={sponsor.websiteUrl || '#'}
+            target="_blank"
+            rel="noreferrer"
+            className="h-12 md:h-14 inline-flex items-center"
+            aria-label={sponsor.company}
+          >
+            {sponsor.src ? (
+              <img
+                className="h-full w-auto max-w-[140px] md:max-w-[180px] object-contain grayscale transition duration-300 hover:grayscale-0"
+                src={sponsor.src}
+                alt={sponsor.company}
+              />
+            ) : (
+              <span className="text-sm text-white/70">{sponsor.company}</span>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Footer({ t, language, page, navigate, maintenance, sponsorLogos, className }: FooterProps) {
   const [footerEmail, setFooterEmail] = useState('');
   const [footerStatus, setFooterStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -205,107 +246,26 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
               </a>
             </div>
 
-            <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsGold}</span>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-            <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Gold sponsors">
-              {sponsorLogos.filter((s) => s.tier === 'Gold').length === 0 ? (
-                <>
-                  <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[160px] !h-[80px] bg-amber-600/20" aria-label="Sponsor placeholder" />
-                </>
-              ) : (
-                sponsorLogos
-                  .filter((s) => s.tier === 'Gold')
-                  .map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.websiteUrl || '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="footer-sponsor-link !w-[160px] !h-[80px] !bg-transparent p-3 flex items-center justify-center"
-                      aria-label={sponsor.company}
-                    >
-                      {sponsor.src ? (
-                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
-                      ) : (
-                        <span className="text-xs text-white/60 text-center px-2">{sponsor.company}</span>
-                      )}
-                    </a>
-                  ))
-              )}
-            </div>
+            <SponsorTier
+              title={footerLabels[language].sponsorsGold}
+              textColor="text-amber-400"
+              lineColor="bg-amber-500/30"
+              logos={sponsorLogos.filter((s) => s.tier === 'Gold')}
+            />
 
-            <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsSilver}</span>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-            <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Silver sponsors">
-              {sponsorLogos.filter((s) => s.tier === 'Silver').length === 0 ? (
-                <>
-                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[130px] !h-[65px] bg-slate-500/20" aria-label="Sponsor placeholder" />
-                </>
-              ) : (
-                sponsorLogos
-                  .filter((s) => s.tier === 'Silver')
-                  .map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.websiteUrl || '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="footer-sponsor-link !w-[130px] !h-[65px] !bg-transparent p-3 flex items-center justify-center"
-                      aria-label={sponsor.company}
-                    >
-                      {sponsor.src ? (
-                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
-                      ) : (
-                        <span className="text-[10px] text-white/60 text-center px-2">{sponsor.company}</span>
-                      )}
-                    </a>
-                  ))
-              )}
-            </div>
+            <SponsorTier
+              title={footerLabels[language].sponsorsSilver}
+              textColor="text-slate-300"
+              lineColor="bg-slate-400/30"
+              logos={sponsorLogos.filter((s) => s.tier === 'Silver')}
+            />
 
-            <div className="w-full max-w-4xl mx-auto flex items-center gap-4 mt-2">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-[11px] uppercase tracking-wider text-gray-400 whitespace-nowrap">{footerLabels[language].sponsorsBronze}</span>
-              <div className="flex-1 h-px bg-white/10" />
-            </div>
-            <div className="footer-partners-row flex-wrap justify-center gap-2 md:gap-4" aria-label="Bronze sponsors">
-              {sponsorLogos.filter((s) => s.tier === 'Bronze').length === 0 ? (
-                <>
-                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-                  <div className="footer-partner-placeholder !w-[100px] !h-[50px] bg-orange-800/20" aria-label="Sponsor placeholder" />
-                </>
-              ) : (
-                sponsorLogos
-                  .filter((s) => s.tier === 'Bronze')
-                  .map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.websiteUrl || '#'}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="footer-sponsor-link !w-[100px] !h-[50px] !bg-transparent p-2 flex items-center justify-center"
-                      aria-label={sponsor.company}
-                    >
-                      {sponsor.src ? (
-                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
-                      ) : (
-                        <span className="text-[10px] text-white/60 text-center px-1">{sponsor.company}</span>
-                      )}
-                    </a>
-                  ))
-              )}
-            </div>
+            <SponsorTier
+              title={footerLabels[language].sponsorsBronze}
+              textColor="text-orange-400"
+              lineColor="bg-orange-400/30"
+              logos={sponsorLogos.filter((s) => s.tier === 'Bronze')}
+            />
           </div>
         )}
 
