@@ -229,7 +229,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
-                        <img className="w-full h-full object-contain p-1 grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
+                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
                       ) : (
                         <span className="text-xs text-white/60 text-center px-2">{sponsor.company}</span>
                       )}
@@ -263,7 +263,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
-                        <img className="w-full h-full object-contain p-1 grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
+                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
                       ) : (
                         <span className="text-[10px] text-white/60 text-center px-2">{sponsor.company}</span>
                       )}
@@ -298,7 +298,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                       aria-label={sponsor.company}
                     >
                       {sponsor.src ? (
-                        <img className="w-full h-full object-contain p-1 grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
+                        <img className="w-full h-full object-contain grayscale transition duration-300 hover:grayscale-0" src={sponsor.src} alt={sponsor.company} />
                       ) : (
                         <span className="text-[10px] text-white/60 text-center px-1">{sponsor.company}</span>
                       )}
