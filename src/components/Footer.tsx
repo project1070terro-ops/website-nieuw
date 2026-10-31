@@ -29,13 +29,18 @@ const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; co
 const STC_URL = 'https://www.savethechildren.org/';
 
 interface SponsorTierProps {
+  tier: 'Gold' | 'Silver' | 'Bronze';
   title: string;
   textColor: string;
   lineColor: string;
   logos: SponsorLogo[];
 }
 
-function SponsorTier({ title, textColor, lineColor, logos }: SponsorTierProps) {
+function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierProps) {
+  const sizeClass =
+    tier === 'Gold' ? 'w-64 h-32' : tier === 'Silver' ? 'w-48 h-24' : 'w-36 h-16';
+  const paddingClass = tier === 'Bronze' ? 'p-3' : 'p-4';
+
   return (
     <div className="w-full max-w-5xl mx-auto">
       <div className="flex items-center gap-4 mt-3">
@@ -43,24 +48,24 @@ function SponsorTier({ title, textColor, lineColor, logos }: SponsorTierProps) {
         <span className={`text-[11px] uppercase tracking-wider whitespace-nowrap ${textColor}`}>{title}</span>
         <div className={`flex-1 h-px ${lineColor}`} />
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 py-3" aria-label={title}>
+      <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 py-3" aria-label={title}>
         {logos.map((sponsor) => (
           <a
             key={sponsor._id}
             href={sponsor.websiteUrl || '#'}
             target="_blank"
             rel="noreferrer"
-            className="h-12 md:h-14 inline-flex items-center"
+            className={`${sizeClass} inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300`}
             aria-label={sponsor.company}
           >
             {sponsor.src ? (
               <img
-                className="h-full w-auto max-w-[140px] md:max-w-[180px] object-contain grayscale transition duration-300 hover:grayscale-0"
+                className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 hover:grayscale-0`}
                 src={sponsor.src}
                 alt={sponsor.company}
               />
             ) : (
-              <span className="text-sm text-white/70">{sponsor.company}</span>
+              <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
             )}
           </a>
         ))}
@@ -247,6 +252,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
             </div>
 
             <SponsorTier
+              tier="Gold"
               title={footerLabels[language].sponsorsGold}
               textColor="text-amber-400"
               lineColor="bg-amber-500/30"
@@ -254,6 +260,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
             />
 
             <SponsorTier
+              tier="Silver"
               title={footerLabels[language].sponsorsSilver}
               textColor="text-slate-300"
               lineColor="bg-slate-400/30"
@@ -261,6 +268,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
             />
 
             <SponsorTier
+              tier="Bronze"
               title={footerLabels[language].sponsorsBronze}
               textColor="text-orange-400"
               lineColor="bg-orange-400/30"
