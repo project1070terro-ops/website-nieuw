@@ -59,17 +59,22 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
             <Wrapper
               key={sponsor._id}
               {...linkProps}
-              className={`${sizeClass} inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300`}
+              className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group`}
               aria-label={sponsor.company}
             >
               {sponsor.src ? (
                 <img
-                  className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 hover:grayscale-0`}
+                  className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 group-hover:grayscale-0`}
                   src={sponsor.src}
                   alt={sponsor.company}
                 />
               ) : (
                 <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
+              )}
+              {sponsor.websiteUrl && (
+                <div className="absolute inset-0 flex items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition duration-300 bg-black/80 z-10">
+                  <span className="text-xs text-white/90 text-center break-all leading-tight">{sponsor.websiteUrl}</span>
+                </div>
               )}
             </Wrapper>
           );
