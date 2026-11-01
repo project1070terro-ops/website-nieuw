@@ -72,8 +72,8 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
                 <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
               )}
               {sponsor.websiteUrl && (
-                <div className="absolute inset-0 flex items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition duration-300 bg-black/80 z-10">
-                  <span className="text-xs text-white/90 text-center break-all leading-tight">{sponsor.websiteUrl}</span>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-1 rounded bg-black/90 text-[10px] text-white/90 text-center break-all leading-tight max-w-[95%] opacity-0 group-hover:opacity-100 transition duration-300 z-10">
+                  {sponsor.websiteUrl}
                 </div>
               )}
             </Wrapper>
