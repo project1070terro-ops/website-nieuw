@@ -45,7 +45,7 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Uw investering gaat integraal naar Save the Children en is fiscaal aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang de officiële documentatie rechtstreeks van het goede doel. Steun dit cruciale werk vandaag nog!',
+    lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Dankzij onze hoofdpartner Fortuna Financial Group worden alle operationele kosten 100% gedekt; uw investering gaat dus integraal naar Save the Children en is fiscale aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang direct de officiële documentatie en betaalinstructies om uw bijdrage rechtstreeks aan het goede doel te voldoen. Steun dit cruciale werk vandaag nog!',
     toast: 'Bedankt voor uw aanvraag en uw steun! Wij hebben uw gegevens in goede orde ontvangen en de gereserveerde meters zijn alvast toegevoegd aan onze live-balk. Er is zojuist een automatische bevestiging naar uw e-mailadres verzonden. Samen verleggen we grenzen voor kinderen wereldwijd!',
     close: 'Sluiten',
     tierHeaders: ['GOUD', 'ZILVER', 'BRONS'],
@@ -97,7 +97,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   en: {
     title: 'Pushing Borders Together',
-    lead: 'With your corporate sponsorship, your company makes a difference. Your investment goes entirely to Save the Children and is tax-deductible within corporate income tax.\n\nChoose the sponsorship package below that fits your business, fill in your details, and receive the official documentation directly from the charity. Support this crucial work today!',
+    lead: 'With your corporate sponsorship, your company makes the difference. Thanks to our main partner Fortuna Financial Group, all operational costs are 100% covered; your investment therefore goes entirely to Save the Children and is tax-deductible within corporate income tax.\n\nChoose the sponsorship package below that suits your business, fill in your details and receive the official documentation and payment instructions directly to settle your contribution with the charity. Support this crucial work today!',
     toast: 'Thank you for your request and your support! We have successfully received your details, and the reserved meters have been added to our live progress bar. An automatic confirmation has just been sent to your email address. Together, we are pushing boundaries for children worldwide!',
     close: 'Close',
     tierHeaders: ['GOLD', 'SILVER', 'BRONZE'],
@@ -149,7 +149,7 @@ const copy: Record<Language, SponsoringCopy> = {
   },
   es: {
     title: 'Superando Límites Juntos',
-    lead: 'Con su patrocinio corporativo, su empresa marca la diferencia. Su inversión se destina íntegramente a Save the Children y es deducible de impuestos dentro del impuesto sobre sociedades.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa, complete sus datos y reciba la documentación oficial directamente de la organización benéfica. ¡Apoye este trabajo crucial hoy mismo!',
+    lead: 'Con su patrocinio corporativo, su empresa marca la diferencia. Gracias a nuestro socio principal Fortuna Financial Group, todos los costes operativos están cubiertos al 100 %; su inversión se destina íntegramente a Save the Children y es deducible de impuestos dentro del impuesto sobre sociedades.\n\nElija a continuación el paquete de patrocinio que mejor se adapte a su empresa, complete sus datos y reciba directamente la documentación oficial e instrucciones de pago para abonar su aporte a la organización benéfica. ¡Apoye este trabajo crucial hoy mismo!',
     toast: '¡Gracias por su solicitud y por su apoyo! Hemos recibido sus datos correctamente y los metros reservados ya se han sumado a nuestra barra de progreso en vivo. Se acaba de enviar una confirmación automática a su correo electrónico. ¡Juntos, superamos límites por los niños de todo el mundo!',
     close: 'Cerrar',
     tierHeaders: ['ORO', 'PLATA', 'BRONCE'],

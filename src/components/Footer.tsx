@@ -49,26 +49,31 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
         <div className={`flex-1 h-px ${lineColor}`} />
       </div>
       <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 py-3" aria-label={title}>
-        {logos.map((sponsor) => (
-          <a
-            key={sponsor._id}
-            href={sponsor.websiteUrl || '#'}
-            target="_blank"
-            rel="noreferrer"
-            className={`${sizeClass} inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300`}
-            aria-label={sponsor.company}
-          >
-            {sponsor.src ? (
-              <img
-                className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 hover:grayscale-0`}
-                src={sponsor.src}
-                alt={sponsor.company}
-              />
-            ) : (
-              <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
-            )}
-          </a>
-        ))}
+        {logos.map((sponsor) => {
+          const isLink = tier === 'Gold' || tier === 'Silver';
+          const Wrapper = isLink ? 'a' : 'div';
+          const linkProps = isLink
+            ? { href: sponsor.websiteUrl || '#', target: '_blank', rel: 'noreferrer' }
+            : {};
+          return (
+            <Wrapper
+              key={sponsor._id}
+              {...linkProps}
+              className={`${sizeClass} inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300`}
+              aria-label={sponsor.company}
+            >
+              {sponsor.src ? (
+                <img
+                  className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 hover:grayscale-0`}
+                  src={sponsor.src}
+                  alt={sponsor.company}
+                />
+              ) : (
+                <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
+              )}
+            </Wrapper>
+          );
+        })}
       </div>
     </div>
   );
