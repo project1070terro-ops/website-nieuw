@@ -28,6 +28,19 @@ const footerLabels: Record<Language, { privacy: string; copyright: ReactNode; co
 
 const STC_URL = 'https://www.savethechildren.org/';
 
+function cleanDomain(url: string): string {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname.replace(/^www\./, '');
+  } catch {
+    return url
+      .replace(/^https?:\/\//, '')
+      .replace(/^www\./, '')
+      .replace(/\/+$/, '')
+      .split('/')[0];
+  }
+}
+
 interface SponsorTierProps {
   tier: 'Gold' | 'Silver' | 'Bronze';
   title: string;
@@ -48,35 +61,36 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
         <span className={`text-[11px] uppercase tracking-wider whitespace-nowrap ${textColor}`}>{title}</span>
         <div className={`flex-1 h-px ${lineColor}`} />
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 py-3" aria-label={title}>
+      <div className="flex flex-wrap items-start justify-center gap-4 md:gap-6 py-3" aria-label={title}>
         {logos.map((sponsor) => {
           const isLink = tier === 'Gold' || tier === 'Silver';
-          const Wrapper = isLink ? 'a' : 'div';
+          const Tag = isLink ? 'a' : 'div';
           const linkProps = isLink
             ? { href: sponsor.websiteUrl || '#', target: '_blank', rel: 'noreferrer' }
             : {};
           return (
-            <Wrapper
-              key={sponsor._id}
-              {...linkProps}
-              className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group`}
-              aria-label={sponsor.company}
-            >
-              {sponsor.src ? (
-                <img
-                  className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 group-hover:grayscale-0`}
-                  src={sponsor.src}
-                  alt={sponsor.company}
-                />
-              ) : (
-                <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
+            <div key={sponsor._id} className="flex flex-col items-center">
+              <Tag
+                {...linkProps}
+                className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group`}
+                aria-label={sponsor.company}
+              >
+                {sponsor.src ? (
+                  <img
+                    className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 group-hover:grayscale-0`}
+                    src={sponsor.src}
+                    alt={sponsor.company}
+                  />
+                ) : (
+                  <span className="text-sm text-white/70 text-center px-2">{sponsor.company}</span>
+                )}
+              </Tag>
+              {tier === 'Bronze' && sponsor.websiteUrl && (
+                <span className="mt-2 text-xs text-neutral-500 text-center block w-full truncate" title={sponsor.websiteUrl}>
+                  {cleanDomain(sponsor.websiteUrl)}
+                </span>
               )}
-              {sponsor.websiteUrl && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 px-2 py-1 rounded bg-black/90 text-[10px] text-white/90 text-center break-all leading-tight max-w-[95%] opacity-0 group-hover:opacity-100 transition duration-300 z-10">
-                  {sponsor.websiteUrl}
-                </div>
-              )}
-            </Wrapper>
+            </div>
           );
         })}
       </div>
