@@ -65,9 +65,12 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
         {logos.map((sponsor) => {
           const isLink = tier === 'Gold' || tier === 'Silver';
           const Tag = isLink ? 'a' : 'div';
-          const linkProps = isLink
-            ? { href: sponsor.websiteUrl || '#', target: '_blank', rel: 'noreferrer' }
-            : {};
+          const linkProps =
+            tier === 'Gold'
+              ? { href: sponsor.websiteUrl || '#', target: '_blank' }
+              : tier === 'Silver'
+              ? { href: sponsor.websiteUrl || '#', target: '_blank', rel: 'nofollow sponsored' }
+              : {};
           return (
             <div key={sponsor._id} className="flex flex-col items-center">
               <Tag
