@@ -15,6 +15,7 @@ interface HomeProps {
 export function Home({ t, navigate }: HomeProps) {
   const [sliderImages, setSliderImages] = useState(heroImages);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [lensReady, setLensReady] = useState(false);
   const total = sliderImages.length;
   const currentSlide = total > 0 ? activeSlide % total : 0;
 
@@ -26,6 +27,11 @@ export function Home({ t, navigate }: HomeProps) {
         }
       })
       .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLensReady(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const nextSlide = () => setActiveSlide((s) => (s + 1) % total);
@@ -45,6 +51,9 @@ export function Home({ t, navigate }: HomeProps) {
           ))}
         </div>
         <div className="hero-shade" />
+        <div className={`hero-lens-flare ${lensReady ? 'lens-active' : ''}`} aria-hidden="true">
+          <div className="lens-ambient" />
+        </div>
         <div className="hero-content">
           <p className="eyebrow hero-eyebrow-split">
             <span className="eyebrow-date">{t.heroEyebrow[0]}</span>
@@ -60,7 +69,7 @@ export function Home({ t, navigate }: HomeProps) {
             <BrandText text={t.heroText} />
           </p>
           <div className="hero-actions">
-            <button className="button button-primary" onClick={() => navigate('donate')}>
+            <button className="button button-primary cta-glow" onClick={() => navigate('donate')}>
               <img className="cta-stc" src="/images/sponsor/stc-embleem.png" alt="Save the Children" /> {t.support} <ArrowRight size={17} />
             </button>
             <button className="text-button" onClick={() => navigate('blog')}>

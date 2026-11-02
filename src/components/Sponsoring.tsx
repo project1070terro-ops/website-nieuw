@@ -4,7 +4,8 @@ import type { Language, Page, TranslationContent } from '../types';
 import { subscribeEmail } from '../lib/subscribe';
 import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
-import { Meter } from './Meter';
+// import { Meter } from './Meter';
+import { MountainProgress } from './MountainProgress';
 
 interface SponsoringProps {
   t: TranslationContent;
@@ -324,7 +325,8 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
     <>
       <PageIntro title={c.title} lead={c.lead} className="!pb-2" />
 
-      <Meter totalDonated={totalDonated} t={t} />
+      {/* <Meter totalDonated={totalDonated} t={t} /> */}
+      <MountainProgress percentage={15} language={language} />
 
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="hidden md:block overflow-x-auto">

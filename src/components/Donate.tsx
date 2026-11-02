@@ -6,6 +6,7 @@ import { subscribeEmail } from '../lib/subscribe';
 import { checkMessage, checkName } from '../utils/messageFilter';
 import { BrandText } from './BrandText';
 import { PageIntro } from './PageIntro';
+import { MountainProgress } from './MountainProgress';
 
 interface DonateProps {
   t: TranslationContent;
@@ -120,6 +121,8 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
   return (
     <>
       <PageIntro title={t.donateTitle} lead="" className="donate-intro" />
+      <MountainProgress percentage={15} language={language} />
+      {/*
       <section className="meter-section">
         <div className="meter-head">
           <div className="meter-head-left">
@@ -146,6 +149,7 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
           </button>
         </p>
       </section>
+      */}
 
       <section className="tier-grid">
         {t.tiers.map(([title, price, hm]) => {

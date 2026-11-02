@@ -75,7 +75,7 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
             <div key={sponsor._id} className="flex flex-col items-center">
               <Tag
                 {...linkProps}
-                className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group`}
+                className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group overflow-hidden ${isLink ? 'sponsor-shimmer sponsor-glow' : ''}`}
                 aria-label={sponsor.company}
               >
                 {sponsor.src ? (
@@ -273,8 +273,8 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
                   alt="Fortuna Financial Group"
                 />
               </a>
-              <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0 !w-[200px] !h-[100px]" title="Forza Fortuna">
-                <img className="w-full h-full object-contain p-1" src="/forza-fortuna-logo.webp" alt="Forza Fortuna" />
+              <a href="https://forzafortuna.be" target="_blank" rel="noreferrer" className="footer-forza-link !mt-0 !w-[200px] !h-[100px]">
+                <img className="w-full h-full object-contain p-1" src="/images/hero/forza-fortuna-logo.webp" alt="Forza Fortuna" />
               </a>
             </div>
 
