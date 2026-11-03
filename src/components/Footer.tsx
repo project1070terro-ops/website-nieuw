@@ -80,7 +80,7 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
               >
                 {sponsor.src ? (
                   <img
-                    className={`w-full h-full object-contain ${paddingClass} grayscale transition duration-300 group-hover:grayscale-0`}
+                    className="w-full h-full object-cover grayscale transition duration-300 group-hover:grayscale-0"
                     src={sponsor.src}
                     alt={sponsor.company}
                   />
