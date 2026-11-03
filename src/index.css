@@ -444,7 +444,7 @@ main { flex: 1; }
   transition: box-shadow 0.3s ease;
 }
 .sponsor-glow:hover {
-  box-shadow: 0 0 24px rgba(249, 115, 22, 0.35);
+  box-shadow: 0 0 28px rgba(249, 115, 22, 0.55), 0 0 52px rgba(249, 115, 22, 0.25);
 }
 
 .text-button {

@@ -75,12 +75,12 @@ function SponsorTier({ tier, title, textColor, lineColor, logos }: SponsorTierPr
             <div key={sponsor._id} className="flex flex-col items-center">
               <Tag
                 {...linkProps}
-                className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group overflow-hidden ${isLink ? 'sponsor-shimmer sponsor-glow' : ''}`}
+                className={`${sizeClass} relative inline-flex items-center justify-center rounded-md bg-[#121212] border border-neutral-800 hover:border-neutral-700 transition duration-300 group overflow-hidden sponsor-glow ${isLink ? 'sponsor-shimmer' : ''}`}
                 aria-label={sponsor.company}
               >
                 {sponsor.src ? (
                   <img
-                    className="w-full h-full object-cover grayscale transition duration-300 group-hover:grayscale-0"
+                    className="w-full h-full object-cover grayscale transition duration-300 group-hover:grayscale-0 group-hover:brightness-110"
                     src={sponsor.src}
                     alt={sponsor.company}
                   />
