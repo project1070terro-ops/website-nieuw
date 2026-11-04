@@ -64,7 +64,7 @@ export const MountainProgress: React.FC<MountainProgressProps> = ({ percentage, 
   const c = content[language] ?? content.nl;
 
   return (
-    <div className="w-full max-w-3xl mx-auto my-8 p-6 bg-[#0c0c0c] border border-neutral-800 rounded-2xl shadow-2xl">
+    <div className="w-[calc(100%-2rem)] max-w-3xl mx-auto my-8 p-4 sm:p-6 bg-[#0c0c0c] border border-neutral-800 rounded-2xl shadow-2xl">
       <div className="flex justify-between items-end mb-4 px-2 gap-4 flex-wrap">
         <div>
           <p className="text-sm font-semibold text-white mt-0.5">
