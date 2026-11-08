@@ -2,8 +2,6 @@ import { FormEvent, Fragment, useEffect, useState } from 'react';
 import { ArrowRight, ArrowUp, Lock } from 'lucide-react';
 import { subscribeEmail } from '../lib/subscribe';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
-import { loadDashboardStats } from '../lib/stats';
-import type { DashboardStats } from '../lib/stats';
 import { PageIntro } from './PageIntro';
 import { BlogStats } from './BlogStats';
 
@@ -106,7 +104,6 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const [year, setYear] = useState(initialYear ?? 2027);
   const [category, setCategory] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
-  const [dashboard, setDashboard] = useState<DashboardStats | null>(null);
   const [blogEmail, setBlogEmail] = useState('');
   const [blogStatus, setBlogStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
@@ -124,9 +121,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     }
   }, []);
 
-  useEffect(() => {
-    loadDashboardStats().then(setDashboard).catch(() => setDashboard(null));
-  }, []);
+
 
   const sortedCards = [...blogCards]
     .map((card, index) => ({ card, index }))
@@ -319,7 +314,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
         })}
       </div>
 
-      <BlogStats language={language} stats={dashboard?.stats ?? null} />
+      <BlogStats t={t} language={language} className="-mt-12 mb-6" />
 
       <div className="w-full max-w-3xl mx-auto rounded-lg border border-[#c05a28]/30 bg-zinc-900/60 p-5 my-8">
         <form onSubmit={handleBlogSubscribe} className="space-y-3" noValidate>
