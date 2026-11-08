@@ -42,6 +42,7 @@ export interface TranslationContent {
   discover: string;
   introOfficial: string;
   stats: Array<[string, string, Page]>;
+  trainingStats: Array<{ label: string; unit: string }>;
   sponsorText: string;
   sponsorLink: string;
   sponsorCards: Array<[string, string]>;

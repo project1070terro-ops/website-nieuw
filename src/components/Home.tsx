@@ -5,6 +5,7 @@ import { heroImages } from '../constants';
 import { loadHeroSlider } from '../lib/sanityClient';
 import { BrandText } from './BrandText';
 import { Stats } from './Stats';
+import { TrainingStats } from './TrainingStats';
 import { Sponsor } from './Sponsor';
 
 interface HomeProps {
@@ -107,6 +108,7 @@ export function Home({ t, navigate }: HomeProps) {
         <div className="intro-inner" dangerouslySetInnerHTML={{ __html: t.introOfficial }} />
       </section>
 
+      <TrainingStats t={t} />
       <Stats t={t} />
       <Sponsor t={t} />
 
