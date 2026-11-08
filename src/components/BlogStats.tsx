@@ -1,5 +1,4 @@
 import { TrainingStats } from './TrainingStats';
-import { Stats } from './Stats';
 import type { Language, TranslationContent } from '../types';
 
 interface BlogStatsProps {
@@ -21,7 +20,6 @@ export function BlogStats({ t, language, className }: BlogStatsProps) {
     <section className={`max-w-[1120px] mx-2 md:mx-auto p-5 bg-neutral-900 rounded-2xl ${className ?? '-mt-12 mb-6'}`}>
       <h2 className="text-xl md:text-2xl font-bold text-white mb-3">{title}</h2>
       <TrainingStats t={t} />
-      <Stats t={t} />
     </section>
   );
 }
