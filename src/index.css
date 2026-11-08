@@ -2631,12 +2631,14 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
 }
 
 @media (max-width: 640px) {
-  .training-stat-card { padding: 0.75rem; }
-  .training-stat-icon { width: 20px; height: 20px; margin-bottom: 0.5rem; }
-  .training-stat-value { font-size: 1.35rem; }
-  .training-stat-unit { font-size: 0.6rem; }
-  .training-stat-label { font-size: 0.55rem; }
-  .training-stat-card svg { height: 1.25rem; margin-top: 0.25rem; }
+  .training-stat-card { padding: 0.5rem 0.75rem; }
+  .training-stat-icon { width: 18px; height: 18px; margin-bottom: 0.35rem; }
+  .training-stat-value-wrap { margin-top: 0.25rem; }
+  .training-stat-value { font-size: 1.2rem; }
+  .training-stat-unit { font-size: 0.55rem; }
+  .training-stat-label { font-size: 0.5rem; margin-top: 0; }
+  .training-stat-glow { width: 3.5rem; height: 3.5rem; }
+  .training-stat-card svg { height: 0.85rem; margin-top: 0.15rem; }
 }
 
 /* --- PREMIUM CORE STATS BLOCKS --- */
