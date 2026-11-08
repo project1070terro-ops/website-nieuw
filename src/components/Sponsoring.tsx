@@ -412,11 +412,11 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
               ))}
             </select>
           </label>
-          <label className="flex items-start gap-3 text-sm text-white/80 cursor-pointer">
+          <label className="flex items-center gap-3 text-sm text-white/80 cursor-pointer">
             <input
               type="checkbox"
               name="subscribe"
-              className="mt-1 h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
+              className="h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
               checked={subscribe}
               onChange={(event) => setSubscribe(event.target.checked)}
             />

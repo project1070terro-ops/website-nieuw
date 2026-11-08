@@ -1511,12 +1511,13 @@ main { flex: 1; }
 @media (max-width: 860px) { .tier-grid { grid-template-columns: repeat(2, 1fr); padding: 16px 24px; } }
 
 .donate-lower { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 32px 40px 64px; max-width: 900px; margin: 0 auto; }
-.donation-form { background: var(--anthracite); border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); text-align: left; }
+.donation-form { background: var(--anthracite); border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.05); text-align: left; }
 .donation-form .eyebrow { margin-bottom: 8px; }
 .donation-form h2 { font-size: 22px; margin-bottom: 20px; }
 .amount-input { display: flex; align-items: center; gap: 10px; background: var(--black); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 12px 16px; margin-bottom: 20px; max-width: 220px; }
 .amount-input span { color: var(--orange); font-weight: 700; }
 .amount-input input { background: none; border: none; color: var(--white); font-size: 20px; font-weight: 700; width: 100%; outline: none; }
+.amount-input:focus-within { border-color: rgba(249, 115, 22, 0.5); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.08); }
 .donation-form label { display: block; margin-bottom: 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
 .donation-form input, .donation-form textarea {
   display: block;
@@ -1532,7 +1533,7 @@ main { flex: 1; }
   outline: none;
   transition: border-color 0.25s ease;
 }
-.donation-form input:focus, .donation-form textarea:focus { border-color: var(--orange); }
+.donation-form input:focus, .donation-form textarea:focus { border-color: rgba(249, 115, 22, 0.5); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.08); }
 .donation-form .button { margin-top: 8px; }
 
 .donor-feed { background: var(--anthracite); border-radius: 12px; padding: 28px; border: 1px solid rgba(255,255,255,0.06); text-align: left; }
@@ -1552,7 +1553,7 @@ main { flex: 1; }
 
 /* ===== CONTACT ===== */
 .contact-layout { display: block; max-width: 720px; margin: 0 auto; padding: 32px 40px 64px; }
-.contact-form { background: var(--anthracite); border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); }
+.contact-form { background: var(--anthracite); border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.05); }
 .contact-form label { display: block; margin-bottom: 18px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
 .contact-form input, .contact-form textarea, .contact-form select {
   display: block; width: 100%; margin-top: 8px;
@@ -1560,8 +1561,10 @@ main { flex: 1; }
   padding: 12px 14px; color: var(--white); font-family: inherit; font-size: 15px; outline: none;
   transition: border-color 0.25s ease;
 }
-.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: var(--orange); }
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color: rgba(249, 115, 22, 0.5); box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.08); }
 .contact-form .button { margin-top: 8px; }
+.donation-form .button-primary:hover,
+.contact-form .button-primary:hover { background: #ea580c; border-color: #ea580c; }
 .success { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--orange); font-size: 14px; font-weight: 600; }
 .contact-info { margin-top: 28px; text-align: center; }
 .contact-email {

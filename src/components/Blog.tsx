@@ -316,7 +316,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats t={t} language={language} className="-mt-12 mb-6" />
 
-      <div className="w-full max-w-3xl mx-auto rounded-lg border border-[#c05a28]/30 bg-zinc-900/60 p-5 my-8">
+      <div className="w-full max-w-3xl mx-auto rounded-lg border border-white/5 bg-zinc-900/60 p-5 my-8">
         <form onSubmit={handleBlogSubscribe} className="space-y-3" noValidate>
             <input
               type="text"
@@ -335,7 +335,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               value={blogEmail}
               onChange={(e) => setBlogEmail(e.target.value)}
               placeholder={t.subscribePlaceholder}
-              className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-[#c05a28] focus:outline-none"
+              className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 transition-all duration-200 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/15"
               required
             />
             <button

@@ -89,6 +89,9 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
     setSaving(true);
 
     try {
+      if (!supabase) {
+        throw new Error('Database niet bereikbaar.');
+      }
       const { error: insertError } = await supabase.from('donations').insert({
         name: name.trim(),
         amount_eur: amount,
@@ -220,10 +223,10 @@ export function Donate({ t, language, navigate, donations, totalDonated, onDonat
             />
             {fieldErrors.email && <p className="text-xs font-normal text-orange-500 mt-1 block lowercase-reset">{fieldErrors.email}</p>}
           </label>
-          <label className="flex items-start gap-3 text-sm text-white/80 cursor-pointer mt-2">
+          <label className="flex items-center gap-3 text-sm text-white/80 cursor-pointer mt-2">
             <input
               type="checkbox"
-              className="mt-1 h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
+              className="h-4 w-4 accent-[#c05a28] rounded border-zinc-600 bg-zinc-900"
               checked={subscribe}
               onChange={(event) => setSubscribe(event.target.checked)}
             />
