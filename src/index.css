@@ -2630,6 +2630,15 @@ h1, h2, h3, .section-title, [class*="text-4xl"], [class*="text-5xl"], [class*="b
   margin-top: 0.25rem;
 }
 
+@media (max-width: 640px) {
+  .training-stat-card { padding: 0.75rem; }
+  .training-stat-icon { width: 20px; height: 20px; margin-bottom: 0.5rem; }
+  .training-stat-value { font-size: 1.35rem; }
+  .training-stat-unit { font-size: 0.6rem; }
+  .training-stat-label { font-size: 0.55rem; }
+  .training-stat-card svg { height: 1.25rem; margin-top: 0.25rem; }
+}
+
 /* --- PREMIUM CORE STATS BLOCKS --- */
 .core-stats {
   width: 100%;
