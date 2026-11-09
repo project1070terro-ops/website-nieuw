@@ -100,8 +100,13 @@ export const post = defineType({
     defineField({
       name: 'expected',
       title: 'Verwachte publicatiedatum',
-      type: 'string',
+      type: 'datetime',
       description: 'Alleen zichtbaar bij status "upcoming"',
+      options: {
+        dateFormat: 'DD/MM/YYYY',
+        timeFormat: 'HH:mm',
+        timeStep: 15,
+      },
     }),
     defineField({
       name: 'excerpt',
