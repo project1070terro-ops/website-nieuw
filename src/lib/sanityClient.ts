@@ -29,7 +29,7 @@ const builder = imageUrlBuilder(sanityClient);
 
 export const urlFor = (source: any) => builder.image(source);
 
-const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**"))] | order(date desc) {
+const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**")) && (status != "upcoming" || (status == "upcoming" && defined(expected) && expected <= now()))] | order(date desc) {
   _id,
   "slug": slug.current,
   date,
@@ -112,8 +112,15 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
     title: toLocaleString(post.title),
     fullTitle: toLocaleString(post.fullTitle),
     image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,
-    status: post.status === 'upcoming' ? 'upcoming' : 'published',
-    expected: post.expected ?? undefined,
+    status:
+      post.status === 'upcoming' &&
+      post.expected &&
+      new Date(post.expected) <= new Date()
+        ? 'published'
+        : post.status === 'upcoming'
+          ? 'upcoming'
+          : 'published',
+    expected: undefined,
     inleiding: toLocaleBody(post.inleiding) ?? toLocaleBody(post.excerpt),
     strava: post.strava?.image?.asset
       ? {

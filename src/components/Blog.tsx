@@ -146,7 +146,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
   const hasMore = timelineSource.length > visibleCount;
   const labels = overviewLabels[language];
   const renderCard = (card: (typeof yearCards)[number], variant: 'default' | 'compact' | 'mini' = 'default') => {
-    const { date, slug, label, title, inleiding, image, status, expected, category: cat } = card;
+    const { date, slug, label, title, inleiding, image, status, category: cat } = card;
     if (!title || !title[language]) return null;
     const categoryLabel = labels.categories[cat || 'all'] || labels.categories.all;
     const excerptText = toPlainText(inleiding?.[language] || []);
@@ -174,7 +174,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
             <div className="blog-list-meta w-full justify-between">
               <span className="tag upcoming-tag">{label[language]}</span>
               <div className="flex justify-between items-center w-full mb-3">
-                <span className="text-xs text-zinc-400">{expected ? `${labels.expected}: ${expected}` : date}</span>
+                <span className="text-xs text-zinc-400">{date}</span>
                 <CategoryLabel label={categoryLabel} />
               </div>
               <Lock className="upcoming-lock" size={13} />
