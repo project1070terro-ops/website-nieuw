@@ -17,6 +17,43 @@ function getClientIp(request) {
   );
 }
 
+async function markEmailSent(docId, env) {
+  const token = env.SANITY_TOKEN || env.VITE_SANITY_TOKEN;
+  if (!token) {
+    console.warn('[sanity-webhook] no SANITY_TOKEN configured, cannot mark emailSent');
+    return;
+  }
+
+  const projectId = env.SANITY_PROJECT_ID || env.VITE_SANITY_PROJECT_ID || 'of8587ti';
+  const dataset = env.SANITY_DATASET || env.VITE_SANITY_DATASET || 'production';
+  const apiVersion = env.SANITY_API_VERSION || env.VITE_SANITY_API_VERSION || '2024-02-23';
+
+  try {
+    const response = await fetch(
+      `https://${projectId}.api.sanity.io/v${apiVersion}/data/mutate/${dataset}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          mutations: [{ patch: { id: docId, set: { emailSent: true } } }],
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const text = await response.text().catch(() => 'Unknown error');
+      console.error('[sanity-webhook] failed to mark emailSent:', response.status, text);
+    } else {
+      console.log('[sanity-webhook] marked emailSent for', docId);
+    }
+  } catch (err) {
+    console.error('[sanity-webhook] error marking emailSent:', err);
+  }
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -63,6 +100,16 @@ export async function onRequestPost(context) {
     if (doc.status !== 'published') {
       console.log('[sanity-webhook] skipped: status is not published');
       return jsonResponse({ ok: true, skipped: true, reason: 'status is not published' });
+    }
+
+    if (doc.sendEmail !== true) {
+      console.log('[sanity-webhook] skipped: sendEmail is not enabled');
+      return jsonResponse({ ok: true, skipped: true, reason: 'sendEmail is not enabled' });
+    }
+
+    if (doc.emailSent === true) {
+      console.log('[sanity-webhook] skipped: email already sent for this post');
+      return jsonResponse({ ok: true, skipped: true, reason: 'email already sent for this post' });
     }
 
     const slug = doc.slug?.current;
@@ -154,6 +201,11 @@ export async function onRequestPost(context) {
     }
 
     console.log('[sanity-webhook] done', { results, emailError });
+
+    if (!emailError) {
+      await markEmailSent(doc._id, env);
+    }
+
     return jsonResponse({ ok: true, sent: results, email_error: emailError });
   } catch (error) {
     console.error('[sanity-webhook] unhandled error:', error);

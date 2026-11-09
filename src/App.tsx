@@ -96,7 +96,8 @@ function App() {
 
   // Load blog posts from Sanity on mount and merge the static featured blocks.
   useEffect(() => {
-    loadBlogPosts()
+    const preview = new URLSearchParams(window.location.search).get('preview') === 'true';
+    loadBlogPosts(preview)
       .then((sanityPosts) => {
         const bySlug = new Map<string, BlogPost>();
         for (const post of featuredMarkdownPosts) bySlug.set(post.slug, post);

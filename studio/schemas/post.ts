@@ -109,6 +109,21 @@ export const post = defineType({
       },
     }),
     defineField({
+      name: 'sendEmail',
+      title: 'Verzend e-mail naar abonnees',
+      type: 'boolean',
+      description: 'Alleen aanzetten als je bewust een e-mail wilt triggeren bij publicatie.',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'emailSent',
+      title: 'E-mail verzonden',
+      type: 'boolean',
+      hidden: true,
+      readOnly: true,
+      initialValue: false,
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Oude samenvatting (legacy)',
       type: 'localeText',

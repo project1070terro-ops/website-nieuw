@@ -29,7 +29,7 @@ const builder = imageUrlBuilder(sanityClient);
 
 export const urlFor = (source: any) => builder.image(source);
 
-const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**")) && (status != "upcoming" || (status == "upcoming" && defined(expected) && expected <= now()))] | order(date desc) {
+const POSTS_FIELDS = `
   _id,
   "slug": slug.current,
   date,
@@ -50,7 +50,7 @@ const POSTS_QUERY = `*[_type == "post" && !(_id in path("drafts.**")) && (status
     ...,
     caption
   }
-}`;
+`;
 
 function toLocaleString(value: unknown): Record<Language, string> {
   if (value && typeof value === 'object') {
@@ -100,38 +100,44 @@ function toBlogPhotos(items: any[] | undefined): BlogPhoto[] | undefined {
     .filter((p) => p.src);
 }
 
-export async function loadBlogPosts(): Promise<BlogPost[]> {
-  const result = await liveClient.fetch(POSTS_QUERY);
+export async function loadBlogPosts(preview = false): Promise<BlogPost[]> {
+  const visibilityFilter = preview
+    ? ''
+    : ' && (status != "upcoming" || (status == "upcoming" && defined(expected) && expected <= now()))';
+  const query = `*[_type == "post" && !(_id in path("drafts.**"))${visibilityFilter}] | order(date desc) { ${POSTS_FIELDS} }`;
+
+  const result = await liveClient.fetch(query);
   const posts = (result as any[]) ?? [];
 
-  return posts.map((post) => ({
-    date: post.date ?? '',
-    slug: post.slug || '',
-    category: post.category || 'all',
-    label: toLocaleString(post.category ?? ''),
-    title: toLocaleString(post.title),
-    fullTitle: toLocaleString(post.fullTitle),
-    image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,
-    status:
-      post.status === 'upcoming' &&
-      post.expected &&
-      new Date(post.expected) <= new Date()
-        ? 'published'
-        : post.status === 'upcoming'
-          ? 'upcoming'
-          : 'published',
-    expected: undefined,
-    inleiding: toLocaleBody(post.inleiding) ?? toLocaleBody(post.excerpt),
-    strava: post.strava?.image?.asset
-      ? {
-          image: urlFor(post.strava.image).width(1600).url(),
-          url: post.strava.url ?? undefined,
-          alt: post.strava.image.alt ?? '',
-        }
-      : undefined,
-    body: toLocaleBody(post.body) ?? { nl: [], en: [], es: [] },
-    photos: toBlogPhotos(post.photos),
-  }));
+  const now = new Date();
+
+  return posts.map((post) => {
+    const isUpcoming = post.status === 'upcoming';
+    const expectedDate = post.expected ? new Date(post.expected) : undefined;
+    const isLive = isUpcoming && expectedDate && expectedDate <= now;
+
+    return {
+      date: post.date ?? '',
+      slug: post.slug || '',
+      category: post.category || 'all',
+      label: toLocaleString(post.category ?? ''),
+      title: toLocaleString(post.title),
+      fullTitle: toLocaleString(post.fullTitle),
+      image: post.heroImage?.asset ? urlFor(post.heroImage).width(1200).url() : undefined,
+      status: isLive ? 'published' : isUpcoming ? 'upcoming' : 'published',
+      expected: isUpcoming && !isLive ? (post.expected ?? undefined) : undefined,
+      inleiding: toLocaleBody(post.inleiding) ?? toLocaleBody(post.excerpt),
+      strava: post.strava?.image?.asset
+        ? {
+            image: urlFor(post.strava.image).width(1600).url(),
+            url: post.strava.url ?? undefined,
+            alt: post.strava.image.alt ?? '',
+          }
+        : undefined,
+      body: toLocaleBody(post.body) ?? { nl: [], en: [], es: [] },
+      photos: toBlogPhotos(post.photos),
+    };
+  });
 }
 
 const ROUTE_DAYS_QUERY = `*[_type == "routeDay"] | order(day asc) {
