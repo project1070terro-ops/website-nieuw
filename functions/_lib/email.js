@@ -98,24 +98,24 @@ function emailWrapper(content, unsubscribeUrl, language) {
 const WELCOME_COPY = {
   nl: {
     subject: 'Welkom bij Project 15/70 — Samen op weg naar 2029',
-    title: 'Welkom bij Project 15/70!',
-    body: `Wat fijn dat je erbij bent! Vanaf vandaag volg je onze missie ten voordele van <strong>Save the Children</strong> op de voet.<br><br>Op weg naar september 2029 — 10 dagen fietsen en >17.500 hoogtemeters — nemen we je mee achter de schermen van de voorbereidingen, mijlpalen en dagelijkse verslagen.<br><br>Samen maken we van elke hoogtemeter een tastbaar verschil. Bedankt voor je steun!`,
+    title: 'Welkom aan boord!',
+    body: `Wat fijn dat je erbij bent! Vanaf vandaag volg je onze missie ten voordele van <strong>Save the Children</strong> op de voet.<br><br>Op weg naar september 2029 — 10 dagen fietsen met +17.500 hoogtemeters — nemen we je mee achter de schermen van de voorbereidingen, mijlpalen en dagelijkse verslagen.<br><br>Samen maken we van elke hoogtemeter een tastbaar verschil. Bedankt voor je steun!`,
     cta: 'Bezoek de website',
-    signoff: 'Met warme en sportieve groet,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Mede mogelijk gemaakt door Fortuna Financial Group',
+    signoff: 'Met warme en sportieve groet,<br><br>Raoul "Terro" Struyf & Team<br>Mede mogelijk gemaakt door Fortuna Financial Group',
   },
   en: {
     subject: 'Welcome to Project 15/70 — Together on the road to 2029',
-    title: 'Welcome to Project 15/70!',
-    body: `So great to have you on board! From today, you will be following our mission in support of <strong>Save the Children</strong>.<br><br>On the road to September 2029 — 10 days of cycling and >17,500 metres of elevation — we will take you behind the scenes of the preparations, milestones and daily reports.<br><br>Together, we turn every metre of elevation into a tangible difference. Thank you for your support!`,
+    title: 'Welcome aboard!',
+    body: `Great to have you on board! From today, you will be following our mission in support of <strong>Save the Children</strong>.<br><br>On the way to September 2029 — 10 days of cycling with +17,500 meters of elevation — we will take you behind the scenes of the preparations, milestones and daily reports.<br><br>Together, we turn every metre of elevation into a tangible difference. Thank you for your support!`,
     cta: 'Visit the website',
-    signoff: 'With warm and sporty regards,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Made possible by Fortuna Financial Group',
+    signoff: 'With warm and sporty regards,<br><br>Raoul "Terro" Struyf & Team<br>Made possible by Fortuna Financial Group',
   },
   es: {
     subject: 'Bienvenido a Proyecto 15/70 — Juntos de camino a 2029',
-    title: '¡Bienvenido a Proyecto 15/70!',
-    body: `¡Qué alegría tenerte con nosotros! A partir de hoy sigues de cerca nuestra misión en apoyo de <strong>Save the Children</strong>.<br><br>De camino a septiembre de 2029 — 10 días de ciclismo y >17.500 metros de desnivel — te llevamos entre bambalinas de los preparativos, hitos e informes diarios.<br><br>Juntos convertimos cada metro de desnivel en una diferencia tangible. ¡Gracias por tu apoyo!`,
+    title: '¡Bienvenido a bordo!',
+    body: `¡Qué alegría tenerte con nosotros! A partir de hoy sigues de cerca nuestra misión en apoyo de <strong>Save the Children</strong>.<br><br>De camino a septiembre de 2029 — 10 días de ciclismo con +17.500 metros de desnivel — te llevamos entre bambalinas de los preparativos, hitos e informes diarios.<br><br>Juntos convertimos cada metro de desnivel en una diferencia tangible. ¡Gracias por tu apoyo!`,
     cta: 'Visitar el sitio web',
-    signoff: 'Un saludo cálido y deportivo,<br><br>Raoul "Terro" Struyf & Equipo Proyecto 15/70<br>Posible gracias a Fortuna Financial Group',
+    signoff: 'Un saludo cálido y deportivo,<br><br>Raoul "Terro" Struyf & Equipo<br>Posible gracias a Fortuna Financial Group',
   },
 };
 
