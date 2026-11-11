@@ -166,9 +166,23 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
     const bodyPadding = variant === 'mini' ? '12px 12px 16px' : variant === 'compact' ? '16px 16px 20px' : undefined;
     const excerptLines = variant === 'mini' ? 2 : 3;
     const cardClass = `blog-card ${variant === 'mini' ? 'blog-card-mini' : variant === 'compact' ? 'blog-card-compact' : ''}`;
+    const isPreview = new URLSearchParams(window.location.search).get('preview') === 'true';
+
     if (status === 'upcoming') {
       return (
-        <div key={slug} className={`${cardClass} upcoming`}>
+        <a
+          key={slug}
+          href={isPreview ? `/blog/${slug}` : undefined}
+          className={`${cardClass} upcoming ${isPreview ? 'upcoming-preview-link' : ''}`}
+          onClick={(event) => {
+            if (!isPreview) {
+              event.preventDefault();
+              return;
+            }
+            event.preventDefault();
+            goToBlog?.(slug);
+          }}
+        >
           {image && <img className="blog-card-media" style={{ aspectRatio: mediaAspect }} src={image} alt="" loading="lazy" />}
           <div className="blog-card-body" style={bodyPadding ? { padding: bodyPadding } : undefined}>
             <div className="blog-list-meta w-full justify-between">
@@ -177,7 +191,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
                 <span className="text-xs text-zinc-400">{date}</span>
                 <CategoryLabel label={categoryLabel} />
               </div>
-              <Lock className="upcoming-lock" size={13} />
+              {isPreview ? null : <Lock className="upcoming-lock" size={13} />}
             </div>
             <h3 style={{ fontSize: '16px', fontWeight: 500, letterSpacing: '0.03em', lineHeight: '1.4', color: '#f4f4f5' }}>{titleNode}</h3>
             {truncated ? (
@@ -186,7 +200,7 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
               </div>
             ) : null}
           </div>
-        </div>
+        </a>
       );
     }
     return (

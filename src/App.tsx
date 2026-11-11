@@ -189,10 +189,16 @@ function App() {
     setMenuOpen(false);
     if (state?.year !== undefined) setBlogYear(state.year);
 
+    const currentParams = new URLSearchParams(window.location.search);
+    const currentLang = currentParams.get('lang');
+    const currentPreview = currentParams.get('preview') === 'true';
+
     const params = new URLSearchParams();
-    const currentLang = new URLSearchParams(window.location.search).get('lang');
     if (currentLang && (currentLang === 'nl' || currentLang === 'en' || currentLang === 'es')) {
       params.set('lang', currentLang);
+    }
+    if (currentPreview) {
+      params.set('preview', 'true');
     }
     if (state?.year !== undefined) params.set('year', String(state.year));
     if (state?.from) params.set('from', state.from);
