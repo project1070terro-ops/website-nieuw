@@ -40,17 +40,17 @@ const PROJECT_NAME = 'Terro - Project 15/70';
 
 const WRAPPER_COPY = {
   nl: {
-    tagline: `${PROJECT_NAME} · Save the Children`,
+    tagline: 'VOOR SAVE THE CHILDREN',
     reason: `Je ontvangt deze e-mail omdat je je hebt aangemeld voor updates op <a href="${BASE_URL}" style="color:#c05a28; text-decoration:none;">project1570.org</a>.`,
     unsubscribe: 'Uitschrijven',
   },
   en: {
-    tagline: `${PROJECT_NAME} · Save the Children`,
+    tagline: 'FOR SAVE THE CHILDREN',
     reason: `You are receiving this email because you signed up for updates at <a href="${BASE_URL}" style="color:#c05a28; text-decoration:none;">project1570.org</a>.`,
     unsubscribe: 'Unsubscribe',
   },
   es: {
-    tagline: `${PROJECT_NAME} · Save the Children`,
+    tagline: 'PARA SAVE THE CHILDREN',
     reason: `Recibes este correo porque te suscribiste a actualizaciones en <a href="${BASE_URL}" style="color:#c05a28; text-decoration:none;">project1570.org</a>.`,
     unsubscribe: 'Darse de baja',
   },
