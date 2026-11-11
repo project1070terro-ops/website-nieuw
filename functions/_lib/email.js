@@ -99,21 +99,21 @@ const WELCOME_COPY = {
   nl: {
     subject: 'Welkom bij Project 15/70 — Samen op weg naar 2029',
     title: 'Welkom bij Project 15/70!',
-    body: `Wat fijn dat je erbij bent! Vanaf vandaag volg je onze bijzondere missie op de voet: een meerjarige tocht vol passie, doorzettingsvermogen en solidariteit ten voordele van Save the Children. In aanloop naar september 2029 — wanneer Raoul als 70-jarige de uitdaging aangaat om 10 dagen lang meer dan 17.500 hoogtemeters te bedwingen in de Spaanse bergen — nemen we je mee achter de schermen. Via onze updates blijf je als eerste op de hoogte van de voorbereidingen, bijzondere mijlpalen, mooie ontmoetingen en uiteraard de dagelijkse verslagen tijdens de tocht zelf. Samen maken we van elke hoogtemeter een tastbaar verschil voor kinderen wereldwijd. Bedankt voor je steun en interesse!`,
+    body: `Wat fijn dat je erbij bent! Vanaf vandaag volg je onze missie ten voordele van <strong>Save the Children</strong> op de voet.<br><br>Op weg naar september 2029 — 10 dagen fietsen en >17.500 hoogtemeters — nemen we je mee achter de schermen van de voorbereidingen, mijlpalen en dagelijkse verslagen.<br><br>Samen maken we van elke hoogtemeter een tastbaar verschil. Bedankt voor je steun!`,
     cta: 'Bezoek de website',
     signoff: 'Met warme en sportieve groet,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Mede mogelijk gemaakt door Fortuna Financial Group',
   },
   en: {
     subject: 'Welcome to Project 15/70 — Together on the road to 2029',
     title: 'Welcome to Project 15/70!',
-    body: `We are delighted to have you on board! From today, you will be following our special mission every step of the way: a multi-year journey full of passion, perseverance and solidarity in support of Save the Children. In the run-up to September 2029 — when Raoul, at the age of 70, takes on the challenge of conquering more than 17,500 metres of elevation over 10 days in the Spanish mountains — we will take you behind the scenes. Through our updates, you will be the first to know about the preparations, special milestones, beautiful encounters and, of course, the daily reports during the ride itself. Together, we turn every metre of elevation into a tangible difference for children around the world. Thank you for your support and interest!`,
+    body: `So great to have you on board! From today, you will be following our mission in support of <strong>Save the Children</strong>.<br><br>On the road to September 2029 — 10 days of cycling and >17,500 metres of elevation — we will take you behind the scenes of the preparations, milestones and daily reports.<br><br>Together, we turn every metre of elevation into a tangible difference. Thank you for your support!`,
     cta: 'Visit the website',
     signoff: 'With warm and sporty regards,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Made possible by Fortuna Financial Group',
   },
   es: {
     subject: 'Bienvenido a Proyecto 15/70 — Juntos de camino a 2029',
     title: '¡Bienvenido a Proyecto 15/70!',
-    body: `¡Qué alegría tenerte con nosotros! A partir de hoy sigues de cerca nuestra especial misión: un viaje de varios años lleno de pasión, perseverancia y solidaridad en beneficio de Save the Children. De cara a septiembre de 2029 — cuando Raoul, con 70 años, afronte el reto de superar más de 17.500 metros de desnivel en 10 días por las montañas españolas — te llevamos entre bambalinas. A través de nuestras actualizaciones serás el primero en conocer los preparativos, hitos especiales, bellos encuentros y, por supuesto, los informes diarios durante el propio reto. Juntos convertimos cada metro de desnivel en una diferencia tangible para niños de todo el mundo. ¡Gracias por tu apoyo e interés!`,
+    body: `¡Qué alegría tenerte con nosotros! A partir de hoy sigues de cerca nuestra misión en apoyo de <strong>Save the Children</strong>.<br><br>De camino a septiembre de 2029 — 10 días de ciclismo y >17.500 metros de desnivel — te llevamos entre bambalinas de los preparativos, hitos e informes diarios.<br><br>Juntos convertimos cada metro de desnivel en una diferencia tangible. ¡Gracias por tu apoyo!`,
     cta: 'Visitar el sitio web',
     signoff: 'Un saludo cálido y deportivo,<br><br>Raoul "Terro" Struyf & Equipo Proyecto 15/70<br>Posible gracias a Fortuna Financial Group',
   },
@@ -129,7 +129,8 @@ export function getWelcomeTemplate(language, unsubscribeUrl) {
     unsubscribeUrl,
     language
   );
-  const text = `${lang.title}\n\n${lang.body}\n\nVisit: ${BASE_URL}\n\n${lang.signoff.replace(/<br>/g, '\n')}\n\nUnsubscribe: ${unsubscribeUrl}`;
+  const bodyText = lang.body.replace(/<br\s*\/?>/gi, '\n').replace(/<\/?strong>/gi, '');
+  const text = `${lang.title}\n\n${bodyText}\n\nVisit: ${BASE_URL}\n\n${lang.signoff.replace(/<br>/g, '\n')}\n\nUnsubscribe: ${unsubscribeUrl}`;
   return { subject: lang.subject, html, text };
 }
 
