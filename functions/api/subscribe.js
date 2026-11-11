@@ -48,31 +48,66 @@ export async function onRequestPost(context) {
     const supabase = getSupabase(env);
     const unsubscribeToken = crypto.randomUUID();
 
-    console.log('[subscribe] Inserting:', { email, source, language, unsubscribeToken });
+    console.log('[subscribe] Looking up:', { email });
 
-    const { data, error } = await supabase
+    const { data: existing, error: lookupError } = await supabase
       .from('subscribers')
-      .insert({ email, source, language, unsubscribe_token: unsubscribeToken })
-      .select('id, email')
-      .single();
+      .select('id, is_active, unsubscribed_at, email')
+      .eq('email', email)
+      .limit(1);
 
-    if (error) {
-      console.error('[subscribe] Supabase insert error:', {
-        message: error.message,
-        code: error.code,
-        details: error.details,
-        hint: error.hint,
-      });
-
-      if (error.code === '23505') {
-        // Duplicate email
-        return conflictResponse({ error: 'Already subscribed', already_subscribed: true });
-      }
-
+    if (lookupError) {
+      console.error('[subscribe] Supabase lookup error:', lookupError);
       return okResponse({ ok: true, subscription_saved: false, email_error: false });
     }
 
-    console.log('[subscribe] Insert succeeded:', data);
+    const record = existing?.[0];
+
+    if (record) {
+      if (record.is_active) {
+        console.log('[subscribe] Already active:', record.email);
+        return conflictResponse({ error: 'Already subscribed', already_subscribed: true });
+      }
+
+      console.log('[subscribe] Reactivating:', { email, oldId: record.id });
+
+      const { error: updateError } = await supabase
+        .from('subscribers')
+        .update({
+          is_active: true,
+          unsubscribed_at: null,
+          source,
+          language,
+          unsubscribe_token: unsubscribeToken,
+        })
+        .eq('id', record.id);
+
+      if (updateError) {
+        console.error('[subscribe] Supabase reactivate error:', updateError);
+        return okResponse({ ok: true, subscription_saved: false, email_error: false });
+      }
+    } else {
+      console.log('[subscribe] Inserting:', { email, source, language, unsubscribeToken });
+
+      const { error: insertError } = await supabase
+        .from('subscribers')
+        .insert({ email, source, language, unsubscribe_token: unsubscribeToken });
+
+      if (insertError) {
+        console.error('[subscribe] Supabase insert error:', {
+          message: insertError.message,
+          code: insertError.code,
+          details: insertError.details,
+          hint: insertError.hint,
+        });
+
+        if (insertError.code === '23505') {
+          return conflictResponse({ error: 'Already subscribed', already_subscribed: true });
+        }
+
+        return okResponse({ ok: true, subscription_saved: false, email_error: false });
+      }
+    }
 
     const unsubscribeUrl = `https://project1570.org/api/unsubscribe?token=${unsubscribeToken}`;
     const { subject, html, text } = getWelcomeTemplate(language, unsubscribeUrl);
@@ -88,10 +123,10 @@ export async function onRequestPost(context) {
       });
     } catch (mailError) {
       console.error('[subscribe] Welcome email failed:', mailError.message);
-      return okResponse({ ok: true, subscription_saved: true, email_error: true });
+      return okResponse({ ok: true, subscription_saved: true, email_error: true, reactivated: !!record });
     }
 
-    return okResponse({ ok: true, subscription_saved: true, email_error: false });
+    return okResponse({ ok: true, subscription_saved: true, email_error: false, reactivated: !!record });
   } catch (error) {
     console.error('[subscribe] Global worker error:', {
       message: error.message,
