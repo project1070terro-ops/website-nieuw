@@ -97,25 +97,25 @@ function emailWrapper(content, unsubscribeUrl, language) {
 
 const WELCOME_COPY = {
   nl: {
-    subject: 'Welkom bij Terro - Project 15/70',
-    title: 'Welkom, fietser!',
-    body: 'Je bent nu aangemeld voor blog-updates, statistieken en live-verslagen vanuit Albir. We houden je op de hoogte van elke slopende meter.',
-    cta: 'Bekijk de website',
-    signoff: 'Met sportieve groet,<br>Het Terro - Project 15/70 Team',
+    subject: 'Welkom bij Project 15/70 — Samen op weg naar 2029',
+    title: 'Welkom bij Project 15/70!',
+    body: `Wat fijn dat je erbij bent! Vanaf vandaag volg je onze bijzondere missie op de voet: een meerjarige tocht vol passie, doorzettingsvermogen en solidariteit ten voordele van Save the Children. In aanloop naar september 2029 — wanneer Raoul als 70-jarige de uitdaging aangaat om 10 dagen lang meer dan 17.500 hoogtemeters te bedwingen in de Spaanse bergen — nemen we je mee achter de schermen. Via onze updates blijf je als eerste op de hoogte van de voorbereidingen, bijzondere mijlpalen, mooie ontmoetingen en uiteraard de dagelijkse verslagen tijdens de tocht zelf. Samen maken we van elke hoogtemeter een tastbaar verschil voor kinderen wereldwijd. Bedankt voor je steun en interesse!`,
+    cta: 'Bezoek de website',
+    signoff: 'Met warme en sportieve groet,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Mede mogelijk gemaakt door Fortuna Financial Group',
   },
   en: {
-    subject: 'Welcome to Terro - Project 15/70',
-    title: 'Welcome, cyclist!',
-    body: 'You are now subscribed to blog updates, statistics and live reports from Albir. We will keep you posted on every gruelling metre.',
+    subject: 'Welcome to Project 15/70 — Together on the road to 2029',
+    title: 'Welcome to Project 15/70!',
+    body: `We are delighted to have you on board! From today, you will be following our special mission every step of the way: a multi-year journey full of passion, perseverance and solidarity in support of Save the Children. In the run-up to September 2029 — when Raoul, at the age of 70, takes on the challenge of conquering more than 17,500 metres of elevation over 10 days in the Spanish mountains — we will take you behind the scenes. Through our updates, you will be the first to know about the preparations, special milestones, beautiful encounters and, of course, the daily reports during the ride itself. Together, we turn every metre of elevation into a tangible difference for children around the world. Thank you for your support and interest!`,
     cta: 'Visit the website',
-    signoff: 'Sporty regards,<br>The Terro - Project 15/70 Team',
+    signoff: 'With warm and sporty regards,<br><br>Raoul "Terro" Struyf & Team Project 15/70<br>Made possible by Fortuna Financial Group',
   },
   es: {
-    subject: 'Bienvenido a Terro - Project 15/70',
-    title: '¡Bienvenido, ciclista!',
-    body: 'Ya estás suscrito a actualizaciones del blog, estadísticas e informes en directo desde Albir. Te mantendremos informado de cada metro exigente.',
+    subject: 'Bienvenido a Proyecto 15/70 — Juntos de camino a 2029',
+    title: '¡Bienvenido a Proyecto 15/70!',
+    body: `¡Qué alegría tenerte con nosotros! A partir de hoy sigues de cerca nuestra especial misión: un viaje de varios años lleno de pasión, perseverancia y solidaridad en beneficio de Save the Children. De cara a septiembre de 2029 — cuando Raoul, con 70 años, afronte el reto de superar más de 17.500 metros de desnivel en 10 días por las montañas españolas — te llevamos entre bambalinas. A través de nuestras actualizaciones serás el primero en conocer los preparativos, hitos especiales, bellos encuentros y, por supuesto, los informes diarios durante el propio reto. Juntos convertimos cada metro de desnivel en una diferencia tangible para niños de todo el mundo. ¡Gracias por tu apoyo e interés!`,
     cta: 'Visitar el sitio web',
-    signoff: 'Saludos deportivos,<br>El equipo de Terro - Project 15/70',
+    signoff: 'Un saludo cálido y deportivo,<br><br>Raoul "Terro" Struyf & Equipo Proyecto 15/70<br>Posible gracias a Fortuna Financial Group',
   },
 };
 
