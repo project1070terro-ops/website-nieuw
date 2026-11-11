@@ -53,7 +53,7 @@ export async function onRequestPost(context) {
     const { data: existing, error: lookupError } = await supabase
       .from('subscribers')
       .select('id, is_active, unsubscribed_at, email')
-      .eq('email', email)
+      .ilike('email', email)
       .limit(1);
 
     if (lookupError) {
@@ -74,6 +74,7 @@ export async function onRequestPost(context) {
       const { error: updateError } = await supabase
         .from('subscribers')
         .update({
+          email,
           is_active: true,
           unsubscribed_at: null,
           source,

@@ -32,13 +32,21 @@ export async function onRequestGet(context) {
     }
 
     const supabase = getSupabase(env);
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('subscribers')
       .update({ unsubscribed_at: new Date().toISOString(), is_active: false })
-      .eq('unsubscribe_token', token);
+      .eq('unsubscribe_token', token)
+      .select('id');
 
     if (error) {
       throw error;
+    }
+
+    if (!data || data.length === 0) {
+      return new Response(htmlPage('Ongeldige of reeds gebruikte uitschrijflink.'), {
+        status: 404,
+        headers: { 'Content-Type': 'text/html' },
+      });
     }
 
     return new Response(htmlPage('Je bent succesvol uitgeschreven. Bedankt voor je interesse!'), {
