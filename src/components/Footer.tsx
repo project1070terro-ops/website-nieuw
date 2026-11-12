@@ -135,7 +135,7 @@ export function Footer({ t, language, page, navigate, maintenance, sponsorLogos,
               <a href="https://www.facebook.com/share/14zSqaMQPTN/" target="_blank" rel="noopener noreferrer" title="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/project15_70?dlrf=MWlwYzlwdHNvZGJ1cA==" target="_blank" rel="noopener noreferrer" title="Instagram">
+              <a href="https://www.instagram.com/project15_70/" target="_blank" rel="noopener noreferrer" title="Instagram">
                 <Instagram size={20} />
               </a>
             </div>
