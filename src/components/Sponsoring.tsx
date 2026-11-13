@@ -46,7 +46,7 @@ interface SponsoringCopy {
 const copy: Record<Language, SponsoringCopy> = {
   nl: {
     title: 'Samen Grenzen Verleggen',
-    lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Dankzij onze hoofdpartner Fortuna Financial Group worden alle operationele kosten 100% gedekt; uw investering gaat dus integraal naar Save the Children en is fiscale aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang direct de officiële documentatie en betaalinstructies om uw bijdrage rechtstreeks aan het goede doel te voldoen. Steun dit cruciale werk vandaag nog!',
+    lead: 'Met uw zakelijke sponsoring maakt uw bedrijf het verschil. Dankzij onze hoofdpartner Fortuna Financial Group worden alle operationele kosten 100% gedekt; uw investering gaat dus integraal naar Save the Children en is fiscaal aftrekbaar binnen de vennootschapsbelasting.\n\nKies hieronder het sponsorpakket dat bij uw onderneming past, vul uw gegevens in en ontvang direct de officiële documentatie en betaalinstructies om uw bijdrage rechtstreeks aan het goede doel te voldoen. Steun dit cruciale werk vandaag nog!',
     toast: 'Bedankt voor uw aanvraag en uw steun! Wij hebben uw gegevens in goede orde ontvangen en de gereserveerde meters zijn alvast toegevoegd aan onze live-balk. Er is zojuist een automatische bevestiging naar uw e-mailadres verzonden. Samen verleggen we grenzen voor kinderen wereldwijd!',
     close: 'Sluiten',
     tierHeaders: ['GOUD', 'ZILVER', 'BRONS'],
