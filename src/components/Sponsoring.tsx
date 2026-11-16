@@ -6,7 +6,6 @@ import { supabase } from '../supabaseClient';
 import { PageIntro } from './PageIntro';
 // import { Meter } from './Meter';
 import { MountainProgress } from './MountainProgress';
-import { StravaClub } from './StravaClub';
 
 interface SponsoringProps {
   t: TranslationContent;
@@ -371,8 +370,6 @@ export function Sponsoring({ t, language, navigate, onSponsoring, totalDonated }
           ))}
         </div>
       </section>
-
-      <StravaClub language={language} variant="sponsor" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6" />
 
       <section className="contact-layout !py-6">
         <form className="contact-form !p-6" onSubmit={handleSubmit} noValidate>
