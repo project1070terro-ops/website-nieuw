@@ -4,6 +4,7 @@ import { subscribeEmail } from '../lib/subscribe';
 import type { BlogPost, Language, Page, TranslationContent } from '../types';
 import { PageIntro } from './PageIntro';
 import { BlogStats } from './BlogStats';
+import { StravaClub } from './StravaClub';
 
 interface BlogProps {
   t: TranslationContent;
@@ -330,42 +331,45 @@ export function Blog({ t, language, blogCards, navigate, goToBlog, initialYear }
 
       <BlogStats t={t} language={language} className="-mt-12 mb-6" />
 
-      <div className="w-full max-w-3xl mx-auto rounded-lg border border-white/5 bg-zinc-900/60 p-5 my-8">
-        <form onSubmit={handleBlogSubscribe} className="space-y-3" noValidate>
-            <input
-              type="text"
-              name="website"
-              tabIndex={-1}
-              autoComplete="off"
-              defaultValue=""
-              style={{ position: 'absolute', left: '-9999px' }}
-              aria-hidden="true"
-            />
-          <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0"><SlashHeading text={t.subscribeHeading} /></h3>
-          <p className="text-sm text-white/70 leading-relaxed">{t.subscribeSubtext}</p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              value={blogEmail}
-              onChange={(e) => setBlogEmail(e.target.value)}
-              placeholder={t.subscribePlaceholder}
-              className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 transition-all duration-200 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/15"
-              required
-            />
-            <button
-              type="submit"
-              className="rounded-md bg-[#c05a28] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors"
-            >
-              {t.subscribeButton}
-            </button>
-          </div>
-          {blogStatus === 'success' && (
-            <p className="text-sm text-green-400">{t.subscribeSuccess}</p>
-          )}
-          {blogStatus === 'error' && (
-            <p className="text-sm text-orange-500">{t.subscribeError}</p>
-          )}
-        </form>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto my-8 items-stretch">
+        <div className="rounded-lg border border-white/5 bg-zinc-900/60 p-5 flex flex-col">
+          <form onSubmit={handleBlogSubscribe} className="space-y-3 h-full flex flex-col" noValidate>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                defaultValue=""
+                style={{ position: 'absolute', left: '-9999px' }}
+                aria-hidden="true"
+              />
+            <h3 className="text-xl md:text-2xl font-semibold text-white !mt-0"><SlashHeading text={t.subscribeHeading} /></h3>
+            <p className="text-sm text-white/70 leading-relaxed flex-1">{t.subscribeSubtext}</p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                value={blogEmail}
+                onChange={(e) => setBlogEmail(e.target.value)}
+                placeholder={t.subscribePlaceholder}
+                className="flex-1 rounded-md border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-500 transition-all duration-200 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/15"
+                required
+              />
+              <button
+                type="submit"
+                className="rounded-md bg-[#c05a28] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#a84d22] transition-colors"
+              >
+                {t.subscribeButton}
+              </button>
+            </div>
+            {blogStatus === 'success' && (
+              <p className="text-sm text-green-400">{t.subscribeSuccess}</p>
+            )}
+            {blogStatus === 'error' && (
+              <p className="text-sm text-orange-500">{t.subscribeError}</p>
+            )}
+          </form>
+        </div>
+        <StravaClub language={language} variant="blog" className="h-full" />
       </div>
 
       <div className="timeline-section" id="timeline">
