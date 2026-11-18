@@ -175,6 +175,13 @@ export async function fetchStravaActivities(env, afterTimestamp) {
     startTimestamp = Math.floor(new Date(startDate).getTime() / 1000);
   }
 
+  const nowTimestamp = Math.floor(Date.now() / 1000);
+  if (startTimestamp > nowTimestamp) {
+    // Training window has not started yet; safely return an empty set.
+    console.log('[strava] training start is in the future, skipping fetch');
+    return [];
+  }
+
   const perPage = 200;
   let page = 1;
   let fetched = [];

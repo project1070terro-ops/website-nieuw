@@ -1,0 +1,17 @@
+name: Strava Sync
+
+on:
+  schedule:
+    # Elk uur op het volle uur (UTC). Pas aan in 'cron' als je lieper dagelijks synct.
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Project 15/70 Strava sync
+        run: |
+          curl -X POST https://project1570.pages.dev/api/strava-sync \
+            -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
+            -sS -w "\nHTTP %{http_code}\n"
