@@ -9,7 +9,7 @@ function isStrength(type) {
   return STRENGTH_TYPES.includes(type);
 }
 
-export async function fetchStravaYTD(env) {
+export async function fetchStravaActivities(env) {
   const token = env.STRAVA_ACCESS_TOKEN || env.VITE_STRAVA_ACCESS_TOKEN;
   const startDate = env.TRAINING_START_DATE || env.VITE_TRAINING_START_DATE || '2027-01-01';
 
@@ -20,10 +20,8 @@ export async function fetchStravaYTD(env) {
   const startTimestamp = Math.floor(new Date(startDate).getTime() / 1000);
   const perPage = 200;
   let page = 1;
-  let totalKm = 0;
-  let totalElev = 0;
-  let strengthSeconds = 0;
   let fetched = [];
+  const activities = [];
 
   do {
     const res = await fetch(
@@ -38,25 +36,52 @@ export async function fetchStravaYTD(env) {
       throw new Error(`Strava API error: ${res.status} ${err}`);
     }
 
-    const activities = await res.json();
-    if (!Array.isArray(activities) || activities.length === 0) {
+    fetched = await res.json();
+    if (!Array.isArray(fetched) || fetched.length === 0) {
       break;
     }
 
-    fetched = activities;
-    for (const a of activities) {
+    for (const a of fetched) {
       const type = a.type ?? '';
-      if (isRide(type)) {
-        totalKm += (a.distance ?? 0) / 1000; // meters -> kilometers
-        totalElev += a.total_elevation_gain ?? 0; // meters
+      if (!isRide(type) && !isStrength(type)) {
+        continue;
       }
-      if (isStrength(type)) {
-        strengthSeconds += a.moving_time ?? 0;
-      }
+
+      // Use the future-proof id_str field instead of the numeric id.
+      const id_str = a.id_str ?? (a.id != null ? String(a.id) : '');
+
+      activities.push({
+        id_str,
+        type,
+        distance_meters: a.distance ?? 0,
+        elevation_meters: a.total_elevation_gain ?? 0,
+        moving_time_seconds: a.moving_time ?? 0,
+        start_date: a.start_date ? new Date(a.start_date).toISOString() : null,
+      });
     }
 
     page++;
   } while (fetched.length === perPage);
+
+  return activities;
+}
+
+export async function fetchStravaYTD(env) {
+  const activities = await fetchStravaActivities(env);
+
+  let totalKm = 0;
+  let totalElev = 0;
+  let strengthSeconds = 0;
+
+  for (const a of activities) {
+    if (isRide(a.type)) {
+      totalKm += a.distance_meters / 1000; // meters -> kilometers
+      totalElev += a.elevation_meters; // meters
+    }
+    if (isStrength(a.type)) {
+      strengthSeconds += a.moving_time_seconds;
+    }
+  }
 
   return {
     kilometers: Math.round(totalKm),

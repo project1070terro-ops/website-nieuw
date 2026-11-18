@@ -20,6 +20,7 @@ export async function fetchStravaYTD(): Promise<StravaYTD> {
   let totalKm = 0;
   let totalElev = 0;
   let fetched: any[] = [];
+  const seenIds = new Set<string>();
 
   do {
     const res = await fetch(
@@ -40,6 +41,12 @@ export async function fetchStravaYTD(): Promise<StravaYTD> {
 
     fetched = activities;
     for (const a of activities) {
+      // Prefer id_str to avoid 64-bit integer precision issues in JavaScript.
+      const idStr = a.id_str ?? (a.id != null ? String(a.id) : null);
+      if (idStr) {
+        if (seenIds.has(idStr)) continue;
+        seenIds.add(idStr);
+      }
       totalKm += (a.distance ?? 0) / 1000; // meters -> kilometers
       totalElev += a.total_elevation_gain ?? 0; // meters
     }

@@ -1,5 +1,16 @@
 import { getSupabase } from '../_lib/supabase.js';
-import { fetchStravaYTD } from '../_lib/strava.js';
+import { fetchStravaActivities } from '../_lib/strava.js';
+
+const RIDE_TYPES = ['Ride', 'VirtualRide', 'GravelRide', 'MountainBikeRide'];
+const STRENGTH_TYPES = ['WeightTraining', 'Workout', 'Crossfit', 'FunctionalStrengthTraining', 'HIIT'];
+
+function isRide(type) {
+  return RIDE_TYPES.includes(type);
+}
+
+function isStrength(type) {
+  return STRENGTH_TYPES.includes(type);
+}
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -24,8 +35,39 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { kilometers, elevation, strengthHours } = await fetchStravaYTD(env);
+    const activities = await fetchStravaActivities(env);
     const supabase = getSupabase(env);
+
+    // Store per-activity data with the future-proof string id_str.
+    if (activities.length > 0) {
+      const { error: upsertError } = await supabase
+        .from('strava_activities')
+        .upsert(activities, { onConflict: 'id_str' });
+
+      if (upsertError) {
+        console.error('[strava-sync] activities upsert error:', upsertError);
+        throw upsertError;
+      }
+    }
+
+    // Compute aggregate YTD statistics from the raw activity data.
+    let totalKm = 0;
+    let totalElev = 0;
+    let strengthSeconds = 0;
+
+    for (const a of activities) {
+      if (isRide(a.type)) {
+        totalKm += a.distance_meters / 1000;
+        totalElev += a.elevation_meters;
+      }
+      if (isStrength(a.type)) {
+        strengthSeconds += a.moving_time_seconds;
+      }
+    }
+
+    const kilometers = Math.round(totalKm);
+    const elevation = Math.round(totalElev);
+    const strengthHours = +(strengthSeconds / 3600).toFixed(1);
 
     const { error } = await supabase.from('training_stats').upsert({
       id: 1,
@@ -41,6 +83,7 @@ export async function onRequestPost(context) {
       ok: true,
       stravaKilometersYTD: kilometers,
       stravaElevationYTD: elevation,
+      activityCount: activities.length,
     });
   } catch (error) {
     console.error('[strava-sync] error:', error);
