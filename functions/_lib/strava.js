@@ -164,11 +164,17 @@ export async function exchangeStravaCode(env, code) {
   return { accessToken, refreshToken, expiresAt, scope: data.scope, athleteId };
 }
 
-export async function fetchStravaActivities(env) {
+export async function fetchStravaActivities(env, afterTimestamp) {
   const token = await getStravaAccessToken(env);
-  const startDate = env.TRAINING_START_DATE || env.VITE_TRAINING_START_DATE || '2027-01-01';
 
-  const startTimestamp = Math.floor(new Date(startDate).getTime() / 1000);
+  let startTimestamp;
+  if (afterTimestamp != null && !isNaN(afterTimestamp)) {
+    startTimestamp = Math.floor(afterTimestamp);
+  } else {
+    const startDate = env.TRAINING_START_DATE || env.VITE_TRAINING_START_DATE || '2027-01-01';
+    startTimestamp = Math.floor(new Date(startDate).getTime() / 1000);
+  }
+
   const perPage = 200;
   let page = 1;
   let fetched = [];

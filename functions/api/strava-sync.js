@@ -34,8 +34,19 @@ export async function onRequestPost(context) {
     return jsonResponse({ ok: false, error: 'Unauthorized' }, 401);
   }
 
+  const url = new URL(request.url);
+  const startParam = url.searchParams.get('start');
+  let afterTimestamp;
+  if (startParam) {
+    const parsed = Math.floor(new Date(startParam).getTime() / 1000);
+    if (isNaN(parsed)) {
+      return jsonResponse({ ok: false, error: 'Invalid ?start=YYYY-MM-DD' }, 400);
+    }
+    afterTimestamp = parsed;
+  }
+
   try {
-    const activities = await fetchStravaActivities(env);
+    const activities = await fetchStravaActivities(env, afterTimestamp);
     const supabase = getSupabase(env);
 
     // Store per-activity data with the future-proof string id_str.
