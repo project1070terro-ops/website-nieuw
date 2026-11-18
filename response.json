@@ -1,1 +1,0 @@
-{"ok":false,"error":"Strava API error: 401 {\"message\":\"Authorization Error\",\"errors\":[{\"resource\":\"AccessToken\",\"field\":\"activity:read_permission\",\"code\":\"missing\"}]}"}
